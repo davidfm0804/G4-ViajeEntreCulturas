@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Coordenadas</title>
+    <style>
+        #coordenadas {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: white;
+            padding: 5px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="coordenadas">(0, 0)</div>
+    <form action="recibirDatos.php" method="post">
+        <input type="hidden" id="coordenadasInput" name="coordenadas">
+        <button type="submit">Enviar Coordenadas</button>
+    </form>
+    <script src="coordenadas.js"></script>
+</body>
+</html>
