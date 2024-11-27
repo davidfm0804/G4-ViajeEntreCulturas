@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Simple</title>
+</head>
+<body>
+    <form action="#" method="post" enctype="multipart/form-data">
+        <!-- Select -->
+        <label for="selectPais">Pais: </label>
+        <select id="selectPais" name="pais">
+            <option value="" selected disabled></option>
+            <option value="España">España</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Italia">Italia</option>
+        </select>
+        <br><br>
+        <!-- Input type file -->
+        <label for="archivo">Subir Bandera:</label>
+        <input type="file" id="img" name="img">
+        <br><br>
+        <!-- Textarea -->
+        <label for="comentarios">Comentarios:</label>
+        <textarea id="comentarios" name="comentarios" rows="4" cols="50"></textarea>
+        <br><br>
+        <!-- Botón de envío -->
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Borrar">
+    </form>
+    <script src="validaciones.js"></script>
+</body>
+</html>
