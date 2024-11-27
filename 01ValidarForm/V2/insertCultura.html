@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Coordenadas</title>
+
+    <style>
+        img{
+            width: 1.8%;
+        }
+
+        form{
+            display: block;
+            width: 30%;
+            margin: 0 auto;
+            margin-top: 30vh;
+            border: 1px solid black;
+        }
+
+        label{
+            display: inline-block;
+            margin: 2% 0;
+        }
+
+        p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="./insertCultura.php" method="post" id="formCultura">
+        <label for="selectPais">Pais: </label>
+        <select name="pais" id="selectPais">
+            <option value="" disabled selected></option>
+            <option value="españa">España</option>
+            <option value="portugal">Portugal</option>
+            <option value="italia">Italia</option>
+            <option value="japon">Japon</option>
+        </select><br>
+        <label for="descripcion">Descripcion: </label>
+        <textarea name="descrip" id="descripcion"></textarea><br>
+        <label for="imagen">Img: </label>
+        <input type="file" name="img" id="imagen"><br>
+        <label for="coordX">X: </label>
+        <input type="text" name="coordX" id="coordX" readonly>
+        <label for="coordY">Y: </label>
+        <input type="text" name="coordY" id="coordY" readonly>
+        <button type="button" id="locationChincheta">Ubicar Cultura</button><br>
+        <input type="reset" value="Borrar">
+        <input type="submit" value="Enviar">
+    </form>
+    <p id="resultado"></p>
+    <script src="./validacion.js">
+        /*document.getElementById('locationChincheta').addEventListener('click', function() {
+            // Guardar datos del formulario en localStorage
+            localStorage.setItem('pais', document.getElementById('selectPais').value);
+            localStorage.setItem('descripcion', document.getElementById('descripcion').value);
+            localStorage.setItem('imagen', document.getElementById('imagen').value);
+
+            window.location.href = './pruebCoord.html';
+        });
+
+        // Cargar datos del formulario desde localStorage
+        window.addEventListener('load', function() {
+            const coordX = localStorage.getItem('coordX');
+            const coordY = localStorage.getItem('coordY');
+            if (coordX && coordY) {
+                document.getElementById('coordX').value = coordX;
+                document.getElementById('coordY').value = coordY;
+            }
+
+            const pais = localStorage.getItem('pais');
+            const descripcion = localStorage.getItem('descripcion');
+            const imagen = localStorage.getItem('imagen');
+            if (pais) document.getElementById('selectPais').value = pais;
+            if (descripcion) document.getElementById('descripcion').value = descripcion;
+            if (imagen) document.getElementById('imagen').value = imagen;
+        });*/
+    </script>
+</body>
+</html>
