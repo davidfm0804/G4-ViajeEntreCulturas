@@ -1,8 +1,8 @@
 document.getElementById("formCultura").addEventListener('submit', async function(event){
-    // Desactivar Submit
+    /*-- Desactivar Submit --*/
     event.preventDefault();
 
-    // Recoger Elementos
+    /*-- Recoger Elementos --*/
     const pais = document.getElementById('selectPais');
     const imgBandera = document.getElementById('imgBandera');
     const coordX = document.getElementById('coordX');
@@ -13,11 +13,11 @@ document.getElementById("formCultura").addEventListener('submit', async function
     const archivoFiestas = document.getElementById('imgFiestas');
     const descrip = document.getElementById('descrip');
 
-    // Declaración Variables 
+    /*-- Declaración Variables --*/
     let valid = true;
     const formatoValido = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
 
-    /* Validaciones */
+    /*-- Validaciones --*/
 
     // Select Pais | NOT NULL
     if (pais.value === "") {
@@ -41,10 +41,10 @@ document.getElementById("formCultura").addEventListener('submit', async function
         valid = false;
     }
 
-    // Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa
+    /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
     if (valid) {
         const formData = new FormData();
-        formData.append('pais', opciones.value);
+        formData.append('pais', pais.value);
         formData.append('imgBandera', archivoBandera.files[0]);
         formData.append('coordX', coordX.value);
         formData.append('coordY', coordY.value);

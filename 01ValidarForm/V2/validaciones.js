@@ -1,3 +1,6 @@
+document.getElementById('coordX').value = localStorage.getItem('coordX');
+document.getElementById('coordY').value = localStorage.getItem('coordY');
+
 document.getElementById("formCultura").addEventListener('submit', async function(event){
     /*-- Desactivar Submit --*/
     event.preventDefault();
@@ -70,5 +73,9 @@ document.getElementById("formCultura").addEventListener('submit', async function
         } catch (error) {
             console.error('Error:', error);
         }
+
+        // Borrar Coordenadas LocalStore
+        
+
     }
 });
