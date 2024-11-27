@@ -74,8 +74,8 @@ document.getElementById("formCultura").addEventListener('submit', async function
             console.error('Error:', error);
         }
 
-        // Borrar Coordenadas LocalStore
-        
-
+        // Borrar Coordenadas localStorage
+        localStorage.removeItem('coordX');
+        localStorage.removeItem('coordY');
     }
 });
