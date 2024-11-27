@@ -44,10 +44,10 @@ document.getElementById("formCultura").addEventListener('submit', async function
             body: formData,
         });
 
-        //Verificamos si la respuesta del server es correcta
+        // Verificamos si la respuesta del server es correcta
         if(response.ok){
             const result = await response.text();
-            document.getElementById('resultado').innerText = `Respuesta del server: ${result}`;
+            document.getElementById('resultado').innerText = `Datos: ${result}`;
         }else
             document.getElementById('resultado').innerText = `Error al enviar los datos`;
     } catch (error) {
