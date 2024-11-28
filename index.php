@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuración</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="src/css/estilo.css">
 </head>
 <body>
     <header>
         <!-- <h1>Viaje entre culturas</h1> -->
-      <img src="Viaje entre culturas.png" alt="logo">
+      <img src="src/img/Viaje entre culturas.png" alt="logo">
     </header>
     <main>        
-        <img src="Mapa3.jpg" alt="Mapa de culturas">         
+        <img src="src/img/mapa.jpg" alt="Mapa de culturas">         
     </main>
     <footer>
         <p>Grupo 4</p>
