@@ -1,13 +1,9 @@
-/*-- Paso de PX a REM --*/
-function calculoRem(px) {
-    const baseFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    return px / baseFontSize;
-}
-
 /*-- Añadir Evento Recoger Coordenadas -> Main - Click --*/
 document.getElementById('mainMapa').addEventListener('click', function(event) {
-    const x = event.clientX;
-    const y = event.clientY;
+    const mapa = document.getElementById('mainMapa');
+    const rect = mapa.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
     document.getElementById('coordenadas').textContent = `(${x}, ${y})`;
     
     // Guardar Coordenadas Navegador
@@ -19,19 +15,15 @@ document.getElementById('mainMapa').addEventListener('click', function(event) {
     if (chinchetaAnterior) 
         chinchetaAnterior.remove();
 
-    // Paso de px a REM
-    const medidaRem = [calculoRem(x), calculoRem(y)];
-    console.log(medidaRem);
-
     // Crear y posicionar la imagen en las coordenadas del click
     const img = document.createElement("img");
     img.id = "chincheta";
     img.src = "./img/chincheta.png";
     img.style.position = "absolute";
-    img.style.left = `${medidaRem[0]}rem`;
-    img.style.top = `${medidaRem[1]}rem`;
-    img.style.transform = "translate(-17%, -83%)";
-    document.body.appendChild(img);
+    img.style.left = `${x}px`;
+    img.style.top = `${y}px`;
+    img.style.transform = "translate(-50%, -100%)"; // Ajusta la posición para centrar la chincheta
+    mapa.appendChild(img);
 });
 
 /*-- Añadir Event -> Tecla Enter --*/
