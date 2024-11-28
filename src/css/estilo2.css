@@ -1,15 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-:root {
-  --oscuro: #1a202c;
-  --medio-oscuro: #2d3748;
-  --claro-oscuro: #4a5568;
-  --azul: #2c5282;
-  --azul-claro: #63b3ed;
-  --acento: #0085ae;
-  --amarillo: #ffcc00;
-  --blanco-claro: #ebf8ff;
-  --azul-oscuro: #2a4365;
+:root{
+    --arena: #cdc497;
+    --azul: #04548b;
+    --cristal: #05a8c7;
+    --verde: #1b8432;
+    --bosque: #046c51;
+    --barro: #9e7435;
+    --navy: #04235b;
+
 }
 
 
@@ -19,30 +18,19 @@
         font-family: 'Press Start 2P', cursive;
 }
 
-/* Estilos Header */
 header {
-    background-color: var(--azul);
-    color: white;
-    height: 8vh;
+    background-color: var(--bosque);           
+    text-align: center; 
+    height: 120px;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    border-bottom: 4px solid var(--azul-claro);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    justify-content: center;
 }
 
-header img {
-    width: 4%;
-    height: 100%; / Tamaño del logo */
-  }
-
-  header h1 {
-      text-align: center;
-      font-size: 1.2em;
-      color: var(--blanco-claro);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-  }
+/* header > img{
+    vertical-align: middle;
+} */
 
 body {
     background-color: var(--bosque);   
