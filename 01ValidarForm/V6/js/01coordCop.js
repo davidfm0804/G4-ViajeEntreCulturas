@@ -1,14 +1,12 @@
+document.getElementById('div-mapa').style.position = "relative";
 /*-- Añadir Evento Recoger Coordenadas -> IMG - Click --*/
 document.getElementById('mapa').addEventListener('click', function(event) {
     const mapa = document.getElementById('mapa');
     const rect = mapa.getBoundingClientRect();
-    const nav = document.querySelector('nav').getBoundingClientRect();
     const x = parseFloat((((event.clientX - rect.left) / rect.width) * 100).toFixed(6));
     const y = parseFloat((((event.clientY - rect.top) / rect.height) * 100).toFixed(6));
-    
-    document.getElementById('coordenadas').textContent = `(${x}, ${y})`;
-    
-    // Guardar Coordenadas Navegador - [2 Deciamles]
+    console.log(x,y);
+    // Guardar Coordenadas Navegador - [2 Decimales]
     localStorage.setItem('coordX', x);
     localStorage.setItem('coordY', y);
 
@@ -25,7 +23,7 @@ document.getElementById('mapa').addEventListener('click', function(event) {
     img.style.left = `${x}%`;
     img.style.top = `${y}%`;
     img.style.transform = "translate(-15%, -88%)";
-    document.querySelector('main').appendChild(img);
+    document.getElementById('div-mapa').append(img);
 });
 
 /*-- Añadir Event -> Tecla Enter --*/
