@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             chincheta.classList.add('chincheta');
             chincheta.style.left = `${coord.coordX}%`;
             chincheta.style.top = `${coord.coordY}%`;
-            chincheta.style.transform = "translate(-15%, -88%)";
+            img.style.transform = "translate(-15%, -75%)";
             console.log(coord.coordX, coord.coordY);
             mainMapa.appendChild(chincheta);
         });

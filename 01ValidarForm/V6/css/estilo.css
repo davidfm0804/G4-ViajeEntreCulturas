@@ -87,13 +87,14 @@ header div span:hover a {
 }
 
 /* Estilos Main */
-main > div {
-    text-align: center;
-    margin: 1%;
+main{
+    width: 85%;
+    margin: 0 auto;
 }
-main #mapa {
-    width: 85%; 
-    height: auto;
+
+main img:first-child {
+    width: 100%;
+    margin-top:0.5%;
     border: 8px solid var(--azul);
     border-radius: 10px;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.6);
