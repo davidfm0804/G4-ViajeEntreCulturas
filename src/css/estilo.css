@@ -59,7 +59,7 @@ main {
 }
 
 h2{
-  padding-top: 1em;
+  padding-top: 2em;
 }
 
 #altaPais{
@@ -71,7 +71,7 @@ h2{
 }
 
 button{
-  background-color: var(--gris-claro);
+  background-color: #999999;
   color: var(--blanco-claro);
   cursor: pointer;
   border: none; 
@@ -105,9 +105,8 @@ table{
 }
 
 .colNombre{
-  text-align: left;
+  text-align: center;
   width: 65%;
-  padding-left: 3em;
 }
 
 .flag{
@@ -158,3 +157,42 @@ html {
     background-color: rgba(0, 0, 0, 0.5);  /* Oscurecer al pasar el mouse */
   }
   
+  @media screen and (max-width: 1024px) and (min-width: 769px){
+    table{
+      margin-top: 2em;
+      width: 80%;
+    }
+
+    h2{
+      padding-top: 2em;
+    }
+
+    .cabecera{
+      padding: 10px 8px;
+    }
+  }
+
+
+  @media only screen and (max-width: 768px) {
+  h2{
+    padding-top: 2em;
+  }
+
+  #altaPais{
+    left: 35%;
+    top: 3em;
+    height: 4em;
+    padding: 1em;
+  }
+
+  table{
+    margin-top: 10em;
+    width: 80%;
+    font-size: small;
+  }
+
+  .cabecera{
+    padding: 10px 8px;
+  }
+}
+
