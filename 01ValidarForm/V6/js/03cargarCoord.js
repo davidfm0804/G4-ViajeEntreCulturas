@@ -1,3 +1,5 @@
+document.querySelector('main').style.position = "relative";
+
 /*-- Añadir Evento Ubicar Chinchetas -> Chinchetas - CargarDOM --*/
 document.addEventListener('DOMContentLoaded', async function() {
     // Obtener Coordenadas BBDD By Promesa
@@ -11,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             chincheta.classList.add('chincheta');
             chincheta.style.left = `${coord.coordX}%`;
             chincheta.style.top = `${coord.coordY}%`;
-            img.style.transform = "translate(-15%, -75%)";
+            chincheta.style.transform = "translate(-15%, -75%)";
             console.log(coord.coordX, coord.coordY);
             mainMapa.appendChild(chincheta);
         });

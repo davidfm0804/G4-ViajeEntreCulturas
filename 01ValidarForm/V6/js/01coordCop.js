@@ -16,14 +16,14 @@ document.getElementById('mapa').addEventListener('click', function(event) {
         chinchetaAnterior.remove();
 
     // Crear y posicionar la imagen en las coordenadas del click
-    const img = document.createElement("img");
-    img.id = "chincheta";
-    img.src = "../img/chincheta.png";
-    img.style.position = "absolute";
-    img.style.left = `${x}%`;
-    img.style.top = `${y}%`;
-    img.style.transform = "translate(-15%, -75%)";
-    document.querySelector('main').append(img);
+    const chincheta = document.createElement("img");
+    chincheta.classList.add('chincheta');
+    chincheta.src = "../img/chincheta.png";
+    chincheta.style.position = "absolute";
+    chincheta.style.left = `${x}%`;
+    chincheta.style.top = `${y}%`;
+    chincheta.style.transform = "translate(-15%, -75%)";
+    document.querySelector('main').append(chincheta);
 });
 
 /*-- Añadir Event -> Tecla Enter --*/

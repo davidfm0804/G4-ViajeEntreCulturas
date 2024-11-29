@@ -72,7 +72,7 @@ document.getElementById("formCultura").addEventListener('submit', async function
             const result = await response.text();
             document.body.innerHTML = `<h2>Datos enviados:</h2><pre>${result}</pre><button id="mostrarMapa">Mostrar en el mapa</button>`;
             document.getElementById('mostrarMapa').addEventListener('click', function() {
-                window.location.href = '../html/index2.html';
+                window.location.href = '../html/03index.html';
             });
         } catch (error) {
             console.error('Error:', error);
