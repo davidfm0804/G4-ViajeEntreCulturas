@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root{
+    --arena: #cdc497;
+    --azul: #04548b;
+    --cristal: #05a8c7;
+    --verde: #1b8432;
+    --bosque: #046c51;
+    --barro: #9e7435;
+    --navy: #04235b;
+
+}
+
+
+*{
+        margin: 0;
+        padding: 0;
+        font-family: 'Press Start 2P', cursive;
+}
+
+header {
+    background-color: var(--bosque);           
+    text-align: center; 
+    height: 120px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* header > img{
+    vertical-align: middle;
+} */
+
+body {
+    background-color: var(--bosque);   
+}    
+
+main {          
+    width: 100%; 
+    background-color: var(--navy);   
+    text-align: center; 
+    overflow: auto;    
+}
+
+footer {
+    background-color: var(--bosque);            
+    text-align: center;   
+    height: 46px;   
+    width: 100%;
+    padding-top: 28px;
+} 
+
+
+
+/* --------------------------------SCROLLBAR--------------------------------*/
+/* Estilo para el contenedor de la página */
+html {
+    scroll-behavior: smooth;  /* Desplazamiento suave */
+  }
+  
+  /* Estilo para el scrollbar en el cuerpo de la página */
+  ::-webkit-scrollbar {
+    width: 8px;  /* Un scrollbar más delgado */
+    height: 8px;  /* Si hay scrollbar horizontal, hacerlo más delgado */
+  }
+  
+  /* Estilo para el fondo del scrollbar */
+  ::-webkit-scrollbar-track {
+    background: var(--cristal);  /* Color de fondo muy suave */
+    border-radius: 10px;  /* Bordes redondeados */
+  }
+  
+  /* Estilo para la barra del scrollbar */
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--azul);  /* Barra en un tono oscuro pero sutil */
+    border-radius: 10px;  /* Bordes redondeados */
+    border: 2px solid rgba(0, 0, 0, 0.1);  /* Ligero borde para dar definición */
+  }
+  
+  /* Efecto al hacer hover sobre el scrollbar */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.5);  /* Oscurecer al pasar el mouse */
+  }
+  
+/* -------------------------------------------------------------------------*/
+
+/* Color mar: #0085ae */
+/* Color mar oscuro: #003978 */
+/* Pantalla navegador 1920 x 920 */
+/* Mapamundi 1741 x 717 px */

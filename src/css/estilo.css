@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --oscuro: #1a202c;
+  --medio-oscuro: #2d3748;
+  --claro-oscuro: #4a5568;
+  --azul: #2c5282;
+  --azul-claro: #63b3ed;
+  --acento: #0085ae;
+  --amarillo: #ffcc00;
+  --blanco-claro: #ebf8ff;
+  --azul-oscuro: #2a4365;
+  --gris-claro: #747474;
+}
+
+
+*{
+        margin: 0;
+        padding: 0;
+        font-family: 'Press Start 2P', cursive;
+}
+
+/* Estilos Header */
+header {
+    background-color: var(--azul);
+    color: white;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
+    border-bottom: 4px solid var(--azul-claro);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+header img {
+    width: 70px;
+  }
+
+  header h1 {
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%);
+    font-size: 1.2em;
+    color: var(--blanco-claro);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+main {          
+  background:
+  linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
+  url(../img/mapa.jpg);
+  /* background-image: url(../img/mapa.jpg); */
+  height: 92vh;
+  background-size: cover;
+  background-position:center;
+  text-align: center;
+}
+
+h2{
+  padding-top: 1em;
+}
+
+#altaPais{
+  position:relative;
+  left: 40%;
+  top: -1em;
+  height: 4em;
+  padding: 1em;
+}
+
+button{
+  background-color: var(--gris-claro);
+  color: var(--blanco-claro);
+  cursor: pointer;
+  border: none; 
+  outline: none; 
+  box-shadow: none;
+}
+
+button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  transform: translateY(-2px);
+}
+
+button:active {
+  box-shadow: none; 
+  transform: translateY(2px); 
+}
+
+.png{
+  width: 40px;
+  
+}
+
+table{
+  background-color: rgb(99, 179, 237, 0.7);
+  text-align: center;
+  margin: auto;
+  margin-top: 6em;
+  width: 70%;
+  border-spacing: 8px;
+  border-collapse: collapse;
+}
+
+.colNombre{
+  text-align: left;
+  width: 65%;
+  padding-left: 3em;
+}
+
+.flag{
+  width: 60px;
+}
+
+
+
+.cabecera{
+  padding: 10px 0;
+}
+
+
+tr, td, th {
+  border-bottom: 2px solid #2c5282;
+  padding: 5px 0px;
+}
+
+
+
+/* --------------------------------SCROLLBAR--------------------------------*/
+/* Estilo para el contenedor de la página */
+html {
+    scroll-behavior: smooth;  /* Desplazamiento suave */
+  }
+  
+  /* Estilo para el scrollbar en el cuerpo de la página */
+  ::-webkit-scrollbar {
+    width: 8px;  /* Un scrollbar más delgado */
+    height: 8px;  /* Si hay scrollbar horizontal, hacerlo más delgado */
+  }
+  
+  /* Estilo para el fondo del scrollbar */
+  ::-webkit-scrollbar-track {
+    background: var(--azul-claro);  /* Color de fondo muy suave */
+    border-radius: 10px;  /* Bordes redondeados */
+  }
+  
+  /* Estilo para la barra del scrollbar */
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--azul-oscuro);  /* Barra en un tono oscuro pero sutil */
+    border-radius: 10px;  /* Bordes redondeados */
+    border: 2px solid rgba(0, 0, 0, 0.1);  /* Ligero borde para dar definición */
+  }
+  
+  /* Efecto al hacer hover sobre el scrollbar */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.5);  /* Oscurecer al pasar el mouse */
+  }
+  
