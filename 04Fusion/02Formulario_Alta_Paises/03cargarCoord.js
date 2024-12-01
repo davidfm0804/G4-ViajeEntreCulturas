@@ -1,7 +1,8 @@
 document.querySelector('main').style.position = "relative";
 console.log('hola1');
-/*-- Añadir Evento Ubicar Chinchetas -> Chinchetas - CargarDOM --*/
-document.addEventListener('DOMContentLoaded', async function() {
+/*-- Funcion Ubicar Chinchetas -> Chinchetas - CargarDOM --*/
+async function mostrarChinchetas() {
+    console.log('hola2');
     // Obtener Coordenadas BBDD By Promesa
     try {
         const response = await fetch('./03obtenerCoordenadas.php');
@@ -23,4 +24,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.error('Error:', error);
         console.log('hola2');
     }
-});
+}
+
+mostrarChinchetas();

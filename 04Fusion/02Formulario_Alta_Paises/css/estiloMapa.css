@@ -104,6 +104,7 @@ main img:first-child {
 
 .chincheta{
     width: 1.8%;
+    position: absolute;
 }
 /* Para tablet en modo vertical */
 @media (max-width: 768px) {

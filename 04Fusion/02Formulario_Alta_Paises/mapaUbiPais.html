@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -17,20 +18,19 @@
     <main>
         <img id="mapa" src="img/mapa.jpg">
     </main>
-    <!-- <script src="./01coordCop.js"></script> -->
-    <script> 
-        function getQueryParam(param) { 
-            const urlParams = new URLSearchParams(window.location.search); 
-            return urlParams.get(param); 
-        } 
-        const scriptToLoad = getQueryParam('script'); 
-        const script = document.createElement('script'); 
-        script.defer = true; // Asegura que el script se cargue después de que el DOM esté completamente analizado 
-        if (scriptToLoad === '03cargarCoord.js') { 
-            script.src = './03cargarCoord.js'; 
-        } else
-            script.src = './01coordCop.js'
-        document.body.appendChild(script);
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const scriptToLoad = getQueryParam('script');
+            const script = document.createElement('script');
+            script.src = scriptToLoad === '03cargarCoord.js' ? './03cargarCoord.js' : './01coordCop.js';
+            script.defer = true; // Asegura que el script se ejecute después de que el documento esté completamente cargado
+            document.body.appendChild(script);
+        });
     </script>
 </body>
 </html>
