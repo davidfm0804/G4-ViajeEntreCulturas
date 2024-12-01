@@ -102,8 +102,9 @@ main img:first-child {
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.6);
 }
 
-#chincheta{
+.chincheta{
     width: 1.8%;
+    position: absolute;
 }
 /* Para tablet en modo vertical */
 @media (max-width: 768px) {
