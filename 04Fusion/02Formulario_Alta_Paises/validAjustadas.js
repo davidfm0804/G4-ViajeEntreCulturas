@@ -58,9 +58,15 @@ document.querySelector('.update').addEventListener('click', async function(event
                 body: formData
             });
             const result = await response.text();
-            document.body.innerHTML = `<h2>Datos enviados:</h2><pre>${result}</pre><button id="mostrarMapa">Mostrar en el mapa</button>`;
+            document.body.innerHTML = `<h2>Datos enviados:</h2><pre>${result}</pre><button id="mostrarMapa" class='update'>Mostrar culturas en el mapa</button><button id="addCultura" class='update'>Añadir Cultura</button><button id="volver" class='cancel'>Volver</button>`;
             document.getElementById('mostrarMapa').addEventListener('click', function() {
                 window.location.href = './mapaUbiPais.html?script=03cargarCoord.js';
+            });
+            document.getElementById('addCultura').addEventListener('click', function() {
+                window.location.href = './mapaUbiPais.html';
+            });
+            document.getElementById('volver').addEventListener('click', function() {
+                window.location.href = './#PanelAdmin';
             });
         } catch (error) {
             console.error('Error:', error);
