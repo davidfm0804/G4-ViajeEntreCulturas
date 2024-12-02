@@ -182,8 +182,14 @@ html {
   /* --------------------------------MEDIA QUERIES--------------------------------*/
 
   @media screen and (max-width: 1024px) and (min-width: 769px){
+    body{
+      height: 100vh;
+    }
+    main{
+      height:auto;
+    }
     table{
-      margin-top: 2em;
+      margin-top: 4em;
     }
 
     h2{
@@ -197,8 +203,18 @@ html {
 
 
   @media only screen and (max-width: 768px) {
+    body{
+      height: 100vh;
+    }
+    header h1{
+      font-size: 1em;
+    }
+    main{
+      height:auto;
+    }
   h2{
     padding-top: 2em;
+    font-size:1.2em;
   }
 
   #altaPais{
@@ -209,7 +225,7 @@ html {
   }
 
   table{
-    margin-top: 10em;
+    margin-top: 8em;
     font-size: small;
   }
 
