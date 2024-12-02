@@ -29,7 +29,5 @@ if (!empty($_POST['nombrePais']) && !empty($_FILES['bandera']['name']) && !empty
     }
 } else {
     header('Location: altaPais.php?msj=Campos obligatorios de poner');
-
-     
 }
 ?>
