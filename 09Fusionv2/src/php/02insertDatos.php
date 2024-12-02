@@ -18,10 +18,19 @@ $nombrePais = $_POST['pais'];
 $coordX = $_POST['coordX'];
 $coordY = $_POST['coordY'];
 
-// Preparar y enlazar
-$stmt = $conn->prepare("INSERT INTO pais (nombrePais, coordX, coordY) VALUES ('".$nombrePais."', ".$coordX.", ".$coordY.")");
+$imgBandera = $_FILES['imgBandera']['name'];
+$imgBanderaTmp = $_FILES['imgBandera']['tmp_name'];
+$imgBanderaPath = '../img/' . basename($imgBandera);
 
-// ejecutar
+if (!move_uploaded_file($imgBanderaTmp, $imgBanderaPath)) {
+    echo "Error al subir la imagen.";
+}
+
+// Preparar
+$stmt = $conn->prepare("INSERT INTO pais (nombrePais, bandera, coordX, coordY) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssdd", $nombrePais, $imgBanderaPath, $coordX, $coordY);
+
+// Ejecutar
 $stmt->execute();
 
 echo "Nuevo registro creado exitosamente";
