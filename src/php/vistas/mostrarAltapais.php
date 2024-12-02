@@ -7,6 +7,7 @@ if (!empty($_POST['nombrePais']) && !empty($_FILES['bandera']['name']) && !empty
     $coordX = $_POST['coordX'];
     $coordY = $_POST['coordY'];
 
+
     $directorioSubida = "../../img/"; 
 
     $nombreArchivo = uniqid() . "_" . basename($_FILES['bandera']['name']); 
@@ -16,6 +17,7 @@ if (!empty($_POST['nombrePais']) && !empty($_FILES['bandera']['name']) && !empty
 
         $rutaRelativa = "img/" . $nombreArchivo; 
 
+        
         $objCpais = new Cpais();
         $resultado = $objCpais->cAltaPais($nombrePais, $rutaRelativa, $coordX, $coordY);
 
