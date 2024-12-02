@@ -3,36 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD PAÍSES</title>
-    <link rel="stylesheet" href="../src/css/reset.css">
-    <link rel="stylesheet" href="../src/css/style.css">
+    <title>Viaje entre culturas</title>
+    <link rel="icon" href="../../img/mapa.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/estilo.css">
 </head>
 <body>
     <header>
-        <!-- Header -->
+        <img src="../../img/logo.png" alt="Logo">
+        <h1>Viaje entre Culturas</h1>
     </header>
-    <nav>
-        <!-- Navegación -->
-    </nav>
     <main>
         <div>
-            <h1>Alta de País</h1><br/>
-
             <form action="mostrarAltapais.php" method="POST" enctype="multipart/form-data">
-                <label for="nombrePais">Nombre del País: </label>
-                <input type="text" name="nombrePais" placeholder="Nombre del País" required><br/><br/>
+                <div>
+                    <label for="nombrePais">Nombre del País: </label><br>
+                    <input type="text" name="nombrePais" placeholder="Nombre del País">
+                    <br><br>                                     
 
-                <label for="bandera">Imagen Bandera:</label>
-                <input type="file" name="bandera" required><br/><br/>
+                    <label for="bandera" id="subirBandera">
+                        Subir bandera
+                        <input type="file" id="bandera" name="bandera">
+                    </label>                    
+                    <br><br>
 
-                <label for="coordX">Coordenada X:</label>
-                <input type="text" name="coordX" required><br/><br/>
+                    <label for="coordX">Coordenada X:</label><br>
+                    <input type="text" name="coordX" >
+                    <br><br>
 
-                <label for="coordY">Coordenada Y:</label>
-                <input type="text" name="coordY" required><br/><br/>
+                    <label for="coordY">Coordenada Y:</label><br>
+                    <input type="text" name="coordY" >
+                    <br><br>
+                </div>             
 
-                <input type="submit" value="Enviar">
-                <input type="reset" value="Borrar">
+                <input type="submit" class="update" value="Dar de Alta">
+                <input type="reset" class="cancel" value="Borrar">
+                <br><br>
 
                 <?php
                     if (isset($_GET['msj'])){
@@ -43,8 +49,10 @@
             </form>
         </div>
     </main>
-    <footer>
-        <!-- Footer -->
-    </footer>
 </body>
 </html>
+
+
+         
+                  
+            

@@ -11,6 +11,11 @@ class Cpais {
         return $this->objMpais->mAltaPais($nombrePais, $bandera, $x, $y);
     }
 
+    public function cEliminarPais($nombrePais) {
+        return $this->objMpais->mBorrarPais($nombrePais);
+    }
+    
+
     public function cObtenerPaises() {
         return $this->objMpais->mObtenerPaises();
     }
@@ -19,12 +24,13 @@ class Cpais {
         return $this->objMpais->mObtenerPaisPorNombre($nombrePais);
     }     
     
-    public function cModificarPais($nombrePais, $bandera, $x, $y) {
-        if ($this->objMpais->mModificarPais($nombrePais, $bandera, $x, $y)) {
+    public function cModificarPais($nombrePais, $nuevoNombrePais, $bandera, $coordX, $coordY) {
+        if ($this->objMpais->mModificarPais($nombrePais, $nuevoNombrePais, $bandera, $coordX, $coordY)) {
             return true;
         }
         return false;
     }
+    
 
 }
 ?>

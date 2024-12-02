@@ -19,12 +19,6 @@ class Mpais {
         return $this->conexion->query($SQL);
     }
 
-    public function mEliminarPais($nombrePais) {
-        $SQL = "DELETE FROM paises WHERE nombrePais = '$nombrePais'";
-
-        return $this->conexion->query($SQL);
-    }
-
     public function mObtenerPaises() {
         $SQL = "SELECT * FROM paises";
         return $this->conexion->query($SQL);
@@ -35,6 +29,19 @@ class Mpais {
         return $this->conexion->query($SQL);
     }
 
+    public function mModificarPais($nombrePais, $nuevoNombrePais, $bandera, $coordX, $coordY) {
+        $SQL = "UPDATE paises 
+                SET nombrePais = '$nuevoNombrePais', bandera = '$bandera', coordX = '$coordX', coordY = '$coordY' 
+                WHERE nombrePais = '$nombrePais'";
     
+        return $this->conexion->query($SQL);
+    }
+    
+
+    public function mBorrarPais($nombrePais) {
+        $SQL = "DELETE FROM paises WHERE nombrePais = '$nombrePais'";
+
+        return $this->conexion->query($SQL);
+    }
 }
 ?>
