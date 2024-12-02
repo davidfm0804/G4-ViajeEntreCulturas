@@ -53,12 +53,11 @@ header img {
     url(../img/mapa.jpg);
     background-size: cover;
   background-position:center;
-  height: 100%;
   background-repeat: no-repeat;
   }
 
 main {          
-  height: 100%;
+  height: 100vh;
   background-size: auto;
   background-position:center;
   text-align: center;
