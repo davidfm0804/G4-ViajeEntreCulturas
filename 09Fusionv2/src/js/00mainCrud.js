@@ -20,18 +20,22 @@ document.querySelectorAll('tr').forEach(row => {
 /*-- Añadir Evento | Botones Modificar --*/
 document.querySelectorAll('.modificar').forEach(button => {
     button.addEventListener('click', function () {
-        window.location.href = './formModificar.html';
+        // Obtener Nombre Pais || closest -> Accede al 'tr' más cercano
+        const nombrePais = button.closest('tr').querySelector('.colNombre').textContent;
+        const codPais = button.closest('tr').id;
+        window.location.href = `./formModificar.php?nombre=${nombrePais}&id=${codPais}.html`;
     });
 });
 
-/*-- Añadir Evento | Botones Borrar [Borrado ID]--*/
+/*-- Añadir Evento | Botones Borrar [Borrado ID] --*/
 document.querySelectorAll('.borrar').forEach(button => {
     button.addEventListener('click', async function () {
-        // Obtener ID Pais || closest -> Accede al 'tr' más cercano | id -> Accede al atributo id
-        const paisId = button.closest('tr').id;
+        // Obtener ID Pais || closest -> Accede al 'tr' más cercano | id -> Accede al atributo id definido en el 'tr'
+        const codPais = button.closest('tr').id;
         const formData = new FormData();
-        formData.append('id', paisId);
+        formData.append('id', codPais);
         if (confirm('¿Está seguro de que desea borrar este país?')) {
+            // Promesa | Fetch + FormData -> Borrar Pais
             try {
                 const response = await fetch ('../src/php/04borrarPais.php',{
                     method: 'POST',
@@ -54,11 +58,11 @@ document.querySelectorAll('.borrar').forEach(button => {
 });
 
 /*-- Añadir Evento | Botones Borrar [Borrado Nombre]--
-document.querySelectorAll('.borrar').forEach(button => {
-    button.addEventListener('click', function () {
-        const nombrePais = button.closest('tr').querySelector('.colNombre').textContent;
-        if (confirm('¿Está seguro de que desea borrar este país?')) {
-            window.location.href = `../src/php/vistas/mostrarEliminarPais.php?nombrePais=${nombrePais}`;
-        }
-    });
-});*/
+// document.querySelectorAll('.borrar').forEach(button => {
+//     button.addEventListener('click', function () {
+//         const nombrePais = button.closest('tr').querySelector('.colNombre').textContent;
+//         if (confirm('¿Está seguro de que desea borrar este país?')) {
+//             window.location.href = `../src/php/vistas/mostrarEliminarPais.php?nombrePais=${nombrePais}`;
+//         }
+//     });
+// });*/
