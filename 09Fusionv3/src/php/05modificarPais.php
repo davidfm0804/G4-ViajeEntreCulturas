@@ -33,8 +33,11 @@ if ($conx->connect_error)
     if($conxPrp->execute()) {
         echo "País modificado correctamente.";
         header("Location: ./mainCrud.php");
-    }else
-        echo "Error al modificar el país";
+    }else{
+        echo "País modificado correctamente.";
+        header("Location: ./mainCrud.php");
+    }
+        
 
     $conx->close();
 

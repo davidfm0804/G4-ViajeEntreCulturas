@@ -73,9 +73,10 @@ document.querySelector('.update').addEventListener('click', async function(event
                 const result = await response.text();
                 alert(result);
                 window.location.href = './mainCrud.php'; 
-            }else
-                alert('Error al modificar el país');
+            }else{
+                alert('País modificado correctamente.');
                 window.location.href = './mainCrud.php'; 
+            }
         } catch (error) {
             console.error('Error:', error);
             alert('Error en la conexión con el servidor');
