@@ -59,7 +59,7 @@ main {
   background:
   linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
   url(../img/mapa.jpg);
-  height: 92vh;
+  height: 100%;
   background-size: cover;
   background-position:center;
   text-align: center;
