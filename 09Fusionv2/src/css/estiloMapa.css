@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --oscuro: #1a202c;
+    --medio-oscuro: #2d3748;
+    --claro-oscuro: #4a5568;
+    --azul: #2c5282;
+    --azul-claro: #63b3ed;
+    --acento: #0085ae;
+    --amarillo: #ffcc00;
+    --blanco-claro: #ebf8ff;
+    --azul-oscuro: #2a4365;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    background: linear-gradient(135deg, var(--oscuro), var(--medio-oscuro), var(--claro-oscuro));
+    background-size: 400% 400%;
+    color: white;
+}
+
+/* Estilos Header */
+header {
+    background-color: var(--azul);
+    color: white;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-bottom: 4px solid var(--azul-claro);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header img {
+    width: 4%;
+    height: 100%; 
+}
+
+header h1 {
+    text-align: center;
+    font-size: 1.4em;
+    color: var(--blanco-claro);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+header div {
+    display: flex;
+    text-align: center;
+}
+header div span {
+    height: 20%;
+    border: 3px solid var(--azul-claro);
+    flex-grow: 1;
+    border-radius: 8px;
+    background: var(--azul-oscuro);
+    color: var(--azul-claro);
+    margin-left: 10%;
+    font-size: 1.5em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    box-shadow: 3px 3px 6px #000, -3px -3px 6px #444;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+header div span:hover {
+    background: var(--azul-claro);
+    box-shadow: 0px 0px 10px var(--azul-claro);
+    transform: translateY(-2px);
+}
+header div span a {
+    display: inline-block;
+    width: 100%;           
+    height: 100%;          
+    text-decoration: none;
+    color: inherit; /* Hereda el color del span */
+}
+
+header div span:hover a {
+    color: var(--blanco-claro);
+}
+
+/* Estilos Main */
+
+/* Estilos Main */
+main{
+    width: 85%;
+    margin: 0 auto;
+}
+
+main img:first-child {
+    width: 100%;
+    margin-top:0.5%;
+    border: 8px solid var(--azul);
+    border-radius: 10px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.chincheta{
+    width: 1.8%;
+    position: absolute;
+}
+/* Para tablet en modo vertical */
+@media (max-width: 768px) {
+    main {
+        width: 90%;
+        margin: 20px auto;
+    }
+    header img{
+        width: 10%;
+    }
+
+    main img:first-child {
+        width: 100%;
+        margin-top: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* Para tablet en modo horizontal */
+@media (max-width: 1024px) and (min-width: 769px) {
+    header{
+        height: 12vh;
+    }
+    header img{
+        width: 8%;
+    }
+    main {
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    main img:first-child {
+        width: 100%;
+        margin-top: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.6);
+    }
+}

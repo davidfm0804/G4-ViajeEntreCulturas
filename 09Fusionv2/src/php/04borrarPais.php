@@ -1,5 +1,5 @@
 <?php
-// Prueba -> Celia 
+//Prueba -> Celia
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -13,18 +13,16 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-$sql = "SELECT coordX, coordY FROM pais";
-$result = $conn->query($sql);
-
-$coordenadas = array();
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $coordenadas[] = $row;
+    $id = $_POST['id'];
+    $sql = "DELETE FROM pais WHERE codPais = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    if ($stmt->execute()) {
+        echo "Registro eliminado correctamente";
+    } else {
+        echo "Error al eliminar el registro: ";
     }
-}
-
-
-echo json_encode($coordenadas);
+    $stmt->close();
 
 $conn->close();
 ?>

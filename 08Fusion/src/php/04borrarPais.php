@@ -1,5 +1,5 @@
-<!-- Prueba -> Celia -->
 <?php
+//Prueba -> Celia 
 $servername = "localhost";
 $username = "root";
 $password = "";
