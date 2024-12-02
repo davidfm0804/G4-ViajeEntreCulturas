@@ -33,7 +33,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar País</title>
     <link rel="icon" href="../src/img/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../src/css/estiloModificar.css">
+    <link rel="stylesheet" href="../src/css/estiloModificarPaises.css">
 </head>
 <body>
     <header>
