@@ -30,6 +30,6 @@ document.getElementById('mapa').addEventListener('click', function(event) {
 /*-- Añadir Event -> Tecla Enter --*/
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        window.location.href = './formModificar.php';
+        window.location.href = './formModificar.php?script=04validModifv2.js';
     }
 });

@@ -1,8 +1,13 @@
 <?php
     if (isset($_GET['nombre']))
         $nombrePais = $_GET['nombre'];
+    else
+        $nombrePais = 'Default Name';
+
     if (isset($_GET['id']))
         $idPais = $_GET['id'];
+    else
+        $idPais = 'Default ID';
 ?>
 <html lang="es">
 <head>
@@ -22,7 +27,7 @@
             <form>
                 <div>
                     <label for="IntroducirPais">Nombre país:</label>
-                    <input type="text" name="pais" value="<?php if(isset($nombrePais)) echo $nombrePais ?>">
+                    <input type="text" name="pais" value="<?php echo $nombrePais; ?>">
                     <br><br>
                     <a href='../html/mapaModf.html' id="elcor" class="subirBtn">Elige Coordenadas</a>
                     <br><br>
@@ -40,6 +45,20 @@
             </form>
         </div>
     </main>
-    <script src="../src/js/04validModif.js"></script>
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const scriptToLoad = getQueryParam('script');
+            const script = document.createElement('script');
+            script.src = scriptToLoad === '04validModifv2.js' ? '../src/js/04validModifv2.js' : '../src/js/04validModif.js';
+            script.defer = true; // Asegura que el script se ejecute después de que el documento esté completamente cargado
+            document.body.appendChild(script);
+        });
+
+    </script>
 </body>
 </html>
