@@ -21,9 +21,11 @@ if ($conx->connect_error)
         $imgBandera = $_FILES['imgBandera']['name'] ? $_FILES['imgBandera']['name'] : $_POST['imgBandera'];
         $imgBanderaTmp = $_FILES['imgBandera']['tmp_name'];
         $bandera = '../img/' . basename($imgBandera);
-    } else {
+        // Mover IMG a Directorio
+        if (!move_uploaded_file($imgBanderaTmp, $bandera))
+            die("Error al subir la imagen");
+    } else 
         $bandera = basename($_POST['imgBandera']);
-    }
 
     $sql = "UPDATE paises SET nombrePais = ?, coordX = ?, coordY = ?, bandera = ? WHERE codPais = ?";
     $conxPrp = $conx->prepare($sql);
