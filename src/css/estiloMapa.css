@@ -87,8 +87,6 @@ header div span:hover a {
 }
 
 /* Estilos Main */
-
-/* Estilos Main */
 main{
     width: 85%;
     margin: 0 auto;
@@ -103,8 +101,8 @@ main img:first-child {
 }
 
 .chincheta{
-    width: 1.8%;
     position: absolute;
+    width: 1.8%;
 }
 /* Para tablet en modo vertical */
 @media (max-width: 768px) {
