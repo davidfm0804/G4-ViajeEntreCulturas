@@ -1,4 +1,6 @@
+/*-- Ajustes Main -> Position Absolute --*/
 document.querySelector('main').style.position = "relative";
+
 /*-- Añadir Evento Recoger Coordenadas -> IMG - Click --*/
 document.getElementById('mapa').addEventListener('click', function(event) {
     const mapa = document.getElementById('mapa');
@@ -6,6 +8,7 @@ document.getElementById('mapa').addEventListener('click', function(event) {
     const x = parseFloat((((event.clientX - rect.left) / rect.width) * 100).toFixed(6));
     const y = parseFloat((((event.clientY - rect.top) / rect.height) * 100).toFixed(6));
     console.log(x,y);
+    
     // Guardar Coordenadas Navegador - [6 Decimales]
     localStorage.setItem('coordX', x);
     localStorage.setItem('coordY', y);

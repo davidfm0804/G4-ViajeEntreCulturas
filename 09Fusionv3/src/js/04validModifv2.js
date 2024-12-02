@@ -1,22 +1,26 @@
-/*-- Dar Valor Elementos | LocalStorage --*/
-if(localStorage.getItem('nombrePais')) document.querySelector('[name="pais"]').value = localStorage.getItem('nombrePais');
-if(localStorage.getItem('imgBandera')) document.querySelector('[name="bandera"]').value = localStorage.getItem('imgBandera');
-if(localStorage.getItem('idPais')) document.querySelector('[name="idPais"]').value = localStorage.getItem('idPais'); 
-
 /*-- Ajustes DOM --*/
 document.querySelector('.cancel').addEventListener('click', function(){
     window.location.href = './mainCrud.php';
 });
 
+/*-- Dar Valor Elementos | LocalStorage --*/
+if(localStorage.getItem('nombrePais')) document.querySelector('[name="pais"]').value = localStorage.getItem('nombrePais');
+if(localStorage.getItem('imgBandera')) document.querySelector('#banderaActual').value = localStorage.getItem('imgBandera');
+if(localStorage.getItem('idPais')) document.querySelector('[name="idPais"]').value = localStorage.getItem('idPais'); 
+if(localStorage.getItem('banderaAct')) document.querySelector('#banderaActual').src = localStorage.getItem('banderaAct');
+if(localStorage.getItem('coordX')) document.querySelector('[name="coordX"]').value = localStorage.getItem('coordX');
+if(localStorage.getItem('coordY')) document.querySelector('[name="coordY"]').value = localStorage.getItem('coordY');
+if(localStorage.getItem('imgBandera')) document.querySelector('#banderaActual').src = localStorage.getItem('imgBandera');
+
 /*-- Añadir Evento -> Form --*/
 document.querySelector('.update').addEventListener('click', async function(event){
 
     /*-- Recoger Elementos --*/
-    const pais = document.querySelector('[name="pais"]');
+    const pais = document.querySelector('[name="pais"]').value;
     const imgBandera = document.querySelector('[name="bandera"]');
     const coordX = localStorage.getItem('coordX');
     const coordY = localStorage.getItem('coordY');
-    const idPais = document.querySelector('[name="idPais"]');
+    const idPais = localStorage.getItem('idPais');
 
     /*-- Declaración Variables --*/
     let valid = true;
@@ -25,33 +29,32 @@ document.querySelector('.update').addEventListener('click', async function(event
     /*-- Validaciones --*/
 
     // Input Pais | NOT NULL
-    if (!pais.value) {
+    if (!pais) {
         alert("Por favor, indique el nombre del país.");
         valid = false;
     }
 
-    // Input File [imgBandera] | If NOT NULL => Formato IMG
-    if (imgBandera.files.length != 0)
-        if (!formatoValido.includes(imgBandera.files[0].type)) {
-            alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
-            valid = false;
-        }
+    // Input File [imgBandera] | NOT NULL && Formato IMG
+    if (imgBandera.files.length > 0 && !formatoValido.includes(imgBandera.files[0].type)) {
+        alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
+        valid = false;
+    }
 
     /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
     if (valid) {
         const formData = new FormData();
-        formData.append('pais', pais.value);
-        
+
+        formData.append('idPais', idPais);
+        formData.append('pais', pais);
+
         if (imgBandera.files.length > 0) {
             formData.append('imgBandera', imgBandera.files[0]);
+        } else {
+            formData.append('imgBandera', document.querySelector('#banderaActual').src);
         }
 
-        if (coordX && coordY) {
-            formData.append('coordX', coordX);
-            formData.append('coordY', coordY);
-        }
-
-        formData.append('idPais', document.querySelector('[name="idPais"]').value);
+        formData.append('coordX', coordX);
+        formData.append('coordY', coordY);
 
         /*-- Mostrar FormData --*/
         for (let [key, value] of formData.entries()) {

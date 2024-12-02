@@ -5,60 +5,35 @@ $password = "";
 $dbname = "ViajeEntreCulturas";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conx = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+if ($conx->connect_error)
+    die("Fallo Conexión");
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pais = $_POST['pais'];
     $coordX = $_POST['coordX'];
     $coordY = $_POST['coordY'];
     $idPais = $_POST['idPais'];
 
-    // Verificar el valor de idPais
-    error_log("ID del País recibido: " . $idPais);
-
-    $imgBandera = $_FILES['imgBandera']['name'];
-    $imgBanderaTmp = $_FILES['imgBandera']['tmp_name'];
-    $imgBanderaPath = '../img/' . basename($imgBandera);
-
-    if (!move_uploaded_file($imgBanderaTmp, $imgBanderaPath)) {
-        echo "Error al subir la imagen.";
+    // Comprobar | IMG = FILE ? SRC
+    if(isset($_FILES['imgBandera']) && is_uploaded_file($_FILES['imgBandera']['tmp_name'])){
+        $imgBandera = $_FILES['imgBandera']['name'] ? $_FILES['imgBandera']['name'] : $_POST['imgBandera'];
+        $imgBanderaTmp = $_FILES['imgBandera']['tmp_name'];
+        $bandera = '../img/' . basename($imgBandera);
+    } else {
+        $bandera = basename($_POST['imgBandera']);
     }
 
-    // Arreglo ID [Última Opción]
-    
-    $posPunto = strpos($idPais, '.');
-    
-    if ($posPunto !== false) {
-        $id = substr($idPais, 0, $posPunto);
-    }
-    
-    
-    function console_log_php($message) {
-        $js_message = json_encode($message);
-
-        echo "<script>console.log({$js_message},'hola');</script>";
-    }
-
-    console_log_php($id);
-
-
-    $sql = "UPDATE pais SET nombrePais='$pais', coordX='$coordX', coordY='$coordY', bandera='$imgBanderaPath' WHERE codPais='$id'";
-
-    if ($conn->query($sql) === TRUE) {
+    $sql = "UPDATE paises SET nombrePais = ?, coordX = ?, coordY = ?, bandera = ? WHERE codPais = ?";
+    $conxPrp = $conx->prepare($sql);
+    $conxPrp->bind_param("sddss", $pais, $coordX, $coordY, $bandera, $idPais);
+    if($conxPrp->execute()) {
         echo "País modificado correctamente.";
         header("Location: ./mainCrud.php");
-        exit();
-    } else {
-        echo "Error al modificar el país: " . $conn->error;
-    }
+    }else
+        echo "Error al modificar el país";
 
-    $conn->close();
-} else {
-    echo "Método de solicitud no válido.";
-}
+    $conx->close();
+
 ?>

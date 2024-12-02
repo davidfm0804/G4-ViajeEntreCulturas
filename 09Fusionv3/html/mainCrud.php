@@ -14,9 +14,9 @@
         <h1>Viaje entre Culturas</h1>
     </header>
     <main>        
-         <h2>Listado de países</h2>
-         <button id="altaPais">Alta país</button>
-         <table>
+        <h2>Listado de países</h2>
+        <button id="altaPais">Alta país</button>
+        <table>
             <tr>
                 <th class="cabecera">Bandera</th>
                 <th class="cabecera">Nombre</th>
@@ -37,7 +37,7 @@
                 die("Conexión fallida: " . $conn->connect_error);
             }
 
-            $sql = "SELECT codPais, nombrePais, bandera FROM pais";
+            $sql = "SELECT codPais, nombrePais, bandera FROM paises";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -55,7 +55,7 @@
 
             $conn->close();
             ?>
-         </table>
+        </table>
     </main>
     <script src="../src/js/00mainCrud.js"></script>
 </body>

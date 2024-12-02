@@ -27,7 +27,7 @@ if (!move_uploaded_file($imgBanderaTmp, $imgBanderaPath)) {
 }
 
 // Preparar
-$stmt = $conn->prepare("INSERT INTO pais (nombrePais, bandera, coordX, coordY) VALUES (?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO paises (nombrePais, bandera, coordX, coordY) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("ssdd", $nombrePais, $imgBanderaPath, $coordX, $coordY);
 
 // Ejecutar

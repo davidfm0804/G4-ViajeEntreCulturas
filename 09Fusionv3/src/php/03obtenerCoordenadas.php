@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-$sql = "SELECT coordX, coordY FROM pais";
+$sql = "SELECT coordX, coordY FROM paises";
 $result = $conn->query($sql);
 
 $coordenadas = array();

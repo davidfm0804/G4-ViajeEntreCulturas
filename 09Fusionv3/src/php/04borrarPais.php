@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
     $id = $_POST['id'];
-    $sql = "DELETE FROM pais WHERE codPais = ?";
+    $sql = "DELETE FROM paises WHERE codPais = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     if ($stmt->execute()) {
