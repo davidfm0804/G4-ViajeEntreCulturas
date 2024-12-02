@@ -43,7 +43,7 @@
             if ($result->num_rows > 0) {
                 while($fila = $result->fetch_assoc()) {
                     echo "<tr id='".$fila['codPais']."'>";
-                    echo "<td><img class='flag' src='../src/img/banderas/'".$fila['bandera']."'alt='".$fila['nombrePais']."'></td>";
+                    echo "<td><img class='flag' src='../src/img/".$fila['bandera']."' alt='".$fila['nombrePais']."'></td>";
                     echo "<td class='colNombre'>".$fila['nombrePais']."</td>";
                     echo "<td><button><img class='png' src='../src/img/modificar.png'></button></td>";
                     echo "<td><button><img class='png' src='../src/img/borrar.png'></button></td>";

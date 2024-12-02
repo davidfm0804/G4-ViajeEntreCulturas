@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $imgBandera = $_FILES['imgBandera']['name'];
     $imgBanderaTmp = $_FILES['imgBandera']['tmp_name'];
-    $imgBanderaPath = '../img/' . basename($imgBandera);
+    $imgBanderaPath = basename($imgBandera);
 
     if (!move_uploaded_file($imgBanderaTmp, $imgBanderaPath)) {
         echo "Error al subir la imagen.";
