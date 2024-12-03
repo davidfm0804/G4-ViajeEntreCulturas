@@ -1,7 +1,7 @@
 /*-- Ajustes DOM --*/
 document.querySelector('main').style.position = "relative";
 document.querySelector('.cancel').addEventListener('click', function(){
-    window.location.href = '../html/mainCrud.php';
+    window.location.href = './mainCrud.php';
 });
 
 /*-- Dar Valor Inputs Coordenadas [localStorage] --*/
@@ -53,7 +53,7 @@ document.querySelector('.update').addEventListener('click', async function(event
         formData.append('coordY', coordY.value);
 
         try {
-            const response = await fetch('../src/php/02insertDatos.php', {
+            const response = await fetch('../02insertDatos.php', {
                 method: 'POST',
                 body: formData
             });
@@ -97,12 +97,12 @@ document.querySelector('.update').addEventListener('click', async function(event
 
             /*-- Funcionalidad Botón Mostrar Mapa --*/
             document.getElementById('mostrarMapa').addEventListener('click', function() {
-                window.location.href = './mapaUbiPais.html?script=03cargarCoord.js';
+                window.location.href = './mapaUbiPais.php?script=03cargarCoord.js';
             });
             
             /*-- Funcionalidad Botón Añadir Cultura --*/
             document.getElementById('addCultura').addEventListener('click', function() {
-                window.location.href = './mapaUbiPais.html';
+                window.location.href = './mapaUbiPais.php';
             });
             
             /*-- Funcionalidad Botón Volver --*/

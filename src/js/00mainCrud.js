@@ -1,6 +1,6 @@
 /*-- Añadir Evento | Botón Alta Pais --*/
 document.getElementById('altaPais').addEventListener('click', function () {
-    window.location.href = './mapaUbiPais.html';
+    window.location.href = './mapaUbiPais.php';
 });
 
 /*-- Añadir Class | Botones Modificar + Borrar --*/
@@ -37,7 +37,7 @@ document.querySelectorAll('.borrar').forEach(button => {
         if (confirm('¿Está seguro de que desea borrar este país?')) {
             // Promesa | Fetch + FormData -> Borrar Pais
             try {
-                const response = await fetch ('../src/php/04borrarPais.php',{
+                const response = await fetch ('../04borrarPais.php',{
                     method: 'POST',
                     body: formData,
                 });

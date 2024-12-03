@@ -1,3 +1,4 @@
+<?php require_once('../config/config.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,12 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuración</title>
-    <link rel="icon" href="../src/img/mapa.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="../src/css/estiloSilva.css">
+    <link rel="icon" href="<?php echo IMG.'mapa.jpg';?>" type="image/x-icon">
+    <link rel="stylesheet" href="<?php echo CSS.'estiloSilva.css'; ?>">
 </head>
 <body>
     <header>
-        <img src="../src/img/logo.png" alt="Logo">
+        <img src="<?php echo IMG.'logo.png';?>" alt="Logo">
         <h1>Viaje entre Culturas</h1>
     </header>
     <main>        
@@ -43,10 +44,10 @@
             if ($result->num_rows > 0) {
                 while($fila = $result->fetch_assoc()) {
                     echo "<tr id='".$fila['codPais']."'>";
-                    echo "<td><img class='flag' src='../src/img/".$fila['bandera']."' alt='".$fila['nombrePais']."'></td>";
+                    echo "<td><img class='flag' src='".IMG.$fila['bandera']."' alt='".$fila['nombrePais']."'></td>";
                     echo "<td class='colNombre'>".$fila['nombrePais']."</td>";
-                    echo "<td><button><img class='png' src='../src/img/modificar.png'></button></td>";
-                    echo "<td><button><img class='png' src='../src/img/borrar.png'></button></td>";
+                    echo "<td><button><img class='png' src='".IMG."modificar.png'></button></td>";
+                    echo "<td><button><img class='png' src='".IMG."borrar.png'></button></td>";
                     echo "</tr>";
                 }
             } else {
@@ -57,6 +58,6 @@
             ?>
         </table>
     </main>
-    <script src="../src/js/00mainCrud.js"></script>
+    <script src="<?php echo JS.'00mainCrud.js';?>"></script>
 </body>
 </html>

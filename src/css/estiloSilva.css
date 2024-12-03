@@ -52,12 +52,13 @@ header img {
     linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url(../img/mapa.jpg);
     background-size: cover;
-  background-position:center;
-  background-repeat: no-repeat;
+    background-position:center;
+    background-repeat: no-repeat;
   }
 
 main {          
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   background-size: auto;
   background-position:center;
   text-align: center;
