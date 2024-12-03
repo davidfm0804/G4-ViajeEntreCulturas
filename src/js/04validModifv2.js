@@ -63,7 +63,7 @@ document.querySelector('.update').addEventListener('click', async function(event
 
         // Promesa | Fetch + FormData -> Borrar Pais
         try {
-            const response = await fetch ('../src/php/05modificarPais.php',{
+            const response = await fetch ('../05modificarPais.php',{
                 method: 'POST',
                 body: formData,
             });

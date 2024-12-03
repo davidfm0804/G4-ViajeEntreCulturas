@@ -13,7 +13,7 @@ document.getElementById('elcor').addEventListener('click', function(event) {
     localStorage.setItem('nombrePais', pais);
     localStorage.setItem('imgBandera', imgBandera);
     localStorage.setItem('idPais', idPais);
-    window.location.href = '../html/mapaModf.html';
+    window.location.href = './mapaModf.php';
 });
 
 /*-- Añadir Evento -> Form --*/
@@ -66,7 +66,7 @@ document.querySelector('.update').addEventListener('click', async function(event
 
         // Promesa | Fetch + FormData -> Borrar Pais
         try {
-            const response = await fetch ('../src/php/05modificarPais.php',{
+            const response = await fetch ('../05modificarPais.php',{
                 method: 'POST',
                 body: formData,
             });

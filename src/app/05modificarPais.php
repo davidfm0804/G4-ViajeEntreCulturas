@@ -29,7 +29,7 @@ if ($conx->connect_error)
 
     $sql = "UPDATE paises SET nombrePais = ?, coordX = ?, coordY = ?, bandera = ? WHERE codPais = ?";
     $conxPrp = $conx->prepare($sql);
-    $conxPrp->bind_param("sddss", $pais, $coordX, $coordY, $bandera, $idPais);
+    $conxPrp->bind_param("sddss", $pais, $coordX, $coordY, basename($imgBandera), $idPais);
     if($conxPrp->execute()) {
         echo "País modificado correctamente.";
         header("Location: ./mainCrud.php");
