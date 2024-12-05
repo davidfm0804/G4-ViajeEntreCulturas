@@ -28,6 +28,7 @@ document.querySelector('.update').addEventListener('click', /*async*/ function(e
         }
         //EL input text de continente lo pasamos por la función
         const nombreContinente = primeraEnMayusculas(continente.value);
+        
         // const formData = new FormData();
         // formData.append('continente', nombreContinente);
         
