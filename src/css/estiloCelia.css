@@ -93,7 +93,8 @@ main {
 main h2 {
     text-transform: capitalize;
     display: inline-block;
-    margin: 2% 0 0 50%;
+    /* margin: 2% 0 0 50%; */
+    margin: 2% 0 0 42vw;
     transform: translateX(-75%);
     text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
     color: #fff;
@@ -123,16 +124,16 @@ main > button:hover {
 }
 
 /* Buttom | [listadoPuntuaciones] */
-main > button:nth-child(1){
+#listPunt > button:nth-of-type(1){
     position: absolute;
-    top: 4vh;
-    right: 26vw;
+    top: 2vh;
+    right: 34vw;
 }
 
-main > button:nth-child(2) {
+#listPunt > button:nth-of-type(2) {
     position: absolute;
-    top: 4vh;
-    right: 1vw;
+    top: 2vh;
+    right: -2vw;
 }
 
 /* Main | Tabla */
@@ -186,5 +187,5 @@ main table td button{
 }
 
 main table td button img{
-    width: 80%;
+    width: 50%;
 }
