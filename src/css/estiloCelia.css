@@ -101,7 +101,7 @@ main h2 {
 }
 
 /*H2 | [registrarContinente]*/
-#regCont h2 {
+.registro h2 {
     margin-left: 50%;
     margin-top: 6%;
     transform: translateX(-50%);
@@ -143,8 +143,8 @@ main > button:hover {
     right: -2vw;
 }
 
-/* Buttom | [registrarContinente] */
-#regCont button {
+/* Buttom | [registrarContinente + registrarCategoria] */
+.registro  button {
    margin: unset;
    position: absolute;
    top: 35vh;
@@ -152,15 +152,15 @@ main > button:hover {
    background-color: var(--azul-claro);
 }
 
-#regCont button:nth-of-type(1) {
+.registro  button:nth-of-type(1) {
     left: 41.4vw;
 }
 
-#regCont button:nth-of-type(2) {
+.registro button:nth-of-type(2) {
     right: 26.5vw;
 }
 
-#regCont button:nth-of-type(3) {
+.registro button:nth-of-type(3) {
     width: 32%;
     top: 45vh;
     left: 49.95vw;
