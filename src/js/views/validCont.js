@@ -1,3 +1,5 @@
+// -------------------------------------------- VALIDACIONES CONTINENTES--------------------------------------------------------
+
 // Evento al hacer click en la clase update (validaciones)
 document.querySelector('.update').addEventListener('click', /*async*/ function(event){
     
@@ -70,3 +72,13 @@ document.querySelector('.update').addEventListener('click', /*async*/ function(e
         }
     }
 });
+
+// -------------------------------------------- VALIDACIONES CONTINENTES EN FORM PAÍS-------------------------------------------------
+
+const continente = document.querySelector('[name="continente"]');
+
+// El input Continente es NOT NULL
+if(!continente.value){
+    alert("Por favor, indique el nombre del continente.");
+    valid = false;
+}

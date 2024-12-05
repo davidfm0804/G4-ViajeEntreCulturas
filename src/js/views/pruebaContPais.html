@@ -1,16 +1,17 @@
-<?php require_once('../config/config.php'); ?>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alta de Países</title>
-    <link rel="icon" href="<?php echo IMG.'mapa.jpg';?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?php echo CSS.'estiloFormAltaPaises.css'; ?>">
+    <link rel="icon" href="../src/img/mapa.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/estiloSilva.css">
 </head>
 <body>
     <header>
-        <img src="<?php echo IMG.'logo.png';?>" alt="Logo">
-        <h1>Viaje entre Culturas</h1>
+        <header>
+            <img src="../../img/logo.png" alt="Logo">
+            <h1>Viaje entre Culturas</h1>
+        </header>
     </header>
     <main>
         <div>
@@ -40,12 +41,13 @@
                         <option value="2">África</option>
                         <option value="3">Asia</option>
                         <option value="4">Oceanía</option>
+                    </select>
                 </div>   
                     <button type="button" class="cancel">Cancelar</button>
                     <button type="button" class="update">Dar Alta</button>
             </form>
         </div>
     </main>
-    <script src="<?php echo JS.'02validAlta.js';?>"></script>
+    <script src="validCont-Pais.js"></script>
 </body>
 </html>
