@@ -1,0 +1,307 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --oscuro: #1a202c;
+    --medio-oscuro: #2d3748;
+    --claro-oscuro: #4a5568;
+    --azul: #2c5282;
+    --azul-claro: #63b3ed;
+    --acento: #0085ae;
+    --amarillo: #ffcc00;
+    --blanco-claro: #ebf8ff;
+    --azul-oscuro: #2a4365;
+    --gris-claro: #747474;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Estilos Header */
+header {
+    background-color: var(--azul);
+    color: white;
+    /* width: 100%; */
+    height: 8vh;
+    padding: 0 20px;
+    border-bottom: 4px solid var(--azul-claro);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    min-height: 60px;
+}
+
+header img {
+    width: 8vh;
+}
+
+header h1 {
+    font-size: 1.2em;
+    color: var(--blanco-claro);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+header a {
+    display: inline-block;
+    font-size: 1.5em;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 0.5% 1%;
+    border: 3px solid var(--azul-claro);
+    border-radius: 8px;
+    background: var(--azul-oscuro);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    box-shadow: 3px 3px 6px #000, -3px -3px 6px #444;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translateY(-50%);
+}
+
+header a:hover {
+    background: #a8cfeb;
+    color: var(--azul-oscuro);
+    border-color: var(--azul-oscuro);
+    box-shadow: 0px 0px 10px var(--azul-claro);
+    transform: translateY(-57%);
+}
+
+/* Estilos Body */
+body {
+    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+/* Main */
+main {
+    width: 100%;
+    position: relative;
+}
+
+/* Main | Elementos */
+main h2 {
+    text-transform: capitalize;
+    display: inline-block;
+    /* margin: 2% 0 0 50%; */
+    margin: 2% 0 0 42vw;
+    transform: translateX(-75%);
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
+    color: #fff;
+}
+
+/*H2 | [registrarContinente]*/
+.registro h2 {
+    margin-left: 50%;
+    margin-top: 6%;
+    transform: translateX(-50%);
+}
+
+main > button {
+    background-color: var(--azul-oscuro);
+    color: #fff;
+    width: auto;
+    text-transform: capitalize;
+    border: 2px solid var(--azul-claro);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    margin-left: -7vw;
+    padding: 1%;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+main > button:hover {
+    background-color: var(--azul-claro);
+    transform: translate(-50%,-5%);
+    box-shadow: 0px 4px 8px rgba(245, 242, 242, 0.5);
+}
+
+/* Buttom | [listadoPuntuaciones] */
+#listPunt > button:nth-of-type(1){
+    position: absolute;
+    top: 2vh;
+    right: 34vw;
+}
+
+#listPunt > button:nth-of-type(2) {
+    position: absolute;
+    top: 2vh;
+    right: -2vw;
+}
+
+/* Buttom | [registrarContinente + registrarCategoria] */
+.registro  button {
+   margin: unset;
+   position: absolute;
+   top: 35vh;
+   width: 15%;
+   background-color: var(--azul-claro);
+}
+
+.registro  button:nth-of-type(1) {
+    left: 41.4vw;
+}
+
+.registro button:nth-of-type(2) {
+    right: 26.5vw;
+}
+
+.registro button:nth-of-type(3) {
+    width: 32%;
+    top: 45vh;
+    left: 49.95vw;
+    background-color: var(--azul-oscuro);
+}
+
+input, select,option {
+    width: 30%;
+    height: 2rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    color: var(--acento);
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 9vh;
+    font-size: 1.2rem;
+    padding: 0.5% 1%;
+}
+
+select {
+    height: 3rem;
+    width: 32%;
+}
+
+select option[disabled][selected] {
+    display: none; /* Ocultar cuando es seleccionada otra opción*/
+}
+
+/* Main | Tabla */
+
+main table th{
+    text-transform: uppercase;
+}
+
+main table {
+    background-color: rgba(5, 47, 77, 0.35); 
+    text-align: center;
+    color: #fff;
+    margin: 2% auto;
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-spacing: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    font-size: 1em;
+}
+
+main table tr {
+    border-bottom: 2px solid var(--azul-claro);
+}
+
+main table th, main table td {
+    padding: 2% 0;
+}
+
+main table th {
+    background-color: #0085ae9d;
+    font-size: 1.4em;
+}
+
+main table td {
+    font-size: 1.2em;
+}
+
+main table tr:nth-child(even) {
+    background-color: #2a4365a8;
+}
+
+main table tr:nth-child(odd) {
+    background-color: #2d374895;
+}
+
+main table td button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+main table td button img{
+    width: 50%;
+}
+/* Ajustar el formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Espacio entre los elementos */
+    margin-top: 10vh;
+}
+
+/* Botones en fila */
+form button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Botones estilos específicos */
+form button[type="reset"] {
+    background-color: var(--medio-oscuro);
+    color: var(--blanco-claro);
+}
+
+form button[type="reset"]:hover {
+    background-color: var(--claro-oscuro);
+}
+
+form button[type="button"] {
+    background-color: var(--acento);
+    color: white;
+}
+
+form button[type="button"]:hover {
+    background-color: var(--amarillo);
+    color: var(--oscuro);
+}
+
+form button[type="submit"] {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco-claro);
+    font-weight: bold;
+}
+
+form button[type="submit"]:hover {
+    background-color: var(--azul-claro);
+    color: var(--azul-oscuro);
+    box-shadow: 0px 0px 15px var(--azul-claro);
+}
+
+/* Contenedor para los botones */
+form div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}

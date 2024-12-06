@@ -8,12 +8,12 @@ if (!empty($_POST['nombrePais']) && !empty($_POST['coordX']) && !empty($_POST['c
     $coordX = $_POST['coordX'];
     $coordY = $_POST['coordY'];
 
-    $directorioSubida = "../../img/";
+    $directorioSubida = "../../img/banderas/";
     $nombreArchivo = uniqid() . "_" . basename($_FILES['bandera']['name']);
     $rutaCompleta = $directorioSubida . $nombreArchivo;
 
     if (move_uploaded_file($_FILES['bandera']['tmp_name'], $rutaCompleta)) {
-        $bandera = "img/" . $nombreArchivo;
+        $bandera = "img/banderas/" . $nombreArchivo;
 
         $objCpais = new Cpais();
         if ($objCpais->cModificarPais($nombrePais, $nuevoNombrePais, $bandera, $coordX, $coordY)) {

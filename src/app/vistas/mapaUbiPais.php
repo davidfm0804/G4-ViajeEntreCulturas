@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viaje entre culturas</title>
-    <link rel="icon" href="<?php echo IMG.'mapa.jpg';?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?php echo CSS.'estiloMapa.css'; ?>">
+    <link rel="stylesheet" href="../../css/estiloMapa.css">
+    <link rel="icon" href='../../img/mapa.jpg'type="image/x-icon">
 </head>
 <body>
     <header>
-        <img src="<?php echo IMG.'logo.png';?>" alt="Logo">
+    <img src="../../img/logo.png" alt="Logo">
         <h1>Viaje entre Culturas</h1>
         <div>
-            <span><a href="./mainCrud.php">VOLVER</a></span>
+            <span><a href="./crudPais.php">VOLVER</a></span>
         </div>
     </header>
     <main>

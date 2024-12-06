@@ -8,14 +8,14 @@ if (!empty($_POST['nombrePais']) && !empty($_FILES['bandera']['name']) && !empty
     $coordY = $_POST['coordY'];
 
 
-    $directorioSubida = "../../img/"; 
+    $directorioSubida = "../../img/banderas/"; 
 
     $nombreArchivo = uniqid() . "_" . basename($_FILES['bandera']['name']); 
     $rutaCompleta = $directorioSubida . $nombreArchivo;
 
     if (move_uploaded_file($_FILES['bandera']['tmp_name'], $rutaCompleta)) {
 
-        $rutaRelativa = "img/" . $nombreArchivo; 
+        $rutaRelativa = "img/banderas/" . $nombreArchivo; 
 
         
         $objCpais = new Cpais();
@@ -31,5 +31,7 @@ if (!empty($_POST['nombrePais']) && !empty($_FILES['bandera']['name']) && !empty
     }
 } else {
     header('Location: altaPais.php?msj=Campos obligatorios de poner');
+
+     
 }
 ?>

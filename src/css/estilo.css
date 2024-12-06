@@ -87,7 +87,7 @@ form input[type="file"] {
     color: white;
     font-family: 'Press Start 2P', cursive;
 }
-.subirBtn {
+#subirBandera {
     display: inline-block;
     padding: 10px 20px;
     background-color: var(--azul-claro);
@@ -101,23 +101,21 @@ form input[type="file"] {
     transition: all 0.3s ease;
 }
 
-.subirBtn:hover {
+#subirBtn:hover {
     background-color: var(--azul-oscuro);
     color: var(--blanco-claro);
     border-color: var(--azul-claro);
     box-shadow: 0px 4px 12px var(--azul-claro);
     transform: translateY(-2px);
 }
-a{
-    text-decoration: none;
-}
+
 /* Oculta el botón predeterminado de archivo */
 form input[type="file"] {
     display: none;
 }
 
 /* Estilo para los botones cancelar y actualizar */
-button {
+input {
     width: 45%;
     padding: 10px;
     font-size: 1em;
@@ -149,4 +147,45 @@ button {
     header h1 {
         left: 30%;
     }
+}
+
+.volver-btn {
+    display: inline-block; 
+    padding: 10px 20px; 
+    font-size: 1em; 
+    text-align: center; 
+    text-decoration: none; 
+    color: var(--blanco-claro); 
+    background-color: var(--azul-oscuro); 
+    border: none; 
+    border-radius: 5px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.2s; 
+}
+
+
+.volver-btn:hover {
+    background-color: var(--azul); 
+    transform: translateY(-2px); 
+}
+
+/* Estilo para la lista de errores */
+.error-list {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 1em;
+    padding: 0;
+    list-style: none;
+}
+
+.error-list li {
+    margin: 0.2em 0;
+}
+
+.error-msg {
+    color: red;
+    font-size: 0.9em;
+    display: block;
+    margin-top: 5px;
 }

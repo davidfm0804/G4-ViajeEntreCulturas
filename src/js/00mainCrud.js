@@ -23,7 +23,7 @@ document.querySelectorAll('.modificar').forEach(button => {
         // Obtener Nombre Pais || closest -> Accede al 'tr' más cercano
         const nombrePais = button.closest('tr').querySelector('.colNombre').textContent;
         const codPais = button.closest('tr').id;
-        window.location.href = `./formModificar.php?nombre=${nombrePais}&id=${codPais}.html`;
+        window.location.href = `./modificarPais.php?nombre=${nombrePais}&id=${codPais}.html`;
     });
 });
 
