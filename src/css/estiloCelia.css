@@ -250,8 +250,12 @@ main table td button img{
     width: 50%;
 }
 
-/* MediaQuery | Ajuste Header */
-@media /*screen*/ (width < 1280px){
+/* MediaQuery | Ajustes */
+@media /*screen*/ (width < 1280px){ 
+    header h1 {
+        transform: translate(-65%,-50%);
+    }
+
     /* Header | a */
     header a{
         left: 75%;
@@ -281,9 +285,9 @@ main table td button img{
         left: 56vw;
     }
 
-    /* Main | table */
-    #listPunt > table{
-        margin-top: 15vh;
+    /* Main | table [listarPuntuacion]*/
+    table{
+        margin-top: 17vh;
     }
 
     /* Main | button [listados] */
@@ -300,7 +304,45 @@ main table td button img{
 
 }
 
-/* MediaQuery | Tablet [Horizontal] */
-@media /*screen*/ (width < 1024px){
+/* MediaQuery | Ajustes */
+@media /*screen*/ (width < 965px){
+    header h1 {
+        font-size: 1em;
+    }
 
+    main h2 {
+        font-size: 1em;
+    }
+
+    main:not(#listPunt) h2 {
+        margin-left: 38vw;
+    }
+
+    main > button {
+        
+    }
+
+    header a, main button {
+        font-size: 0.8em;
+        padding: 1%;
+    }
+
+    main table thead{
+        font-size: 0.6em;
+    }
+
+    main table tbody {
+        font-size: 0.7em;
+    }
+
+    /* Main | button 1 [listarPuntuacion] */
+    #listPunt > button:nth-of-type(1) {
+        left: 32vw;
+    }
+
+    /* Main | button 2 [listarPuntuacion] */
+    #listPunt > button:nth-of-type(2) {
+        left: 58.5vw;
+    }
+    
 }
