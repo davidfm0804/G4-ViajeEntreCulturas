@@ -251,7 +251,7 @@ main table td button img{
 }
 
 /* MediaQuery | Ajustes */
-@media /*screen*/ (width < 1280px){ 
+@media /*screen*/ (max-width: 1280px){ 
     header h1 {
         transform: translate(-65%,-50%);
     }
@@ -286,7 +286,7 @@ main table td button img{
     }
 
     /* Main | table [listarPuntuacion]*/
-    table{
+    #listPunt table{
         margin-top: 17vh;
     }
 
@@ -305,7 +305,7 @@ main table td button img{
 }
 
 /* MediaQuery | Ajustes */
-@media /*screen*/ (width < 965px){
+@media /*screen*/ (max-width: 965px){
     header h1 {
         font-size: 1em;
     }
@@ -314,15 +314,20 @@ main table td button img{
         font-size: 1em;
     }
 
-    main:not(#listPunt) h2 {
+    main:not(#listPunt):not(.registro) h2 {
         margin-left: 38vw;
     }
 
-    main > button {
-        
+    main:not(.registro) > button {
+        left: 76vw;
     }
 
-    header a, main button {
+    .registro > button {
+        padding: 1% 0;
+        border-radius: 6px;
+    }
+
+    header a {
         font-size: 0.8em;
         padding: 1%;
     }
@@ -331,8 +336,21 @@ main table td button img{
         font-size: 0.6em;
     }
 
-    main table tbody {
+    main table tbody, main button, main input, main select, option {
         font-size: 0.7em;
+    }
+
+    main input {
+        padding: 0.1% 1%;
+    }
+
+    select {
+        height: 2.9em;
+    }
+
+    /* Main | option [selectContinente] */
+    main.registro select option {
+        width: 32% !important;
     }
 
     /* Main | button 1 [listarPuntuacion] */
