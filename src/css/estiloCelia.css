@@ -136,14 +136,16 @@ main > button:hover {
 /* Buttom | [listadoPuntuaciones] */
 #listPunt > button:nth-of-type(1){
     position: absolute;
+    right: unset;
     top: 2vh;
-    right: 34vw;
+    left: 58vw;
 }
 
 #listPunt > button:nth-of-type(2) {
     position: absolute;
+    right: unset;
     top: 2vh;
-    right: -2vw;
+    left: 75vw;
 }
 
 /* Buttom | [registrarContinente + registrarCategoria] */
@@ -250,9 +252,52 @@ main table td button img{
 
 /* MediaQuery | Ajuste Header */
 @media /*screen*/ (width < 1280px){
+    /* Header | a */
     header a{
         left: 75%;
     }
+
+    /*Main | h2 [listarPuntuacion]*/
+    #listPunt > h2 {
+        margin-left: 50vw;
+        transform: translateX(-50%);
+    }
+
+    /* Main | button [listarPuntuacion] */
+    #listPunt > button{
+        right: unset;
+        left: unset;
+    }
+
+    /* Main | button 1 [listarPuntuacion] */
+    #listPunt > button:nth-of-type(1) {
+        top: 12vh;
+        left: 34.5vw;
+    }
+
+    /* Main | button 2 [listarPuntuacion] */
+    #listPunt > button:nth-of-type(2) {
+        top: 12vh;
+        left: 56vw;
+    }
+
+    /* Main | table */
+    #listPunt > table{
+        margin-top: 15vh;
+    }
+
+    /* Main | button [listados] */
+    main:not(.registro) > button {
+        right: unset;
+        left: 70vw;
+    }
+
+    /* Main | button [listados] */
+    main:not(.registro) > button {
+        right: unset;
+        left: 70vw;
+    }
+
 }
 
 /* MediaQuery | Tablet [Horizontal] */
