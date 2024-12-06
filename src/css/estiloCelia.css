@@ -35,6 +35,7 @@ header {
 
 header img {
     width: 8vh;
+    min-width: 60px;
 }
 
 header h1 {
@@ -49,7 +50,7 @@ header h1 {
 
 header a {
     display: inline-block;
-    font-size: 1.5em;
+    font-size: 1.2em;
     text-align: center;
     text-decoration: none;
     color: #fff;
@@ -117,11 +118,13 @@ main > button {
     border-radius: 8px;
     transition: all 0.3s ease;
     transform: translateX(-50%);
-    margin-left: -7vw;
     padding: 1%;
     font-size: 1em;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: absolute;
+    top: 2vh;
+    right: 10vw;
 }
 
 main > button:hover {
@@ -243,4 +246,16 @@ main table td button{
 
 main table td button img{
     width: 50%;
+}
+
+/* MediaQuery | Ajuste Header */
+@media /*screen*/ (width < 1280px){
+    header a{
+        left: 75%;
+    }
+}
+
+/* MediaQuery | Tablet [Horizontal] */
+@media /*screen*/ (width < 1024px){
+
 }
