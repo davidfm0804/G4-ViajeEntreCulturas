@@ -7,17 +7,20 @@ if (!empty($_POST['nombrePais']) && !empty($_FILES['bandera']['name']) && !empty
     $coordX = $_POST['coordX'];
     $coordY = $_POST['coordY'];
 
-    $directorioSubida = "../../img/"; 
+    $directorioSubida = "../../img/banderas/"; 
 
-    $nombreArchivo = uniqid() . "_" . basename($_FILES['bandera']['name']); 
-    $rutaCompleta = $directorioSubida . $nombreArchivo;
+    // Obtener solo el nombre original del archivo (sin prefijo generado)
+    $nombreArchivo = basename($_FILES['bandera']['name']); 
+    $rutaCompleta = $directorioSubida . $nombreArchivo; // Ruta completa donde se guardará la imagen
 
+    // Mover la imagen desde el directorio temporal a la carpeta de destino
     if (move_uploaded_file($_FILES['bandera']['tmp_name'], $rutaCompleta)) {
+        // Aquí almacenamos solo el nombre del archivo sin la ruta completa
+        $nombreArchivoSinRuta = $nombreArchivo; 
 
-        $rutaRelativa = "img/" . $nombreArchivo; 
-
+        // Llamar al método para dar de alta el país, pasamos solo el nombre del archivo
         $objCpais = new Cpais();
-        $resultado = $objCpais->cAltaPais($nombrePais, $rutaRelativa, $coordX, $coordY);
+        $resultado = $objCpais->cAltaPais($nombrePais, $nombreArchivoSinRuta, $coordX, $coordY);
 
         if ($resultado) {
             header('Location: altaPais.php?msj=Inserción Correcta');
@@ -29,7 +32,7 @@ if (!empty($_POST['nombrePais']) && !empty($_FILES['bandera']['name']) && !empty
     }
 } else {
     header('Location: altaPais.php?msj=Campos obligatorios de poner');
-
-     
 }
+
+
 ?>
