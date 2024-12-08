@@ -49,8 +49,6 @@ document.querySelector('input[type="submit"]').addEventListener('click', async f
             // Intentamos obtener la respuesta como JSON
             const data = await response.json();  // Parseamos la respuesta JSON
 
-            console.log(data);
-
             // Verificamos si el continente ya existe
             if (data.existe) {
                 alert("Este continente ya existe.");
