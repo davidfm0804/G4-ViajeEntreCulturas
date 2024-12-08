@@ -6,6 +6,7 @@
     <title>Alta Continente</title>
 </head>
 <body>
+    
     <form action="altaContinente.php" method="POST">
         <label for="nombreContinente">Nombre del Continente:</label>
         <input type="text" name="nombreContinente"> 
@@ -14,5 +15,8 @@
     <a href='listadoContinentes.php'>
         <button>Volver Inicio</button>
     </a>
+
+    <main></main>
 </body>
+<script src="validCont.js"></script>
 </html>
