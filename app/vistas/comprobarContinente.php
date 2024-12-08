@@ -1,5 +1,5 @@
 <?php
-        require_once 'configdb.php';
+        require_once '../modelos/configdb.php';
         $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
         $conexion->set_charset("utf8");
 
@@ -9,7 +9,7 @@
 
         $nombreContinente = $_POST["nombreContinente"];
 
-$sql = "SELECT nombreContinente FROM continentes WHERE nombreContinente = ?";
+$sql = "SELECT nombreCont FROM continente WHERE nombreCont = ?";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("s", $nombreContinente); // 's' indica que es una cadena de texto
 $stmt->execute();
