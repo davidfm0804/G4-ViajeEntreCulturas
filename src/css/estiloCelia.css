@@ -80,7 +80,7 @@ header a:hover {
     transform: translateY(-57%);
 }
 
-/* Body */
+/*-- Body --*/
 body {
     background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa.jpg');
     background-repeat: no-repeat;
@@ -88,7 +88,7 @@ body {
     min-height: 100vh;
 }
 
-/* Main */
+/*-- Main --*/
 main {
     width: 100%;
     position: relative;
