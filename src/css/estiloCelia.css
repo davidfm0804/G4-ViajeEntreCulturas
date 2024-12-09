@@ -208,7 +208,7 @@ main table {
     background-color: rgba(5, 47, 77, 0.35); 
     text-align: center;
     color: #fff;
-    margin: 2% auto;
+    margin: 3% auto;
     width: 80%;
     border-collapse: collapse;
     border-radius: 10px;
@@ -233,7 +233,7 @@ main table th, main table td {
     padding: 2% 0;
 }
 
-main table th{
+main table th {
     text-transform: uppercase;
     background-color: #0085ae9d;
     font-size: 1.4em;
@@ -329,7 +329,7 @@ main table td button img{
 
     /* Main | button [listados] + [selectPuntuacion] */
     main:not(.registro) > button {
-        left: 76vw;
+        left: 74vw;
     }
 
     /* Main | button [registro] */
