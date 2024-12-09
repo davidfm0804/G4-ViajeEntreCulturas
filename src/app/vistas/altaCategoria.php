@@ -16,14 +16,19 @@
         <main class="registro">
             <h2>Registrar categoría</h2>
             <form id="categoriaForm" action="mostrarAltaCategoria.php" method="POST">
-                <input type="text" name="nombreCatg" placeholder="Nombre Categoría">
+                <input type="text" name="nombreCat" placeholder="Nombre Categoría">
                 <div>
                     <button type="reset">Borrar</button>
                     <button type="button" class="cancel">Cancelar</button>
                     <button type="submit" class="update">Enviar</button>
                 </div>
             </form>
-
+            <?php
+                if (isset($_GET['msj'])){
+                    echo $_GET['msj'];
+                }
+            ?>
+            
         </main>
         <script src="../../js/06validCategoria.js"></script>
 
