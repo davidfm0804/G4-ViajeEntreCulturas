@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
@@ -14,7 +13,6 @@
     --gris-claro: #747474;
 }
 
-
 *{
     margin: 0;
     padding: 0;
@@ -25,7 +23,6 @@
 header {
     background-color: var(--azul);
     color: white;
-    /* width: 100%; */
     height: 8vh;
     padding: 0 20px;
     border-bottom: 4px solid var(--azul-claro);
@@ -78,7 +75,7 @@ header a:hover {
 
 /* Estilos Body */
 body {
-    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -93,8 +90,6 @@ main {
 /* Main | Elementos */
 main h2 {
     text-transform: capitalize;
-    display: inline-block;
-    /* margin: 2% 0 0 50%; */
     margin: 2% 0 0 42vw;
     transform: translateX(-75%);
     text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
@@ -108,6 +103,7 @@ main h2 {
     transform: translateX(-50%);
 }
 
+/* Botones de la página */
 main > button {
     background-color: var(--azul-oscuro);
     color: #fff;
@@ -122,7 +118,6 @@ main > button {
     padding: 1%;
     font-size: 1em;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
 main > button:hover {
@@ -146,54 +141,48 @@ main > button:hover {
 
 /* Buttom | [registrarContinente + registrarCategoria] */
 .registro  button {
-   margin: unset;
-   position: absolute;
-   top: 35vh;
-   width: 15%;
+   width: auto; 
    background-color: var(--azul-claro);
+   color: white;
+   text-transform: capitalize;
+   border: 2px solid var(--azul-claro);
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+   border-radius: 8px;
+   padding: 1% 1.5%;
+   font-size: 1em;
+   cursor: pointer;
+   transition: all 0.3s ease;
 }
 
-.registro  button:nth-of-type(1) {
-    left: 41.4vw;
+/* Posicionamiento flex para los botones */
+.registro div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
 }
 
-.registro button:nth-of-type(2) {
-    right: 26.5vw;
-}
-
-.registro button:nth-of-type(3) {
-    width: 32%;
-    top: 45vh;
-    left: 49.95vw;
-    background-color: var(--azul-oscuro);
-}
-
-input, select,option {
-    width: 30%;
-    height: 2rem;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: none;
-    color: var(--acento);
-    font-family: 'Press Start 2P', cursive;
-    margin-top: 9vh;
+/* Ajuste de los inputs */
+input, select, option {
+    width: 80%;
+    margin: 10px 0;
+    padding: 10px;
     font-size: 1.2rem;
-    padding: 0.5% 1%;
+    border-radius: 5px;
+    border: 1px solid var(--azul-oscuro);
+    font-family: 'Press Start 2P', cursive;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 select {
     height: 3rem;
-    width: 32%;
 }
 
 select option[disabled][selected] {
-    display: none; /* Ocultar cuando es seleccionada otra opción*/
+    display: none; /* Ocultar cuando es seleccionada otra opción */
 }
 
 /* Main | Tabla */
-
 main table th{
     text-transform: uppercase;
 }
@@ -245,6 +234,7 @@ main table td button{
 main table td button img{
     width: 50%;
 }
+
 /* Ajustar el formulario */
 form {
     display: flex;
@@ -254,7 +244,7 @@ form {
     margin-top: 10vh;
 }
 
-/* Botones en fila */
+/* Estilos de botones en el formulario */
 form button {
     padding: 10px 20px;
     font-size: 1em;
@@ -266,7 +256,7 @@ form button {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Botones estilos específicos */
+/* Botones con estilos específicos */
 form button[type="reset"] {
     background-color: var(--medio-oscuro);
     color: var(--blanco-claro);
@@ -298,7 +288,7 @@ form button[type="submit"]:hover {
     box-shadow: 0px 0px 15px var(--azul-claro);
 }
 
-/* Contenedor para los botones */
+/* Contenedor para los botones del formulario */
 form div {
     display: flex;
     justify-content: center;
