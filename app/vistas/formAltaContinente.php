@@ -18,5 +18,5 @@
 
     <main></main>
 </body>
-<script src="validCont.js"></script>
+<script src="validAltaCont.js"></script>
 </html>
