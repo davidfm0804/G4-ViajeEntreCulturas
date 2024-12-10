@@ -1,6 +1,6 @@
 <?php
     require_once 'config/config.php'; //Constantes config php
-    require_once MODELO.'connBD.php'; //Clase BBDD
+    require_once MODELOS.'conexion.php'; //Clase BBDD
 
 if(!isset($_GET["controlador"])){$_GET["controlador"] = DEFAULT_CONTROLADOR;}
 if(!isset($_GET["accion"])){$_GET["accion"] = DEFAULT_ACCION;}

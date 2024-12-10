@@ -1,6 +1,6 @@
 <?php
 
-require_once MODELO.'mPais.php';
+require_once MODELOS.'mPais.php';
 
 class Cpais {
 

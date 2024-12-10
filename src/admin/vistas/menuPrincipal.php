@@ -1,8 +1,3 @@
-    <body>
-        <header>
-            <img src="<?php echo IMG.'logo.png';?>" alt="Logo">
-            <h1>Viaje entre Culturas</h1>
-        </header>
         <main>
             <h2>Elige una opcion</h2>
             <button id="continentes">Continentes</button>

@@ -2,7 +2,7 @@
 
 require_once MODELOS.'mMenuPrincipal.php';
 
-class mMenuPrincipal {
+class cMenuPrincipal {
     public $tituloPagina;
     public $vista;
 
