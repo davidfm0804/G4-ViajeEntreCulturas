@@ -1,5 +1,6 @@
 <?php
-class Mpais {
+class mPais {
+    private $tabla = 'paises';
     private $conexion;
 
     public function __construct() {
@@ -10,6 +11,11 @@ class Mpais {
         if ($this->conexion->connect_error) {
             die("Conexión fallida: " . $this->conexion->connect_error);
         }
+    }
+
+    public function conectar(){
+        $objetoBD = new bbdd(); //Conectamos a la base de datos. Creamos objeto $objetoBD
+        $this->conexion = $objetoBD->conexion; //Llamamos al metodo que realiza la conexion a la BBDD
     }
 
     public function mAltaPais($nombrePais, $bandera, $coordX, $coordY) {
