@@ -1,6 +1,6 @@
 /*-- Ajustes DOM --*/
 document.querySelector('.cancel').addEventListener('click', function(){
-    window.location.href = './mainCrud.php';
+    window.location.href = './crudPais.php';
 });
 
 /*-- Guardar Elementos | LocalStorage --*/
@@ -75,15 +75,15 @@ document.querySelector('.update').addEventListener('click', async function(event
             if(response.ok){
                 const result = await response.text();
                 alert(result);
-                window.location.href = './mainCrud.php'; 
+                window.location.href = './crudPais.php'; 
             }else{
                 alert('Pais modificado correctamente');
-                window.location.href = './mainCrud.php'; 
+                window.location.href = './crudPais.php'; 
             }
         } catch (error) {
             console.error('Error:', error);
             alert('Error en la conexión con el servidor');
-            window.location.href = './mainCrud.php'; 
+            window.location.href = './crudPais.php'; 
         }
         
     }

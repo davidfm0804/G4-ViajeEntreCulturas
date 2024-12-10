@@ -1,7 +1,7 @@
 /*-- Ajustes DOM --*/
 document.querySelector('main').style.position = "relative";
 document.querySelector('.cancel').addEventListener('click', function(){
-    window.location.href = './mainCrud.php';
+    window.location.href = './crudPais.php';
 });
 
 /*-- Dar Valor Inputs Coordenadas [localStorage] --*/
@@ -107,7 +107,7 @@ document.querySelector('.update').addEventListener('click', async function(event
             
             /*-- Funcionalidad Botón Volver --*/
             document.getElementById('volver').addEventListener('click', function() {
-                window.location.href = './mainCrud.php';
+                window.location.href = './crudPais.php';
             });
         } catch (error) {
             console.error('Error:', error);

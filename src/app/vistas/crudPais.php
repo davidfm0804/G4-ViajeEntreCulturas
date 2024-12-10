@@ -43,7 +43,7 @@ if (isset($_POST['paisConsulta']) && !empty($_POST['paisConsulta'])) {
                 $carpetaBase = '../../';
 
                 while ($fila = $resultados->fetch_assoc()) {
-                    $rutaImagen = $carpetaBase . $fila['bandera'];  // Concatenamos la ruta relativa con la carpeta base
+                    $rutaImagen = $carpetaBase . $fila['bandera']; // Concatenamos la ruta relativa con la carpeta base
                     echo "<tr>
                             <td><img class='flag' src='" . $rutaImagen . "' alt='" . $fila['nombrePais'] . "'></td>
                             <td class='colNombre'>" . $fila['nombrePais'] . "</td>
@@ -63,5 +63,6 @@ if (isset($_POST['paisConsulta']) && !empty($_POST['paisConsulta'])) {
             }
         ?>                    
     </main>
+    <script src="<?php echo JS.'00mainCrud.js';?>"></script>
 </body>
 </html>

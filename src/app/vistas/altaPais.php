@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viaje entre culturas</title>
     <link rel="icon" href="../../img/mapa.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/estilo.css">
 </head>
 <body>
@@ -37,8 +36,10 @@
                 </div>             
 
                 <input type="submit" class="update" value="Dar de Alta">
-                <input type="reset" class="cancel" value="Borrar">
-                <br><br>
+                <a href="crudPais.php" class="volver-btn">Volver atrás</a>
+               
+
+                <br><br><br>
 
                 <?php
                     if (isset($_GET['msj'])){
@@ -49,6 +50,7 @@
             </form>
         </div>
     </main>
+    <script src="<?php echo JS.'02validAlta.js';?>"></script>
 </body>
 </html>
 
