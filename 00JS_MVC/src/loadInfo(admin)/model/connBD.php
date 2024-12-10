@@ -1,5 +1,5 @@
 <?php
-    require_once CONFIG.'configDb.php'; //Archivo de configuración
+    require_once CONFIG.'configdb.php'; //Archivo de configuración
 
     class bbdd {
 
