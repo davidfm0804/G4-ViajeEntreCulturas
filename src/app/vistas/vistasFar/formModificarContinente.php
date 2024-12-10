@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+    $idContinente = $_GET['id'];
     if (isset($_GET['id'])) {
     ?>
         <form action="modificarContinente.php" method="POST">
@@ -25,5 +26,10 @@
     <a href='listadoContinentes.php'>
         <button>Volver Inicio</button>
     </a>
+    <script type="text/javascript">
+    var idContinente = "<?php echo $idContinente;?>";
+    </script>
+   <main></main>
 </body>
+<script src="validModifCont.js"></script>
 </html>
