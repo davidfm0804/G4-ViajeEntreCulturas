@@ -1,5 +1,5 @@
 -- Crear la base de datos
-CREATE DATABASE viejaentreculturas;
+CREATE DATABASE viajeentreculturas;
 
 -- Crear la tabla PAISES
 CREATE TABLE paises (
