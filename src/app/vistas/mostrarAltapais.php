@@ -1,3 +1,4 @@
+
 <?php
 // mostrarAltapais.php
 require_once '../controladores/Cpais.php';

@@ -22,7 +22,7 @@
                 echo "<tr>
                     <td>" .$fila['nombreCont']. "</td>
                     <td><a href='formModificarContinente.php?id=" . $fila['idContinente'] . "'>Modificar</a></td>
-                    <td><a href='borrar.php?id=" . $fila['idContinente'] . "'>Borrar</a></td>
+                    <td class='borrar'><a href='borrar.php?id=" . $fila['idContinente'] . "'>Borrar</a></td>
                   </tr>";
             }
         ?>
@@ -31,4 +31,5 @@
         <button>Dar Alta Continente</button>
     </a>
 </body>
+<script src="validBorrar.js"></script>
 </html>
