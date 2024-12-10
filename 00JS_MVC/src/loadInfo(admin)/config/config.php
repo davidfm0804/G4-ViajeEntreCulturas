@@ -12,6 +12,6 @@
     define('CONTROLLER','controller/');
 
     /*-- Parámetros por defecto--*/
-    define('DEFAULT_CONTROLADOR','Pais'); //Controlador por defecto, el que llama a pais
-    define('DEFAULT_ACCION','listadoPaises'); //Metodo por defecto, el que despliega el listado de paises
+    define('DEFAULT_CONTROLADOR','Categoria'); //Controlador por defecto, el que llama a pais
+    define('DEFAULT_ACCION','listarCategorias'); //Metodo por defecto, el que despliega el listado de paises
 ?>

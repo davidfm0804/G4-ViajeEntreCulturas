@@ -26,26 +26,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Gastronomía</td>
-                        <td><button class="modificar"><img src="../../src/img/modificar.png"></button></td>
-                        <td><button class="borrar"><img src="../../src/img/borrar.png"></button></td>
+                    <?php
+                if(count($dataToView["data"])>0){
+                foreach($dataToView["data"] as $pais){
+                    ?>
+                    <tr id="<?php echo $categoria["idCategoria"]; ?>">
+                        <td><?php echo $categoria["nombreCat"]; ?></td> 
+                        <td><button><img class='png' src="<?php echo IMG.'modificar.png';?>"></button></td>
+                        <td><button><img class='png' src="<?php echo IMG.'borrar.png';?>"></button></td>
                     </tr>
-                    <tr>
-                        <td>Vestimenta</td>
-                        <td><button class="modificar"><img src="../../src/img/modificar.png"></button></td>
-                        <td><button class="borrar"><img src="../../src/img/borrar.png"></button></td>
-                    </tr>
-                    <tr>
-                        <td>Música</td>
-                        <td><button><img src="../../src/img/modificar.png"></button></td>
-                        <td><button><img src="../../src/img/borrar.png"></button></td>
-                    </tr>
-                    <tr>
-                        <td>Danza</td>
-                        <td><button class="modificar"><img src="../../src/img/modificar.png"></button></td>
-                        <td><button class="borrar"><img src="../../src/img/borrar.png"></button></td>
-                    </tr>
+                    <?php
+                }} 
+                ?>
             </table>
         </main>
     </body>

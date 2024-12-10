@@ -2,8 +2,8 @@
     require_once 'config/config.php'; //Constantes config php
     require_once MODELO.'connBD.php'; //Clase BBDD
 
-if(!isset($_GET["controlador"])){$_GET["controlador"] = DEFAULT_CONTROLADOR;}
-if(!isset($_GET["accion"])){$_GET["accion"] = DEFAULT_ACCION;}
+if(!isset($_GET["controlador"])){$_GET["controlador"] = 'Categoria';} // Establecer controlador predeterminado a Categoria
+if(!isset($_GET["accion"])){$_GET["accion"] = 'listadoCategorias';} // Establecer acción predeterminada a listadoCategorias
 
 $rutaControlador = CONTROLLER.'c'.$_GET["controlador"].'.php'; // 'controller/cControlador.php'
 
@@ -20,8 +20,9 @@ if(method_exists($controlador,$_GET["accion"])){
 }
 
 
-if($controlador->view === 'mapaChincheta' || $controlador->view === 'cambiarChincheta'){require_once 'view/template/headerMapa.php'; }
+/*if($controlador->view === 'mapaChincheta' || $controlador->view === 'cambiarChincheta'){require_once 'view/template/headerMapa.php'; }
 else if($controlador->view === 'formAlta'){require_once 'view/template/headerFormAlta.php'; }
 else if($controlador->view === 'formModPais'){require_once 'view/template/headerFormModPais.php'; }
-else{require_once 'view/template/headersimple.php';}
+else{require_once 'view/template/headersimple.php';}*/
+
 require_once 'view/'.$controlador->view.'.php';
