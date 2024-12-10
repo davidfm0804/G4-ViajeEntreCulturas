@@ -1,3 +1,7 @@
+<?php
+$idContinente = $_GET['id'];
+$nombreCont = $_GET['nombreCont'];
+?>
 <main>        
         <h2><?php echo $controlador->tituloPagina; ?></h2>
         <button id="altaPais">Alta país</button>
@@ -27,7 +31,9 @@
             }
             ?>
         </table>
+        <input type="hidden" id="idContinente" value="<?php echo $idContinente; ?>">
+        <input type="hidden" id="nombreCont" value="<?php echo $nombreCont; ?>">
     </main>
-    <script src="<?php echo JS.'00mainCrud.js';?>"></script>
+    <script src="<?php echo JS.'listadoPaises.js';?>"></script>
 </body>
 </html>

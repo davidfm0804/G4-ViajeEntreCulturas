@@ -19,7 +19,7 @@ document.getElementById('mapa').addEventListener('click', function(event) {
     const chincheta = document.createElement("img");
     chincheta.id = "chincheta";
     chincheta.classList.add('chincheta');
-    chincheta.src = "../../img/chincheta.png";
+    chincheta.src = "assets/img/chincheta.png";
     chincheta.style.position = "absolute";
     chincheta.style.left = `${x}%`;
     chincheta.style.top = `${y}%`;
@@ -30,6 +30,9 @@ document.getElementById('mapa').addEventListener('click', function(event) {
 /*-- Añadir Event -> Tecla Enter --*/
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        window.location.href = './altaPais.php';
+        const idContinente = document.getElementById('idContinente').value;
+        const nombreCont = document.getElementById('nombreCont').value;
+
+        window.location.href = `index.php?controlador=Pais&accion=cFormAltaPais&id=${idContinente}&nombreCont=${nombreCont}`;
     }
 });

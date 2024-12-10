@@ -20,9 +20,9 @@ if(method_exists($controlador,$_GET["accion"])){
 }
 
 switch ($controlador->vista){
-    case 'cMapaChincheta': require_once PLANTILLAVISTAS.'headerMapa.php'; break;
-    case 'cCambiarChincheta': require_once PLANTILLAVISTAS.'headerMapa.php'; break;
-    case 'cFormAlta': require_once PLANTILLAVISTAS.'headerFormAlta.php'; break;
+    case 'mapaChincheta': require_once PLANTILLAVISTAS.'headerMapa.php'; break;
+    case 'cambiarChincheta': require_once PLANTILLAVISTAS.'headerMapa.php'; break;
+    case 'formAltaPais': require_once PLANTILLAVISTAS.'headerFormAlta.php'; break;
     case 'cFormModPais': require_once PLANTILLAVISTAS.'headerFormModPais.php'; break;
     default: require_once PLANTILLAVISTAS.'headersimple.php'; break; 
 }

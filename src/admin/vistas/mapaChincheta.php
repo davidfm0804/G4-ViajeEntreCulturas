@@ -1,6 +1,12 @@
+<?php
+$idContinente = $_GET['id'];
+$nombreCont = $_GET['nombreCont'];
+?>
 <main>
         <img id="mapa" src="<?php echo IMG.'mapa.jpg';?>">
     </main>
+    <input type="hidden" id="idContinente" value="<?php echo $idContinente; ?>">
+    <input type="hidden" id="nombreCont" value="<?php echo $nombreCont; ?>">
     <script>
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);

@@ -1,5 +1,6 @@
 <?php
-class Mcontinente {
+
+class mContinente {
     private $conexion;
 
     public function __construct() {

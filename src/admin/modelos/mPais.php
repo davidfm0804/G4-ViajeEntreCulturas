@@ -21,7 +21,7 @@ class mPais {
     public function mListadoPaises(){
         $this->conectar();
         $idContinente = $_GET['id'];
-        $sql = 'SELECT codPais, nombrePais, bandera FROM '.$this->tabla.' WHERE idContinente = '.$idContinente;
+        $sql = 'SELECT idPais, nombrePais, bandera FROM '.$this->tabla.' WHERE idContinente = '.$idContinente;
         $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }

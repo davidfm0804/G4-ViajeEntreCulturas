@@ -14,7 +14,7 @@ class Cpais {
     }
 
     public function cListadoPaises(){ //Este método devuelve el listado de países
-        $this->tituloPagina = 'Listado de países';
+        $this->tituloPagina = 'Listado de países de '.$_GET['nombreCont'];
         $this->vista = 'listadoPaises';
         return $this->objPais->mListadoPaises();
     }
@@ -23,8 +23,8 @@ class Cpais {
         $this->vista = 'mapaChincheta'; 
     }
 
-    public function cFormAlta(){
-        $this->vista = 'formAlta'; //Este método devuelve la vista del formulario para dar de alta un nuevo país
+    public function cFormAltaPais(){
+        $this->vista = 'formAltaPais'; //Este método devuelve la vista del formulario para dar de alta un nuevo país
     }
 
 

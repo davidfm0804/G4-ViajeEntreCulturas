@@ -17,7 +17,7 @@
                     } 
                 } else {
                     ?>
-                    <tr><td colspan='4'>No hay países disponibles</td></tr>
+                    <tr><td colspan='4'>No hay continentes disponibles</td></tr>
                 <?php
                 }
                 ?>
