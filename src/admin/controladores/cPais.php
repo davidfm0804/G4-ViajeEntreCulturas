@@ -8,14 +8,15 @@ class Cpais {
     public $vista;
 
     public function __construct() {
-        $this->vista = 'listadoPaises'; //Hay que cambiarle el nombre. Es la vista por defecto que mostraremos de la pagina index.php
+        $this->vista = ''; //Hay que cambiarle el nombre. Es la vista por defecto que mostraremos de la pagina index.php
         $this->tituloPagina = '';
         $this->objPais = new mPais(); //objPais es el nombre del objeto instanciado de la clase modelo Pais (mPais). Creamos objeto
     }
 
     public function cListadoPaises(){ //Este método devuelve el listado de países
         $this->tituloPagina = 'Listado de países';
-        return $this->objPais->selectPaises();
+        $this->vista = 'listadoPaises';
+        return $this->objPais->mListadoPaises();
     }
 
     public function cMapaChincheta(){ //Este método devuelve la vista del mapa para colocar la chincheta

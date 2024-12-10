@@ -1,6 +1,6 @@
 <?php
 class mPais {
-    private $tabla = 'paises';
+    private $tabla = 'pais';
     private $conexion;
 
     public function __construct() {
@@ -16,6 +16,14 @@ class mPais {
     public function conectar(){
         $objetoBD = new bbdd(); //Conectamos a la base de datos. Creamos objeto $objetoBD
         $this->conexion = $objetoBD->conexion; //Llamamos al metodo que realiza la conexion a la BBDD
+    }
+
+    public function mListadoPaises(){
+        $this->conectar();
+        $idContinente = $_GET['id'];
+        $sql = 'SELECT codPais, nombrePais, bandera FROM '.$this->tabla.' WHERE idContinente = '.$idContinente;
+        $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
+        return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
     public function mAltaPais($nombrePais, $bandera, $coordX, $coordY) {
