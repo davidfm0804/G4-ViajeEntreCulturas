@@ -1,14 +1,22 @@
 <?php
-    require_once('../controladores/Cranking.php');
+    require_once('../../controladores/Cranking.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../css/estiloCelia.css">
     <title>Ranking</title>
 </head>
 <body>
+    <header>
+        <img src="../../../img/logo.png" alt="Logo">
+            <h1>Viaje entre Culturas</h1>
+            <a href="#">PANEL ADMIN</a>
+    </header>
+    <main class="registro">
+        
     <?php
      if (isset($_POST['idContinente'])) {
         $idContinente = $_POST['idContinente'];
@@ -16,7 +24,8 @@
         $resultado = $objCranking->cMostrarPuntuacion($idContinente);
      
        if ($resultado->num_rows > 0) {
-        echo "<table border='1'>";
+        echo "<h2>Ranking</h2>";
+        echo "<table>";
         echo "<tr>
                 <th>Nombre</th>
                 <th>Puntos</th>
@@ -32,17 +41,17 @@
                   </tr>";
         }
         echo "</table>";
+        echo"</main>";
         echo "<a href='borrarRankings.php?id=".$idContinente."'><button>Borrar</button></a>";
         }else {
-            echo "No hay puntuaciones para este continente.";
+            echo "</br><p>No hay puntuaciones para este continente.</p>";
         }
     } else {
         echo "No hay puntuaciones para este continente.";
     }
-    echo " <a href='elegirContinente.php'>
-        <button>Volver</button>
-    </a>";
     ?>
-
+    <a href='elegirContinente.php'>
+        <button>    Volver</button>
+    </a>
 </body>
 </html>

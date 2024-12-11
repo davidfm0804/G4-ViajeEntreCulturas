@@ -1,5 +1,5 @@
 <?php
-    require_once('../controladores/Ccontinente.php');
+    require_once('../../controladores/Ccontinente.php');
     $objCcontinente = new Ccontinente();
     $resultado = $objCcontinente->cMostrarContinente();
 ?>
@@ -8,9 +8,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../css/estiloCelia.css">
     <title>Continentes</title>
 </head>
 <body>
+    <header>
+            <img src="../../../img/logo.png" alt="Logo">
+            <h1>Viaje entre Culturas</h1>
+            <a href="#">PANEL ADMIN</a>
+        </header>
+        <main>
+            <h2>Listado continentes</h2>
+            <button><a href="formAltaContinente.php">alta continente</a></button>
     <table>
         <tr>
             <th>Continente</th>
@@ -27,9 +36,6 @@
             }
         ?>
     </table>
-    <a href="formAltaContinente.php">
-        <button>Dar Alta Continente</button>
-    </a>
 </body>
 <script src="validBorrar.js"></script>
 </html>

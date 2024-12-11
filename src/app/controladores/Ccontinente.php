@@ -3,7 +3,7 @@ class Ccontinente {
     private $objcontinente;
 
     public function __construct() {
-        require_once '../modelos/Mcontinente.php';
+        require_once '../../modelos/Mcontinente.php';
         $this->objcontinente = new Mcontinente();
     }
 

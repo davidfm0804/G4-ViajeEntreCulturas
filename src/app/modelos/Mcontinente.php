@@ -3,7 +3,7 @@ class Mcontinente {
     private $conexion;
 
     public function __construct() {
-        require_once 'configdb.php';
+        require_once 'configDb.php';
         $this->conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
         $this->conexion->set_charset("utf8");
 

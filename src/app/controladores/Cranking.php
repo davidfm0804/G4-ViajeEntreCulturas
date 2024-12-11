@@ -3,7 +3,7 @@ class Cranking {
     private $objranking;
 
     public function __construct() {
-        require_once '../modelos/Mranking.php';
+        require_once '../../modelos/Mranking.php';
         $this->objranking = new Mranking();
     }
 
