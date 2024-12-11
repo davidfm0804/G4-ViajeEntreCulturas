@@ -20,6 +20,26 @@
                     <input type="text" name="coordenada_y" placeholder="800" disabled>
                     <br><br>
                 </div>   
+                <fieldset>
+                    <legend>Item:</legend>
+                    <label for="categoria">Categoría: </label>
+                    <select name="categoria" id="categoria">
+                    <?php
+                    if(count($dataToView["data"])>0){
+                    foreach($dataToView["data"] as $categoria){
+                        ?>
+                    <option value="<?php echo $categoria['idCategoria'];?>"><?php echo $categoria['nombreCat']; ?></option>
+                    <?php
+                    } 
+                } else {
+                    ?>
+                    <tr><td colspan='4'>No hay categorias disponibles</td></tr>
+                <?php
+                }
+                ?>
+                </select>
+                </fieldset>
+
                     <button type="button" class="cancel">Cancelar</button>
                     <button type="button" class="update">Dar Alta</button>
             </form>

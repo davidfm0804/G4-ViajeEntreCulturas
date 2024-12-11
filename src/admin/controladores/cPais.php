@@ -24,7 +24,8 @@ class Cpais {
     }
 
     public function cFormAltaPais(){
-        $this->vista = 'formAltaPais'; //Este método devuelve la vista del formulario para dar de alta un nuevo país
+        $this->vista = 'formAltaPais';
+        return $this->objPais->mFormAltaPais(); //Este método devuelve la vista del formulario para dar de alta un nuevo país
     }
 
 
