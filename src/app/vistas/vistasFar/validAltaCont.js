@@ -75,7 +75,6 @@ document.querySelector('input[type="submit"]').addEventListener('click', async f
                 const main = document.querySelector('main');
                 main.appendChild(h2);
                 main.appendChild(p);
-
         } catch (error){
             console.error('Error:', error);
             alert('Hubo un error al procesar la solicitud.');

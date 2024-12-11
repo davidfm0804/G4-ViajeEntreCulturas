@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Alta Item</title>
+    <link rel="stylesheet" href="../../../css/estilo.css">
+</head>
+<body>
+<header>
+        <img src="../../../img/logo.png" alt="Logo">
+        <h1>Viaje entre Culturas</h1>
+    </header>
+    <main>
+        <form>
+            <label>Introduce Nombre del Item: </label>
+            <input type="text" name="nombreItem"></br></br>
+            <textarea name="descripcion"></textarea></br></br>
+            <label for="bandera" id="subirBandera">
+                Subir Imagen
+                <input type="file" id="bandera" name="imagen"accept="image/png, image/jpeg, image/jpg">
+            </label></br></br>
+            <select>
+                <!--Todos los continentes-->
+            </select></br></br>
+            <select>
+                <!--Todos las Categorias-->
+            </select>
+            <input type="submit"class="update"value="Enviar">
+        </form>
+    </main> 
+    <script src="validAltaItem.js"></script>
+    
+</body>
+</html>
