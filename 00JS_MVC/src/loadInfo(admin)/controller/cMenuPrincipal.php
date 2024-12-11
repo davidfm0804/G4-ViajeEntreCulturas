@@ -26,7 +26,7 @@ class cMenuPrincipal {
     public function cListadoCategorias(){
         $this->vista = 'listadoCategorias';
         //$this->tituloPagina = 'Seleccione un continente';
-        return $this->objMenuPrincipal->mPaisSelecContinente();
+        return $this->objMenuPrincipal->mListadoCategorias();
     }
 }
 ?>
