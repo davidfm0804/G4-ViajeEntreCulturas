@@ -1,6 +1,3 @@
-   <?php 
-   
-   ?>
    <main>
         <div>
             <form>
@@ -45,14 +42,15 @@
                 <br/><br/>
                     <label for="subirfoto" id="subirBtn<?php echo $categoria['idCategoria']; ?>">
                         Subir foto
-                        <input type="file" id="subirfoto" name="foto<?php echo $categoria['idCategoria']; ?>">
+                        <input type="file" id="subirfoto1" name="foto1">
                     </label> 
                     <br/>
                     <label for="descripcion" id="descripcion<?php echo $categoria['idCategoria']; ?>">Inserte descripción: </label><br/>
-                    <textarea id="descripcion" id="descripcion<?php echo $categoria['idCategoria']; ?>"></textarea>
+                    <textarea id="descripcion1" name="descripcion"></textarea>
 
                 </fieldset>
-
+                <input type="hidden" name="idContinente" value="<?php echo $_GET['id'];?>">
+                <input type="hidden" name="nombreCont" value="<?php echo $_GET['nombreCont'];?>">
                     <button type="button" class="cancel">Cancelar</button>
                     <button type="button" class="update">Dar Alta</button>
             </form>

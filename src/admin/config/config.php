@@ -3,6 +3,7 @@
     define('CSS','assets/css/');
     define('IMG','assets/img/');
     define('BANDERAS','assets/img/banderas/');
+    define('FOTOS','assets/img/fotos/');
     define('JS','assets/js/views/');
     define('CONFIG','config/');
     define('MODELOS','modelos/');

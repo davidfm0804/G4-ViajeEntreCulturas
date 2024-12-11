@@ -37,12 +37,71 @@ class mPais {
 
     public function mAltaPais() {
         $this->conectar();
-        $idContinente = $_GET['id'];
+        $idContinente = $_GET['idContinente'];
         $nombreCont = $_GET['nombreCont'];
-        $SQL = "INSERT INTO paises (nombrePais, bandera, coordX, coordY) 
-                VALUES ('$nombrePais', '$bandera', '$coordX', '$coordY')";
+        $nombrePais = $_POST['pais'];
+        $coordX = $_POST['coordX'];
+        $coordY = $_POST['coordY'];
+        $categoria = $_POST['categoria'];
+        $descripcion = $_POST['descripcion'];
+
+        $imgBandera = $_FILES['imgBandera']['name']; //Ejemplo: india.png
+        $imgBanderaTmp = $_FILES['imgBandera']['tmp_name'];
+        $imgBanderaPath = BANDERAS.basename($imgBandera);
+        if (!move_uploaded_file($imgBanderaTmp, $imgBanderaPath)) {echo "Error al subir la bandera.";}
+
+        $imgItem = $_FILES['imgItem']['name']; //Ejemplo: india.png
+        $imgItemTmp = $_FILES['imgItem']['tmp_name'];
+        $imgItemPath = FOTOS.basename($imgItem);
+        if (!move_uploaded_file($imgItemTmp, $imgItemPath)) {echo "Error al subir la foto.";}
+
+        $this->conexion->begin_transaction();
+
+        try {
+            // INSERT PAIS
+            $stmt = $this->conexion->prepare("INSERT INTO ".$this->tabla." (nombrePais, bandera, coordX, coordY, idContinente) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssddi", $nombrePais, $imgBandera, $coordX, $coordY, $idContinente);
+            if (!$stmt->execute()) {
+                throw new Exception("Error al insertar el país: " . $stmt->error);
+            }
+
+            // Obtener el idPais del país recién insertado
+            $stmt = $this->conexion->prepare("SELECT idPais FROM ".$this->tabla." WHERE nombrePais = ?");
+            $stmt->bind_param("s", $nombrePais);
+            $stmt->execute();
+            $stmt->bind_result($idPais);
+            $stmt->fetch();
         
-        return $this->conexion->query($SQL);
+            // Verificamos si se obtuvo el idPais correctamente
+            if (!$idPais) {
+                throw new Exception("No se pudo obtener el idPais del país recién insertado.");
+            }
+
+            $idPais = (int)$idPais;
+            $categoria = (int)$categoria;
+
+            // Inserción en la tabla item usando el idPais
+            $stmt = $this->conexion->prepare("INSERT INTO item (descripcion, imagen, idPais, idCategoria) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssii", $descripcion, $imgItem, $idPais, $categoria);
+            
+            // Verifica si la preparación fue exitosa
+            if ($stmt === false) {
+                throw new Exception("Error al preparar la consulta SQL: " . $this->conexion->error);
+            }
+
+            if (!$stmt->execute()) {
+                throw new Exception("Error al insertar el item: " . $stmt->error);
+            }
+
+            // Si todo fue exitoso, hacer commit de la transacción
+            $this->conexion->commit();
+            return true;
+        } catch (Exception $e) {
+            // Si ocurre algún error, hacer rollback
+            $this->conexion->rollback();
+            echo "Se produjo un error: " . $e->getMessage();
+            return false;
+        }
     }
 
     public function mObtenerPaises() {

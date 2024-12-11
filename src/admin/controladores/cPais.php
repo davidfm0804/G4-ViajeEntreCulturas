@@ -2,7 +2,7 @@
 
 require_once MODELOS.'mPais.php';
 
-class Cpais {
+class cPais {
 
     public $tituloPagina;
     public $vista;
@@ -29,7 +29,7 @@ class Cpais {
     }
 
     public function cAltaPais() {
-        return $this->objpais->mAltaPais();
+        return $this->objPais->mAltaPais();
     }
 
     public function cEliminarPais($nombrePais) {
