@@ -12,16 +12,25 @@
         <header>
             <img src="<?php echo IMG.'logo.png'; ?>" alt="Logo">
             <h1>Viaje entre Culturas</h1>
-            <a href="#">PANEL ADMIN</a>
+            <a href="index.php">PANEL ADMIN</a>
         </header>
         <main class="registro">
             <h2>Modificar categoría</h2>
-            <form method="post" action="index.php?controlador=Categoria&accion=modificarCategoria">
-                <input type="hidden" name="idCat" value="<?php echo $categoria['idCat']; ?>">
-                <input type="text" name="categoria" value="<?php echo $categoria['nombreCat']; ?>" placeholder="Nombre Categoría">
-                <button type="submit">Enviar</button>
-            </form>
+            <?php
+                if(count($dataToView["data"])>0){ 
+                    foreach($dataToView["data"] as $catg){
+            ?>
+            <input type="hidden" name="idCat" value="<?php echo $catg['idCategoria']?>">
+            <input type="text" name="categoria" value="<?php echo $catg['nombreCat']?>" placeholder="Nombre Categoría">
+            <?php
+                }}
+            ?>
+            <button>borrar</button>
+            <button>cancelar</button>
+            <button>enviar</button>
         </main>
-        <script src="<?php echo JS.'06FunCatg.js';?>"></script>
+        <script src="<?php echo JS_MODELO.'mCategoria.js';?>"></script>
+        <script src="<?php echo JS_CONTROLADOR.'cCategoria.js';?>"></script>
+        <script src="<?php echo JS.'06FunModfCatg.js';?>"></script>
     </body>
 </html>

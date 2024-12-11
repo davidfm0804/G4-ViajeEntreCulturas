@@ -12,7 +12,7 @@
         <header>
             <img src="<?php echo IMG.'logo.png'; ?>" alt="Logo">
             <h1>Viaje entre Culturas</h1>
-            <a href="#">PANEL ADMIN</a>
+            <a href="index.php">PANEL ADMIN</a>
         </header>
         <main>
             <h2>Listado categorías</h2>
@@ -45,6 +45,8 @@
                     ?>
             </table>
         </main>
+        <script src="<?php echo JS_MODELO.'mCategoria.js';?>"></script>
+        <script src="<?php echo JS_CONTROLADOR.'cCategoria.js';?>"></script>
         <script src="<?php echo JS.'06FunCatg.js';?>"></script>
     </body>
 </html>

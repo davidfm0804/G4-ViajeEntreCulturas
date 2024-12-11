@@ -7,12 +7,13 @@ class cCategoria {
     public $view;
 
     public function __construct() {
-        $this->view = 'listadoCategorias'; 
+        $this->view = ''; 
         $this->tituloPagina = '';
         $this->objCatg = new MCategoria();
     }
 
     public function listadoCategorias(){
+        $this->view = 'listadoCategorias';
         $this->tituloPagina = 'Listado de Categorías';
         return $this->objCatg->selectCategorias();
     }
@@ -22,12 +23,16 @@ class cCategoria {
     }
 
     public function insertDatos(){
-        return $this->objCatg->insertCategoria();
+        $categoria = $_POST['categoria'];
+        /*-- VALIDACIONES --*/
+        return $this->objCatg->insertCategoria($categoria);
     }
 
 
     public function borrarCategoria(){
-        $result = $this->obCatg->eliminarCategoria();
+        $idCat = $_POST['id'];
+        // VALIDACIONES
+        $result = $this->objCatg->eliminarCategoria($idCat);
         
         if ($result) {
             echo "Registro eliminado correctamente";
@@ -37,9 +42,10 @@ class cCategoria {
         exit;
     }
 
+    /*-- Modificar | Vista [formModCatg] + Modelo [selectModCatg]  --*/
     public function formModCatg(){
         $this->view = 'formModCatg';
-        return $this->objCatg->selectModCategoria();   
+        return $this->objCatg->selectModCatg();   
     }
 
     public function modificarCategoria(){

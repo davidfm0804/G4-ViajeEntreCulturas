@@ -19,7 +19,7 @@ document.querySelectorAll('tr').forEach(row => {
 /*-- Añadir Evento | Botones Modificar --*/
 document.querySelectorAll('.modificar').forEach(button => {
     button.addEventListener('click', function () {
-        // Obtener Nombre Pais || closest -> Accede al 'tr' más cercano
+        // Obtener Nombre Catg || closest -> Accede al 'tr' más cercano
         const nombreCatg = button.closest('tr').querySelector('.colNombre').textContent;
         const idCat = button.closest('tr').id;
         window.location.href = `index.php?controlador=Categoria&accion=formModCatg&id=${idCat}`;
@@ -29,16 +29,17 @@ document.querySelectorAll('.modificar').forEach(button => {
 /*-- Añadir Evento | Botones Borrar [Borrado ID] --*/
 document.querySelectorAll('.borrar').forEach(button => {
     button.addEventListener('click', async function () {
-        // Obtener ID Pais || closest -> Accede al 'tr' más cercano | id -> Accede al atributo id definido en el 'tr'
-        const codPais = button.closest('tr').id;
+        // Obtener ID Catg || closest -> Accede al 'tr' más cercano | id -> Accede al atributo id definido en el 'tr'
+        const idCatg = button.closest('tr').id;
 
         if (confirm('¿Está seguro de que desea borrar este país?')) {
             // Crear FormData | ID
             const formData = new FormData();
-            formData.append('id', codPais);
+            formData.append('id', idCatg);
+            console.log(formData.get('id'));
 
-            // Borrar Pais | Promesa -> Fetch + FormData [Llamada Controlador]
-            const result = await borrarPais(formData);
+            // Borrar Catg | Promesa -> Fetch + FormData [Llamada Controlador]
+            const result = await borrarCategoria(formData);
             if (result)
                 location.reload();
             alert(result);

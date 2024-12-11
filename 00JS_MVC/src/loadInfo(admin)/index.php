@@ -29,4 +29,5 @@ if(method_exists($controlador,$_GET["accion"])){
     case 'cFormModPais': require_once PLANTILLAVISTAS.'headerFormModPais.php'; break;
     default: require_once PLANTILLAVISTAS.'headersimple.php'; break; 
 }*/
-require_once 'view/'.$controlador->vista.'.php';
+
+require_once 'view/'.$controlador->view.'.php';

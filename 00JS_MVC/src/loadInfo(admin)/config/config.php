@@ -4,6 +4,8 @@
     define('IMG','assets/img/');
     define('BANDERAS','assets/img/banderas/');
     define('JS','assets/js/view/');
+    define('JS_CONTROLADOR','assets/js/controller/');
+    define('JS_MODELO','assets/js/model/');
     define('CONFIG','config/');
     define('MODELO','model/');
     define('CONTROLADOR','controller/');

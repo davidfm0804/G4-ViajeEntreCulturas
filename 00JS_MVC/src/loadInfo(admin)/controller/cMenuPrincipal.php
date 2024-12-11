@@ -1,30 +1,30 @@
 <?php
 
-require_once MODELOS.'mMenuPrincipal.php';
+require_once MODELO.'mMenuPrincipal.php';
 
 class cMenuPrincipal {
     public $tituloPagina;
-    public $vista;
+    public $view;
 
     public function __construct() {
 
         $this->tituloPagina = '';
-        $this->vista = '';
+        $this->view = '';
         $this->objMenuPrincipal = new mMenuPrincipal(); 
     }
 
     public function cMenuAdmin(){
-        $this->vista = 'menuPrincipal';
+        $this->view = 'menuPrincipal';
     }
 
     public function cPaisSelecContinente(){
-        $this->vista = 'seleccioneContinente';
+        $this->view = 'seleccioneContinente';
         $this->tituloPagina = 'Seleccione un continente';
         return $this->objMenuPrincipal->mPaisSelecContinente();
     }
 
-    public function cListadoCategorias(){
-        $this->vista = 'listadoCategorias';
+    public function ListadoCategorias(){
+        $this->view = 'listadoCategorias';
         $this->tituloPagina = 'Seleccione un continente';
         return $this->objMenuPrincipal->mListadoCategorias();
     }

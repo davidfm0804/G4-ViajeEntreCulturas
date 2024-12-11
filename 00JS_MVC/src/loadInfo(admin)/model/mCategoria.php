@@ -21,9 +21,8 @@ class MCategoria {
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function insertCategoria(){
+    public function insertCategoria($nombreCat){
         $this->conectar();
-        $nombreCat = $_POST['categoria'];
 
         // Preparar
         $stmt = $this->conexion->prepare("INSERT INTO ".$this->tabla." (nombreCat) VALUES (?)");
@@ -32,13 +31,15 @@ class MCategoria {
         // Ejecutar
         $stmt->execute();
 
+        return $stmt->affected_rows;
+
         // echo "Nuevo registro creado exitosamente";
     }
 
-    public function selectModCategoria(){
+    public function selectModCatg(){
         $this->conectar();
-        $idCat = $_POST['idCategoria']; 
-        $sql = "SELECT idCategoria, nombreCat FROM ".$this->tabla." WHERE idCat = ?";
+        $idCat = $_GET['id']; 
+        $sql = "SELECT idCategoria, nombreCat FROM ".$this->tabla." WHERE idCategoria = ?";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bind_param("i", $idCat);
         $stmt->execute();
@@ -58,12 +59,11 @@ class MCategoria {
         return $result;
     }
 
-    public function eliminarCategoria(){
+    public function eliminarCategoria($idCat){
         $this->conectar();
-        $id = $_POST['idCat'];
-        $sql = "DELETE FROM ".$this->tabla." WHERE idCat = ?";
+        $sql = "DELETE FROM ".$this->tabla." WHERE idCategoria = ?";
         $stmt = $this->conexion->prepare($sql);
-        $stmt->bind_param("i", $idCat); // Nombre del parámetro corregido
+        $stmt->bind_param("i", $idCat);
         if ($stmt->execute()) {
             return true;
         } else {
