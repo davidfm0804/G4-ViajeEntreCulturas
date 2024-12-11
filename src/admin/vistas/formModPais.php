@@ -22,7 +22,9 @@
                     <input type="hidden" name="banderaActual" value="<?php echo $pais["bandera"]; ?>">
                     <input type="hidden" name="coordX" id="coordX" value="<?php echo $pais["coordX"]; ?>">
                     <input type="hidden" name="coordY" id="coordY" value="<?php echo $pais["coordY"]; ?>">
-                    <input type="hidden" name="idPais" value="<?php echo $_GET["id"]; ?>">
+                    <input type="hidden" name="idPais" value="<?php echo $_GET["idPais"]; ?>">
+                    <input type="hidden" name="idContinente" value="<?php echo $_GET["idContinente"]; ?>">
+                    <input type="hidden" name="nombreCont" value="<?php echo $_GET["nombreCont"]; ?>">
                     <?php
                 }
                 ?>

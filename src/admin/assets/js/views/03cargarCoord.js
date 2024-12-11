@@ -8,7 +8,7 @@ async function mostrarChinchetas() {
         const mainMapa = document.querySelector('main');
         coordenadas.forEach(coord => {
             const chincheta = document.createElement('img');
-            chincheta.src = '../../img/chincheta.png';
+            chincheta.src = 'assets/img/chincheta.png';
             chincheta.classList.add('chincheta');
             chincheta.style.left = `${coord.coordX}%`;
             chincheta.style.top = `${coord.coordY}%`;

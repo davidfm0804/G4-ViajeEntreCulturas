@@ -3,7 +3,7 @@ const nombreCont = document.querySelector('[name="nombreCont"]').value;
 /*-- Ajustes DOM --*/
 document.querySelector('main').style.position = "relative";
 document.querySelector('.cancel').addEventListener('click', function(){
-    window.location.href = './crudPais.php';
+    window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id${idContinente}&nombreCont=${nombreCont}`;
 });
 
 /*-- Dar Valor Inputs Coordenadas [localStorage] --*/
@@ -123,7 +123,7 @@ document.querySelector('.update').addEventListener('click', async function(event
                 method: 'POST',
                 body: formData
             });
-            const result = await response.text();
+            
             
             // Crear elementos
             const h2 = document.createElement('h2');
@@ -131,7 +131,7 @@ document.querySelector('.update').addEventListener('click', async function(event
             h2.style.margin = '4%';
 
             const pre = document.createElement('pre');
-            pre.textContent = result;
+            pre.textContent = "Nuevo registro creado exitosamente";
             pre.style.margin = '1% 0 4% 6%';
 
             const buttonMostrarMapa = document.createElement('button');
@@ -154,26 +154,27 @@ document.querySelector('.update').addEventListener('click', async function(event
             buttonVolver.textContent = 'Volver';
 
             /*-- Sobreescibir Body | Add Elements --*/
-            document.body.innerHTML = '';
-            document.body.appendChild(h2);
-            document.body.appendChild(pre);
-            document.body.appendChild(buttonMostrarMapa);
-            document.body.appendChild(buttonAddCultura);
-            document.body.appendChild(buttonVolver);
+
+            document.querySelector('main').innerHTML = '';
+            document.querySelector('main').appendChild(h2);
+            document.querySelector('main').appendChild(pre);
+            document.querySelector('main').appendChild(buttonMostrarMapa);
+            document.querySelector('main').appendChild(buttonAddCultura);
+            document.querySelector('main').appendChild(buttonVolver);
 
             /*-- Funcionalidad Botón Mostrar Mapa --*/
             document.getElementById('mostrarMapa').addEventListener('click', function() {
-                window.location.href = './mapaUbiPais.php?script=03cargarCoord.js';
+                window.location.href = `index.php?controlador=Pais&accion=mapaChincheta&script=03cargarCoord.js&id=${idContinente}&nombreCont=${nombreCont}`;
             });
             
             /*-- Funcionalidad Botón Añadir Cultura --*/
             document.getElementById('addCultura').addEventListener('click', function() {
-                window.location.href = './mapaUbiPais.php';
+                window.location.href = `index.php?controlador=Pais&accion=cMapaChincheta&id=${idContinente}&nombreCont=${nombreCont}`;
             });
             
             /*-- Funcionalidad Botón Volver --*/
             document.getElementById('volver').addEventListener('click', function() {
-                window.location.href = './crudPais.php';
+                window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`;
             });
         } catch (error) {
             console.error('Error:', error);

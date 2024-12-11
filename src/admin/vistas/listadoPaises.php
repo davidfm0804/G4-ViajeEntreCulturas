@@ -16,7 +16,7 @@ $nombreCont = $_GET['nombreCont'];
             if(count($dataToView["data"])>0){
                 foreach($dataToView["data"] as $pais){
                     ?>
-                    <tr id="<?php echo $pais["codPais"]; ?>">
+                    <tr id="<?php echo $pais["idPais"]; ?>">
                         <td><img class='flag' src='<?php echo BANDERAS.$pais["bandera"]; ?>' alt='<?php echo $pais["nombrePais"]; ?>'></td>
                         <td class='colNombre'><?php echo $pais["nombrePais"]; ?></td> 
                         <td><button><img class='png' src="<?php echo IMG.'modificar.png';?>"></button></td>

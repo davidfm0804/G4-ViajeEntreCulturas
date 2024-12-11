@@ -32,26 +32,24 @@ class cPais {
         return $this->objPais->mAltaPais();
     }
 
-    public function cEliminarPais($nombrePais) {
-        return $this->objMpais->mBorrarPais($nombrePais);
+    public function cFormModPais(){
+        $this->vista = 'formModPais';
+        return $this->objPais->mFormModPais();
     }
     
-
-    public function cObtenerPaises() {
-        return $this->objMpais->mObtenerPaises();
+    public function cCambiarChincheta(){
+        $this->vista = 'cambiarChincheta';
     }
+    public function cUpdatePais(){
+        $result = $this->objPais->mUpdatePais();
 
-    public function cObtenerPaisPorNombre($nombrePais) {
-        return $this->objMpais->mObtenerPaisPorNombre($nombrePais);
-    }     
-    
-    public function cModificarPais($nombrePais, $nuevoNombrePais, $bandera, $coordX, $coordY) {
-        if ($this->objMpais->mModificarPais($nombrePais, $nuevoNombrePais, $bandera, $coordX, $coordY)) {
-            return true;
-        }
-        return false;
+        if ($result) {
+            echo "Registro modificado correctamente";
+         } else {
+             // Si hubo un error, establecemos otro mensaje en la sesión
+             echo "Error al modificar el registro";
+         }
+         exit;
     }
-    
-
 }
 ?>

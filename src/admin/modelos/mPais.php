@@ -94,7 +94,7 @@ class mPais {
             $stmt->execute();
             $stmt->bind_result($idPais);
             $stmt->fetch();
-        
+            $stmt->close();
             // Verificamos si se obtuvo el idPais correctamente
             if (!$idPais) {
                 throw new Exception("No se pudo obtener el idPais del país recién insertado.");
@@ -149,13 +149,47 @@ class mPais {
 
             // Si todo fue exitoso, hacer commit de la transacción
             $this->conexion->commit();
-            return true;
+           return true;
         } catch (Exception $e) {
             // Si ocurre algún error, hacer rollback
             $this->conexion->rollback();
             echo "Se produjo un error: " . $e->getMessage();
             return false;
+        }   
+    }
+
+    public function mFormModPais(){
+        $this->conectar();
+        $id = $_GET['idPais'];
+        $sql = "SELECT nombrePais, bandera, coordX, coordY FROM ".$this->tabla." WHERE idPais = ".$id;
+        $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
+        return $resultado->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function mUpdatePais(){
+        $this->conectar();
+        $pais = $_POST['pais'];
+        $coordX = $_POST['coordX'];
+        $coordY = $_POST['coordY'];
+        $idPais = $_POST['idPais'];
+        $archivo = isset($_POST['imgBandera']) ? $_POST['imgBandera'] : '';
+
+        // Comprobar | IMG = FILE ? SRC
+        //Si hemos subido archivo nuevo, creo un update donde modifico el nombre del archivo en el campo bandera
+        if(isset($_FILES['imgBandera']) && is_uploaded_file($_FILES['imgBandera']['tmp_name'])){
+            $imgBandera = $_FILES['imgBandera']['name']; //Nombre del archivo
+            $imgBanderaTmp = $_FILES['imgBandera']['tmp_name'];
+            $rutaBandera = BANDERAS.basename($imgBandera);
+            // Mover IMG a Directorio
+            if (!move_uploaded_file($imgBanderaTmp, $rutaBandera)){die("Error al subir la imagen");}
+            $archivo = $imgBandera;
         }
+
+        $sql = "UPDATE ".$this->tabla." SET nombrePais = ?, coordX = ?, coordY = ?, bandera = ? WHERE idPais = ?";
+        $conxPrp = $this->conexion->prepare($sql);
+        $conxPrp->bind_param("sddss", $pais, $coordX, $coordY, $archivo, $idPais);
+        $result = $conxPrp->execute();
+        return $result;
     }
 
     public function mObtenerPaises() {

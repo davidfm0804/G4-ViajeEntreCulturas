@@ -1,6 +1,18 @@
+const idContinente = document.querySelector('[name="idContinente"]').value;
+const nombreCont = document.querySelector('[name="nombreCont"]').value;
+
 /*-- Ajustes DOM --*/
 document.querySelector('.cancel').addEventListener('click', function(){
-    window.location.href = './crudPais.php';
+    window.location.href = 'index.php';
+});
+
+// Cambiar la imagen de la bandera al subir una nueva imagen 
+document.querySelector('#subirBandera').addEventListener('change', function(event) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        document.querySelector('#banderaActualImg').src = e.target.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
 });
 
 /*-- Guardar Elementos | LocalStorage --*/
@@ -8,12 +20,13 @@ document.getElementById('elcor').addEventListener('click', function(event) {
     // Quitar Evento Default
     event.preventDefault();
     const pais = document.querySelector('[name="pais"]').value;
-    const imgBandera = document.querySelector('[name="bandera"]').value ? document.querySelector('[name="bandera"]').value : document.querySelector('#banderaActual').src;
+    const imgBandera = document.querySelector('[name="banderaActual"]').value || document.querySelector('#banderaActualImg').src;
+    // const imgBandera = document.querySelector('[name="bandera"]').value ? document.querySelector('[name="bandera"]').value : document.querySelector('#banderaActual').src;
     const idPais = document.querySelector('[name="idPais"]').value;
     localStorage.setItem('nombrePais', pais);
     localStorage.setItem('imgBandera', imgBandera);
     localStorage.setItem('idPais', idPais);
-    window.location.href = './mapaModf.php';
+    window.location.href = `index.php?controlador=Pais&accion=cCambiarChincheta&id=${idPais}`;
 });
 
 /*-- Añadir Evento -> Form --*/
@@ -21,8 +34,10 @@ document.querySelector('.update').addEventListener('click', async function(event
 
     /*-- Recoger Elementos --*/
     const pais = document.querySelector('[name="pais"]').value;
-    const imgBanderaInput = document.querySelector('[name="bandera"]');
-    const imgBandera = imgBanderaInput.files.length > 0 ? imgBanderaInput.files[0] : document.querySelector('#banderaActual').src;
+    const imgBanderaInput = document.querySelector('#subirBandera');
+    const imgBandera = imgBanderaInput.files.length > 0 
+        ? imgBanderaInput.files[0] 
+        : document.querySelector('[name="banderaActual"]').value;
     const coordX = document.querySelector('[name="coordX"]').value;
     const coordY = document.querySelector('[name="coordY"]').value;
     const idPais = document.querySelector('[name="idPais"]').value;
@@ -51,10 +66,10 @@ document.querySelector('.update').addEventListener('click', async function(event
 
         formData.append('idPais', idPais);
         formData.append('pais', pais);
-        if (imgBanderaInput.files.length > 0) {
+        if (imgBandera instanceof File) {
             formData.append('imgBandera', imgBandera);
         } else {
-            formData.append('imgBandera', document.querySelector('#banderaActual').src);
+            formData.append('imgBandera', imgBandera);
         }
         formData.append('coordX', coordX);
         formData.append('coordY', coordY);
@@ -66,24 +81,24 @@ document.querySelector('.update').addEventListener('click', async function(event
 
         // Promesa | Fetch + FormData -> Borrar Pais
         try {
-            const response = await fetch ('../05modificarPais.php',{
+            const response = await fetch ('index.php?controlador=Pais&accion=cUpdatePais',{
                 method: 'POST',
                 body: formData,
             });
-    
+
             //Verificamos si la respuesta del server es correcta
             if(response.ok){
                 const result = await response.text();
                 alert(result);
-                window.location.href = './crudPais.php'; 
+                window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`; 
             }else{
                 alert('Pais modificado correctamente');
-                window.location.href = './crudPais.php'; 
+                window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`; 
             }
         } catch (error) {
             console.error('Error:', error);
             alert('Error en la conexión con el servidor');
-            window.location.href = './crudPais.php'; 
+            window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`; 
         }
         
     }
