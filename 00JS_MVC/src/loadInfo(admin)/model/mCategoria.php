@@ -37,8 +37,8 @@ class MCategoria {
 
     public function selectModCategoria(){
         $this->conectar();
-        $idCat = $_POST['idCat'];
-        $sql = "SELECT idCat, nombreCat FROM ".$this->tabla." WHERE idCat = ?";
+        $idCat = $_POST['idCategoria']; 
+        $sql = "SELECT idCategoria, nombreCat FROM ".$this->tabla." WHERE idCat = ?";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bind_param("i", $idCat);
         $stmt->execute();

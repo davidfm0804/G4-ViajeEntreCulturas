@@ -1,13 +1,13 @@
 <?php
-    require_once 'config/config.php'; //Constantes config php
-    require_once MODELOS.'conexion.php'; //Clase BBDD
+require_once 'config/config.php'; // Constantes config php
+require_once MODELO.'conexion.php'; //Clase BBDD
 
 if(!isset($_GET["controlador"])){$_GET["controlador"] = DEFAULT_CONTROLADOR;}
 if(!isset($_GET["accion"])){$_GET["accion"] = DEFAULT_ACCION;}
 
-$rutaControlador = CONTROLADORES.'c'.$_GET["controlador"].'.php'; // 'controller/cControlador.php'
+$rutaControlador = CONTROLADOR.'c'.$_GET["controlador"].'.php'; // 'controller/cControlador.php'
 
-if(!file_exists($rutaControlador)){$rutaControlador = CONTROLADORES.'c'.DEFAULT_CONTROLADOR.'.php';} // 'controller/cPais.php'
+if(!file_exists($rutaControlador)){$rutaControlador = CONTROLADOR.'c'.DEFAULT_CONTROLADOR.'.php';} // 'controller/cPais.php'
 
 require_once $rutaControlador;
 

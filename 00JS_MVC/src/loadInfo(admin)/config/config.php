@@ -5,8 +5,8 @@
     define('BANDERAS','assets/img/banderas/');
     define('JS','assets/js/view/');
     define('CONFIG','config/');
-    define('MODELOS','model/');
-    define('CONTROLADORES','controller/');
+    define('MODELO','model/');
+    define('CONTROLADOR','controller/');
     define('PLANTILLAVISTAS','view/plantillas/');
 
     /*-- Parámetros por defecto--*/

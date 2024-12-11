@@ -1,5 +1,4 @@
 <?php
-
 require_once MODELO.'mCategoria.php';
 
 class cCategoria {
@@ -8,7 +7,7 @@ class cCategoria {
     public $view;
 
     public function __construct() {
-        $this->view = 'listadoCategorias'; //Hay que cambiarle el nombre. Es la vista por defecto que mostraremos de la pagina index.php
+        $this->view = 'listadoCategorias'; 
         $this->tituloPagina = '';
         $this->objCatg = new MCategoria();
     }
@@ -18,7 +17,7 @@ class cCategoria {
         return $this->objCatg->selectCategorias();
     }
 
-    public function formAlta(){
+    public function formAltaCatg(){
         $this->view = 'registroCategoria';
     }
 
@@ -31,7 +30,7 @@ class cCategoria {
         $result = $this->obCatg->eliminarCategoria();
         
         if ($result) {
-           echo "Registro eliminado correctamente";
+            echo "Registro eliminado correctamente";
         } else {
             echo "Error al eliminar el registro";
         }
@@ -40,7 +39,7 @@ class cCategoria {
 
     public function formModCatg(){
         $this->view = 'formModCatg';
-       return $this->objCatg->selectModCategoria();   
+        return $this->objCatg->selectModCategoria();   
     }
 
     public function modificarCategoria(){
@@ -48,11 +47,11 @@ class cCategoria {
 
         if ($result) {
             echo "Registro modificado correctamente";
-         } else {
+        } else {
              // Si hubo un error, establecemos otro mensaje en la sesión
-             echo "Error al modificar el registro";
-         }
-         exit;
+            echo "Error al modificar el registro";
+        }
+        exit;
     }
 }
 ?>
