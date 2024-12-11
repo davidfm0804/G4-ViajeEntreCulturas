@@ -57,27 +57,27 @@ async function altaCategoria(formData) {
         return;
     }
 
-    /*-- Comprobar si la Categoría ya Existe en el Servidor
-    // Realizar la solicitud al servidor
+    // Comprobar si la Categoría ya Existe en el Servidor
     const response = await verificarCategoria(formData);
+    if (!response) {
+        alert('Error al verificar la categoría.');
+        return;
+    }
     const result = await response.json(); // Acceder al resultado de la promesa
 
-    if (!result.existe) {
-        valid = false;
-        return 'La categoría ya existe.';
+    if (result.existe) {
+        alert('La categoría ya existe. Por favor, introduzca otra.');
+        return;
     }
-
-    console.log(data.existe);
-    console.log(response);--*/ 
 
     /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
     if (valid) {
         const response = await mAltaCategoria(formData);
 
         if (response && response.ok) {
-            return "Categoria registrada correctamente";
+            alert( "Categoria registrada correctamente");
         } else {
-            return "Error al registrar la categoría";
+            alert("Error al registrar la categoría");
         }
 
     }

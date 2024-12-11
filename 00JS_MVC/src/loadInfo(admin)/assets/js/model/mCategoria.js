@@ -53,6 +53,9 @@ async function verificarCategoria(formData) {
             body: formData
         });
     
+        console.log('mCatg');
+        console.log(response);
+        console.log(response.json());
         if(!response.ok) {
             return false;
         }
