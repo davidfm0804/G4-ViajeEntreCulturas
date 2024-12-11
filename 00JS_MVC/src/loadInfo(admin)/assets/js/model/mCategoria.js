@@ -29,7 +29,7 @@ async function mBorrarCategoria(formData) {
     }
 }
 
-// Modificar Pais | Promesa -> Fetch + FormData
+// Modificar Categoría | Promesa -> Fetch + FormData
 async function mModificarCategoria(formData) {
     try {
         console.log(formData.get('categoria'));
@@ -44,5 +44,23 @@ async function mModificarCategoria(formData) {
     } catch (error) {
         return false;
     }
+}
 
+async function verificarCategoria(formData) {
+    try {
+        const response = await fetch('index.php?controlador=Categoria&accion=csuCategoria', {
+            method: 'POST',
+            body: formData
+        });
+    
+        if(!response.ok) {
+            return false;
+        }
+
+        return response;
+    
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
 }

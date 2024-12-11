@@ -16,8 +16,10 @@ class MCategoria {
 
     public function selectCategorias(){
         $this->conectar(); //Llamo al metodo conectar de arriba
+        
         $sql = 'SELECT idCategoria, nombreCat FROM '.$this->tabla; //Escribimos la consulta
         $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
+        
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -39,10 +41,13 @@ class MCategoria {
     public function selectModCatg(){
         $this->conectar();
         $idCat = $_GET['id']; 
+
         $sql = "SELECT idCategoria, nombreCat FROM ".$this->tabla." WHERE idCategoria = ?";
         $stmt = $this->conexion->prepare($sql);
+
         $stmt->bind_param("i", $idCat);
         $stmt->execute();
+
         $resultado = $stmt->get_result();
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
@@ -52,22 +57,44 @@ class MCategoria {
 
         $sql = "UPDATE ".$this->tabla." SET nombreCat = ? WHERE idCategoria = ?";
         $conxPrp = $this->conexion->prepare($sql);
+
         $conxPrp->bind_param("si", $nombreCat,$idCatg);
         $result = $conxPrp->execute();
-        return $result;
+
+        return $result ? true : false;
     }
 
     public function eliminarCategoria($idCat){
         $this->conectar();
+
         $sql = "DELETE FROM ".$this->tabla." WHERE idCategoria = ?";
         $stmt = $this->conexion->prepare($sql);
+
         $stmt->bind_param("i", $idCat);
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            return false;
-        }
+        return $stmt->execute() ? true : false;
+
         $stmt->close();
+    }
+
+    public function verificarCategoria($nombreCat){
+        $this->conectar();
+    
+        $sql = "SELECT COUNT(*) as count FROM ".$this->tabla." WHERE nombreCat = ?";
+        $stmt = $this->conexion->prepare($sql);
+    
+        if ($stmt === false) {
+            die('Error en la preparación de la consulta: ' . $this->conexion->error);
+        }
+    
+        $stmt->bind_param("s", $nombreCat);
+        $stmt->execute();
+        $stmt->bind_result($count); // Asigna el resultado a la variable $count
+        $stmt->fetch();
+    
+        $stmt->close();
+        $this->conexion->close();
+    
+        return json_encode(['existe' => $count > 0]);
     }
     
 }
