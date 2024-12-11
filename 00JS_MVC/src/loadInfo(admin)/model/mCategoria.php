@@ -47,14 +47,12 @@ class MCategoria {
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function updateCategoria(){
+    public function updateCategoria($idCatg, $nombreCat){
         $this->conectar();
-        $idCat = $_POST['idCat'];
-        $nombreCat = $_POST['categoria'];
 
-        $sql = "UPDATE ".$this->tabla." SET nombreCat = ? WHERE idCat = ?";
+        $sql = "UPDATE ".$this->tabla." SET nombreCat = ? WHERE idCategoria = ?";
         $conxPrp = $this->conexion->prepare($sql);
-        $conxPrp->bind_param("s", $nombreCat);
+        $conxPrp->bind_param("si", $nombreCat,$idCatg);
         $result = $conxPrp->execute();
         return $result;
     }

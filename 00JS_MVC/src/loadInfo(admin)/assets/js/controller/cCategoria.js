@@ -47,7 +47,10 @@ async function modificarCategoria(formData) {
         alert("Por favor, indique el nombre de la categoría.");
         return false;
     }
-
+    
+    console.log(formData.get('categoria'));
+    console.log(formData.get('id'));
+    
     const response = await mModificarCategoria(formData);
 
     if (response && response.ok) {

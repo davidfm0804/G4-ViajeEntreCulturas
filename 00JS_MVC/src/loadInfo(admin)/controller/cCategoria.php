@@ -49,7 +49,10 @@ class cCategoria {
     }
 
     public function modificarCategoria(){
-        $result = $this->objCatg->updateCategoria();
+        $idCatg = $_POST['idCat'];
+        $nombreCat = $_POST['categoria'];
+        // VALIDACIONES
+        $result = $this->objCatg->updateCategoria($idCatg, $nombreCat);
 
         if ($result) {
             echo "Registro modificado correctamente";

@@ -32,7 +32,9 @@ async function mBorrarCategoria(formData) {
 // Modificar Pais | Promesa -> Fetch + FormData
 async function mModificarCategoria(formData) {
     try {
-        const response = await fetch ('index.php?controlador=Pais&accion=modificarPais',{
+        console.log(formData.get('categoria'));
+        console.log(formData.get('idCat'));
+        const response = await fetch ('index.php?controlador=Categoria&accion=modificarCategoria',{
             method: 'POST',
             body: formData,
         });
