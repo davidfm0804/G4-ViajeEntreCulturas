@@ -8,14 +8,9 @@ class cContinente {
     public $view;
 
     public function __construct() {
-<<<<<<< HEAD:src/app/controladores/Ccontinente.php
-        require_once '../../modelos/Mcontinente.php';
-        $this->objcontinente = new Mcontinente();
-=======
         $this->vista = ''; //Hay que cambiarle el nombre. Es la vista por defecto que mostraremos de la pagina index.php
         $this->tituloPagina = '';
         $this->objContinente = new mContinente(); //objPais es el nombre del objeto instanciado de la clase modelo Pais (mPais). Creamos objeto
->>>>>>> 8585935ba008e605496e7716a45c1276909ef52f:src/admin/controladores/Ccontinente.php
     }
 
     public function cFormAltaContinente(){

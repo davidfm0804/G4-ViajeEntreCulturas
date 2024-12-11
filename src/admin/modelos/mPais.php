@@ -4,7 +4,7 @@ class mPais {
     private $conexion;
 
     public function __construct() {
-        require_once CONFIG.'configDbLocal.php';
+        require_once CONFIG.'configDbProd.php';
         $this->conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
         $this->conexion->set_charset("utf8");
 
