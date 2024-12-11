@@ -6,9 +6,9 @@
                     <input type="text" name="pais">
                     <br><br>
     
-                    <label for="subirBandera" id="subirBtn">
+                    <label for="bandera" id="subirBandera">
                         Subir bandera
-                        <input type="file" id="subirBandera" name="bandera">
+                        <input type="file" id="bandera" name="imagen">
                     </label>                    
                     <br><br>
     
@@ -107,7 +107,7 @@
                     <label for="descripcion" id="descripcion<?php echo $categoria['idCategoria']; ?>">Inserte descripción: </label><br/>
                     <textarea id="descripcion1" name="descripcion"></textarea>
                 </fieldset>
-                
+
                 <fieldset>
                     <legend>Item 4:</legend>
                     <label for="categoria">Categoría: </label>
