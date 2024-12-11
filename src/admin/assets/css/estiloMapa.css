@@ -102,7 +102,7 @@ main img:first-child {
 
 .chincheta{
     position: absolute;
-    width: 1.8%;
+    width: 3%;
 }
 /* Para tablet en modo vertical */
 @media (max-width: 768px) {

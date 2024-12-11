@@ -1,3 +1,5 @@
+const idContinente = document.querySelector('[name="idContinente"]').value;
+const nombreCont = document.querySelector('[name="nombreCont"]').value;
 /*-- Ajustes DOM --*/
 document.querySelector('main').style.position = "relative";
 document.querySelector('.cancel').addEventListener('click', function(){
@@ -16,6 +18,9 @@ document.querySelector('.update').addEventListener('click', async function(event
     const imgBandera = document.querySelector('[name="bandera"]');
     const coordX = document.querySelector('[name="coordenada_x"]');
     const coordY = document.querySelector('[name="coordenada_y"]');
+    const categoria = document.querySelector('[name="categoria"]');
+    const imgItem = document.querySelector('[name="foto1"]');
+    const descripcion = document.querySelector('[name="descripcion"]');
 
     /*-- Declaración Variables --*/
     let valid = true;
@@ -26,6 +31,15 @@ document.querySelector('.update').addEventListener('click', async function(event
     // Select Pais | NOT NULL
     if (!pais.value) {
         alert("Por favor, indique el nombre del país.");
+        valid = false;
+    }
+
+    // Input File [imgItem] | NOT NULL && Formato IMG
+    if (imgItem.files.length === 0) {
+        alert("Por favor, sube una imagen de la foto.");
+        valid = false;
+    } else if (!formatoValido.includes(imgItem.files[0].type)) {
+        alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
         valid = false;
     }
 
@@ -51,9 +65,12 @@ document.querySelector('.update').addEventListener('click', async function(event
         formData.append('imgBandera', imgBandera.files[0]);
         formData.append('coordX', coordX.value);
         formData.append('coordY', coordY.value);
+        formData.append('categoria', categoria.value);
+        formData.append('imgItem', imgItem.files[0]);
+        formData.append('descripcion', descripcion.value);
 
         try {
-            const response = await fetch('../02insertDatos.php', {
+            const response = await fetch(`index.php?controlador=Pais&accion=cAltaPais&idContinente=${idContinente}&nombreCont=${nombreCont}`, {
                 method: 'POST',
                 body: formData
             });
