@@ -16,7 +16,7 @@
         <main class="registro">
             <h2>Registrar categoría</h2>
             <form id="categoriaForm" action="mostrarAltaCategoria.php" method="POST">
-                <input type="text" name="nombreCat" placeholder="Nombre Categoría" required>
+                <input type="text" name="nombreCat" placeholder="Nombre Categoría" >
                 <div>
                     <button type="reset">Borrar</button>
                     <button type="button" class="cancel">Cancelar</button>
@@ -29,7 +29,6 @@
                 }
             ?>
         </main>
-
         <script src="../../js/06validCategoria.js"></script>
     </body>
 </html>

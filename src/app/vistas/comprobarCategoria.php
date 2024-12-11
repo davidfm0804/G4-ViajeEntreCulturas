@@ -1,12 +1,15 @@
 <?php
 require_once '../modelos/configdb.php';
 
+header('Content-Type: application/json');
+
 // Establecer conexión a la base de datos
 $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
 $conexion->set_charset("utf8");
 
 if ($conexion->connect_error) {
-    die(json_encode(['error' => 'Conexión fallida: ' . $conexion->connect_error]));
+    echo json_encode(['error' => 'Conexión fallida: ' . $conexion->connect_error]);
+    exit;
 }
 
 // Obtener el nombre de la categoría desde la solicitud
@@ -30,9 +33,9 @@ $stmt->bind_param("s", $nombreCat);
 $stmt->execute();
 $result = $stmt->get_result();
 
-header('Content-Type: application/json');
-
-if ($result->num_rows > 0) {
+if ($result === false) {
+    echo json_encode(['error' => 'Error al ejecutar la consulta.']);
+} elseif ($result->num_rows > 0) {
     echo json_encode(['existe' => true]);
 } else {
     echo json_encode(['existe' => false]);

@@ -2,27 +2,49 @@
 require_once '../modelos/Mpais.php';
 require_once '../controladores/Cpais.php';
 
-if (!empty($_POST['nombrePais']) && !empty($_POST['coordX']) && !empty($_POST['coordY']) && isset($_FILES['bandera'])) {
+if (!empty($_POST['nombrePais']) && !empty($_POST['coordX']) && !empty($_POST['coordY'])) {
     $nombrePais = $_POST['nombrePais']; 
     $nuevoNombrePais = $_POST['nuevoNombrePais']; 
     $coordX = $_POST['coordX'];
     $coordY = $_POST['coordY'];
 
-    $directorioSubida = "../../img/banderas/";
-    $nombreArchivo = uniqid() . "_" . basename($_FILES['bandera']['name']);
-    $rutaCompleta = $directorioSubida . $nombreArchivo;
+    // Verificamos si se ha subido una nueva bandera
+    if (isset($_FILES['bandera']) && $_FILES['bandera']['error'] === UPLOAD_ERR_OK) {
+        $directorioSubida = "../../img/banderas/";
 
-    if (move_uploaded_file($_FILES['bandera']['tmp_name'], $rutaCompleta)) {
-        $bandera = "img/banderas/" . $nombreArchivo;
+        // Usamos el nombre original del archivo
+        $nombreArchivo = basename($_FILES['bandera']['name']); // Obtiene el nombre original
+        $rutaCompleta = $directorioSubida . $nombreArchivo;
 
-        $objCpais = new Cpais();
-        if ($objCpais->cModificarPais($nombrePais, $nuevoNombrePais, $bandera, $coordX, $coordY)) {
-            header('Location: modificarPais.php?msj=País modificado correctamente');
+        // Mover el archivo a la carpeta de destino
+        if (move_uploaded_file($_FILES['bandera']['tmp_name'], $rutaCompleta)) {
+            // Guardamos solo el nombre del archivo (sin la ruta completa)
+            $bandera = $nombreArchivo;
         } else {
-            header('Location: modificarPais.php?msj=Error en la modificación');
+            header('Location: modificarPais.php?msj=Error al subir la bandera');
+            exit;
         }
     } else {
-        header('Location: modificarPais.php?msj=Error al subir la bandera');
+        // Si no se subió una nueva bandera, mantenemos la bandera actual
+        // Aquí asumimos que ya tienes un método para obtener la bandera actual
+        $objCpais = new Cpais();
+        $paisExistente = $objCpais->cObtenerPaisPorNombre($nombrePais);
+
+        if ($paisExistente && $paisExistente->num_rows > 0) {
+            $pais = $paisExistente->fetch_assoc();
+            $bandera = $pais['bandera']; // Mantenemos la bandera actual
+        } else {
+            header('Location: modificarPais.php?msj=El país no existe');
+            exit;
+        }
+    }
+
+    // Ahora realizamos la modificación con la nueva bandera (o la bandera actual si no se subió una nueva)
+    $objCpais = new Cpais();
+    if ($objCpais->cModificarPais($nombrePais, $nuevoNombrePais, $bandera, $coordX, $coordY)) {
+        header('Location: modificarPais.php?msj=País modificado correctamente');
+    } else {
+        header('Location: modificarPais.php?msj=Error en la modificación');
     }
 } else {
     header('Location: modificarPais.php?msj=Todos los campos son obligatorios');

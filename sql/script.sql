@@ -40,4 +40,10 @@ CREATE TABLE PUNTUACIONES (
 	tiempo TIME
 );
 
-
+/*-- Tabla Categoria --*/
+CREATE TABLE IF NOT EXISTS categoria(
+	idCategoria INT AUTO_INCREMENT,
+	nombreCat VARCHAR(100) NOT NULL, -- Gastronomía
+	CONSTRAINT pk_categoria PRIMARY KEY (idCategoria),
+	CONSTRAINT uq_nombCat UNIQUE (nombreCat)
+);
