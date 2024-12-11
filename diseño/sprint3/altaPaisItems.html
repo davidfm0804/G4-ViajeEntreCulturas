@@ -1,0 +1,67 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta de Países</title>
+    <link rel="icon" href="../../src/img/mapa.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../../src/css/estiloHugoPaisItems.css">
+</head>
+<body>
+    <header>
+        <img src="../../src/img/logo.png">
+        <h1>Viaje entre Culturas</h1>
+    </header>
+<main>
+    <div>
+        <form>
+            <div>
+                <label for="IntroducirPais">Nombre país:</label>
+                <input type="text" name="pais">
+                <br><br>
+
+                <label for="bandera" id="subirBtn">
+                    Subir bandera
+                    <input type="file" id="bandera" name="imagen">
+                </label>                    
+                <br><br>
+
+                <label for="coordenadaX">Coordenada X:</label>
+                <input type="text" name="coordenada_x" placeholder="1200"disabled>
+                <br><br>
+
+                <label for="coordenadaY">Coordenada Y:</label>
+                <input type="text" name="coordenada_y" placeholder="800" disabled>
+                <br><br>
+            </div>   
+            <fieldset>
+                <legend>Item:</legend><br/>
+                <label></label>Categoría: </label>
+                <select >
+                    <option disabled selected></option>
+
+                <option></option>
+
+                <tr><td colspan='4'>No hay categorias disponibles</td></tr>
+
+            </select><br>
+            <br/><br/>
+                <label id="subirBtn">
+                    Subir foto
+                    <input type="file">
+                </label><br>
+                <br/>
+                <label>Inserte descripción: </label><br/>
+                <textarea></textarea><br>
+            </fieldset>
+            <br/>
+
+            <input type="hidden" >
+            <input type="hidden">
+                <button type="button" class="cancel">Cancelar</button>
+                <button type="button" class="update">Dar Alta</button>
+        </form>
+    </div>
+</main>
+<script src="<?php echo JS.'02validAlta.js';?>"></script>
+</body>
+</html>

@@ -13,13 +13,22 @@
     --gris-claro: #747474;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Press Start 2P', cursive;
 }
 
-/* Estilos Header */
+/* Estilos Generales */
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    color: white;
+}
+
 header {
     background-color: var(--azul);
     color: white;
@@ -27,236 +36,134 @@ header {
     padding: 0 20px;
     border-bottom: 4px solid var(--azul-claro);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    position: relative;
-    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header img {
-    width: 8vh;
+    width: 50px;
+    height: auto;
 }
 
 header h1 {
     font-size: 1.2em;
     color: var(--blanco-claro);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
 }
 
 header a {
-    display: inline-block;
-    font-size: 1.5em;
-    text-align: center;
+    font-size: 0.9em;
     text-decoration: none;
-    color: #fff;
-    padding: 0.5% 1%;
-    border: 3px solid var(--azul-claro);
-    border-radius: 8px;
-    background: var(--azul-oscuro);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-    box-shadow: 3px 3px 6px #000, -3px -3px 6px #444;
-    cursor: pointer;
+    color: white;
+    padding: 8px 15px;
+    background-color: var(--azul-oscuro);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
-    position: absolute;
-    top: 50%;
-    left: 80%;
-    transform: translateY(-50%);
 }
 
 header a:hover {
-    background: #a8cfeb;
+    background-color: var(--azul-claro);
     color: var(--azul-oscuro);
-    border-color: var(--azul-oscuro);
-    box-shadow: 0px 0px 10px var(--azul-claro);
-    transform: translateY(-57%);
 }
 
-/* Estilos Body */
-body {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-}
-
-/* Main */
 main {
-    width: 100%;
-    position: relative;
+    width: 90%;
+    margin: 20px auto;
 }
 
-/* Main | Elementos */
-main h2 {
-    text-transform: capitalize;
-    margin: 2% 0 0 42vw;
-    transform: translateX(-75%);
+h2 {
+    text-align: center;
     text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
     color: #fff;
+    margin-bottom: 20px;
 }
 
-/*H2 | [registrarContinente]*/
-.registro h2 {
-    margin-left: 50%;
-    margin-top: 6%;
-    transform: translateX(-50%);
-}
-
-/* Botones de la página */
-main > button {
-    background-color: var(--azul-oscuro);
-    color: #fff;
-    width: auto;
+button {
+    font-size: 0.9em;
     text-transform: capitalize;
-    border: 2px solid var(--azul-claro);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-    margin-left: -7vw;
-    padding: 1%;
-    font-size: 1em;
-    cursor: pointer;
-}
-
-main > button:hover {
-    background-color: var(--azul-claro);
-    transform: translate(-50%,-5%);
-    box-shadow: 0px 4px 8px rgba(245, 242, 242, 0.5);
-}
-
-/* Buttom | [listadoPuntuaciones] */
-#listPunt > button:nth-of-type(1){
-    position: absolute;
-    top: 2vh;
-    right: 34vw;
-}
-
-#listPunt > button:nth-of-type(2) {
-    position: absolute;
-    top: 2vh;
-    right: -2vw;
-}
-
-/* Buttom | [registrarContinente + registrarCategoria] */
-.registro  button {
-   width: auto; 
-   background-color: var(--azul-claro);
-   color: white;
-   text-transform: capitalize;
-   border: 2px solid var(--azul-claro);
-   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-   border-radius: 8px;
-   padding: 1% 1.5%;
-   font-size: 1em;
-   cursor: pointer;
-   transition: all 0.3s ease;
-}
-
-/* Posicionamiento flex para los botones */
-.registro div {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-}
-
-/* Ajuste de los inputs */
-input, select, option {
-    width: 80%;
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
     border-radius: 5px;
-    border: 1px solid var(--azul-oscuro);
-    font-family: 'Press Start 2P', cursive;
-    background-color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
 }
 
-select {
-    height: 3rem;
+button.add-category {
+    display: block;
+    margin: 10px auto;
+    background-color: var(--azul-oscuro);
+    color: white;
 }
 
-select option[disabled][selected] {
-    display: none; /* Ocultar cuando es seleccionada otra opción */
+button.add-category:hover {
+    background-color: var(--azul-claro);
+    color: var(--azul-oscuro);
 }
 
-/* Main | Tabla */
-main table th{
-    text-transform: uppercase;
-}
-
-main table {
-    background-color: rgba(5, 47, 77, 0.35); 
-    text-align: center;
-    color: #fff;
-    margin: 2% auto;
-    width: 80%;
+/* Estilo de tablas */
+table {
+    width: 100%;
+    margin: 20px auto;
     border-collapse: collapse;
-    border-radius: 10px;
-    border-spacing: 8px;
+    text-align: center;
+    background-color: rgba(5, 47, 77, 0.35);
+    color: #fff;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-    font-size: 1em;
 }
 
-main table tr {
+table th, table td {
+    padding: 15px;
     border-bottom: 2px solid var(--azul-claro);
 }
 
-main table th, main table td {
-    padding: 2% 0;
-}
-
-main table th {
+table th {
     background-color: #0085ae9d;
-    font-size: 1.4em;
+    text-transform: uppercase;
 }
 
-main table td {
-    font-size: 1.2em;
-}
-
-main table tr:nth-child(even) {
+table tr:nth-child(even) {
     background-color: #2a4365a8;
 }
 
-main table tr:nth-child(odd) {
+table tr:nth-child(odd) {
     background-color: #2d374895;
 }
 
-main table td button{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+button img {
+    width: 25px;
+    height: 25px;
 }
 
-main table td button img{
-    width: 50%;
-}
-
-/* Ajustar el formulario */
+/* Formulario */
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* Espacio entre los elementos */
-    margin-top: 10vh;
-}
-
-/* Estilos de botones en el formulario */
-form button {
-    padding: 10px 20px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    width: 400%;
+    max-width: 600px;
+    margin: 50px auto;
 }
 
-/* Botones con estilos específicos */
+form input {
+    width: 100%;
+    margin: 20px 0px;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid var(--azul-oscuro);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+form div {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Botones del formulario */
 form button[type="reset"] {
     background-color: var(--medio-oscuro);
     color: var(--blanco-claro);
@@ -288,10 +195,38 @@ form button[type="submit"]:hover {
     box-shadow: 0px 0px 15px var(--azul-claro);
 }
 
-/* Contenedor para los botones del formulario */
-form div {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
+/* Media Query para tablet (769px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {  
+    form {
+        padding: 40px; 
+        max-width: 800px; 
+        min-height: 600px; 
+    }
+
+    form input {
+        padding: 15px; 
+    }
+
+    form button {
+        font-size: 1.1em; 
+        padding: 15px 30px; 
+    }
+}
+
+/* Media Query para móvil (hasta 768px) */
+@media (max-width: 768px) {
+    form {
+        padding: 30px; 
+        max-width: 90%; 
+        min-height: 550px; 
+    }
+
+    form input {
+        padding: 12px; 
+    }
+
+    form button {
+        font-size: 1.1em; 
+        padding: 15px 30px; 
+    }
 }

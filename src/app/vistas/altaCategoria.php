@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="../../img/mapa.jpg" type="image/x-icon">
         <title>Registro Categoría</title>
-        <link rel="stylesheet" href="../../CSS/estiloCelia.css">
+        <link rel="stylesheet" href="../../css/estiloHugo.css">
     </head>
     <body>
         <header>
@@ -16,7 +16,7 @@
         <main class="registro">
             <h2>Registrar categoría</h2>
             <form id="categoriaForm" action="mostrarAltaCategoria.php" method="POST">
-                <input type="text" name="nombreCat" placeholder="Nombre Categoría" required>
+                <input type="text" name="nombreCat" placeholder="Nombre Categoría" >
                 <div>
                     <button type="reset">Borrar</button>
                     <button type="button" class="cancel">Cancelar</button>
