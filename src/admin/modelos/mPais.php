@@ -35,7 +35,10 @@ class mPais {
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function mAltaPais($nombrePais, $bandera, $coordX, $coordY) {
+    public function mAltaPais() {
+        $this->conectar();
+        $idContinente = $_GET['id'];
+        $nombreCont = $_GET['nombreCont'];
         $SQL = "INSERT INTO paises (nombrePais, bandera, coordX, coordY) 
                 VALUES ('$nombrePais', '$bandera', '$coordX', '$coordY')";
         

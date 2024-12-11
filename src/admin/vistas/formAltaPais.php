@@ -1,4 +1,7 @@
-    <main>
+   <?php 
+   
+   ?>
+   <main>
         <div>
             <form>
                 <div>

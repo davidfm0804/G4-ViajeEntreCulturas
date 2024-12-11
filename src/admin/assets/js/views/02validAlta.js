@@ -53,7 +53,7 @@ document.querySelector('.update').addEventListener('click', async function(event
         formData.append('coordY', coordY.value);
 
         try {
-            const response = await fetch('../02insertDatos.php', {
+            const response = await fetch(`index.php?controlador=Pais&accion=cAltaPais&id`, {
                 method: 'POST',
                 body: formData
             });
