@@ -5,9 +5,9 @@
     define('BANDERAS','assets/img/banderas/');
     define('JS','assets/js/views/');
     define('CONFIG','config/');
-    define('MODELOS','modelos/');
-    define('CONTROLADORES','controladores/');
-    define('PLANTILLAVISTAS','vistas/plantillas/');
+    define('MODELOS','model/');
+    define('CONTROLADORES','controller/');
+    define('PLANTILLAVISTAS','view/plantillas/');
 
     /*-- Parámetros por defecto--*/
     define('DEFAULT_CONTROLADOR','MenuPrincipal'); //Controlador por defecto, el que llama a pais

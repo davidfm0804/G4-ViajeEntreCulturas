@@ -1,12 +1,12 @@
 <?php
-    require_once CONFIG.'configdb.php'; //Archivo de configuración
+    require_once CONFIG.'configDbLocal.php'; //Archivo de configuraciÃ³n
 
     class bbdd {
 
         private $host; //Servidor
         private $db; // Nombre BBDD
         private $user; //Nombre usuario
-        private $pass; //Contraseña (vacio)
+        private $pass; //ContraseÃ±a (vacio)
         public $conexion;
     
         public function __construct() {		
