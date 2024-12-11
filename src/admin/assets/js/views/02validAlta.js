@@ -15,12 +15,25 @@ document.querySelector('.update').addEventListener('click', async function(event
 
     /*-- Recoger Elementos --*/
     const pais = document.querySelector('[name="pais"]');
-    const imgBandera = document.querySelector('[name="bandera"]');
+    const imgBandera = document.querySelector('[name="imagen"]');
     const coordX = document.querySelector('[name="coordenada_x"]');
     const coordY = document.querySelector('[name="coordenada_y"]');
-    const categoria = document.querySelector('[name="categoria"]');
-    const imgItem = document.querySelector('[name="foto1"]');
-    const descripcion = document.querySelector('[name="descripcion"]');
+
+    const categoria1 = document.querySelector('[name="categoria1"]');
+    const imgItem1 = document.querySelector('[name="foto1"]');
+    const descripcion1 = document.querySelector('[name="descripcion1"]');
+
+    const categoria2 = document.querySelector('[name="categoria2"]');
+    const imgItem2 = document.querySelector('[name="foto2"]');
+    const descripcion2 = document.querySelector('[name="descripcion2"]');
+
+    const categoria3 = document.querySelector('[name="categoria3"]');
+    const imgItem3 = document.querySelector('[name="foto3"]');
+    const descripcion3 = document.querySelector('[name="descripcion3"]');
+
+    const categoria4 = document.querySelector('[name="categoria4"]');
+    const imgItem4 = document.querySelector('[name="foto4"]');
+    const descripcion4 = document.querySelector('[name="descripcion4"]');
 
     /*-- Declaración Variables --*/
     let valid = true;
@@ -34,11 +47,38 @@ document.querySelector('.update').addEventListener('click', async function(event
         valid = false;
     }
 
-    // Input File [imgItem] | NOT NULL && Formato IMG
-    if (imgItem.files.length === 0) {
+    // Input File [imgItem1] | NOT NULL && Formato IMG
+    if (imgItem1.files.length === 0) {
         alert("Por favor, sube una imagen de la foto.");
         valid = false;
-    } else if (!formatoValido.includes(imgItem.files[0].type)) {
+    } else if (!formatoValido.includes(imgItem1.files[0].type)) {
+        alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
+        valid = false;
+    }
+
+    // Input File [imgItem2] | NOT NULL && Formato IMG
+    if (imgItem2.files.length === 0) {
+        alert("Por favor, sube una imagen de la foto.");
+        valid = false;
+    } else if (!formatoValido.includes(imgItem2.files[0].type)) {
+        alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
+        valid = false;
+    }
+
+    // Input File [imgItem3] | NOT NULL && Formato IMG
+    if (imgItem3.files.length === 0) {
+        alert("Por favor, sube una imagen de la foto.");
+        valid = false;
+    } else if (!formatoValido.includes(imgItem3.files[0].type)) {
+        alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
+        valid = false;
+    }
+
+    // Input File [imgItem4] | NOT NULL && Formato IMG
+    if (imgItem4.files.length === 0) {
+        alert("Por favor, sube una imagen de la foto.");
+        valid = false;
+    } else if (!formatoValido.includes(imgItem4.files[0].type)) {
         alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
         valid = false;
     }
@@ -65,9 +105,18 @@ document.querySelector('.update').addEventListener('click', async function(event
         formData.append('imgBandera', imgBandera.files[0]);
         formData.append('coordX', coordX.value);
         formData.append('coordY', coordY.value);
-        formData.append('categoria', categoria.value);
-        formData.append('imgItem', imgItem.files[0]);
-        formData.append('descripcion', descripcion.value);
+        formData.append('categoria1', categoria1.value);
+        formData.append('imgItem1', imgItem1.files[0]);
+        formData.append('descripcion1', descripcion1.value);
+        formData.append('categoria2', categoria2.value);
+        formData.append('imgItem2', imgItem2.files[0]);
+        formData.append('descripcion2', descripcion2.value);
+        formData.append('categoria3', categoria3.value);
+        formData.append('imgItem3', imgItem3.files[0]);
+        formData.append('descripcion3', descripcion3.value);
+        formData.append('categoria4', categoria4.value);
+        formData.append('imgItem4', imgItem4.files[0]);
+        formData.append('descripcion4', descripcion4.value);
 
         try {
             const response = await fetch(`index.php?controlador=Pais&accion=cAltaPais&idContinente=${idContinente}&nombreCont=${nombreCont}`, {

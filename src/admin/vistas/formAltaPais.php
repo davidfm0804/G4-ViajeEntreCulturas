@@ -26,28 +26,27 @@
                 ?>
                 <fieldset>
                     <legend>Item <?php echo $i;?>:</legend><br/>
+
                     <label for="categoria<?php echo $i; ?>">Categoría: </label>
+
                     <select name="categoria<?php echo $i; ?>" id="categoria<?php echo $i;?>">
                         <option disabled selected></option>
-                    <?php
-                    if(count($dataToView["data"])>0){
-                    foreach($dataToView["data"] as $categoria){
+                        <?php if(count($dataToView["data"])>0){
+                            foreach($dataToView["data"] as $categoria){ ?>
+                        <option value="<?php echo $categoria['idCategoria'];?>"><?php echo $categoria['nombreCat']; ?></option>
+                        <?php
+                            } 
+                        } else {
                         ?>
-                    <option value="<?php echo $categoria['idCategoria'];?>"><?php echo $categoria['nombreCat']; ?></option>
-                    <?php
-                    } 
-                } else {
-                    ?>
-                    <tr><td colspan='4'>No hay categorias disponibles</td></tr>
-                <?php
-                }
-                ?>
-                </select>
-                <br/><br/>
-                    <label for="subirfoto<?php echo $i; ?>" id="subirBtn<?php echo $i; ?>">
-                        Subir foto
-                        <input type="file" id="subirfoto<?php echo $i; ?>" name="foto<?php echo $i; ?>">
-                    </label> 
+                            <tr><td colspan='4'>No hay categorias disponibles</td></tr>
+                        <?php
+                        }
+                        ?>
+                    </select><br/><br/>
+
+                    <label for="subirfoto<?php echo $i; ?>" id="subirBtn<?php echo $i; ?>">Subir foto</label>
+                    <input type="file" id="subirfoto<?php echo $i; ?>" name="foto<?php echo $i; ?>">
+                     
                     <br/>
                     <label for="descripcion<?php echo $i; ?>" id="descripcion<?php echo $i; ?>">Inserte descripción: </label><br/>
                     <textarea id="descripcion<?php echo $i; ?>" name="descripcion<?php echo $i; ?>"></textarea>

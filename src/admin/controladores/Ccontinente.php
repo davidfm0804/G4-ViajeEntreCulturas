@@ -23,6 +23,10 @@ class cContinente {
         return $this->objContinente->mListadoContinentes();
     }
 
+    public function cFormModContinente(){
+        $this->vista = 'formModContinente';
+        
+    }
 
     public function cMostrarContinentes() {
         return $this->objcontinente->mMostrarContinentes();

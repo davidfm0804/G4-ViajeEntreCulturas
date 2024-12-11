@@ -1,7 +1,7 @@
 // -------------------------------------------- VALIDACIONES CONTINENTES--------------------------------------------------------
 
 document.querySelector('.cancel').addEventListener('click', function(){
-    window.location.href = 'index.php?controlador=MenuPrincipal&accion=cListadoContinentes';
+    window.location.href = 'index.php?controlador=Continente&accion=cListadoContinentes';
 });
 // Evento al hacer click en la clase update (validaciones)
 document.querySelector('.update').addEventListener('click', async function(event){
