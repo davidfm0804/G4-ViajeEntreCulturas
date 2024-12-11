@@ -4,6 +4,7 @@
             <button id="paises">Paises</button>
             <button id="items">Items</button>
             <button id="categorias">Categorías</button>
+            <button id="ranking">Ranking</button>
             <button id="valoraciones">Valoraciones</button>
         </main>
     </body>
