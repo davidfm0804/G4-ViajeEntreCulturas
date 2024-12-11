@@ -26,18 +26,23 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php
+                    if(count($dataToView["data"])>0){
+                        foreach($dataToView["data"] as $catg){
+                            ?>
+                            <tr id="<?php echo $catg["idCategoria"]; ?>">
+                                <td><?php echo $catg["nombreCat"]; ?></td> 
+                                <td><button><img class='png' src="<?php echo IMG.'modificar.png';?>"></button></td>
+                                <td><button><img class='png' src="<?php echo IMG.'borrar.png';?>"></button></td>
+                            </tr>
+                            <?php
+                        } 
+                    } else {
+                        ?>
+                        <tr><td colspan='4'>No hay categorías disponibles</td></tr>
                     <?php
-                if(count($dataToView["data"])>0){
-                foreach($dataToView["data"] as $pais){
+                    }
                     ?>
-                    <tr id="<?php echo $categoria["idCategoria"]; ?>">
-                        <td><?php echo $categoria["nombreCat"]; ?></td> 
-                        <td><button><img class='png' src="<?php echo IMG.'modificar.png';?>"></button></td>
-                        <td><button><img class='png' src="<?php echo IMG.'borrar.png';?>"></button></td>
-                    </tr>
-                    <?php
-                }} 
-                ?>
             </table>
         </main>
     </body>
