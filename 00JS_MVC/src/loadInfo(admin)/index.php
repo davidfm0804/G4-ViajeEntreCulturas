@@ -17,6 +17,9 @@ $controlador = new $nombreControlador(); //Instanciamos objeto de la clase contr
 $dataToView["data"] = array();
 if(method_exists($controlador,$_GET["accion"])){
     $dataToView["data"] = $controlador->{$_GET["accion"]}();
+} else {
+    // Manejar el error cuando el método no existe
+    die("Error: El método ".$_GET["accion"]." no existe en el controlador ".$nombreControlador);
 }
 
 /*switch ($controlador->vista){
