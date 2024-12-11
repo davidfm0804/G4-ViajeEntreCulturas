@@ -29,7 +29,7 @@ class mPais {
     public function mFormAltaPais(){
         $this->conectar();
         $idContinente = $_GET['id'];
-        $nombreCont = $GET['nombreCont'];
+        $nombreCont = $_GET['nombreCont'];
         $sql = 'SELECT * FROM categoria';
         $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
         return $resultado->fetch_all(MYSQLI_ASSOC);

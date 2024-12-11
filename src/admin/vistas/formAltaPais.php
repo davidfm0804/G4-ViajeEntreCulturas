@@ -24,6 +24,7 @@
                     <legend>Item:</legend>
                     <label for="categoria">Categoría: </label>
                     <select name="categoria" id="categoria">
+                        <option disabled selected></option>
                     <?php
                     if(count($dataToView["data"])>0){
                     foreach($dataToView["data"] as $categoria){
@@ -38,6 +39,15 @@
                 }
                 ?>
                 </select>
+                <br/><br/>
+                    <label for="subirfoto" id="subirBtn<?php echo $categoria['idCategoria']; ?>">
+                        Subir foto
+                        <input type="file" id="subirfoto" name="foto<?php echo $categoria['idCategoria']; ?>">
+                    </label> 
+                    <br/>
+                    <label for="descripcion" id="descripcion<?php echo $categoria['idCategoria']; ?>">Inserte descripción: </label><br/>
+                    <textarea id="descripcion" id="descripcion<?php echo $categoria['idCategoria']; ?>"></textarea>
+
                 </fieldset>
 
                     <button type="button" class="cancel">Cancelar</button>
