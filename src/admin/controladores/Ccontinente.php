@@ -17,8 +17,14 @@ class cContinente {
         $this->vista ='formAltaContinente';
     }
 
+    public function cListadoContinentes(){
+        $this->vista = 'listadoContinentes';
+        $this->tituloPagina = 'Listado de Continentes';
+        return $this->objContinente->mListadoContinentes();
+    }
 
-    public function cMostrarContinente() {
+
+    public function cMostrarContinentes() {
         return $this->objcontinente->mMostrarContinentes();
     }
     

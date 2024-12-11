@@ -1,15 +1,13 @@
 <main>
 
-<form action="altaContinente.php" method="POST">
+<form>
         <label for="nombreContinente">Nombre del Continente:</label>
         <input type="text" name="nombreContinente"> 
-        <input type="submit" value="Dar Alta"></br></br>
     </form>
-    <a href='listadoContinentes.php'>
-        <button>Volver Inicio</button>
-    </a>
+    <button type="button" class="cancel">Cancelar</button>
+    <button type="button" class="update">Dar Alta</button>
 
     </main>
 </body>
-<script src="validAltaCont.js"></script>
+<script src="<?php echo JS.'validAltaCont.js';?>"></script>
 </html>

@@ -23,10 +23,5 @@ class cMenuPrincipal {
         return $this->objMenuPrincipal->mPaisSelecContinente();
     }
 
-    public function cListadoContinentes(){
-        $this->vista = 'listadoContinentes';
-        $this->tituloPagina = 'Listado de Continentes';
-        return $this->objMenuPrincipal->mListadoContinentes();
-    }
 }
 ?>

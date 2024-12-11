@@ -11,6 +11,8 @@ class mPais {
         if ($this->conexion->connect_error) {
             die("Conexión fallida: " . $this->conexion->connect_error);
         }
+        // Activar modo de excepciones
+        $this->conexion->report_mode = MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT;
     }
 
     public function conectar(){
