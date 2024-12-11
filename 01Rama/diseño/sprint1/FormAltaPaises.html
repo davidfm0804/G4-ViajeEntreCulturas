@@ -3,12 +3,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alta de Países</title>
-    <link rel="icon" href="../src/img/mapa.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="../src/css/estiloFormAltaPaises.css">
+    <link rel="icon" href="../../src/img/mapa.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../../src/css/estiloFormAltaPaises.css">
 </head>
 <body>
     <header>
-        <img src="../src/img/logo.png" alt="Logo">
+        <img src="../../src/img/logo.png" alt="Logo">
         <h1>Viaje entre Culturas</h1>
     </header>
     <main>
@@ -32,6 +32,13 @@
                     <label for="coordenadaY">Coordenada Y:</label>
                     <input type="text" name="coordenada_y" placeholder="800" disabled>
                     <br><br>
+
+                    <select name="continente" id="continente">
+                        <option value=""> - Elige... - </option>
+                        <option value="1">Europa</option>
+                        <option value="2">África</option>
+                        <option value="3">Asia</option>
+                        <option value="4">Oceanía</option>
                 </div>   
                     <button type="button" class="cancel">Cancelar</button>
                     <button type="button" class="update">Dar Alta</button>

@@ -3,15 +3,13 @@
     define('CSS','assets/css/');
     define('IMG','assets/img/');
     define('BANDERAS','assets/img/banderas/');
-    define('JS','assets/js/view/');
-    define('JS_MODEL','assets/js/model/');
-    define('JS_CONTROLLER','assets/js/controller/');
-    define('PHP','../');
+    define('JS','assets/js/views/');
     define('CONFIG','config/');
-    define('MODELO','model/');
-    define('CONTROLLER','controller/');
+    define('MODELOS','modelos/');
+    define('CONTROLADORES','controladores/');
+    define('PLANTILLAVISTAS','vistas/plantillas/');
 
     /*-- Parámetros por defecto--*/
-    define('DEFAULT_CONTROLADOR','Categoria'); //Controlador por defecto, el que llama a pais
-    define('DEFAULT_ACCION','listarCategorias'); //Metodo por defecto, el que despliega el listado de paises
+    define('DEFAULT_CONTROLADOR','MenuPrincipal'); //Controlador por defecto, el que llama a pais
+    define('DEFAULT_ACCION','cMenuAdmin'); //Metodo por defecto, el que despliega el listado de paises
 ?>
