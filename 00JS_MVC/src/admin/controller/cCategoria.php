@@ -119,6 +119,9 @@
             }
 
             // 2. Verificar si el campo solo contiene letras y espacios
+            // ^ -> Inicio de la cadena
+            // [A-Za-záéíóúÁÉÍÓÚüÜ\s] -> Letras Mayus && Minsc | Vocales Tilde | ü | Espacios || [Solo Permitidos]
+            // $ -> Fin de la cadena
             if ($valid && !preg_match('/^[A-Za-záéíóúÁÉÍÓÚüÜ\s]+$/', trim($categoria))) {
                 $valid = false;
                 $error = "El nombre de la categoría solo puede contener letras y espacios.";
