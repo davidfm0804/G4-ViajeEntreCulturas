@@ -45,43 +45,31 @@ class mPais {
         $coordX = $_POST['coordX'];
         $coordY = $_POST['coordY'];
 
-        $idCategoria1 = $_POST['categoria1'];
-        $descripcion1 = $_POST['descripcion1'];
-        
-        $idCategoria2 = $_POST['categoria2'];
-        $descripcion2 = $_POST['descripcion2'];
-
-        $idCategoria3 = $_POST['categoria3'];
-        $descripcion3 = $_POST['descripcion3'];
-        
-        $idCategoria4 = $_POST['categoria4'];
-        $descripcion4 = $_POST['descripcion4'];
+        $idCategoria1 = $_POST['categoria1']; $descripcion1 = $_POST['descripcion1']; 
+        $idCategoria2 = $_POST['categoria2']; $descripcion2 = $_POST['descripcion2'];
+        $idCategoria3 = $_POST['categoria3']; $descripcion3 = $_POST['descripcion3'];
+        $idCategoria4 = $_POST['categoria4']; $descripcion4 = $_POST['descripcion4'];
 
         $imgBandera = $_FILES['imgBandera']['name']; //Ejemplo: india.png
         $imgBanderaTmp = $_FILES['imgBandera']['tmp_name'];
         $imgBanderaPath = BANDERAS.basename($imgBandera);
-        if (!move_uploaded_file($imgBanderaTmp, $imgBanderaPath)) {echo "Error al subir la bandera.";}
-
+        
         $imgItem1 = $_FILES['imgItem1']['name']; //Ejemplo: india.png
         $imgItemTmp1 = $_FILES['imgItem1']['tmp_name'];
         $imgItemPath1 = FOTOS.basename($imgItem1);
-        if (!move_uploaded_file($imgItemTmp1, $imgItemPath1)) {echo "Error al subir la foto.";}
 
         $imgItem2 = $_FILES['imgItem2']['name']; //Ejemplo: india.png
         $imgItemTmp2 = $_FILES['imgItem2']['tmp_name'];
         $imgItemPath2 = FOTOS.basename($imgItem2);
-        if (!move_uploaded_file($imgItemTmp2, $imgItemPath2)) {echo "Error al subir la foto.";}
-
+        
         $imgItem3 = $_FILES['imgItem3']['name']; //Ejemplo: india.png
         $imgItemTmp3 = $_FILES['imgItem3']['tmp_name'];
         $imgItemPath3 = FOTOS.basename($imgItem3);
-        if (!move_uploaded_file($imgItemTmp3, $imgItemPath3)) {echo "Error al subir la foto.";}
-
+        
         $imgItem4 = $_FILES['imgItem4']['name']; //Ejemplo: india.png
         $imgItemTmp4 = $_FILES['imgItem4']['tmp_name'];
         $imgItemPath4 = FOTOS.basename($imgItem4);
-        if (!move_uploaded_file($imgItemTmp4, $imgItemPath4)) {echo "Error al subir la foto.";}
-
+        
         $this->conexion->begin_transaction();
 
         try {
@@ -111,49 +99,25 @@ class mPais {
             $idCategoria4 = (int)$idCategoria4;
 
             // Inserción en la tabla item usando el idPais
-            $stmt = $this->conexion->prepare("INSERT INTO item (descripcion, imagen, idPais, idCategoria) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssii", $descripcion1, $imgItem1, $idPais, $idCategoria1);
+            $stmt = $this->conexion->prepare("INSERT INTO item (descripcion, imagen, idPais, idCategoria) VALUES (?, ?, ?, ?), (?, ?, ?, ?), (?, ?, ?, ?), (?, ?, ?, ?)");
+            $stmt->bind_param("ssiissiissiissii", $descripcion1, $imgItem1, $idPais, $idCategoria1, $descripcion2, $imgItem2, $idPais, $idCategoria2, $descripcion3, $imgItem3, $idPais, $idCategoria3, $descripcion4, $imgItem4, $idPais, $idCategoria4);
             if ($stmt === false) {
                 throw new Exception("Error al preparar la consulta SQL: " . $this->conexion->error);
             }
             if (!$stmt->execute()) {
                 throw new Exception("Error al insertar el item: " . $stmt->error);
             }
-
-            // Inserción en la tabla item usando el idPais
-            $stmt = $this->conexion->prepare("INSERT INTO item (descripcion, imagen, idPais, idCategoria) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssii", $descripcion2, $imgItem2, $idPais, $idCategoria2);
-            if ($stmt === false) {
-                throw new Exception("Error al preparar la consulta SQL: " . $this->conexion->error);
-            }
-            if (!$stmt->execute()) {
-                throw new Exception("Error al insertar el item: " . $stmt->error);
-            }
-
-            // Inserción en la tabla item usando el idPais
-            $stmt = $this->conexion->prepare("INSERT INTO item (descripcion, imagen, idPais, idCategoria) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssii", $descripcion3, $imgItem3, $idPais, $idCategoria3);
-            if ($stmt === false) {
-                throw new Exception("Error al preparar la consulta SQL: " . $this->conexion->error);
-            }
-            if (!$stmt->execute()) {
-                throw new Exception("Error al insertar el item: " . $stmt->error);
-            }
-
-            // Inserción en la tabla item usando el idPais
-            $stmt = $this->conexion->prepare("INSERT INTO item (descripcion, imagen, idPais, idCategoria) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssii", $descripcion4, $imgItem4, $idPais, $idCategoria4);
-            if ($stmt === false) {
-                throw new Exception("Error al preparar la consulta SQL: " . $this->conexion->error);
-            }
-            if (!$stmt->execute()) {
-                throw new Exception("Error al insertar el item: " . $stmt->error);
-            }
-
-
             // Si todo fue exitoso, hacer commit de la transacción
             $this->conexion->commit();
+
+            if (!move_uploaded_file($imgBanderaTmp, $imgBanderaPath)) {echo "Error al subir la bandera.";}
+            if (!move_uploaded_file($imgItemTmp1, $imgItemPath1)) {echo "Error al subir la foto.";}
+            if (!move_uploaded_file($imgItemTmp2, $imgItemPath2)) {echo "Error al subir la foto.";}
+            if (!move_uploaded_file($imgItemTmp3, $imgItemPath3)) {echo "Error al subir la foto.";}
+            if (!move_uploaded_file($imgItemTmp4, $imgItemPath4)) {echo "Error al subir la foto.";}
+
            return true;
+
         } catch (Exception $e) {
             // Si ocurre algún error, hacer rollback
             $this->conexion->rollback();

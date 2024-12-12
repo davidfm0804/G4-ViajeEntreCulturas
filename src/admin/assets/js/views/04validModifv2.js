@@ -6,24 +6,34 @@ document.querySelector('.cancel').addEventListener('click', function(){
     window.location.href = './crudPais.php';
 });
 
+document.querySelector('#subirBandera').addEventListener('change', function(event) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        document.querySelector('#banderaActualImg').src = e.target.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+});
+
 /*-- Dar Valor Elementos | LocalStorage --*/
 if(localStorage.getItem('nombrePais')) document.querySelector('[name="pais"]').value = localStorage.getItem('nombrePais');
-if(localStorage.getItem('imgBandera')) document.getElementById('#banderaActualImg').value = localStorage.getItem('imgBandera');
+if(localStorage.getItem('imgBandera')) document.querySelector('#banderaActualImg').value = localStorage.getItem('imgBandera');
 if(localStorage.getItem('idPais')) document.querySelector('[name="idPais"]').value = localStorage.getItem('idPais'); 
 if(localStorage.getItem('banderaAct')) document.querySelector('#banderaActualImg').src = localStorage.getItem('banderaAct');
 if(localStorage.getItem('coordX')) document.querySelector('[name="coordX"]').value = localStorage.getItem('coordX');
 if(localStorage.getItem('coordY')) document.querySelector('[name="coordY"]').value = localStorage.getItem('coordY');
-if(localStorage.getItem('imgBandera')) document.querySelector('#banderaActualImg').src = localStorage.getItem('imgBandera');
 
 /*-- Añadir Evento -> Form --*/
 document.querySelector('.update').addEventListener('click', async function(event){
 
     /*-- Recoger Elementos --*/
     const pais = document.querySelector('[name="pais"]').value;
-    const imgBandera = document.querySelector('[name="bandera"]');
-    const coordX = localStorage.getItem('coordX');
-    const coordY = localStorage.getItem('coordY');
-    const idPais = localStorage.getItem('idPais');
+    const imgBanderaInput = document.querySelector('#subirBandera');
+    const imgBandera = imgBanderaInput.files.length > 0 
+        ? imgBanderaInput.files[0] 
+        : document.querySelector('[name="banderaActual"]').value;
+    const coordX = document.querySelector('[name="coordX"]').value;
+    const coordY = document.querySelector('[name="coordY"]').value;
+    const idPais = document.querySelector('[name="idPais"]').value;
 
     /*-- Declaración Variables --*/
     let valid = true;
@@ -49,13 +59,11 @@ document.querySelector('.update').addEventListener('click', async function(event
 
         formData.append('idPais', idPais);
         formData.append('pais', pais);
-
-        if (imgBandera.files.length > 0) {
-            formData.append('imgBandera', imgBandera.files[0]);
+        if (imgBandera instanceof File) {
+            formData.append('imgBandera', imgBandera);
         } else {
-            formData.append('imgBandera', document.querySelector('#banderaActual').src);
+            formData.append('imgBandera', imgBandera);
         }
-
         formData.append('coordX', coordX);
         formData.append('coordY', coordY);
 

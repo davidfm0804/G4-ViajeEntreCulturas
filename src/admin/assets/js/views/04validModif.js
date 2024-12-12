@@ -20,7 +20,7 @@ document.getElementById('elcor').addEventListener('click', function(event) {
     // Quitar Evento Default
     event.preventDefault();
     const pais = document.querySelector('[name="pais"]').value;
-    const imgBandera = document.querySelector('[id="banderaActual"]').value || document.querySelector('#banderaActualImg').src;
+    const imgBandera = document.querySelector('[name="banderaActual"]').value || document.querySelector('#banderaActualImg').src;
     // const imgBandera = document.querySelector('[name="bandera"]').value ? document.querySelector('[name="bandera"]').value : document.querySelector('#banderaActual').src;
     const idPais = document.querySelector('[name="idPais"]').value;
     localStorage.setItem('nombrePais', pais);

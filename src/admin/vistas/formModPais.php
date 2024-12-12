@@ -2,7 +2,7 @@
         <div>
             <form>
                 <div>
-                    <?php
+                <?php
                     foreach($dataToView["data"] as $pais){
                     ?>
                     <label for="pais">Nombre país:</label>
