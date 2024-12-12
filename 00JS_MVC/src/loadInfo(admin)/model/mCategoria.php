@@ -94,8 +94,8 @@ class MCategoria {
         
         return count($stmt->fetch_all(MYSQLI_ASSOC)) > 0 ? true : false;
     
-    
     }
     
 }
+
 ?>
