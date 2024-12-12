@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="<?php echo IMG.'mapa.jpg'; ?>" type="image/x-icon">
+        <title>Gestión Categorías</title>
+        
+        <link rel="stylesheet" href="<?php echo CSS.'estiloCelia.css'; ?>">
+    </head>
+    <body>
+        <header>
+            <img src="<?php echo IMG.'logo.png'; ?>" alt="Logo">
+            <h1>Viaje entre Culturas</h1>
+            <a href="index.php">PANEL ADMIN</a>
+        </header>
 <?php
 $idContinente = $_GET['id'];
 $nombreCont = $_GET['nombreCont'];

@@ -23,5 +23,11 @@ class cMenuPrincipal {
         return $this->objMenuPrincipal->mPaisSelecContinente();
     }
 
+    public function ListadoCategorias(){
+        $this->vista = 'listadoCategorias';
+        $this->tituloPagina = 'Listado de categorías';
+        return $this->objMenuPrincipal->mListadoCategorias();
+    }
+
 }
 ?>
