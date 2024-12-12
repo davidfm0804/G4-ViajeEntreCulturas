@@ -3,7 +3,7 @@ const nombreCont = document.querySelector('[name="nombreCont"]').value;
 
 /*-- Ajustes DOM --*/
 document.querySelector('.cancel').addEventListener('click', function(){
-    window.location.href = 'index.php';
+    window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`;
 });
 
 // Cambiar la imagen de la bandera al subir una nueva imagen 
@@ -20,8 +20,9 @@ document.getElementById('elcor').addEventListener('click', function(event) {
     // Quitar Evento Default
     event.preventDefault();
     const pais = document.querySelector('[name="pais"]').value;
-    const imgBandera = document.querySelector('[name="banderaActual"]').value || document.querySelector('#banderaActualImg').src;
-    // const imgBandera = document.querySelector('[name="bandera"]').value ? document.querySelector('[name="bandera"]').value : document.querySelector('#banderaActual').src;
+    const imgBanderaInput = document.querySelector('#subirBandera');
+    const imgBandera = document.querySelector('[name="banderaActual"]').value || document.querySelector('#banderaActualImg').name;
+    //imgBandera = "bandera.png"
     const idPais = document.querySelector('[name="idPais"]').value;
     localStorage.setItem('nombrePais', pais);
     localStorage.setItem('imgBandera', imgBandera);

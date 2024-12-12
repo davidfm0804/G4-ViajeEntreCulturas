@@ -51,5 +51,17 @@ class cPais {
          }
          exit;
     }
+
+    public function cBorrarPais(){
+        $result = $this->objPais->mBorrarPais();
+        
+        if ($result) {
+           echo "Registro eliminado correctamente";
+        } else {
+            // Si hubo un error, establecemos otro mensaje en la sesión
+            echo "Error al eliminar el registro";
+        }
+        exit;
+    }
 }
 ?>

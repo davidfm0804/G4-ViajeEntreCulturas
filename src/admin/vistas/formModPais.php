@@ -13,13 +13,13 @@
                     <label for="banderaActual">Bandera actual:
                         <input type="file" id="banderaActual" name="bandera" style="display: none;" onchange="cambiarBandera(this)">
                         <br/>
-                        <img width="25%" src="<?php echo BANDERAS.$pais["bandera"]; ?>" alt="Bandera de <?php echo $pais["nombrePais"]; ?>" id="banderaActualImg">
+                        <img width="25%" src="<?php echo BANDERAS.$pais["bandera"]; ?>" alt="Bandera de <?php echo $pais["nombrePais"]; ?>" name="<?php echo $pais["nombrePais"]; ?>" id="banderaActualImg">
                     </label>
                     <br><br>
                     <label for="subirBandera" class="subirBtn">Subir nueva bandera</label>
                     <input type="file" id="subirBandera" name="subirBandera">
                     
-                    <input type="hidden" name="banderaActual" value="<?php echo $pais["bandera"]; ?>">
+                    <input type="hidden" name="banderaActual" value="<?php echo $pais["bandera"]; ?>"> <!-- value="india.png"-->
                     <input type="hidden" name="coordX" id="coordX" value="<?php echo $pais["coordX"]; ?>">
                     <input type="hidden" name="coordY" id="coordY" value="<?php echo $pais["coordY"]; ?>">
                     <input type="hidden" name="idPais" value="<?php echo $_GET["idPais"]; ?>">

@@ -179,10 +179,18 @@ class mPais {
     }
     
 
-    public function mBorrarPais($nombrePais) {
-        $SQL = "DELETE FROM paises WHERE nombrePais = '$nombrePais'";
-
-        return $this->conexion->query($SQL);
+    public function mBorrarPais() {
+        $this->conectar();
+        $id = $_POST['id'];
+        $sql = "DELETE FROM ".$this->tabla." WHERE idPais = ?";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bind_param("i", $id);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+        $stmt->close();
     }
 }
 ?>

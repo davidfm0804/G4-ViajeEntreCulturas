@@ -32,13 +32,13 @@ document.querySelectorAll('.modificar').forEach(button => {
 document.querySelectorAll('.borrar').forEach(button => {
     button.addEventListener('click', async function () {
         // Obtener ID Pais || closest -> Accede al 'tr' más cercano | id -> Accede al atributo id definido en el 'tr'
-        const codPais = button.closest('tr').id;
+        const idPais = button.closest('tr').id;
         const formData = new FormData();
-        formData.append('id', codPais);
+        formData.append('id', idPais);
         if (confirm('¿Está seguro de que desea borrar este país?')) {
             // Promesa | Fetch + FormData -> Borrar Pais
             try {
-                const response = await fetch ('../04borrarPais.php',{
+                const response = await fetch (`index.php?controlador=Pais&accion=cBorrarPais`,{
                     method: 'POST',
                     body: formData,
                 });

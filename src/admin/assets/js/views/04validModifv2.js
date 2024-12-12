@@ -3,7 +3,7 @@ const nombreCont = document.querySelector('[name="nombreCont"]').value;
 
 /*-- Ajustes DOM --*/
 document.querySelector('.cancel').addEventListener('click', function(){
-    window.location.href = './crudPais.php';
+    window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`;
 });
 
 document.querySelector('#subirBandera').addEventListener('change', function(event) {
@@ -48,7 +48,7 @@ document.querySelector('.update').addEventListener('click', async function(event
     }
 
     // Input File [imgBandera] | NOT NULL && Formato IMG
-    if (imgBandera.files.length > 0 && !formatoValido.includes(imgBandera.files[0].type)) {
+    if (imgBanderaInput.files.length > 0 && !formatoValido.includes(imgBanderaInput.files[0].type)) {
         alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
         valid = false;
     }
