@@ -65,13 +65,14 @@ class cCategoria {
 
     // Verificar si la categoría ya existe en la base de datos
     public function csuCategoria(){
-        if (isset($_POST['nombreCat'])) {
-            $nombreCat = $_POST['nombreCat'];
+        if (isset($_POST['categoria'])) {
+            $nombreCat = $_POST['categoria'];
             $result = $this->objCatg->verificarCategoria($nombreCat);
-            return $result;
+            echo json_encode(['exists' => $result]);
         } else {
-            return false;
+            echo json_encode(['exists' => false]);
         }
+        exit;
     }
 }
 ?>

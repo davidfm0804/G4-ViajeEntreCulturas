@@ -88,14 +88,14 @@ class MCategoria {
     
         $stmt->bind_param("s", $nombreCat);
         $stmt->execute();
-
+        $stmt->bind_result($count);
+        $stmt->fetch();
         $stmt->close();
         $this->conexion->close();
         
-        return count($stmt->fetch_all(MYSQLI_ASSOC)) > 0 ? true : false;
-    
-    
+        return $count > 0;
     }
     
 }
+
 ?>

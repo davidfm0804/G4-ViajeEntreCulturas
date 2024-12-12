@@ -16,7 +16,7 @@
         </header>
         <main class="registro">
             <h2>Registrar categoria</h2>
-            <input type="text" name="nombreCatg" placeholder="Nombre Categoría" value="">
+            <input type="text" name="categoria" placeholder="Nombre Categoría" value="">
             <button>borrar</button>
             <button>cancelar</button>
             <button>enviar</button>

@@ -1,6 +1,6 @@
 /*-- Añadir Evento | Botón Borrar --*/
 document.querySelector('button:nth-of-type(1)').addEventListener('click', function () {
-    document.querySelector('[name="nombreCatg"]').value = '';
+    document.querySelector('[name="categoria"]').value = '';
 });
 
 /*-- Añadir Evento | Botón Cancelar --*/
@@ -12,20 +12,20 @@ document.querySelector('button:nth-of-type(2)').addEventListener('click', functi
 document.querySelector('button:nth-of-type(3)').addEventListener('click', async function () {
     /*-- Crear FormData --*/
     const formData = new FormData();
-    formData.append('categoria', document.querySelector('[name="nombreCatg"]').value);
+    formData.append('categoria', document.querySelector('[name="categoria"]').value);
     console.log(formData.get('categoria'));
 
     /*-- Llamada Controlador | Alta Categoría --*/
     const result = await altaCategoria(formData); // Esperar el resultado de la promesa
     console.log(result);
-    if (result){
+    if (result === "Categoria registrada correctamente") {
         // Crear elementos
         const h2 = document.createElement('h2');
         h2.textContent = 'Datos enviados:';
         h2.style.margin = '4%';
 
         const pre = document.createElement('pre');
-        pre.textContent = "Nuevo registro creado exitosamente";
+        pre.textContent = result;
         pre.style.margin = '1% 0 4% 6%';
 
         const buttonAddCategoria = document.createElement('button');

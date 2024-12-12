@@ -21,7 +21,7 @@
                     foreach($dataToView["data"] as $catg){
             ?>
             <input type="hidden" name="idCat" value="<?php echo $catg['idCategoria']?>">
-            <input type="text" name="categoria" value="<?php echo $catg['nombreCat']?>" placeholder="Nombre Categoría">
+            <input type="text" name="categoria" placeholder="Nombre Categoría" value="<?php echo $catg['nombreCat']?>">
             <?php
                 }}
             ?>

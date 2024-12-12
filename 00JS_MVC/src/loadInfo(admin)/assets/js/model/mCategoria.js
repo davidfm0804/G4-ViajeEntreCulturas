@@ -32,15 +32,13 @@ async function mBorrarCategoria(formData) {
 // Modificar Categoría | Promesa -> Fetch + FormData
 async function mModificarCategoria(formData) {
     try {
-        console.log(formData.get('categoria'));
-        console.log(formData.get('idCat'));
         const response = await fetch ('index.php?controlador=Categoria&accion=modificarCategoria',{
             method: 'POST',
-            body: formData,
+            body: formData
         });
-    
+
         return response;
-    
+
     } catch (error) {
         return false;
     }
@@ -48,20 +46,15 @@ async function mModificarCategoria(formData) {
 
 async function verificarCategoria(formData) {
     try {
+        console.log("Enviando solicitud para verificar categoría...");
         const response = await fetch('index.php?controlador=Categoria&accion=csuCategoria', {
             method: 'POST',
             body: formData
         });
     
-        console.log('mCatg');
-        console.log(response);
-        const data = await response.text(); // Suponiendo que el servidor devuelve JSON
-        console.log('Datos recibidos:', data);
-        if(!response.ok) {
-            return false;
-        }
-
-        return data;
+        const data = await response.json();
+        console.log("Respuesta del servidor:", data);
+        return data.exists;
     
     } catch (error) {
         console.error('Error:', error);
