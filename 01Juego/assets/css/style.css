@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --oscuro: #1a202c;
+  --medio-oscuro: #2d3748;
+  --claro-oscuro: #4a5568;
+  --azul: #2c5282;
+  --azul-claro: #63b3ed;
+  --acento: #0085ae;
+  --amarillo: #ffcc00;
+  --blanco-claro: #ebf8ff;
+  --azul-oscuro: #2a4365;
+  --gris-claro: #747474;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  background-color: var(--oscuro);
+  color: var(--blanco-claro);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+header {
+  background-color: var(--azul);
+  color: white;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 20px;
+  border-bottom: 4px solid var(--azul-claro);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  width: 100%;
+}
+
+header img {
+  width: 70px;
+}
+
+header h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+main {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../img/mapa.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  padding-top: 2em;
+  color: white;
+}
+
+#start-game {
+  position: relative;
+  height: 4em;
+  padding: 1em;
+  background-color: var(--acento);
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  margin-top: 1.5em;
+}
+
+#start-game:hover {
+  background-color: var(--azul-claro);
+}
+
+button {
+  background-color: var(--azul-oscuro);
+  color: white;
+  cursor: pointer;
+  border: 2px solid var(--azul-oscuro);
+  outline: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-size: 1em;
+  margin: 0.5em;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background-color: var(--azul);
+  color: var(--blanco-claro);
+  border-color: var(--azul-claro);
+  box-shadow: 0px 4px 12px var(--azul-claro);
+}
+
+button:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 150px); /* 4 columnas */
+  grid-gap: 15px;
+  margin-top: 3em;
+  justify-content: center;
+}
+
+.card {
+  width: 150px;
+  height: 150px;
+  background-color: var(--azul-oscuro);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card.flipped {
+  background-color: var(--azul-claro);
+}
+
+.card.matched {
+  background-color: var(--acento);
+  box-shadow: 0 0 10px var(--amarillo);
+}
+
+#timer {
+  font-size: 1.5em;
+  color: white;
+  margin-top: 2em;
+}
+
+.hidden {
+  display: none;
+}
+
+#end-screen {
+  margin-top: 3em;
+  color: white;
+}
+
+input {
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid var(--azul-claro);
+  border-radius: 5px;
+  font-size: 1.2em;
+  background-color: var(--gris-claro);
+}
+
+table {
+  background-color: rgba(5, 47, 77, 0.35);
+  text-align: center;
+  margin: auto;
+  margin-top: 6em;
+  width: 100%;
+  border-spacing: 8px;
+  border-collapse: collapse;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+tr, td, th {
+  border-bottom: 2px solid var(--azul-claro);
+  padding: 5px 0px;
+}
+
+#restart-game {
+  font-size: 20px;
+  padding: 15px 30px;
+  margin-top: 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#restart-game:hover {
+  background-color: #45a049;
+}
+
+#clear-ranking {
+  font-size: 20px;
+  padding: 15px 30px;
+  margin-top: 20px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#clear-ranking:hover {
+  background-color: #c0392b;
+}
+
+#ranking {
+  margin-bottom: 30px;
+}
