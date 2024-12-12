@@ -6,56 +6,42 @@ async function altaCategoria(formData) {
 
     /*-- Validaciones --*/
 
-    // Input Categoría | NOT NULL
-    if (!formData.get('categoria')) {
+    // 1. Validar que el campo no esté vacío
+    if (!formData.get('categoria').trim()) {
         alert("Por favor, indique el nombre de la categoría.");
         valid = false;
     }
-
-    // 1. Validar que el campo no esté vacío
-    if (!nombreCatg.value.trim()) {
-        alert("Por favor, ingrese el nombre de la categoría.");
-        valid = false;
-    } 
     
     // 2. Validar que solo contenga letras y espacios
     else {
         const regex = /^[A-Za-záéíóúÁÉÍÓÚüÜ\s]+$/;
-        if (!regex.test(nombreCatg.value.trim())) {
+        if (!regex.test(formData.get('categoria').trim())) {
             alert("El nombre de la categoría solo puede contener letras y espacios.");
             valid = false;
         }
     }
 
     // 3. Validar la longitud mínima y máxima
-    if (nombreCatg.value.trim().length < 3 || nombreCatg.value.trim().length > 50) {
+    if (valid && (formData.get('categoria').trim().length < 3 || formData.get('categoria').trim().length > 50)) {
         alert("El nombre de la categoría debe tener entre 3 y 50 caracteres.");
         valid = false;
     }
 
     // 4. Validar que no sea solo espacios
-    if (nombreCatg.value.trim().replace(/\s/g, '').length === 0) {
+    if (valid && (formData.get('categoria').trim().replace(/\s/g, '').length === 0)) {
         alert("El nombre de la categoría no puede estar compuesto solo por espacios.");
         valid = false;
     }
 
     // 5. Validar palabras prohibidas (opcional)
-    const palabrasProhibidas = ["inapropiado", "ofensivo"];
-    if (palabrasProhibidas.some((palabra) => nombreCatg.value.toLowerCase().includes(palabra))) {
+    const palabrasProhibidas = ["imbecil", "tonto"];
+    if (valid && (palabrasProhibidas.some((palabra) => formData.get('categoria').trim().toLowerCase().includes(palabra)))) {
         alert("El nombre contiene palabras no permitidas.");
         valid = false;
     }
 
-    // Si no es válido, salir sin hacer nada más
-    if (!valid) {
-        return;
-    }
-
-    /*-- Confirmación del Usuario --*/
-    const confirmar = confirm("¿Está seguro de que desea registrar esta categoría?");
-    if (!confirmar) {
-        return;
-    }
+    /*-- Confirmación del Usuario --
+    if(confirm("¿Está seguro de que desea registrar esta categoría?")){
 
     // Comprobar si la Categoría ya Existe en el Servidor
     const response = await verificarCategoria(formData);
@@ -68,7 +54,7 @@ async function altaCategoria(formData) {
     if (result.existe) {
         alert('La categoría ya existe. Por favor, introduzca otra.');
         return;
-    /*-- Comprobar si la Categoría ya Existe en el Servidor --*/
+    /*-- Comprobar si la Categoría ya Existe en el Servidor --
     try {
         const formData = new FormData();
         formData.append('nombreCat', nombreCatg.value.trim());
@@ -93,28 +79,30 @@ async function altaCategoria(formData) {
             return; // Salir si la categoría ya existe
         }
 
-        /*-- Si no existe, Enviar el Formulario --*/
+        /*-- Si no existe, Enviar el Formulario --
         console.log("Formulario válido. Procediendo al envío...");
         form.submit();
 
     } catch (error) {
         console.error("Error:", error);
         alert("Hubo un error al procesar la solicitud.");
-    }
+    } 
+    } --*/    
 
     /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
     if (valid) {
         const response = await mAltaCategoria(formData);
 
         if (response && response.ok) {
-            alert( "Categoria registrada correctamente");
+            return "Categoria registrada correctamente";
         } else {
-            alert("Error al registrar la categoría");
+            return "Error al registrar la categoría";
         }
-
+        
     }
     
 }
+
 
 // Borrar Categoria | Promesa -> Fetch + FormData 
 async function borrarCategoria(formData) {
