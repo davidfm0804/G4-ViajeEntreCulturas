@@ -24,7 +24,7 @@ class cCategoria {
 
     public function insertDatos(){
         $categoria = $_POST['categoria'];
-        /*-- VALIDACIONES --*/
+        validarCategoria($categoria);
         return $this->objCatg->insertCategoria($categoria);
     }
 
