@@ -1,3 +1,9 @@
+
+const idContinente = document.querySelector('[name="idContinente"]').value;
+const nombreCont = document.querySelector('[name="nombreCont"]').value;
+const pais = document.querySelector('[name="pais"]').value;
+const idPais = document.querySelector('[name="idPais"]').value;
+
 /*-- Ajustes Main -> Position Absolute --*/
 document.querySelector('main').style.position = "relative";
 
@@ -22,7 +28,7 @@ document.getElementById('mapa').addEventListener('click', function(event) {
     const chincheta = document.createElement("img");
     chincheta.id = "chincheta";
     chincheta.classList.add('chincheta');
-    chincheta.src = "../../img/chincheta.png";
+    chincheta.src = "assets/img/chincheta.png";
     chincheta.style.position = "absolute";
     chincheta.style.left = `${x}%`;
     chincheta.style.top = `${y}%`;
@@ -33,6 +39,6 @@ document.getElementById('mapa').addEventListener('click', function(event) {
 /*-- Añadir Event -> Tecla Enter --*/
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        window.location.href = './modificarPais.php?script=04validModifv2.js';
+        window.location.href = `index.php?controlador=Pais&accion=cFormModPais&idPais=${idPais}&pais=${pais}&idContinente=${idContinente}&nombreCont=${nombreCont}&script=04validModifv2.js`;
     }
 });

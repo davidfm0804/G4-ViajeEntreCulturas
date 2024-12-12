@@ -1,3 +1,6 @@
+const idContinente = document.querySelector('[name="idContinente"]').value;
+const nombreCont = document.querySelector('[name="nombreCont"]').value;
+
 /*-- Ajustes DOM --*/
 document.querySelector('.cancel').addEventListener('click', function(){
     window.location.href = './crudPais.php';
@@ -5,12 +8,12 @@ document.querySelector('.cancel').addEventListener('click', function(){
 
 /*-- Dar Valor Elementos | LocalStorage --*/
 if(localStorage.getItem('nombrePais')) document.querySelector('[name="pais"]').value = localStorage.getItem('nombrePais');
-if(localStorage.getItem('imgBandera')) document.querySelector('#banderaActual').value = localStorage.getItem('imgBandera');
+if(localStorage.getItem('imgBandera')) document.getElementById('#banderaActualImg').value = localStorage.getItem('imgBandera');
 if(localStorage.getItem('idPais')) document.querySelector('[name="idPais"]').value = localStorage.getItem('idPais'); 
-if(localStorage.getItem('banderaAct')) document.querySelector('#banderaActual').src = localStorage.getItem('banderaAct');
+if(localStorage.getItem('banderaAct')) document.querySelector('#banderaActualImg').src = localStorage.getItem('banderaAct');
 if(localStorage.getItem('coordX')) document.querySelector('[name="coordX"]').value = localStorage.getItem('coordX');
 if(localStorage.getItem('coordY')) document.querySelector('[name="coordY"]').value = localStorage.getItem('coordY');
-if(localStorage.getItem('imgBandera')) document.querySelector('#banderaActual').src = localStorage.getItem('imgBandera');
+if(localStorage.getItem('imgBandera')) document.querySelector('#banderaActualImg').src = localStorage.getItem('imgBandera');
 
 /*-- Añadir Evento -> Form --*/
 document.querySelector('.update').addEventListener('click', async function(event){
@@ -63,7 +66,7 @@ document.querySelector('.update').addEventListener('click', async function(event
 
         // Promesa | Fetch + FormData -> Borrar Pais
         try {
-            const response = await fetch ('../05modificarPais.php',{
+            const response = await fetch ('index.php?controlador=Pais&accion=cUpdatePais',{
                 method: 'POST',
                 body: formData,
             });
@@ -72,15 +75,15 @@ document.querySelector('.update').addEventListener('click', async function(event
             if(response.ok){
                 const result = await response.text();
                 alert(result);
-                window.location.href = './crudPais.php'; 
+                window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`; 
             }else{
                 alert('País modificado correctamente.');
-                window.location.href = './crudPais.php'; 
+                window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`; 
             }
         } catch (error) {
             console.error('Error:', error);
             alert('Error en la conexión con el servidor');
-            window.location.href = './crudPais.php'; 
+            window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`; 
         }
                 
         // Borrar Coordenadas localStorage

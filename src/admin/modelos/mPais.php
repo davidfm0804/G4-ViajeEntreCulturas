@@ -44,12 +44,16 @@ class mPais {
         $nombrePais = $_POST['pais'];
         $coordX = $_POST['coordX'];
         $coordY = $_POST['coordY'];
+
         $idCategoria1 = $_POST['categoria1'];
         $descripcion1 = $_POST['descripcion1'];
+        
         $idCategoria2 = $_POST['categoria2'];
         $descripcion2 = $_POST['descripcion2'];
+
         $idCategoria3 = $_POST['categoria3'];
         $descripcion3 = $_POST['descripcion3'];
+        
         $idCategoria4 = $_POST['categoria4'];
         $descripcion4 = $_POST['descripcion4'];
 
