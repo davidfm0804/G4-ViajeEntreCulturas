@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --oscuro: #1a202c;
+  --medio-oscuro: #2d3748;
+  --claro-oscuro: #4a5568;
+  --azul: #2c5282;
+  --azul-claro: #63b3ed;
+  --acento: #0085ae;
+  --amarillo: #ffcc00;
+  --blanco-claro: #ebf8ff;
+  --azul-oscuro: #2a4365;
+  --gris-claro: #747474;
+}
+
+
+*{
+        margin: 0;
+        padding: 0;
+        font-family: 'Press Start 2P', cursive;
+}
+
+/* Estilos Header */
+header {
+    background-color: var(--azul);
+    color: white;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
+    border-bottom: 4px solid var(--azul-claro);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+header img {
+    width: 70px;
+  }
+
+  header h1 {
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%);
+    font-size: 1.2em;
+    color: var(--blanco-claro);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+main {          
+  background:
+  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url(../img/mapa.jpg);
+  /* background-image: url(../img/mapa.jpg); */
+  height: 92vh;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+h2{
+  padding-top: 2em;
+  color: white;
+}
+
+#altaPais{
+  position:relative;
+  left: 40%;
+  top: -1em;
+  height: 4em;
+  padding: 1em;
+  background-color: var(--acento);
+}
+
+#altaPais:hover{
+  background-color: var(--azul-claro);
+}
+
+button{
+  background-color: var(--azul-oscuro);
+  color: white;
+  cursor: pointer;
+  border: 2px solid var(--azul-oscuro);
+  outline: none; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background-color: var(--azul);
+  color: var(--blanco-claro);
+  border-color: var(--azul-claro);
+  box-shadow: 0px 4px 12px var(--azul-claro);
+}
+
+button:active {
+  box-shadow: none; 
+  transform: translateY(2px); 
+}
+
+.png{
+  width: 40px;
+  
+}
+
+table{
+  background-color: rgba(5, 47, 77, 0.35); 
+  text-align: center;
+  margin: auto;
+  margin-top: 6em;
+  width: 100%;
+  border-spacing: 8px;
+  border-collapse: collapse;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.colNombre{
+  text-align: center;
+  width: 65%;
+}
+
+.flag{
+  width: 60px;
+}
+
+
+
+.cabecera{
+  padding: 10px 0;
+}
+
+
+tr, td, th {
+  border-bottom: 2px solid var(--azul-claro);
+  padding: 5px 0px;
+}
+
+
+
+/* --------------------------------SCROLLBAR--------------------------------*/
+/* Estilo para el contenedor de la página */
+html {
+    scroll-behavior: smooth;  /* Desplazamiento suave */
+  }
+  
+  /* Estilo para el scrollbar en el cuerpo de la página */
+  ::-webkit-scrollbar {
+    width: 8px;  /* Un scrollbar más delgado */
+    height: 8px;  /* Si hay scrollbar horizontal, hacerlo más delgado */
+  }
+  
+  /* Estilo para el fondo del scrollbar */
+  ::-webkit-scrollbar-track {
+    background: var(--azul-claro);  /* Color de fondo muy suave */
+    border-radius: 10px;  /* Bordes redondeados */
+  }
+  
+  /* Estilo para la barra del scrollbar */
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--azul-oscuro);  /* Barra en un tono oscuro pero sutil */
+    border-radius: 10px;  /* Bordes redondeados */
+    border: 2px solid rgba(0, 0, 0, 0.1);  /* Ligero borde para dar definición */
+  }
+  
+  /* Efecto al hacer hover sobre el scrollbar */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.5);  /* Oscurecer al pasar el mouse */
+  }
+  
+  /* --------------------------------MEDIA QUERIES--------------------------------*/
+
+  @media screen and (max-width: 1024px) and (min-width: 769px){
+    table{
+      margin-top: 2em;
+    }
+
+    h2{
+      padding-top: 2em;
+    }
+
+    .cabecera{
+      padding: 10px 8px;
+    }
+  }
+
+
+  @media only screen and (max-width: 768px) {
+  h2{
+    padding-top: 2em;
+  }
+
+  #altaPais{
+    left: 35%;
+    top: 3em;
+    height: 4em;
+    padding: 1em;
+  }
+
+  table{
+    margin-top: 10em;
+    font-size: small;
+  }
+
+  .cabecera{
+    padding: 10px 8px;
+  }
+}
+
