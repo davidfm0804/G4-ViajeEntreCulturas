@@ -1,9 +1,9 @@
 <?php
-class Mcategoria {
+class mCategoria {
     private $conexion;
 
     public function __construct() {
-        require_once 'configDb.php';
+        require_once CONFIG.'configDbLocal.php';
         $this->conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
         $this->conexion->set_charset("utf8");
 
