@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --oscuro: #1a202c;
+    --medio-oscuro: #2d3748;
+    --claro-oscuro: #4a5568;
+    --azul: #2c5282;
+    --azul-claro: #63b3ed;
+    --acento: #0085ae;
+    --amarillo: #ffcc00;
+    --blanco-claro: #ebf8ff;
+    --azul-oscuro: #2a4365;
+    --gris-claro: #747474;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/*-- Header --*/
+header {
+    background-color: var(--azul);
+    color: white;
+    height: 8vh;
+    padding: 0 20px;
+    border-bottom: 4px solid var(--azul-claro);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    min-height: 60px;
+}
+/*-- Header | Elementos --*/
+
+/* img */
+header img {
+    width: 8vh;
+    min-width: 60px;
+}
+
+/* h1 */
+header h1 {
+    font-size: 1.2em;
+    color: var(--blanco-claro);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/* a */
+header a {
+    display: inline-block;
+    font-size: 1.2em;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 0.5% 1%;
+    border: 3px solid var(--azul-claro);
+    border-radius: 8px;
+    background: var(--azul-oscuro);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    box-shadow: 3px 3px 6px #000, -3px -3px 6px #444;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translateY(-50%);
+}
+
+/* a:hover */
+header a:hover {
+    background: #a8cfeb;
+    color: var(--azul-oscuro);
+    border-color: var(--azul-oscuro);
+    box-shadow: 0px 0px 10px var(--azul-claro);
+    transform: translateY(-57%);
+}
+
+/*-- Body --*/
+body {
+    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+/*-- Main --*/
+main {
+    width: 100%;
+    position: relative;
+}
+
+/*-- Main | Elementos --*/
+
+/* h2 */
+main h2 {
+    text-transform: capitalize;
+    display: inline-block;
+    margin: 2% 0 0 42vw;
+    transform: translateX(-75%);
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
+    color: #fff;
+}
+
+/*h2 | [registrarContinente]*/
+.registro h2 {
+    margin-left: 50%;
+    margin-top: 6%;
+    transform: translateX(-50%);
+}
+
+/* buttom */
+main > button {
+    background-color: var(--azul-oscuro);
+    color: #fff;
+    width: auto;
+    text-transform: capitalize;
+    border: 2px solid var(--azul-claro);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    padding: 1%;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 2vh;
+    right: 10vw;
+}
+
+/* buttom:hover */
+main > button:hover {
+    background-color: var(--azul-claro);
+    transform: translate(-50%,-5%);
+    box-shadow: 0px 4px 8px rgba(245, 242, 242, 0.5);
+}
+
+/* buttom | [listadoPuntuaciones] */
+#listPunt > button:nth-of-type(1){
+    position: absolute;
+    right: unset;
+    top: 2vh;
+    left: 58vw;
+}
+
+#listPunt > button:nth-of-type(2) {
+    position: absolute;
+    right: unset;
+    top: 2vh;
+    left: 75vw;
+}
+
+/* buttom | [registrarContinente + registrarCategoria] */
+.registro  button {
+    margin: unset;
+    position: absolute;
+    top: 35vh;
+    width: 15%;
+    background-color: var(--azul-claro);
+}
+
+.registro  button:nth-of-type(1) {
+    left: 41.4vw;
+}
+
+.registro button:nth-of-type(2) {
+    right: 26.5vw;
+}
+
+.registro button:nth-of-type(3) {
+    width: 32%;
+    top: 45vh;
+    left: 49.95vw;
+    background-color: var(--azul-oscuro);
+}
+
+/* input, select, option */
+input, select, option {
+    width: 30%;
+    height: 2rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    color: var(--acento);
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 9vh;
+    font-size: 1.2rem;
+    padding: 0.5% 1%;
+}
+
+/* select | [listadoPuntuación]*/
+select {
+    height: 3rem;
+    width: 32%;
+}
+
+/* option | [listadoPuntuación] */
+select option[disabled][selected] {
+    display: none; /* Ocultar cuando es seleccionada otra opción*/
+}
+
+/* table | [listados] */
+main table {
+    background-color: rgba(5, 47, 77, 0.35); 
+    text-align: center;
+    color: #fff;
+    margin: 3% auto;
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-spacing: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    font-size: 1em;
+}
+
+main table tr {
+    border-bottom: 2px solid var(--azul-claro);
+}
+
+main table tr:nth-child(even) {
+    background-color: #2a4365a8;
+}
+
+main table tr:nth-child(odd) {
+    background-color: #2d374895;
+}
+
+main table th, main table td {
+    padding: 2% 0;
+}
+
+main table th {
+    text-transform: uppercase;
+    background-color: #0085ae9d;
+    font-size: 1.4em;
+}
+
+main table td {
+    font-size: 1.2em;
+}
+
+main table td button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+main table td button img{
+    width: 50%;
+}
+
+/* MediaQuery | Ajustes */
+@media /*screen*/ (max-width: 1400px){ 
+    /* select | [selectContiente] */
+    .registro select{
+        font-size: 1.1rem;
+    }
+}
+
+@media /*screen*/ (max-width: 1280px){ 
+
+    /* Header | h1 */
+    header h1 {
+        transform: translate(-65%,-50%);
+    }
+
+    /* Header | a */
+    header a{
+        left: 75%;
+    }
+
+    /*Main | h2 [listarPuntuacion]*/
+    #listPunt > h2 {
+        margin-left: 50vw;
+        transform: translateX(-50%);
+    }
+
+    /* Main | button [listarPuntuacion] */
+    #listPunt > button{
+        right: unset;
+        left: unset;
+    }
+
+    /* Main | button 1 [listarPuntuacion] */
+    #listPunt > button:nth-of-type(1) {
+        top: 12vh;
+        left: 34.5vw;
+    }
+
+    /* Main | button 2 [listarPuntuacion] */
+    #listPunt > button:nth-of-type(2) {
+        top: 12vh;
+        left: 56vw;
+    }
+
+    /* Main | table [listarPuntuacion]*/
+    #listPunt table{
+        margin-top: 17vh;
+    }
+
+    /* Main | button [listados] */
+    main:not(.registro) > button {
+        right: unset;
+        left: 70vw;
+    }
+
+    /* Main | button [listados] */
+    main:not(.registro) > button {
+        right: unset;
+        left: 70vw;
+    }
+
+}
+
+/* MediaQuery | Ajustes */
+@media /*screen*/ (max-width: 965px){
+
+    /* Header | h1 */
+    header h1 {
+        font-size: 1em;
+    }
+
+    /* Main | h2 */
+    main h2 {
+        font-size: 1em;
+    }
+
+    /* Main | h2 [listadoContinentes] + [listadoCategorias] + [selectPuntuacion] */
+    main:not(#listPunt):not(.registro) h2 {
+        margin-left: 38vw;
+    }
+
+    /* Main | button [listados] + [selectPuntuacion] */
+    main:not(.registro) > button {
+        left: 74vw;
+    }
+
+    /* Main | button [registro] */
+    .registro > button {
+        padding: 1% 0;
+        border-radius: 6px;
+    }
+
+    /* Main | button [listarPuntuacion] */
+    header a {
+        font-size: 0.8em;
+        padding: 1%;
+    }
+
+    /* Main | table th */
+    main table thead{
+        font-size: 0.6em;
+    }
+
+    /* Main | table tbody, button, input, select, option */
+    main table tbody, main button, main input, main select, option {
+        font-size: 0.7em;
+    }
+
+    /* Main | input [registros] */
+    main input {
+        padding: 0.1% 1%;
+    }
+
+    /* Main | select [listarPuntuacion] */
+    select {
+        height: 2.9em;
+    }
+
+    /* Main | option [selectPuntuaciones] */
+    main.registro select option {
+        width: 32% !important;
+    }
+
+    /* Main | button 1 [listarPuntuacion] */
+    #listPunt > button:nth-of-type(1) {
+        left: 32vw;
+    }
+
+    /* Main | button 2 [listarPuntuacion] */
+    #listPunt > button:nth-of-type(2) {
+        left: 58.5vw;
+    }
+    
+}
+
+@media /*screen*/ (min-height: 760px) and (max-width: 960px){ 
+    /* Main | button [borrar] + [cancelar] | [registro*] + [selectPuntuaciones] */
+    .registro > button {
+        top: 23vh;
+    }
+
+    /* Main | button [enviar] | [registro*] + [selectPuntuaciones] */
+    .registro button:nth-of-type(3) {
+        top: 30vh;
+    }
+}
+
+@media /*screen*/ (min-height: 600px) and (max-width: 960px){
+    /* Main | button [borrar] + [cancelar] | [registro*] + [selectPuntuaciones] */
+    .registro > button {
+        top: 27vh;
+    }
+
+    /* Main | button [enviar] | [registro*] + [selectPuntuaciones] */
+    .registro button:nth-of-type(3) {
+        top: 34vh;
+    }
+}
