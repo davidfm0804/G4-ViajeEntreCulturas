@@ -22,7 +22,6 @@
             $this->view = 'registroCategoria';
         }
 
-
         public function insertDatos(){
             if (!isset($_POST['categoria'])) {
                 echo "Error al registrar la categoría";
