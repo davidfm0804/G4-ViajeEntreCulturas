@@ -40,68 +40,33 @@ async function altaCategoria(formData) {
         valid = false;
     }
 
-    /*-- Confirmación del Usuario --
-    if(confirm("¿Está seguro de que desea registrar esta categoría?")){
+    /*-- Confirmación del Usuario --*/ 
+    if(valid && confirm("¿Está seguro de que desea registrar esta categoría?")){
 
-    // Comprobar si la Categoría ya Existe en el Servidor
-    const response = await verificarCategoria(formData);
-    if (!response) {
-        alert('Error al verificar la categoría.');
-        return;
+        // Comprobar si la Categoría ya Existe en el Servidor
+        const response = await verificarCategoria(formData);
+        if (!response) {
+            alert('La categoría ya existe.');
+            valid = false;
+        }
+
+
+        /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
+        if (valid) {
+            const response = await mAltaCategoria(formData);
+
+            if (response && response.ok) {
+                return "Categoria registrada correctamente";
+            } else {
+                return "Error al registrar la categoría";
+            }
+
+        }
+
     }
-    const result = await response.json(); // Acceder al resultado de la promesa
 
-    if (result.existe) {
-        alert('La categoría ya existe. Por favor, introduzca otra.');
-        return;
-    /*-- Comprobar si la Categoría ya Existe en el Servidor --
-    try {
-        const formData = new FormData();
-        formData.append('nombreCat', nombreCatg.value.trim());
-
-        // Realizar la solicitud al servidor
-        const response = await fetch('comprobarCategoria.php', {
-            method: 'POST',
-            body: formData,
-        });
-
-        // Verificar si la respuesta es válida
-        if (!response.ok) {
-            throw new Error('Error en la solicitud: ' + response.status);
-        }
-
-        // Obtener los datos del servidor como JSON
-        const data = await response.json();
-
-        // Verificar si la categoría ya existe
-        if (data.existe) {
-            alert("Esta categoría ya existe.");
-            return; // Salir si la categoría ya existe
-        }
-
-        /*-- Si no existe, Enviar el Formulario --
-        console.log("Formulario válido. Procediendo al envío...");
-        form.submit();
-
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Hubo un error al procesar la solicitud.");
-    } 
-    } --*/    
-
-    /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
-    if (valid) {
-        const response = await mAltaCategoria(formData);
-
-        if (response && response.ok) {
-            return "Categoria registrada correctamente";
-        } else {
-            return "Error al registrar la categoría";
-        }
-        
-    }
-    
 }
+    
 
 
 // Borrar Categoria | Promesa -> Fetch + FormData 

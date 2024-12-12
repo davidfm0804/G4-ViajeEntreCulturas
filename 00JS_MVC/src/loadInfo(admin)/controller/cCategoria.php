@@ -68,9 +68,9 @@ class cCategoria {
         if (isset($_POST['nombreCat'])) {
             $nombreCat = $_POST['nombreCat'];
             $result = $this->objCatg->verificarCategoria($nombreCat);
-            echo $result;
+            return $result;
         } else {
-            echo json_encode(['existe' => false]);
+            return false;
         }
     }
 }

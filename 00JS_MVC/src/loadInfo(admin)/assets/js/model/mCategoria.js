@@ -55,12 +55,13 @@ async function verificarCategoria(formData) {
     
         console.log('mCatg');
         console.log(response);
-        console.log(response.json());
+        const data = await response.text(); // Suponiendo que el servidor devuelve JSON
+        console.log('Datos recibidos:', data);
         if(!response.ok) {
             return false;
         }
 
-        return response;
+        return data;
     
     } catch (error) {
         console.error('Error:', error);
