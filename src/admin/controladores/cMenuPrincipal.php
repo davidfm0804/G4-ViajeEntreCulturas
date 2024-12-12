@@ -23,6 +23,12 @@ class cMenuPrincipal {
         return $this->objMenuPrincipal->mPaisSelecContinente();
     }
 
+    public function cItemSelecContinente(){
+        $this->vista = 'itemSeleccioneContinente';
+        $this->tituloPagina = 'Seleccione un continente';
+        return $this->objMenuPrincipal->mPaisSelecContinente();
+    }
+
     public function ListadoCategorias(){
         $this->vista = 'listadoCategorias';
         $this->tituloPagina = 'Listado de categorías';
