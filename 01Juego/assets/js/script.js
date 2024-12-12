@@ -1,4 +1,4 @@
-document.getElementById('startBtn').addEventListener('click', function() {
+document.getElementById('startGame').addEventListener('click', function() {
   startGame();
 });
 
@@ -17,8 +17,8 @@ const cardPairs = {
 };
 
 function startGame() {
-  document.getElementById('startBtn').style.display = 'none';
-  document.getElementById('memory-board').style.display = 'block';
+  document.getElementById('startGame').style.display = 'none';
+  document.getElementById('tablero').classList.remove('hidden');
 
   // Inicializar el tablero de cartas
   generateBoard();
@@ -26,7 +26,7 @@ function startGame() {
   // Iniciar el temporizador
   timer = setInterval(function() {
     time++;
-    document.getElementById('timer').textContent = time;
+    document.getElementById('contador').textContent = time;
   }, 1000);
 }
 
@@ -36,15 +36,15 @@ function generateBoard() {
   // Mezclar las cartas
   let shuffled = shuffle(cards);
 
-  const board = document.getElementById('memory-board');
+  const board = document.getElementById('tablero');
   board.innerHTML = ''; 
 
   // Crear las cartas
   shuffled.forEach((cardValue, index) => {
     const card = document.createElement('button');
     card.classList.add('card');
-    card.setAttribute('data-index', index);
-    card.setAttribute('data-value', cardValue); 
+    card.id = index;
+    card.value = cardValue; 
     card.addEventListener('click', flipCard);
     board.appendChild(card);
   });
@@ -52,7 +52,7 @@ function generateBoard() {
   // Mostrar todas las cartas con la imagen visible durante 2 segundos
   const allCards = document.querySelectorAll('.card');
   allCards.forEach(card => {
-    const cardValue = card.getAttribute('data-value');
+    const cardValue = card.value;
     card.style.backgroundImage = `url(${cardValue})`; 
     card.classList.add('flipped');
   });
@@ -80,7 +80,7 @@ function flipCard() {
   const card = this;
   if (card.classList.contains('flipped') || flippedCards.length === 2) return;
 
-  const cardValue = card.getAttribute('data-value');
+  const cardValue = card.value;
   card.style.backgroundImage = `url(${cardValue})`; 
   card.classList.add('flipped');
   flippedCards.push(card);
@@ -89,8 +89,8 @@ function flipCard() {
   if (flippedCards.length === 2) {
     const [card1, card2] = flippedCards;
 
-    const card1Value = card1.getAttribute('data-value');
-    const card2Value = card2.getAttribute('data-value');
+    const card1Value = card1.value;
+    const card2Value = card2.value;
 
     // Comprobar si las cartas son una pareja (bandera y su objeto correspondiente)
     if (cardPairs[card1Value] === card2Value || cardPairs[card2Value] === card1Value) {
@@ -98,7 +98,10 @@ function flipCard() {
       flippedCards = [];
   
       if (matchedCards.length === Object.keys(cardPairs).length * 2) {
-        setTimeout(() => alert('¡Juego Terminado!'), 500);
+        setTimeout(() => {
+          alert('¡Juego Terminado!');
+          stopGame();
+        }, 100);
       }
     } else {
       setTimeout(function() {
@@ -115,6 +118,6 @@ function flipCard() {
 function stopGame() {
   clearInterval(timer);
   alert('¡Juego Terminado!');
-  document.getElementById('startBtn').style.display = 'block';
-  document.getElementById('memory-board').style.display = 'none';
+  document.getElementById('startGame').style.display = 'block';
+  document.getElementById('tablero').classList.add('hidden');
 }

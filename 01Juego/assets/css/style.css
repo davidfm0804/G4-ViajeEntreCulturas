@@ -71,7 +71,7 @@ h2 {
   color: white;
 }
 
-#start-game {
+#startGame {
   position: relative;
   height: 4em;
   padding: 1em;
@@ -84,7 +84,7 @@ h2 {
   margin-top: 1.5em;
 }
 
-#start-game:hover {
+#startGame:hover {
   background-color: var(--azul-claro);
 }
 
@@ -114,7 +114,7 @@ button:active {
   transform: translateY(2px);
 }
 
-#game-board {
+#tablero {
   display: grid;
   grid-template-columns: repeat(4, 150px); /* 4 columnas */
   grid-gap: 15px;
@@ -148,7 +148,7 @@ button:active {
   box-shadow: 0 0 10px var(--amarillo);
 }
 
-#timer {
+#contador {
   font-size: 1.5em;
   color: white;
   margin-top: 2em;
@@ -158,7 +158,7 @@ button:active {
   display: none;
 }
 
-#end-screen {
+#pantallaFin {
   margin-top: 3em;
   color: white;
 }
@@ -190,7 +190,7 @@ tr, td, th {
   padding: 5px 0px;
 }
 
-#restart-game {
+#restartGame {
   font-size: 20px;
   padding: 15px 30px;
   margin-top: 20px;
@@ -202,11 +202,11 @@ tr, td, th {
   transition: background-color 0.3s;
 }
 
-#restart-game:hover {
+#restartGame:hover {
   background-color: #45a049;
 }
 
-#clear-ranking {
+#clearRanking {
   font-size: 20px;
   padding: 15px 30px;
   margin-top: 20px;
@@ -218,7 +218,7 @@ tr, td, th {
   transition: background-color 0.3s;
 }
 
-#clear-ranking:hover {
+#clearRanking:hover {
   background-color: #c0392b;
 }
 

@@ -10,10 +10,10 @@
     <h1>Juego de Memory</h1>
 
     <div id="game">
-        <button id="startBtn">Empezar Juego</button>
-        <p>Tiempo: <span id="timer">0</span>s</p>
+        <button id="startGame">Empezar Juego</button>
+        <p>Tiempo: <span id="contador">0</span>s</p>
 
-        <div id="memory-board" style="display: none;">
+        <div id="tablero" class="hidden">
             <!--Tablero de cartas -->
         </div>
     </div>

@@ -9,7 +9,7 @@
 <body>
     <h1>¡Bienvenido al Juego de Memory!</h1>
     <form method="POST" action="index.php?action=iniciarJuego">
-        <button type="submit">Empezar Juego</button>
+        <button id="startGame" type="submit">Empezar Juego</button>
     </form>
 </body>
 </html>
