@@ -226,3 +226,14 @@ tr, td, th {
 #ranking {
   margin-bottom: 30px;
 }
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5; 
+}
+
+/* Animación de parpadeo */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Memory</title>
+    <title>Game Memory</title>
     <link rel="stylesheet" href="<?php echo CSS.'style.css'; ?>">
 </head>
 <body>
-    <h1>Juego de Memory</h1>
+    <h1>Game Memory</h1>
 
     <div id="game">
         <button id="startGame">Empezar Juego</button>

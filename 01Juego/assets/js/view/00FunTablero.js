@@ -3,7 +3,7 @@ document.getElementById('startGame').addEventListener('click', function() {
 });
 
 let temporizador;
-let tiempo = 0;
+let tiempo = 25;
 let cartasVolteadas = [];
 let cartasEmparejadas = [];
 let puntuacion = 0;
@@ -27,8 +27,8 @@ function iniciarJuego() {
 
   // Iniciar el temporizador
   temporizador = setInterval(function() {
-    tiempo++;
-    if (tiempo > 20) gameOver(); 
+    tiempo--;
+    if (tiempo === 0) gameOver(); 
     document.getElementById('contador').textContent = tiempo;
   }, 1000);
 
@@ -129,6 +129,9 @@ function stopJuego(tiempo, puntuacion, numFallos) {
   // Contraseña -> Encriptar Datos
   const secretKey = "DWEC2024";
 
+  // Calcular el tiempo que ha tardado en completar el juego
+  tiempo = 25 - tiempo;
+
   // Encriptar Datos
   const encryptedTiempo = CryptoJS.AES.encrypt(tiempo.toString(), secretKey).toString();
   const encryptedPuntuacion = CryptoJS.AES.encrypt(puntuacion.toString(), secretKey).toString();
@@ -143,6 +146,57 @@ function stopJuego(tiempo, puntuacion, numFallos) {
 
 function gameOver() {
   clearInterval(temporizador);
-  alert('¡Juego Terminado!');
-  window.location.href = './index.php?controller=Juego&action=verRanking&idCont=5';
+
+  const h1GameOver = document.createElement('h1');
+  h1GameOver.textContent = '¡Game Over!';
+  h1GameOver.style.fontSize = '3rem';
+  h1GameOver.style.textShadow = '2px 2px 5px red';
+  h1GameOver.style.position = 'absolute';
+  h1GameOver.style.top = '50%';
+  h1GameOver.style.left = '50%';
+  h1GameOver.style.transform = 'translate(-50%, -50%)';
+  h1GameOver.style.animation = 'blink 1s infinite'; // Añadir animación de parpadeo
+  document.body.appendChild(h1GameOver);
+
+  const btnReiniciar = document.createElement('button');
+  btnReiniciar.textContent = 'Nueva Partida';
+  btnReiniciar.style.padding = '1%';
+  btnReiniciar.addEventListener('click', function() {
+    document.body.removeChild(h1GameOver);
+    document.body.removeChild(btnReiniciar);
+    document.body.removeChild(btnRanking);
+    resetearJuego();
+    iniciarJuego();
+  });
+
+  const btnRanking = document.createElement('button');
+  btnRanking.textContent = 'Ver Ranking';
+  btnRanking.style.padding = '1%';
+  btnRanking.addEventListener('click', function() {
+    window.location.href = 'index.php?controller=Juego&action=verRanking&idCont=5';
+  });
+
+  // Deshabilitar el tablero
+  const todasLasCartas = document.querySelectorAll('.card');
+  todasLasCartas.forEach(carta => {
+    carta.classList.add('disabled');
+    //carta.removeEventListener('click', handleClick);
+  });
+
+  document.body.appendChild(btnReiniciar);
+  document.body.appendChild(btnRanking);
+}
+
+function resetearJuego() {
+  clearInterval(temporizador);
+  tiempo = 25;
+  puntuacion = 0;
+  numFallos = 0;
+  cartasVolteadas = [];
+  cartasEmparejadas = [];
+  document.getElementById('contador').textContent = tiempo;
+  document.getElementById('puntuacion').textContent = puntuacion;
+  document.getElementById('intentos').textContent = numFallos;
+  document.getElementById('tablero').classList.add('hidden');
+  document.getElementById('startGame').style.display = 'block';
 }
