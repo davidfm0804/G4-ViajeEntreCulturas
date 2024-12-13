@@ -107,7 +107,7 @@ function voltearCarta() {
       if (cartasEmparejadas.length === Object.keys(paresCartas).length * 2) {
         setTimeout(() => {
           alert('¡Juego Terminado!');
-          detenerJuego(tiempo, puntuacion, numFallos);
+          stopJuego(tiempo, puntuacion, numFallos);
         }, 100);
       }
     } else {
@@ -124,43 +124,18 @@ function voltearCarta() {
   }
 }
 
-function detenerJuego(tiempo, puntuacion, numFallos) {
-  formData = new FormData();
-  formData.append('tiempo',tiempo);
-  formData.append('puntos',puntuacion);
-  formData.append('numFallos',numFallos);
-  formData.append('idCont',5);
+function stopJuego(tiempo, puntuacion, numFallos) {
+  // Contraseña -> Encriptar Datos
+  const secretKey = "DWEC2024";
 
-  clearInterval(temporizador);  
+  // Encriptar Datos
+  const encryptedTiempo = CryptoJS.AES.encrypt(tiempo.toString(), secretKey).toString();
+  const encryptedPuntuacion = CryptoJS.AES.encrypt(puntuacion.toString(), secretKey).toString();
+  const encryptedNumFallos = CryptoJS.AES.encrypt(numFallos.toString(), secretKey).toString();
+  const encryptedIdCont = CryptoJS.AES.encrypt('5', secretKey).toString();
 
-  window.location.href = `index.php?controller=Juego&action=registrarPuntuacion&fd=${formData}`;
+  clearInterval(temporizador);
+
+  // encodeURIComponent -> "nombre jugador" - "nombre%20jugador"
+  window.location.href = `index.php?controller=Juego&action=registrarPuntuacion&tiempo=${encodeURIComponent(encryptedTiempo)}&puntos=${encodeURIComponent(encryptedPuntuacion)}&numFallos=${encodeURIComponent(encryptedNumFallos)}&idCont=${encodeURIComponent(encryptedIdCont)}`;
 }
-
-/* Codificar
-const puntuacion = 95;
-const encodedScore = btoa(puntuacion); // Base64 encoding
-
-// Agregar a la URL
-const url = `https://example.com/api?score=${encodedScore}`;
-console.log(url); // https://example.com/api?score=OTU=
-
-// Decodificar
-const decodedScore = atob(encodedScore);
-console.log(decodedScore); // 95
-
-//---------------------------------------------------------
-
-// Encriptar
-const CryptoJS = require("crypto-js");
-const puntuacion = 95;
-const secretKey = "miClaveSecreta";
-
-const encryptedScore = CryptoJS.AES.encrypt(puntuacion.toString(), secretKey).toString();
-const url = `https://example.com/api?score=${encodeURIComponent(encryptedScore)}`;
-console.log(url); // La puntuación está cifrada
-
-// Desencriptar
-const bytes = CryptoJS.AES.decrypt(encryptedScore, secretKey);
-const decryptedScore = bytes.toString(CryptoJS.enc.Utf8);
-console.log(decryptedScore); // 95 */
-

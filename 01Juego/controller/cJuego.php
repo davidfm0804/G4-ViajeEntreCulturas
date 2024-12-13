@@ -30,13 +30,13 @@ require_once MODELO.'mJuego.php';
         // Insertar Puntuacion
         public function insertarPuntuacion() {
             if (!isset($_POST['nombre']) || !isset($_POST['puntos']) || !isset($_POST['tiempo']) 
-                || !isset($_POST['numFallos']) || !isset($_POST['idContinente'])) {
+                || !isset($_POST['numFallos']) || !isset($_POST['idCont'])) {
                 echo "Error al registrar la puntuación";
                 exit;
             }
 
             $result = $this->objJuego->insertarPuntuacion($_POST['nombre'], $_POST['puntos'], 
-                $_POST['numFallos'], $_POST['tiempo'], $_POST['idContinente']);
+                $_POST['numFallos'], $_POST['tiempo'], $_POST['idCont']);
 
             if ($result)
                 echo "Puntuación registrada correctamente";

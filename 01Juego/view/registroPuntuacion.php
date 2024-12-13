@@ -17,8 +17,10 @@
         <input type="text" name="nombreJug" placeholder="Nombre Jugador" required>
         <button type="reset">Borrar</button>
         <button type="button">Cancelar</button>
-        <button id="btnEnviar">Enviar</button>
+        <button type="submit">Enviar</button>
     </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="<?php echo JS.'01FunRegtPunt.js'?>"></script>
 </body>
-<script src="<?php echo JS.'01FunRegtPunt.js'?>"></script>
 </html>

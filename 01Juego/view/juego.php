@@ -19,7 +19,8 @@
             <!--Tablero de cartas -->
         </div>
     </div>
-
-    <script src="assets/js/script.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="<?php echo JS.'00FunTablero.js' ?>"></script>
 </body>
 </html>
