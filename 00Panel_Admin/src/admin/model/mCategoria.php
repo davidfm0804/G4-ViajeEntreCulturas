@@ -93,12 +93,8 @@ class MCategoria {
         $stmt->close();
         $this->conexion->close();
         
-<<<<<<< HEAD:00JS_MVC/src/loadInfo(admin)/model/mCategoria.php
-        return count($stmt->fetch_all(MYSQLI_ASSOC)) > 0 ? true : false;
-    
-=======
         return $count > 0;
->>>>>>> a480711ff2210bbd61f74e541889feb8f8af39df:00Panel_Admin/src/admin/model/mCategoria.php
+        
     }
     
 }

@@ -1,3 +1,83 @@
+async function altaCategoria(formData) {
+    const validation = validarCategoria(formData);
+
+    if (!validation.valid) {
+        alert(validation.error);
+        return;
+    }
+
+    if (confirm("¿Está seguro de que desea registrar esta categoría?")) {
+        console.log("Validaciones pasadas, verificando existencia de la categoría...");
+        console.log(formData.get('categoria'));
+        
+        // Comprobar si la Categoría ya Existe en el Servidor
+        const exists = await verificarCategoria(formData);
+        console.log("Resultado de la verificación:", exists);
+        if (exists) {
+            alert('La categoría ya existe.');
+            return;
+        }
+        
+        console.log("Categoría no existe, procediendo a registrar...");
+        const response = await mAltaCategoria(formData);
+
+        if (response && response.ok) {
+            const text = await response.text();
+            if (text.includes("Categoria registrada correctamente")) {
+                console.log(text);
+                return "Categoria registrada correctamente";
+            } else {
+                alert(text);
+                return "Error al registrar la categoría";
+            }
+        } else {
+            console.log("Error al registrar la categoría");
+            return "Error al registrar la categoría";
+        }
+    }
+}
+    
+
+
+async function modificarCategoria(formData) {
+    const validation = validarCategoria(formData);
+
+    if (!validation.valid) {
+        alert(validation.error);
+        return;
+    }
+
+    if (confirm("¿Está seguro de que desea modificar esta categoría?")) {
+        console.log("Validaciones pasadas, verificando existencia de la categoría...");
+        console.log(formData.get('categoria'));
+        
+        // Comprobar si la Categoría ya Existe en el Servidor
+        const exists = await verificarCategoria(formData);
+        console.log("Resultado de la verificación:", exists);
+        if (exists) {
+            alert('La categoría ya existe.');
+            return;
+        }
+
+        console.log("Categoría no existe, procediendo a modificar...");
+        const response = await mModificarCategoria(formData);
+
+        if (response && response.ok) {
+            const text = await response.text();
+            if (text.includes("Registro modificado correctamente")) {
+                console.log(text);
+                return "Categoria Modificada Correctamente";
+            } else {
+                alert(text);
+                return "Error al modificar la categoría";
+            }
+        } else {
+            console.log("Error al modificar la categoría");
+            return "Error al modificar la categoría";
+        }
+    }
+}
+
 function validarCategoria(formData) {
     let valid = true;
     let error = '';
@@ -38,47 +118,7 @@ function validarCategoria(formData) {
 
     return { valid, error };
 }
-
-async function altaCategoria(formData) {
-    const validation = validarCategoria(formData);
-
-    if (!validation.valid) {
-        alert(validation.error);
-        return;
-    }
-
-    if (confirm("¿Está seguro de que desea registrar esta categoría?")) {
-        console.log("Validaciones pasadas, verificando existencia de la categoría...");
-        console.log(formData.get('categoria'));
-        
-        // Comprobar si la Categoría ya Existe en el Servidor
-        const exists = await verificarCategoria(formData);
-        console.log("Resultado de la verificación:", exists);
-        if (exists) {
-            alert('La categoría ya existe.');
-            return;
-        }
-        
-        console.log("Categoría no existe, procediendo a registrar...");
-        const response = await mAltaCategoria(formData);
-
-        if (response && response.ok) {
-            const text = await response.text();
-            if (text.includes("Categoria registrada correctamente")) {
-                console.log(text);
-                return "Categoria registrada correctamente";
-            } else {
-                alert(text);
-                return "Error al registrar la categoría";
-            }
-        } else {
-            console.log("Error al registrar la categoría");
-            return "Error al registrar la categoría";
-        }
-    }
-}
-    
-// Borrar Categoria | Promesa -> Fetch + FormData 
+ 
 async function borrarCategoria(formData) {
     if (!formData.has('id') || !formData.get('id')) {
         alert("Error: ID de la categoría no proporcionado");
@@ -100,43 +140,4 @@ async function borrarCategoria(formData) {
         return "Error al borrar la categoría";
     }
 
-}
-
-async function modificarCategoria(formData) {
-    const validation = validarCategoria(formData);
-
-    if (!validation.valid) {
-        alert(validation.error);
-        return;
-    }
-
-    if (confirm("¿Está seguro de que desea modificar esta categoría?")) {
-        console.log("Validaciones pasadas, verificando existencia de la categoría...");
-        console.log(formData.get('categoria'));
-        
-        // Comprobar si la Categoría ya Existe en el Servidor
-        const exists = await verificarCategoria(formData);
-        console.log("Resultado de la verificación:", exists);
-        if (exists) {
-            alert('La categoría ya existe.');
-            return;
-        }
-
-        console.log("Categoría no existe, procediendo a modificar...");
-        const response = await mModificarCategoria(formData);
-
-        if (response && response.ok) {
-            const text = await response.text();
-            if (text.includes("Registro modificado correctamente")) {
-                console.log(text);
-                return "Categoria Modificada Correctamente";
-            } else {
-                alert(text);
-                return "Error al modificar la categoría";
-            }
-        } else {
-            console.log("Error al modificar la categoría");
-            return "Error al modificar la categoría";
-        }
-    }
 }
