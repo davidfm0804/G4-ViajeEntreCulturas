@@ -10,8 +10,8 @@ class MJuego {
         $this->conexion = $objetoBD->conexion;
     }
 
-    // Insert Puntuacion
-    public function insertPuntuacion($nombre, $puntos, $numFallos, $tiempo, $idContinente) {
+    // Insertar Puntuacion
+    public function insertarPuntuacion($nombre, $puntos, $numFallos, $tiempo, $idContinente) {
         $this->conectar();
 
         $sql = 'INSERT INTO '.$this->tabla.' (nombre, puntos, numFallos, tiempo, idContinente) VALUES (?, ?, ?, ?, ?)';
@@ -23,24 +23,26 @@ class MJuego {
         return $stmt->affected_rows > 0;
     }
 
-    public function selectPuntuaciones() {
+    public function seleccionarPuntuaciones() {
         $this->conectar();
 
-        $sql = 'SELECT idPuntuacion, nombre, puntos, numFallos, tiempo  FROM '.$this->tabla.' WHERE idContinente = ? ORDER BY puntuacion, tiempo, numFallos ASC';
-        $this->conexion->prepare($sql);
-        $this->conexion->bind_param('i', $_GET['idContinente']);
-        $resultado = $this->conexion->execute();
+        $sql = 'SELECT idPuntuacion, nombre, puntos, numFallos, tiempo  FROM '.$this->tabla.' WHERE idContinente = ? ORDER BY puntos DESC, tiempo ASC, numFallos ASC';
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bind_param('i', $_GET['idContinente']);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
 
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function selectBanderas(){
+    public function seleccionarBanderas(){
         $this->conectar();
 
         $sql = 'SELECT idBandera, nombreBandera, imagen FROM bandera WHERE idContinente = ?';
-        $this->conexion->prepare($sql);
-        $this->conexion->bind_param('i', $_GET['idContinente']);
-        $resultado = $this->conexion->execute();
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bind_param('i', $_GET['idContinente']);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
 
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }

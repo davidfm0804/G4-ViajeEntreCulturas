@@ -7,7 +7,7 @@ require_once MODELO.'mJuego.php';
 
         public function __construct() {
             $this->view = ''; 
-            $this->objCatg = new MJuego();
+            $this->objJuego = new MJuego();
         }
 
         public function inicio() {
@@ -18,16 +18,16 @@ require_once MODELO.'mJuego.php';
             $this->view = 'juego'; 
         }
 
-        public function regPunt() {
+        public function registroPuntuacion() {
             $this->view = 'registroPuntuacion'; 
         }
 
         public function verRanking() {
             $this->view = 'rankingPuntuaciones'; 
-            return $this->objCatg->selectPuntuaciones();
+            return $this->objJuego->seleccionarPuntuaciones();
         }
 
-        // Insert Puntuacion
+        // Insertar Puntuacion
         public function insertarPuntuacion() {
             if (!isset($_POST['nombre']) || !isset($_POST['puntos']) || !isset($_POST['tiempo']) 
                 || !isset($_POST['numFallos']) || !isset($_POST['idContinente'])) {
@@ -35,7 +35,7 @@ require_once MODELO.'mJuego.php';
                 exit;
             }
 
-            $result = $this->objCatg->insertPuntuacion($_POST['nombre'], $_POST['puntaje'], 
+            $result = $this->objJuego->insertarPuntuacion($_POST['nombre'], $_POST['puntos'], 
                 $_POST['numFallos'], $_POST['tiempo'], $_POST['idContinente']);
 
             if ($result)
