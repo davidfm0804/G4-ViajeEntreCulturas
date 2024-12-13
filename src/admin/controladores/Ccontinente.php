@@ -16,36 +16,48 @@ class cContinente {
     public function cFormAltaContinente(){
         $this->vista ='formAltaContinente';
     }
-
+    public function cFormModContinente(){
+        $this->vista='formModContinente';
+    }
 
     public function cMostrarContinente() {
         return $this->objcontinente->mMostrarContinentes();
     }
     
-    public function cInsertarContinente($nombreContinente) {
-        $resultado = $this->objcontinente->mInsertarContinente($nombreContinente);
-        if ($resultado === true) {
-            return "Consulta Correcta";
-        } elseif ($resultado === "Csu") {
-            return "Continente Duplicado";
-        } else {
-            return "Error en el registro";
-        }
+    public function cInsertarContinente() {
+        $resultado = $this->objContinente->mInsertarContinente();
+        header('Content-Type: application/json');
+        echo json_encode($resultado);
+        exit;
     }
 
-    public function cBorrarContinente($idCont) {
-        return $this->objcontinente->mBorrarContinente($idCont);
+    public function cBorrarContinente() {
+        $idContinente = $_POST['idContinente'];
+
+        $result = $this->objContinente->mBorrarContinente($idContinente);
+
+        if ($result) {
+           echo "Registro eliminado correctamente";
+        } else {
+            // Si hubo un error, establecemos otro mensaje en la sesión
+            echo "Error al eliminar el registro";
+        }
+        exit;
+
     }
 
-    public function cModificarContinente($nombreC, $idCont) {
-        $resultado = $this->objcontinente->mModificarContinente($nombreC, $idCont);
-        if ($resultado === true) {
-            return "Modificación correcta";
-        } elseif ($resultado === "Csu") {
-            return "Nombre del continente ya existe";
-        } else {
-            return "Error al modificar";
+    public function cModificarContinente() {
+        // Recoger los datos enviados a través del formulario o petición (por ejemplo, FormData)
+        $nombreC = $_POST['nombreCont'];  // 'nombreCont' es el campo enviado
+        $idCont = $_POST['idContinente']; // 'idContinente' es el campo enviado
+        // Llamar al método del modelo para modificar el continente
+        $resultado = $this->objContinente->mModificarContinente($nombreC, $idCont);
+        if(!$resultado){
+            echo "Error Modificando el continente";
+        }else{
+            echo "Continente Modificado";
         }
-    }
+        // Retornar la respuesta JSON
+         }
 }
 ?>

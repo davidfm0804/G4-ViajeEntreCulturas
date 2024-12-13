@@ -1,15 +1,26 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta de Países</title>
+    <link rel="icon" href="<?php echo IMG.'mapa.jpg';?>" type="image/x-icon">
+    <link rel="stylesheet" href="<?php echo CSS.'estilo.css'; ?>">
+</head>
+<body>
+    <header>
+        <img src="<?php echo IMG.'logo.png';?>" alt="Logo">
+        <h1>Viaje entre Culturas</h1>
+    </header>
 <main>
 
-<form action="altaContinente.php" method="POST">
+<form>
         <label for="nombreContinente">Nombre del Continente:</label>
         <input type="text" name="nombreContinente"> 
-        <input type="submit" value="Dar Alta"></br></br>
     </form>
-    <a href='listadoContinentes.php'>
-        <button>Volver Inicio</button>
-    </a>
+    <button type="button" class="cancel">Cancelar</button>
+    <button type="button" class="update">Dar Alta</button>
 
     </main>
 </body>
-<script src="validAltaCont.js"></script>
+<script src="<?php echo JS.'validAltaCont.js';?>"></script>
 </html>

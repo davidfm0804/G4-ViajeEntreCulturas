@@ -24,12 +24,4 @@ if(method_exists($controlador,$_GET["accion"])){
 // else if($controlador->view === 'formAlta'){require_once 'view/template/headerFormAlta.php'; }
 // else if($controlador->view === 'formModPais'){require_once 'view/template/headerFormModPais.php'; }
 // else{require_once 'view/template/headersimple.php';}
-
-switch ($controlador->view){
-    case 'mapaChincheta': require_once 'view/template/headerMapa.php'; break;
-    case 'cambiarChincheta': require_once 'view/template/headerMapa.php'; break;
-    case 'formAlta': require_once 'view/template/headerFormAlta.php'; break;
-    case 'formModPais': require_once 'view/template/headerFormModPais.php'; break;
-    default: require_once 'view/template/headersimple.php'; break; 
-}
 require_once 'view/'.$controlador->view.'.php';

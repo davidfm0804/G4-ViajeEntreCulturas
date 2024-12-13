@@ -18,12 +18,6 @@ $dataToView["data"] = array();
 if(method_exists($controlador,$_GET["accion"])){
     $dataToView["data"] = $controlador->{$_GET["accion"]}();
 }
-
-switch ($controlador->vista){
-    case 'mapaChincheta': require_once PLANTILLAVISTAS.'headerMapa.php'; break;
-    case 'cambiarChincheta': require_once PLANTILLAVISTAS.'headerMapa.php'; break;
-    case 'formAltaPais': require_once PLANTILLAVISTAS.'headerFormAlta.php'; break;
-    case 'cFormModPais': require_once PLANTILLAVISTAS.'headerFormModPais.php'; break;
-    default: require_once PLANTILLAVISTAS.'headersimple.php'; break; 
+if(!$controlador->vista == ''){
+    require_once 'vistas/'.$controlador->vista.'.php';
 }
-require_once 'vistas/'.$controlador->vista.'.php';
