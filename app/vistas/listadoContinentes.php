@@ -21,7 +21,7 @@
             while ($fila = $resultado->fetch_assoc()) {
                 echo "<tr>
                     <td>" .$fila['nombreCont']. "</td>
-                    <td><a href='formModificarContinente.php?id=" . $fila['idContinente'] . "'>Modificar</a></td>
+                    <td><a href='formModificarContinente.php?id=" . $fila['idContinente'] . "&nombreCont=" . $fila['nombreCont'] . "'>Modificar</a></td>
                     <td><a href='borrar.php?id=" . $fila['idContinente'] . "'>Borrar</a></td>
                   </tr>";
             }

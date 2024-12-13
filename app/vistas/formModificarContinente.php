@@ -8,11 +8,12 @@
 <body>
     <?php
     if (isset($_GET['id'])) {
+        $nombreCont=$_GET['nombreCont'];
     ?>
         <form action="modificarContinente.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
             <label for="nombreContinente">Nombre del Continente:</label>
-            <input type="text" name="nombreContinente" id="nombreContinente">
+            <input type="text" name="nombreContinente" id="nombreContinente"value="<?php echo $nombreCont?>">
             <br><br>
             <input type="submit" value="Modificar">
         </form>
