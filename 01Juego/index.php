@@ -1,6 +1,6 @@
 <?php
-require_once 'config/config.php'; // Constantes config php
-require_once MODELO.'conexion.php'; //Clase BBDD
+require_once './config/config.php';
+require_once MODELO.'conexion.php';
 
 if(!isset($_GET["controller"])){$_GET["controller"] = DEFAULT_CONTROLADOR;}
 if(!isset($_GET["action"])){$_GET["action"] = DEFAULT_ACCION;}
@@ -21,13 +21,5 @@ if(method_exists($controlador,$_GET["action"])){
     // Manejar el error cuando el método no existe
     die("Error: El método ".$_GET["action"]." no existe en el controlador ".$nombreControlador);
 }
-
-/*switch ($controlador->vista){
-    case 'cMapaChincheta': require_once PLANTILLAVISTAS.'headerMapa.php'; break;
-    case 'cCambiarChincheta': require_once PLANTILLAVISTAS.'headerMapa.php'; break;
-    case 'cFormAlta': require_once PLANTILLAVISTAS.'headerFormAlta.php'; break;
-    case 'cFormModPais': require_once PLANTILLAVISTAS.'headerFormModPais.php'; break;
-    default: require_once PLANTILLAVISTAS.'headersimple.php'; break; 
-}*/
 
 require_once 'view/'.$controlador->view.'.php';

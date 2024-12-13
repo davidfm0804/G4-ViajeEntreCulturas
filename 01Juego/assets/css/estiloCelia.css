@@ -82,7 +82,7 @@ header a:hover {
 
 /*-- Body --*/
 body {
-    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa.jpg');
+    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/web/mapa.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;

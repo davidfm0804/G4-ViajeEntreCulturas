@@ -1,7 +1,7 @@
 <?php
     /*-- Rutas [Vistas]--*/
     define('CSS','assets/css/');
-    define('IMG','assets/img/');
+    define('IMG','assets/img/web/');
     define('BANDERAS','assets/img/banderas/');
     define('JS','assets/js/view/');
     define('JS_CONTROLADOR','assets/js/controller/');

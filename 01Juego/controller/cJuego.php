@@ -21,6 +21,7 @@ require_once MODELO.'mJuego.php';
         public function regPunt() {
             $this->view = 'registroPuntuacion'; 
         }
+        
     }
 
 ?>
