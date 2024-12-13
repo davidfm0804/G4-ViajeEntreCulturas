@@ -35,7 +35,6 @@ class MCategoria {
 
         return $stmt->affected_rows > 0;
 
-        // echo "Nuevo registro creado exitosamente";
     }
 
     public function selectModCatg(){
@@ -61,7 +60,7 @@ class MCategoria {
         $conxPrp->bind_param("si", $nombreCat,$idCatg);
         $conxPrp->execute();
 
-        return $stmt->affected_rows > 0;
+        return $conxPrp->affected_rows > 0;
     }
 
     public function eliminarCategoria($idCat){
