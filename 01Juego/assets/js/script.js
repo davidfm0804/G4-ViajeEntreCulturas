@@ -7,6 +7,7 @@ let tiempo = 0;
 let cartasVolteadas = [];
 let cartasEmparejadas = [];
 let puntuacion = 0;
+let numFallos = 0;
 
 const paresCartas = {
   'assets/img/espana.jpg': 'assets/img/tortilla.jpg',    
@@ -116,6 +117,8 @@ function voltearCarta() {
         carta1.classList.remove('flipped');
         carta2.classList.remove('flipped');
         cartasVolteadas = [];
+        numFallos ++;
+        document.getElementById('intentos').textContent = numFallos;
       }, 1000);
     }
   }
@@ -124,5 +127,4 @@ function voltearCarta() {
 function detenerJuego() {
   clearInterval(temporizador);
   window.location.href = 'index.php?controller=Juego&action=registrarPuntuacion';
-  //window.location.href = './view/registroPuntuacion.html';
 }

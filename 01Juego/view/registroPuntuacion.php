@@ -14,10 +14,11 @@
     </header>
     <main class="registro">
         <h2>Registrar Puntuación</h2>
-        <input type="text" name="nombreCont" placeholder="Nombre Jugador" required>
+        <input type="text" name="nombreJug" placeholder="Nombre Jugador" required>
         <button type="reset">Borrar</button>
         <button type="button">Cancelar</button>
         <button type="submit">Enviar</button>
     </main>
 </body>
+<script src="<?php echo JS.'01FunRegPunt.js'?>"></script>
 </html>

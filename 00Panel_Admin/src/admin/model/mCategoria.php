@@ -5,10 +5,6 @@ class MCategoria {
     private $tabla = 'categoria'; //Nombre de la tabla donde buscamos información
     private $conexion;
 
-    public function __construct() {
-
-    }
-
     public function conectar(){
         $objetoBD = new bbdd(); //Conectamos a la base de datos. Creamos objeto $objetoBD
         $this->conexion = $objetoBD->conexion; //Llamamos al metodo que realiza la conexion a la BBDD

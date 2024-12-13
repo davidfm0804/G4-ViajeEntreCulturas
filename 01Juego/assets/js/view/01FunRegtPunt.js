@@ -1,8 +1,15 @@
 document.getElementById('formRegPunt').addEventListener('submit', async function (event) {
     event.preventDefault();
+
+    formData = new FormData();
+    formData.append('nombre', document.querySelector('[name="nombreJug"]'));
+    formData.append('puntos', $_GET['puntos']);
+    formData.append('tiempo', $_GET['tiempo']);
+    formData.append('numFallos', $_GET['numFallos']);
+    formData.append('idContinente', $_GET['idCont']);
     
     try {
-        const response = await fetch('../02registrarPunt.php', {
+        const response = await fetch('index.php?contoller=Juego&action=insertarPuntuacion', {
             method: 'POST',
             body: formData,
         });
