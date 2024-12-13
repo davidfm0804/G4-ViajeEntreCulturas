@@ -34,9 +34,11 @@ class mContinente {
         return $this->conexion->query($SQL);
     }
 
-    public function mInsertarContinente($nombreContinente) {
+    public function mInsertarContinente() {
+        $nombreCont = $_POST['nombreContinente'];
+
         try {
-            $SQL = "INSERT INTO continente (nombreCont) VALUES ('$nombreContinente')";
+            $SQL = "INSERT INTO ".$this->tabla." (nombreCont) VALUES ('".$nombreCont."')";
             $this->conexion->query($SQL);
         } catch (mysqli_sql_exception $e) {
             if ($e->getCode() === 1062) { 
@@ -49,14 +51,17 @@ class mContinente {
     }
 
     public function mBorrarContinente($idContinente) {
+            $this->conectar();
+            $idContinente = (int)$idContinente;
             $sql = "DELETE FROM ".$this->tabla." WHERE idContinente = ?";
-            $sql->bind_param("i", $idContinente);
-            if ($sql->execute()) {
+            $consulta = $this->conexion->prepare($sql);
+            $consulta->bind_param("i", $idContinente);
+            if ($consulta->execute()) {
                 return true;
             } else {
                 return false;
             }
-            $sql->close();
+            $consulta->close();
         }
 
     public function mModificarContinente($nombreC, $idCont) {

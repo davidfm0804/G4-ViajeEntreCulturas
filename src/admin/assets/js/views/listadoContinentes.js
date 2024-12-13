@@ -1,3 +1,16 @@
+document.querySelectorAll('tr').forEach(row => {
+    const modificarButton = row.querySelector('td:nth-of-type(2) button');
+    const borrarButton = row.querySelector('td:nth-of-type(3) button');
+    
+    if (modificarButton) {
+        modificarButton.classList.add('modificar');
+    }
+    
+    if (borrarButton) {
+        borrarButton.classList.add('borrar');
+    }
+});
+
 /*-- Añadir Evento | Botón Alta Pais --*/
 document.getElementById('altaPais').addEventListener('click', function () {
     window.location.href = 'index.php?controlador=Continente&accion=cFormAltaContinente';
@@ -15,12 +28,12 @@ document.querySelectorAll('.modificar').forEach(button => {
 
 document.querySelectorAll('.borrar').forEach(button => {
     button.addEventListener('click', async function () {
-        // Obtener ID Pais || closest -> Accede al 'tr' más cercano | id -> Accede al atributo id definido en el 'tr'
+        // Obtener ID Continente || closest -> Accede al 'tr' más cercano | id -> Accede al atributo id definido en el 'tr'
         const idContinente = button.closest('tr').id;
         const formData = new FormData();
         formData.append('idContinente', idContinente);
-        if (confirm('¿Está seguro de que desea borrar este país?')) {
-            // Promesa | Fetch + FormData -> Borrar Pais
+        if (confirm('¿Está seguro de que desea borrar este continente??')) {
+            // Promesa | Fetch + FormData -> Borrar Continente
             try {
                 const response = await fetch (`index.php?controlador=Continente&accion=cBorrarContinente`,{
                     method: 'POST',
