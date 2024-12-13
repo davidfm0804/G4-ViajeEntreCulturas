@@ -57,7 +57,6 @@ class cContinente {
         }else{
             echo "Continente Modificado";
         }
-        // Retornar la respuesta JSON
-         }
+    }
 }
 ?>
