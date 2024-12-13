@@ -18,7 +18,7 @@ require_once MODELO.'mJuego.php';
             $this->view = 'juego'; 
         }
 
-        public function registroPuntuacion() {
+        public function registrarPuntuacion() {
             $this->view = 'registroPuntuacion'; 
         }
 

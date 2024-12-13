@@ -123,6 +123,6 @@ function voltearCarta() {
 
 function detenerJuego() {
   clearInterval(temporizador);
-  // window.location.href = 'index.html?controller=Juego&action=regPunt';
-  window.location.href = './view/registroPuntuacion.html';
+  window.location.href = 'index.php?controller=Juego&action=registrarPuntuacion';
+  //window.location.href = './view/registroPuntuacion.html';
 }
