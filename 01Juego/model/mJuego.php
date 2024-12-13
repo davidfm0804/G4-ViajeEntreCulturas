@@ -35,10 +35,24 @@ class MJuego {
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function seleccionarBanderas(){
+    public function seleccionarBanderasIdPais(){
         $this->conectar();
 
-        $sql = 'SELECT idBandera, nombreBandera, imagen FROM bandera WHERE idContinente = ?';
+        $sql = 'SELECT bandera, idPais FROM pais WHERE idContinente = ?';
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bind_param('i', $_GET['idContinente']);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        return $resultado->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function seleccionarFotoItemsIdPais(){
+        $this->conectar();
+
+        $sql = 'SELECT imagen, item.idPais FROM item 
+            INNER JOIN pais ON item.idPais = pais.idPais
+            WHERE idContinente = ?';
         $stmt = $this->conexion->prepare($sql);
         $stmt->bind_param('i', $_GET['idContinente']);
         $stmt->execute();
