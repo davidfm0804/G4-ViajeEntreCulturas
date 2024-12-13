@@ -48,14 +48,20 @@ class mContinente {
         return true;
     }
 
-    public function mBorrarContinente($idCont) {
-        $SQL = "DELETE FROM continente WHERE idContinente='$idCont'";
-        return $this->conexion->query($SQL);
-    }
+    public function mBorrarContinente($idContinente) {
+            $sql = "DELETE FROM ".$this->tabla." WHERE idContinente = ?";
+            $sql->bind_param("i", $idContinente);
+            if ($sql->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+            $sql->close();
+        }
 
     public function mModificarContinente($nombreC, $idCont) {
         try {
-            $SQL = "UPDATE continente SET nombreCont = '$nombreC' WHERE idContinente = '$idCont'";
+            $SQL = "UPDATE continente SET nombreCont = '$nombreC' WHERE idContinente = ?";
             $this->conexion->query($SQL);
         } catch (mysqli_sql_exception $e) {
             if ($e->getCode() === 1062) { 

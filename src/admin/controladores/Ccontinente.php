@@ -43,8 +43,9 @@ class cContinente {
         }
     }
 
-    public function cBorrarContinente($idCont) {
-        return $this->objcontinente->mBorrarContinente($idCont);
+    public function cBorrarContinente() {
+        $idContinente = $_POST['idContinente'];
+        return $this->objcontinente->mBorrarContinente($idContinente);
     }
 
     public function cModificarContinente($nombreC, $idCont) {
