@@ -107,7 +107,7 @@ function voltearCarta() {
       if (cartasEmparejadas.length === Object.keys(paresCartas).length * 2) {
         setTimeout(() => {
           alert('¡Juego Terminado!');
-          detenerJuego();
+          detenerJuego(tiempo, puntuacion, numFallos);
         }, 100);
       }
     } else {
@@ -124,7 +124,13 @@ function voltearCarta() {
   }
 }
 
-function detenerJuego() {
-  clearInterval(temporizador);
-  window.location.href = 'index.php?controller=Juego&action=registrarPuntuacion';
+function detenerJuego(tiempo, puntuacion, numFallos) {
+  formData = new FormData();
+  formData.append('tiempo',tiempo);
+  formData.append('puntuacion',puntuacion);
+  formData.append('numFallos',numFallos);
+
+  clearInterval(temporizador);  
+
+  window.location.href = `index.php?controller=Juego&action=registrarPuntuacion&fd=${formData}`;
 }
