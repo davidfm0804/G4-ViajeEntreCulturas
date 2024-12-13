@@ -34,6 +34,17 @@ class MJuego {
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function selectBanderas(){
+        $this->conectar();
+
+        $sql = 'SELECT idBandera, nombreBandera, imagen FROM bandera WHERE idContinente = ?';
+        $this->conexion->prepare($sql);
+        $this->conexion->bind_param('i', $_GET['idContinente']);
+        $resultado = $this->conexion->execute();
+
+        return $resultado->fetch_all(MYSQLI_ASSOC);
+    }
+
     
 }
 ?>

@@ -6,6 +6,7 @@ let timer;
 let time = 0;
 let flippedCards = [];
 let matchedCards = [];
+let score = 0;
 
 const cardPairs = {
   'assets/img/espana.jpg': 'assets/img/tortilla.jpg',    
@@ -28,6 +29,9 @@ function startGame() {
     time++;
     document.getElementById('contador').textContent = time;
   }, 1000);
+
+  score = 0;
+  document.getElementById('puntuacion').textContent = score;
 }
 
 function generateBoard() {
@@ -96,6 +100,8 @@ function flipCard() {
     if (cardPairs[card1Value] === card2Value || cardPairs[card2Value] === card1Value) {
       matchedCards.push(card1, card2);
       flippedCards = [];
+      score += 100;
+      document.getElementById('puntuacion').textContent = score;
   
       if (matchedCards.length === Object.keys(cardPairs).length * 2) {
         setTimeout(() => {
@@ -117,8 +123,6 @@ function flipCard() {
 
 function stopGame() {
   clearInterval(timer);
-  // document.getElementById('startGame').style.display = 'block';
-  // document.getElementById('tablero').classList.add('hidden');
   // window.location.href = 'index.html?controller=Juego&action=regPunt';
   window.location.href = './view/registroPuntuacion.html';
 }

@@ -12,6 +12,7 @@
     <div id="game">
         <button id="startGame">Empezar Juego</button>
         <p>Tiempo: <span id="contador">0</span>s</p>
+        <p>Puntuación: <span id="puntuacion">0</span></p>
 
         <div id="tablero" class="hidden">
             <!--Tablero de cartas -->
