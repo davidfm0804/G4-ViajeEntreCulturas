@@ -156,6 +156,7 @@ button:active {
 
 .hidden {
   display: none;
+  visibility: hidden;
 }
 
 #pantallaFin {

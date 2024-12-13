@@ -117,7 +117,7 @@ function flipCard() {
 
 function stopGame() {
   clearInterval(timer);
-  alert('¡Juego Terminado!');
   document.getElementById('startGame').style.display = 'block';
   document.getElementById('tablero').classList.add('hidden');
+  alert('¡Juego Terminado!');
 }
