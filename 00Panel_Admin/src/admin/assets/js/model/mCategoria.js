@@ -44,7 +44,7 @@ async function mModificarCategoria(formData) {
     }
 }
 
-async function verificarCategoria(formData) {
+/*async function verificarCategoria(formData) {
     try {
         console.log("Enviando solicitud para verificar categoría...");
         const response = await fetch('index.php?controlador=Categoria&accion=csuCategoria', {
@@ -60,4 +60,4 @@ async function verificarCategoria(formData) {
         console.error('Error:', error);
         return false;
     }
-}
+}*/

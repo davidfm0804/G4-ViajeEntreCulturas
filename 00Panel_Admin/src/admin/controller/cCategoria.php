@@ -44,6 +44,30 @@
             exit;
         }
 
+        public function modificarCategoria(){
+            if (!isset($_POST['idCat']) || !isset($_POST['categoria'])) {
+                echo "Error al modificar el registro";
+                exit;
+            }
+
+            $idCatg = $_POST['idCat'];
+            $nombreCat = $_POST['categoria'];
+
+            $valid = $this->validarCategoria($nombreCat);
+
+            if ($valid['valid']) {
+                $result = $this->objCatg->updateCategoria($idCatg, $nombreCat);
+                if ($result)
+                    echo "Registro modificado correctamente";
+                else
+                    echo "Error al modificar la categoría";
+            } else {
+                echo $valid['error'];
+            }
+
+            exit;
+        }
+
         public function borrarCategoria(){
             if (!isset($_POST['id']) || empty($_POST['id'])) {
                 echo "Error al eliminar el registro: ID no proporcionado.";
@@ -65,30 +89,6 @@
         public function formModCatg(){
             $this->view = 'formModCatg';
             return $this->objCatg->selectModCatg();   
-        }
-
-        public function modificarCategoria(){
-            if (!isset($_POST['idCat']) || !isset($_POST['categoria'])) {
-                echo "Error al modificar el registro";
-                exit;
-            }
-
-            $idCatg = $_POST['idCat'];
-            $nombreCat = $_POST['categoria'];
-
-            $valid = $this->validarCategoria($nombreCat);
-
-            if ($valid['valid']) {
-                $result = $this->objCatg->updateCategoria($idCatg, $nombreCat);
-                if ($result)
-                    echo "Registro modificado correctamente";
-                else
-                    echo "Error al modificar el registro";
-            } else {
-                echo $valid['error'];
-            }
-
-            exit;
         }
 
         // Verificar si la categoría ya existe en la base de datos

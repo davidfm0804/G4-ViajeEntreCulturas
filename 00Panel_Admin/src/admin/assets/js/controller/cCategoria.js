@@ -1,5 +1,5 @@
 async function altaCategoria(formData) {
-    const validation = validarCategoria(formData);
+    /*const validation = validarCategoria(formData);
 
     if (!validation.valid) {
         alert(validation.error);
@@ -18,7 +18,7 @@ async function altaCategoria(formData) {
             return;
         }
         
-        console.log("Categoría no existe, procediendo a registrar...");
+        console.log("Categoría no existe, procediendo a registrar...");*/
         const response = await mAltaCategoria(formData);
 
         if (response && response.ok) {
@@ -34,13 +34,13 @@ async function altaCategoria(formData) {
             console.log("Error al registrar la categoría");
             return "Error al registrar la categoría";
         }
-    }
+    //}
 }
     
 
 
 async function modificarCategoria(formData) {
-    const validation = validarCategoria(formData);
+    /*const validation = validarCategoria(formData);
 
     if (!validation.valid) {
         alert(validation.error);
@@ -59,7 +59,7 @@ async function modificarCategoria(formData) {
             return;
         }
 
-        console.log("Categoría no existe, procediendo a modificar...");
+        console.log("Categoría no existe, procediendo a modificar...");*/
         const response = await mModificarCategoria(formData);
 
         if (response && response.ok) {
@@ -75,7 +75,8 @@ async function modificarCategoria(formData) {
             console.log("Error al modificar la categoría");
             return "Error al modificar la categoría";
         }
-    }
+        
+    //}
 }
 
 function validarCategoria(formData) {

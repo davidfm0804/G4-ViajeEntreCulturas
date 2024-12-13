@@ -33,7 +33,7 @@ class MCategoria {
         // Ejecutar
         $stmt->execute();
 
-        return $stmt->affected_rows;
+        return $stmt->affected_rows > 0;
 
         // echo "Nuevo registro creado exitosamente";
     }
@@ -94,7 +94,7 @@ class MCategoria {
         $this->conexion->close();
         
         return $count > 0;
-        
+
     }
     
 }
