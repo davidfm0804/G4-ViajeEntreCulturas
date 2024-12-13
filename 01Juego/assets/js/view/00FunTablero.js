@@ -28,6 +28,7 @@ function iniciarJuego() {
   // Iniciar el temporizador
   temporizador = setInterval(function() {
     tiempo++;
+    if (tiempo > 20) gameOver(); 
     document.getElementById('contador').textContent = tiempo;
   }, 1000);
 
@@ -138,4 +139,10 @@ function stopJuego(tiempo, puntuacion, numFallos) {
 
   // encodeURIComponent -> "nombre jugador" - "nombre%20jugador"
   window.location.href = `index.php?controller=Juego&action=registrarPuntuacion&tiempo=${encodeURIComponent(encryptedTiempo)}&puntos=${encodeURIComponent(encryptedPuntuacion)}&numFallos=${encodeURIComponent(encryptedNumFallos)}&idCont=${encodeURIComponent(encryptedIdCont)}`;
+}
+
+function gameOver() {
+  clearInterval(temporizador);
+  alert('¡Juego Terminado!');
+  window.location.href = './index.php?controller=Juego&action=verRanking&idCont=5';
 }
