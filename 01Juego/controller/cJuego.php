@@ -23,8 +23,9 @@ require_once MODELO.'mJuego.php';
         }
 
         public function verRanking() {
+            $idCont = isset($_GET['idCont']) ? intval($_GET['idCont']) : false;
             $this->view = 'rankingPuntuaciones'; 
-            return $this->objJuego->seleccionarPuntuaciones();
+            return $this->objJuego->seleccionarPuntuaciones($idCont);
         }
 
         // Insertar Puntuacion

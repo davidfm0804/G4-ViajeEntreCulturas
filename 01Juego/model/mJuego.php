@@ -23,10 +23,8 @@ class MJuego {
         return $stmt->affected_rows > 0;
     }
 
-    public function seleccionarPuntuaciones() {
+    public function seleccionarPuntuaciones($idContinente) {
         $this->conectar();
-
-        $idContinente = isset($_GET['idContinente']) ? intval($_GET['idContinente']) : 0;
 
         $sql = 'SELECT idPuntuacion, nombre, puntos, numFallos, tiempo FROM '.$this->tabla.' WHERE idContinente = ? ORDER BY puntos DESC, tiempo ASC, numFallos ASC';
         $stmt = $this->conexion->prepare($sql);

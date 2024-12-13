@@ -40,7 +40,7 @@ document.querySelector('[type="submit"]').addEventListener('click', async functi
         alert('Error en la conexión con el servidor');
     }
 
-    window.location.href = './index.php?controller=Juego&action=verRanking';
+    window.location.href = `./index.php?controller=Juego&action=verRanking&idCont=${formData.get('idCont')}`;
 });
 
 // Recoger Parametros URL
