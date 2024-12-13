@@ -119,6 +119,7 @@ function voltearCarta() {
         carta2.classList.remove('flipped');
         cartasVolteadas = [];
         numFallos ++;
+        puntuacion -= 50;
         document.getElementById('intentos').textContent = numFallos;
       }, 1000);
     }

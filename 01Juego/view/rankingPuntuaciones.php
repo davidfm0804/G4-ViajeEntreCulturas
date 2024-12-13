@@ -48,6 +48,9 @@
                     }
                 ?>
             </table>
+            <button type="button">Nueva Partida</button>
+            <!-- <button type="button">Valoracion</button> -->
         </main>
+        <script src="<?php echo JS.'02FunRankPunt.js'?>"></script>
     </body>
 </html>
