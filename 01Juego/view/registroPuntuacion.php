@@ -17,8 +17,8 @@
         <input type="text" name="nombreJug" placeholder="Nombre Jugador" required>
         <button type="reset">Borrar</button>
         <button type="button">Cancelar</button>
-        <button type="submit">Enviar</button>
+        <button id="btnEnviar">Enviar</button>
     </main>
 </body>
-<script src="<?php echo JS.'01FunRegPunt.js'?>"></script>
+<script src="<?php echo JS.'01FunRegtPunt.js'?>"></script>
 </html>

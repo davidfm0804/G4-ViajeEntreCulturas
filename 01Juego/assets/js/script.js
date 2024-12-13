@@ -127,10 +127,40 @@ function voltearCarta() {
 function detenerJuego(tiempo, puntuacion, numFallos) {
   formData = new FormData();
   formData.append('tiempo',tiempo);
-  formData.append('puntuacion',puntuacion);
+  formData.append('puntos',puntuacion);
   formData.append('numFallos',numFallos);
+  formData.append('idCont',5);
 
   clearInterval(temporizador);  
 
   window.location.href = `index.php?controller=Juego&action=registrarPuntuacion&fd=${formData}`;
 }
+
+/* Codificar
+const puntuacion = 95;
+const encodedScore = btoa(puntuacion); // Base64 encoding
+
+// Agregar a la URL
+const url = `https://example.com/api?score=${encodedScore}`;
+console.log(url); // https://example.com/api?score=OTU=
+
+// Decodificar
+const decodedScore = atob(encodedScore);
+console.log(decodedScore); // 95
+
+//---------------------------------------------------------
+
+// Encriptar
+const CryptoJS = require("crypto-js");
+const puntuacion = 95;
+const secretKey = "miClaveSecreta";
+
+const encryptedScore = CryptoJS.AES.encrypt(puntuacion.toString(), secretKey).toString();
+const url = `https://example.com/api?score=${encodeURIComponent(encryptedScore)}`;
+console.log(url); // La puntuación está cifrada
+
+// Desencriptar
+const bytes = CryptoJS.AES.decrypt(encryptedScore, secretKey);
+const decryptedScore = bytes.toString(CryptoJS.enc.Utf8);
+console.log(decryptedScore); // 95 */
+
