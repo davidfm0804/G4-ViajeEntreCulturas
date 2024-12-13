@@ -18,5 +18,4 @@ $dataToView["data"] = array();
 if(method_exists($controlador,$_GET["accion"])){
     $dataToView["data"] = $controlador->{$_GET["accion"]}();
 }
-
-require_once 'vistas/'.$controlador->vista.'.php';
+if(!$controlador->vista == ''){require_once 'vistas/'.$controlador->vista.'.php';}

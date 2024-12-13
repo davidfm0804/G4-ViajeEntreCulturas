@@ -19,9 +19,9 @@ class cItem {
         return $this->objItem->mListadoPaises();
     }
 
-    public function cFormModItem(){
-        $this->vista = 'formModItem';
-        return $this->objItem->mFormModItem();
+    public function cFormModItems(){
+        $this->vista = 'formModItems';
+        return $this->objItem->mFormModItems();
     }
 
     public function cUpdateItem(){

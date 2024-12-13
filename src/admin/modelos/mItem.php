@@ -29,7 +29,7 @@ class mItem {
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function mFormModItem(){
+    public function mFormModItems(){
         $this->conectar();
         $id = $_GET['idPais'];
         $sql = "SELECT nombrePais, bandera, coordX, coordY FROM ".$this->tabla." WHERE idPais = ".$id;
