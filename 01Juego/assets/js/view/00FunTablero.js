@@ -107,7 +107,16 @@ function voltearCarta() {
   
       if (cartasEmparejadas.length === Object.keys(paresCartas).length * 2) {
         setTimeout(() => {
-          alert('¡Juego Terminado!');
+          const h1Winner = document.createElement('h1');
+          h1Winner.textContent = '¡Winner!';
+          h1Winner.style.fontSize = '3rem';
+          h1Winner.style.textShadow = '2px 2px 5px red';
+          h1Winner.style.position = 'absolute';
+          h1Winner.style.top = '50%';
+          h1Winner.style.left = '50%';
+          h1Winner.style.transform = 'translate(-50%, -50%)';
+          h1Winner.style.animation = 'blink 1s infinite'; // Añadir animación de parpadeo
+          document.body.appendChild(h1Winner);
           stopJuego(tiempo, puntuacion, numFallos);
         }, 100);
       }
@@ -181,7 +190,6 @@ function gameOver() {
   const todasLasCartas = document.querySelectorAll('.card');
   todasLasCartas.forEach(carta => {
     carta.classList.add('disabled');
-    //carta.removeEventListener('click', handleClick);
   });
 
   document.body.appendChild(btnReiniciar);
