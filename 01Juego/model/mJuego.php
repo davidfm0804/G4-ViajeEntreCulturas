@@ -1,6 +1,6 @@
 <?php
 
-class GameModel {
+class MJuego {
     
     private $rankingFile = 'ranking.json';
     
