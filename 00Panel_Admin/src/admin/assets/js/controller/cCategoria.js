@@ -75,7 +75,7 @@ async function modificarCategoria(formData) {
             console.log("Error al modificar la categoría");
             return "Error al modificar la categoría";
         }
-        
+
     //}
 }
 

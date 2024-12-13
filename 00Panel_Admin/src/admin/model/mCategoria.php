@@ -59,9 +59,9 @@ class MCategoria {
         $conxPrp = $this->conexion->prepare($sql);
 
         $conxPrp->bind_param("si", $nombreCat,$idCatg);
-        $result = $conxPrp->execute();
+        $conxPrp->execute();
 
-        return $result ? true : false;
+        return $stmt->affected_rows > 0;
     }
 
     public function eliminarCategoria($idCat){
