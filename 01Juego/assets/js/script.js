@@ -119,5 +119,6 @@ function stopGame() {
   clearInterval(timer);
   // document.getElementById('startGame').style.display = 'block';
   // document.getElementById('tablero').classList.add('hidden');
-  window.location.href = 'index.html?controller=Juego&action=regPunt';
+  // window.location.href = 'index.html?controller=Juego&action=regPunt';
+  window.location.href = './view/registroPuntuacion.html';
 }

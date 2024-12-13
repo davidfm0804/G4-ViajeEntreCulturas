@@ -1,5 +1,5 @@
 <?php
-require_once './config/config.php';
+require_once 'config/config.php';
 require_once MODELO.'conexion.php';
 
 if(!isset($_GET["controller"])){$_GET["controller"] = DEFAULT_CONTROLADOR;}

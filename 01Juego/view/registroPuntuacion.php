@@ -1,8 +1,3 @@
-<?php
-// Definir las constantes IMG y CSS
-define('IMG', '../assets/img/web/');
-define('CSS', '../assets/css/');
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,7 +9,7 @@ define('CSS', '../assets/css/');
 </head>
 <body>
     <header>
-        <img src="<?php echo IMG . 'logo.png'; ?>" alt="Logo">
+        <img src="<?php echo IMG.'logo.png'; ?>" alt="Logo">
         <h1>Viaje entre Culturas</h1>
     </header>
     <main class="registro">

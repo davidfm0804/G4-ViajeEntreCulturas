@@ -1,27 +1,39 @@
 <?php
 
 class MJuego {
-    
-    private $rankingFile = 'ranking.json';
-    
-    public function obtenerRanking() {
-        if (file_exists($this->rankingFile)) {
-            $data = file_get_contents($this->rankingFile);
-            return json_decode($data, true); 
-        }
-        return []; 
+
+    private $tabla = 'puntuacion';
+    private $conexion;
+
+    public function conectar(){
+        $objetoBD = new bbdd();
+        $this->conexion = $objetoBD->conexion;
     }
 
-    // Guardar un nuevo puntaje en el archivo de ranking
-    public function guardarPuntaje($nombre, $tiempo) {
-        $ranking = $this->obtenerRanking();
-        $ranking[] = ['nombre' => $nombre, 'tiempo' => $tiempo];
+    // Insert Puntuacion
+    public function insertPuntuacion($nombre, $puntos, $numFallos, $tiempo, $idContinente) {
+        $this->conectar();
 
-        usort($ranking, function ($a, $b) {
-            return $a['tiempo'] - $b['tiempo'];
-        });
+        $sql = 'INSERT INTO '.$this->tabla.' (nombre, puntos, numFallos, tiempo, idContinente) VALUES (?, ?, ?, ?, ?)';
+        $stmt = $this->conexion->prepare($sql);
 
-        file_put_contents($this->rankingFile, json_encode($ranking, JSON_PRETTY_PRINT));
+        $stmt->bind_param('siiii', $nombre, $puntos, $numFallos, $tiempo, $idContinente);
+        $stmt->execute();
+
+        return $stmt->affected_rows > 0;
     }
+
+    public function selectPuntuaciones() {
+        $this->conectar();
+
+        $sql = 'SELECT idPuntuacion, nombre, puntos, numFallos, tiempo  FROM '.$this->tabla.' WHERE idContinente = ? ORDER BY puntuacion, tiempo, numFallos ASC';
+        $this->conexion->prepare($sql);
+        $this->conexion->bind_param('i', $_GET['idContinente']);
+        $resultado = $this->conexion->execute();
+
+        return $resultado->fetch_all(MYSQLI_ASSOC);
+    }
+
+    
 }
 ?>
