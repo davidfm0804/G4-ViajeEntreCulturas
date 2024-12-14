@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Items</title>
     <link rel="icon" href="<?php echo IMG.'mapa.jpg';?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?php echo CSS.'estiloCelia.css'; ?>">
+    <link rel="stylesheet" href="<?php echo CSS.'estiloSilva.css'; ?>">
 </head>
 <body>
     <header>
@@ -13,47 +13,35 @@
         <a href="index.php">PANEL ADMIN</a>
     </header>
 <main>
-    <h2>Items de (pais)</h2>
+    <h2><?php echo $controlador->tituloPagina; ?></h2>
         <div>
             <form>
-                <?php
-                for($i = 1; $i < 5; $i++){
-                ?>
+               <?php if(count($dataToView["data"])>0){
+                foreach($dataToView["data"] as $indice => $item){ ?>
                 <fieldset>
-                    <legend>Item <?php echo $i;?>:</legend><br/>
+             
+                    <legend>Item <?php echo $indice + 1;?>:</legend><br/>
 
-                    <label for="categoria<?php echo $i; ?>">Categoría: </label>
-
-                    <select name="categoria<?php echo $i; ?>" id="categoria<?php echo $i;?>">
-                        <option disabled hidden selected></option>
-                        <?php if(count($dataToView["data"])>0){
-                            foreach($dataToView["data"] as $categoria){ ?>
-                        <option value="<?php echo $categoria['idCategoria'];?>"><?php echo $categoria['nombreCat']; ?></option>
-                        <?php
-                            } 
-                        } else {
-                        ?>
-                            <tr><td colspan='4'>No hay categorias disponibles</td></tr>
-                        <?php
-                        }
-                        ?>
+                    <label for="categoria<?php echo $indice + 1; ?>">Categoría: </label>
+                       
+                    <select name="categoria<?php echo $indice + 1; ?>" id="categoria<?php echo $indice + 1;?>">
+                        <option selected> <?php echo $item["nombreCat"];?></option>
                     </select><br/><br/>
-
-                    <label for="subirfoto<?php echo $i; ?>" id="subirBtn<?php echo $i; ?>">Subir foto</label>
-                    <input type="file" id="subirfoto<?php echo $i; ?>" name="foto<?php echo $i; ?>">
+                    <img width="150px" src="<?php echo FOTOS.$item['imagen'];?>" alt="Foto de <?php echo $item["nombreCat"];?>" id="fotoActual"><br/>
+                    <label for="subirfoto<?php echo $indice + 1; ?>" id="subirBtn<?php echo $indice + 1; ?>">Subir foto</label>
+                    <input type="file" id="subirfoto<?php echo $indice + 1; ?>" name="foto<?php echo $indice + 1; ?>">
                      
                     <br/>
-                    <label for="descripcion<?php echo $i; ?>" id="descripcion<?php echo $i; ?>">Inserte descripción: </label><br/>
-                    <textarea id="descripcion<?php echo $i; ?>" name="descripcion<?php echo $i; ?>"></textarea>
+                    <label for="descripcion<?php echo $indice + 1; ?>" id="descripcion<?php echo $indice + 1; ?>">Inserte descripción: </label><br/>
+                    <textarea id="descripcion<?php echo $indice + 1; ?>" name="descripcion<?php echo $indice + 1; ?>"><?php echo $item["descripcion"];?></textarea>
                 </fieldset>
                 <br/>
                 <?php    
                  }
+                }
                  ?>
-                <input type="hidden" name="idContinente" value="<?php echo $_GET['id'];?>">
-                <input type="hidden" name="nombreCont" value="<?php echo $_GET['nombreCont'];?>">
                     <button type="button" class="cancel">Cancelar</button>
-                    <button type="button" class="update">Dar Alta</button>
+                    <button type="button" class="update">Actualizar</button>
             </form>
         </div>
     </main>

@@ -16,7 +16,8 @@ document.querySelectorAll('.modificar').forEach(button => {
         // Obtener Nombre Pais || closest -> Accede al 'tr' más cercano
         const nombrePais = button.closest('tr').querySelector('.colNombre').textContent;
         const idPais = button.closest('tr').id;
-        window.location.href = `index.php?controlador=Item&accion=cFormModItems&nombre=${nombrePais}&idPais=${idPais}&idContinente=${idContinente}&nombreCont=${nombreCont}`;
+        window.location.href = `index.php?controlador=Item&accion=cFormModItems&nombrePais=${nombrePais}&idPais=${idPais}`; 
+        // &idContinente=${idContinente}&nombreCont=${nombreCont};
     });
 });
 

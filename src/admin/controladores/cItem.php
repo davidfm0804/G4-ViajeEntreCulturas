@@ -20,6 +20,7 @@ class cItem {
     }
 
     public function cFormModItems(){
+        $this->tituloPagina = 'Listado de items de '.$_GET['nombrePais'];
         $this->vista = 'formModItems';
         return $this->objItem->mFormModItems();
     }

@@ -31,9 +31,15 @@ class mItem {
 
     public function mFormModItems(){
         $this->conectar();
-        $id = $_GET['idPais'];
-        $sql = "SELECT nombrePais, bandera, coordX, coordY FROM ".$this->tabla." WHERE idPais = ".$id;
-        $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
+        $idPais = $_GET['idPais'];
+        $sql = "SELECT item.idItem, item.descripcion, item.imagen, item.idCategoria, categoria.idCategoria, categoria.nombreCat 
+            FROM item INNER JOIN categoria ON item.idCategoria = categoria.idCategoria
+            WHERE item.idPais = ?
+            ORDER BY item.idItem";
+        $consulta = $this->conexion->prepare($sql); 
+        $consulta->bind_param("i", $idPais);
+        $consulta->execute();
+        $resultado = $consulta->get_result();
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
