@@ -26,7 +26,7 @@ class MJuego {
     public function seleccionarPuntuaciones($idContinente) {
         $this->conectar();
 
-        $sql = 'SELECT idPuntuacion, nombre, puntos, numFallos, tiempo FROM '.$this->tabla.' WHERE idContinente = ? ORDER BY puntos DESC, tiempo ASC, numFallos ASC';
+        $sql = 'SELECT idPuntuacion, nombre, puntos, numFallos, tiempo FROM '.$this->tabla.' WHERE idContinente = ? ORDER BY puntos DESC, tiempo ASC, numFallos ASC LIMIT 10;';
         $stmt = $this->conexion->prepare($sql);
         $stmt->bind_param('i', $idContinente);
         $stmt->execute();

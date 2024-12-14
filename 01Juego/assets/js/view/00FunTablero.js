@@ -107,16 +107,7 @@ function voltearCarta() {
   
       if (cartasEmparejadas.length === Object.keys(paresCartas).length * 2) {
         setTimeout(() => {
-          const h1Winner = document.createElement('h1');
-          h1Winner.textContent = '¡Winner!';
-          h1Winner.style.fontSize = '3rem';
-          h1Winner.style.textShadow = '2px 2px 5px red';
-          h1Winner.style.position = 'absolute';
-          h1Winner.style.top = '50%';
-          h1Winner.style.left = '50%';
-          h1Winner.style.transform = 'translate(-50%, -50%)';
-          h1Winner.style.animation = 'parapadeo 1s infinite'; // Añadir animación de parpadeo
-          document.body.appendChild(h1Winner);
+          h1WinnerGameOver('¡Winner!');
           stopJuego(tiempo, puntuacion, numFallos);
         }, 100);
       }
@@ -158,22 +149,13 @@ function stopJuego(tiempo, puntuacion, numFallos) {
 function gameOver() {
   clearInterval(temporizador);
 
-  const h1GameOver = document.createElement('h1');
-  h1GameOver.textContent = '¡Game Over!';
-  h1GameOver.style.fontSize = '3rem';
-  h1GameOver.style.textShadow = '2px 2px 5px red';
-  h1GameOver.style.position = 'absolute';
-  h1GameOver.style.top = '50%';
-  h1GameOver.style.left = '50%';
-  h1GameOver.style.transform = 'translate(-50%, -50%)';
-  h1GameOver.style.animation = 'parapadeo 1s infinite'; // Añadir animación de parpadeo
-  document.body.appendChild(h1GameOver);
+  h1WinnerGameOver('¡Game Over!');
 
   const btnReiniciar = document.createElement('button');
   btnReiniciar.textContent = 'Nueva Partida';
   btnReiniciar.style.padding = '1%';
   btnReiniciar.addEventListener('click', function() {
-    document.body.removeChild(h1GameOver);
+    document.body.removeChild(document.getElementById('h1WinGmOv'));
     document.body.removeChild(btnReiniciar);
     document.body.removeChild(btnRanking);
     resetearJuego();
@@ -209,4 +191,18 @@ function resetearJuego() {
   document.getElementById('intentos').textContent = numFallos;
   document.getElementById('tablero').classList.add('hidden');
   document.getElementById('startGame').style.display = 'block';
+}
+
+function h1WinnerGameOver(title){
+  const h1 = document.createElement('h1');
+  h1.textContent = title;
+  h1.id = 'h1WinGmOv';
+  h1.style.fontSize = '3rem';
+  h1.style.textShadow = '2px 2px 5px red';
+  h1.style.position = 'absolute';
+  h1.style.top = '50%';
+  h1.style.left = '50%';
+  h1.style.transform = 'translate(-50%, -50%)';
+  h1.style.animation = 'parapadeo 1s infinite'; // Añadir animación de parpadeo
+  document.body.appendChild(h1);
 }
