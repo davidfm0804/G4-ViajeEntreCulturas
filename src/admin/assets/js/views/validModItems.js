@@ -6,9 +6,93 @@ document.querySelector('.cancel').addEventListener('click', function(){
     window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id${idContinente}&nombreCont=${nombreCont}`;
 });
 
-/*-- Dar Valor Inputs Coordenadas [localStorage] --*/
-document.querySelector('[name="coordenada_x"]').value = localStorage.getItem('coordX');
-document.querySelector('[name="coordenada_y"]').value = localStorage.getItem('coordY');
+// Definir las constantes para cada uno de los selects
+const selectCategoria1 = document.getElementById('categoria1');
+const selectCategoria2 = document.getElementById('categoria2');
+const selectCategoria3 = document.getElementById('categoria3');
+const selectCategoria4 = document.getElementById('categoria4');
+
+const urlCargarCategorias = `index.php?controlador=Item&accion=cCargarCategorias`;
+async function actualizarSelect(selectElement, url) {
+    try {
+        // Obtener el id del option seleccionado debajo del select
+        const optionSelected = selectElement.querySelector('option:checked'); // Seleccionamos el option marcado
+        const idCategoria = optionSelected ? optionSelected.id : null; // Extraemos el id del option seleccionado, si existe
+
+        // Crear un FormData para enviar al servidor
+        const formData = new FormData();
+        formData.append('idCategoria', idCategoria);  // Añadimos el id de la categoría seleccionada
+
+        // Realizar la solicitud fetch con método POST
+        const respuesta = await fetch(url, {
+            method: 'POST', // Usamos POST para enviar el FormData
+            body: formData // Enviamos el FormData con los datos
+        });
+
+        // Verificamos si la respuesta es exitosa
+        if (!respuesta.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+
+        // Parseamos la respuesta JSON
+        const categorias = await respuesta.json(); 
+
+        // Creamos las nuevas opciones para el select, sin eliminar las anteriores
+        categorias.forEach(categoria => {
+            // Creamos un nuevo option
+            const option = document.createElement('option');
+            option.id = categoria.idCategoria; // Establecemos el id del option
+            option.textContent = categoria.nombreCategoria; // Establecemos el nombre de la categoría
+
+            // Añadimos el option al select (debajo del option ya existente)
+            selectElement.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error('Error:', error); // Imprimir el error en caso de que haya un fallo
+    }
+}
+
+actualizarSelect(selectCategoria1, urlCargarCategorias);
+actualizarSelect(selectCategoria2, urlCargarCategorias);
+actualizarSelect(selectCategoria3, urlCargarCategorias);
+actualizarSelect(selectCategoria4, urlCargarCategorias);
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*-- Añadir Evento -> Form --*/
 document.querySelector('.update').addEventListener('click', async function(event){
@@ -180,8 +264,5 @@ document.querySelector('.update').addEventListener('click', async function(event
             console.error('Error:', error);
         }
 
-        // Borrar Coordenadas localStorage
-        localStorage.removeItem('coordX');
-        localStorage.removeItem('coordY');
     }
 });

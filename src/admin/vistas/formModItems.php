@@ -25,9 +25,11 @@
                     <label for="categoria<?php echo $indice + 1; ?>">Categoría: </label>
                        
                     <select name="categoria<?php echo $indice + 1; ?>" id="categoria<?php echo $indice + 1;?>">
-                        <option selected> <?php echo $item["nombreCat"];?></option>
+                        <option selected id="<?php echo $item["idCategoria"];?>"> <?php echo $item["nombreCat"];?></option>
                     </select><br/><br/>
-                    <img width="150px" src="<?php echo FOTOS.$item['imagen'];?>" alt="Foto de <?php echo $item["nombreCat"];?>" id="fotoActual"><br/>
+                    <input type="file" id="fotoActual<?php echo $indice + 1;?>" name="foto<?php echo $indice + 1;?>" style="display: none;" onchange="cambiarBandera(this)">
+                        <br/> <br/>
+                    <img width="150px" src="<?php echo FOTOS.$item['imagen'];?>" alt="Foto de <?php echo $item["nombreCat"];?>" id="fotoActualIMG<?php echo $indice + 1; ?>"><br/>
                     <label for="subirfoto<?php echo $indice + 1; ?>" id="subirBtn<?php echo $indice + 1; ?>">Subir foto</label>
                     <input type="file" id="subirfoto<?php echo $indice + 1; ?>" name="foto<?php echo $indice + 1; ?>">
                      
@@ -40,6 +42,8 @@
                  }
                 }
                  ?>
+                 <input type="hidden" name="idContinente" value="<?php echo $_GET["idContinente"]; ?>">
+                 <input type="hidden" name="nombreCont" value="<?php echo $_GET["nombreCont"]; ?>">
                     <button type="button" class="cancel">Cancelar</button>
                     <button type="button" class="update">Actualizar</button>
             </form>

@@ -68,5 +68,103 @@ class mItem {
         $result = $conxPrp->execute();
         return $result;
     }
+
+    public function mCargarCategorias(){
+        $this->conectar();
+        $idCategoria = $_POST["idCategoria"];
+
+        $sql= "SELECT idCategoria, nombreCat FROM categoria WHERE idCategoria != ?";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->bind_param("i", $idCategoria);
+        $consulta->execute();
+        $resultado = $consulta->get_result();
+
+        $categorias = [];
+
+        while($fila = $resultado->fetch_assoc()) {
+            $categorias[] = [
+                'idCategoria' => $fila['idCategoria'],
+                'nombreCategoria' => $fila['nombreCat']
+            ];
+        }
+
+        $consulta->close();
+
+        return $categorias;
+    }
+
+    public function mActualizarItems(){
+        $this->conectar();
+        $idPais;
+
+        $idCategoria1 = $_POST['categoria1']; $descripcion1 = $_POST['descripcion1']; 
+        $idCategoria2 = $_POST['categoria2']; $descripcion2 = $_POST['descripcion2'];
+        $idCategoria3 = $_POST['categoria3']; $descripcion3 = $_POST['descripcion3'];
+        $idCategoria4 = $_POST['categoria4']; $descripcion4 = $_POST['descripcion4'];
+
+        $imgItem1 = $_FILES['imgItem1']['name']; //Ejemplo: india.png
+        $imgItemTmp1 = $_FILES['imgItem1']['tmp_name'];
+        $imgItemPath1 = FOTOS.basename($imgItem1);
+
+        $imgItem2 = $_FILES['imgItem2']['name']; //Ejemplo: india.png
+        $imgItemTmp2 = $_FILES['imgItem2']['tmp_name'];
+        $imgItemPath2 = FOTOS.basename($imgItem2);
+        
+        $imgItem3 = $_FILES['imgItem3']['name']; //Ejemplo: india.png
+        $imgItemTmp3 = $_FILES['imgItem3']['tmp_name'];
+        $imgItemPath3 = FOTOS.basename($imgItem3);
+        
+        $imgItem4 = $_FILES['imgItem4']['name']; //Ejemplo: india.png
+        $imgItemTmp4 = $_FILES['imgItem4']['tmp_name'];
+        $imgItemPath4 = FOTOS.basename($imgItem4);
+
+        $this->conexion->begin_transaction();
+
+        try{
+            $sqlBorrar = "DELETE FROM item WHERE idPais = ?";
+            $consultaBorrar = $this->conexion->prepare($sqlBorrar);
+            if (!$consultaBorrar) {
+                throw new Exception("Error al preparar el DELETE: " . $this->conexion->error);
+            }
+
+            $consultaBorrar->bind_param("i", $idPais);
+            if (!$consultaBorrar->execute()) {
+                throw new Exception("Error al ejecutar el DELETE: " . $consultaBorrar->error);
+            }
+
+            $sqlAlta = "INSERT INTO item (descripcion, imagen, idPais, idCategoria) VALUES (?, ?, ?, ?), (?, ?, ?, ?), (?, ?, ?, ?), (?, ?, ?, ?)";
+            $consulta = $this->conexion->prepare($sqlAlta);
+            if (!$consulta) {
+                throw new Exception("Error al preparar la consulta SQL: " . $this->conexion->error);
+            }
+            $consulta->bind_param("ssiissiissiissii", 
+            $descripcion1, $imgItem1, $idPais, $idCategoria1, 
+            $descripcion2, $imgItem2, $idPais, $idCategoria2, 
+            $descripcion3, $imgItem3, $idPais, $idCategoria3, 
+            $descripcion4, $imgItem4, $idPais, $idCategoria4);
+
+            if (!$consulta->execute()) {
+                throw new Exception("Error al insertar los items: " . $consulta->error);
+            }
+            // Si todo fue exitoso, hacer commit de la transacción
+            $this->conexion->commit();
+
+          // Mover las imágenes después de la transacción (solo si fue exitosa)
+        if (!move_uploaded_file($imgItemTmp1, $imgItemPath1)) {throw new Exception("Error al mover la foto 1.");}
+        if (!move_uploaded_file($imgItemTmp2, $imgItemPath2)) {throw new Exception("Error al mover la foto 2.");}
+        if (!move_uploaded_file($imgItemTmp3, $imgItemPath3)) {throw new Exception("Error al mover la foto 3.");}
+        if (!move_uploaded_file($imgItemTmp4, $imgItemPath4)) {throw new Exception("Error al mover la foto 4.");}
+
+        // Confirmación de la modificación exitosa
+        return true;
+
+        } catch (Exception $e) {
+            // Si ocurre algún error, hacer rollback
+            $this->conexion->rollback();
+            return false;
+        }
+
+        $this->conexion->close();
+    }
 }
 ?>

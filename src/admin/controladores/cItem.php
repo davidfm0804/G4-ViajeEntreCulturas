@@ -36,5 +36,23 @@ class cItem {
          }
          exit;
     }
+
+    public function cCargarCategorias(){
+        $categorias = $this->objItem->mCargarCategorias();
+        header('Content-Type: application/json');
+        echo json_encode($categorias);
+    }
+
+    public function cActualizarItems(){
+        $resultado = $this->objItem->mActualizarItems();
+        if ($resultado) {
+            echo "Registro modificado correctamente";
+         } else {
+             // Si hubo un error, establecemos otro mensaje en la sesión
+             echo "Error al modificar el registro";
+         }
+         exit;
+
+    }
 }
 ?>

@@ -41,6 +41,7 @@
                     <?php
                 }
                 ?>
+                
                 </div>   
                     <button type="button" class="cancel">Cancelar</button>
                     <button type="button" class="update">Modificar</button>
