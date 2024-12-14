@@ -115,7 +115,7 @@ function voltearCarta() {
           h1Winner.style.top = '50%';
           h1Winner.style.left = '50%';
           h1Winner.style.transform = 'translate(-50%, -50%)';
-          h1Winner.style.animation = 'blink 1s infinite'; // Añadir animación de parpadeo
+          h1Winner.style.animation = 'parapadeo 1s infinite'; // Añadir animación de parpadeo
           document.body.appendChild(h1Winner);
           stopJuego(tiempo, puntuacion, numFallos);
         }, 100);
@@ -128,8 +128,9 @@ function voltearCarta() {
         carta2.classList.remove('flipped');
         cartasVolteadas = [];
         numFallos ++;
-        puntuacion -= 50;
+        if (puntuacion > 0) puntuacion -= 50;
         document.getElementById('intentos').textContent = numFallos;
+        document.getElementById('puntuacion').textContent = puntuacion;
       }, 1000);
     }
   }
@@ -165,7 +166,7 @@ function gameOver() {
   h1GameOver.style.top = '50%';
   h1GameOver.style.left = '50%';
   h1GameOver.style.transform = 'translate(-50%, -50%)';
-  h1GameOver.style.animation = 'blink 1s infinite'; // Añadir animación de parpadeo
+  h1GameOver.style.animation = 'parapadeo 1s infinite'; // Añadir animación de parpadeo
   document.body.appendChild(h1GameOver);
 
   const btnReiniciar = document.createElement('button');
