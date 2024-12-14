@@ -58,6 +58,67 @@ actualizarSelect(selectCategoria2, urlCargarCategorias);
 actualizarSelect(selectCategoria3, urlCargarCategorias);
 actualizarSelect(selectCategoria4, urlCargarCategorias);
 
+/*-- Añadir Evento -> Form --*/
+document.querySelector('.update').addEventListener('click', async function(event){
+
+    /*-- Recoger Elementos --*/
+    const categoria1 = document.querySelector('[name="pais"]').value;
+    const categoria2 = document.querySelector('[name="pais"]').value;
+    const categoria3 = document.querySelector('[name="pais"]').value;
+    const categoria4 = document.querySelector('[name="pais"]').value;
+
+    const imgBanderaInput = document.querySelector('#subirBandera');
+    const imgBandera = imgBanderaInput.files.length > 0 
+        ? imgBanderaInput.files[0] 
+        : document.querySelector('[name="banderaActual"]').value;
+    const coordX = document.querySelector('[name="coordX"]').value;
+    const coordY = document.querySelector('[name="coordY"]').value;
+    const idPais = document.querySelector('[name="idPais"]').value;
+
+    /*-- Declaración Variables --*/
+    let valid = true;
+    const formatoValido = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
+
+    /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
+    if (valid) {
+        const formData = new FormData();
+
+        formData.append('idPais', idPais);
+        formData.append('pais', pais);
+        if (imgBandera instanceof File) {
+            formData.append('imgBandera', imgBandera);
+        } else {
+            formData.append('imgBandera', imgBandera);
+        }
+        formData.append('coordX', coordX);
+        formData.append('coordY', coordY);
+
+
+        // Promesa | Fetch + FormData -> Borrar Pais
+        try {
+            const response = await fetch ('index.php?controlador=Pais&accion=cUpdatePais',{
+                method: 'POST',
+                body: formData,
+            });
+
+            //Verificamos si la respuesta del server es correcta
+            if(response.ok){
+                const result = await response.text();
+                alert(result);
+                window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`; 
+            }else{
+                alert('Pais modificado correctamente');
+                window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`; 
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error en la conexión con el servidor');
+            window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`; 
+        }
+        
+    }
+});
+
          
 
 
