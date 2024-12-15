@@ -44,15 +44,23 @@ class cItem {
     }
 
     public function cActualizarItems(){
+        // Llamar a mActualizarItems, que devuelve un string con el formato "success|Mensaje" o "error|Mensaje"
         $resultado = $this->objItem->mActualizarItems();
-        if ($resultado) {
-            echo "Registro modificado correctamente";
-         } else {
-             // Si hubo un error, establecemos otro mensaje en la sesión
-             echo "Error al modificar el registro";
-         }
-         exit;
-
+    
+        echo $resultado;
+        exit;
     }
+
+    // public function cActualizarItems(){
+    //     $resultado = $this->objItem->mActualizarItems();
+    //     if ($resultado) {
+    //         echo "Registro modificado correctamente";
+    //      } else {
+    //          // Si hubo un error, establecemos otro mensaje en la sesión
+    //          echo "Error al modificar el registro";
+    //      }
+    //      exit;
+
+    // }
 }
 ?>
