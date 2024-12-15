@@ -5,6 +5,10 @@ document.getElementById('altaPais').addEventListener('click', function () {
     window.location.href = `index.php?controlador=Pais&accion=cMapaChincheta&id=${idContinente}&nombreCont=${nombreCont}`;
 });
 
+document.getElementById('mostrarChinchetas').addEventListener('click', function () {
+    window.location.href = `index.php?controlador=Pais&accion=cMapaChinchetas&idContinente=${idContinente}&nombreCont=${nombreCont}`;
+});
+
 document.querySelectorAll('tr').forEach(row => {
     const modificarButton = row.querySelector('td:nth-of-type(3) button');
     const borrarButton = row.querySelector('td:nth-of-type(4) button');

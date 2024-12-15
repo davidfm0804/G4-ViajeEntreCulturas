@@ -33,6 +33,7 @@ class cContinente {
     
     public function cInsertarContinente() {
         $resultado = $this->objContinente->mInsertarContinente();
+       
         header('Content-Type: application/json');
     
         if ($resultado === true) {
@@ -45,14 +46,19 @@ class cContinente {
     }
 
     public function cBorrarContinente() {
+       
+        if (!isset($_POST['idContinente']) || empty($_POST['idContinente'])) {
+            echo "El ID del continente es obligatorio";
+            exit;
+        }
+
         $idContinente = $_POST['idContinente'];
 
-        $result = $this->objContinente->mBorrarContinente($idContinente);
+        $resultado = $this->objContinente->mBorrarContinente($idContinente);
         
-        if ($result) {
+        if ($resultado) {
            echo "Registro eliminado correctamente";
         } else {
-            // Si hubo un error, establecemos otro mensaje en la sesión
             echo "Error al eliminar el registro";
         }
         exit;

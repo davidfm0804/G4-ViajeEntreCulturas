@@ -20,6 +20,7 @@ $nombreCont = $_GET['nombreCont'];
 ?>
 <main>        
         <h2><?php echo $controlador->tituloPagina; ?></h2>
+        <button id="mostrarChinchetas">Mostrar chinchetas</button>
         <button id="altaPais">Alta país</button>
         <table>
             <tr>

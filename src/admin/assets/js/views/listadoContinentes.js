@@ -16,6 +16,7 @@ document.getElementById('altaPais').addEventListener('click', function () {
     window.location.href = 'index.php?controlador=Continente&accion=cFormAltaContinente';
 });
 
+
 /*-- Añadir Evento | Botones Modificar --*/
 document.querySelectorAll('.modificar').forEach(button => {
     button.addEventListener('click', function () {

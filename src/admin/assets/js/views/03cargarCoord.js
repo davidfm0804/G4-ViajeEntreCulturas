@@ -1,9 +1,12 @@
+const idContinente = document.getElementById('idContinente').value;
+    const nombreCont = document.getElementById('nombreCont').value;
+
 document.querySelector('main').style.position = "relative";
 /*-- Funcion Ubicar Chinchetas -> Chinchetas - CargarDOM --*/
 async function mostrarChinchetas() {
     // Obtener Coordenadas BBDD By Promesa
     try {
-        const response = await fetch('../03obtenerCoordenadas.php');
+        const response = await fetch(`index.php?controlador=Pais&accion=cMostrarChinchetas&idContinente=${idContinente}&nombreCont=${nombreCont}`);
         const coordenadas = await response.json();
         const mainMapa = document.querySelector('main');
         coordenadas.forEach(coord => {

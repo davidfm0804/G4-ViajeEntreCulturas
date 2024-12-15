@@ -164,7 +164,7 @@ document.querySelector('.update').addEventListener('click', async function(event
 
             /*-- Funcionalidad Botón Mostrar Mapa --*/
             document.getElementById('mostrarMapa').addEventListener('click', function() {
-                window.location.href = `index.php?controlador=Pais&accion=mapaChincheta&script=03cargarCoord.js&id=${idContinente}&nombreCont=${nombreCont}`;
+                window.location.href = `index.php?controlador=Pais&accion=cMapaChinchetas&idContinente=${idContinente}&nombreCont=${nombreCont}`;
             });
             
             /*-- Funcionalidad Botón Añadir Cultura --*/

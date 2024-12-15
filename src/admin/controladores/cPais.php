@@ -40,6 +40,15 @@ class cPais {
     public function cCambiarChincheta(){
         $this->vista = 'cambiarChincheta';
     }
+public function cMapaChinchetas(){
+    $this->vista = 'mapaChinchetas';
+}
+    public function cMostrarChinchetas(){
+       
+        $coordenadas = $this->objPais->mMostrarChinchetas();
+        header('Content-Type: application/json');
+        echo json_encode($coordenadas);
+    }
     public function cUpdatePais(){
         $result = $this->objPais->mUpdatePais();
 
