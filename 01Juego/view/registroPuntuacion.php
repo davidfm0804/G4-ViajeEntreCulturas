@@ -21,6 +21,6 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
-    <script src="<?php echo JS.'01FunRegtPunt.js'?>"></script>
+    <script src="<?php echo JS.'03FunRegtPunt.js'?>"></script>
 </body>
 </html>

@@ -22,4 +22,6 @@ if(method_exists($controlador,$_GET["action"])){
     die("Error: El método ".$_GET["action"]." no existe en el controlador ".$nombreControlador);
 }
 
-require_once 'view/'.$controlador->view.'.php';
+if (isset($controlador->view) && !empty($controlador->view)) {
+    require_once 'view/'.$controlador->view.'.php';
+}

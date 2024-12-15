@@ -2,23 +2,29 @@ document.getElementById('startGame').addEventListener('click', function() {
   iniciarJuego();
 });
 
+const infoPartida = JSON.parse(localStorage.getItem('infoPartida'));
+console.log(infoPartida);
+const rutaBanderas = 'assets/img/banderas/';
+const rutaFotos = 'assets/img/fotos/';
+const tiempoDefinido = 60;
+const tiempoMostrarCartas = 4;
+
 let temporizador;
-let tiempo = 25;
+let tiempo = tiempoDefinido;
 let cartasVolteadas = [];
 let cartasEmparejadas = [];
 let puntuacion = 0;
 let numFallos = 0;
 
-const paresCartas = {
-  'assets/img/espana.jpg': 'assets/img/tortilla.jpg',    
-  'assets/img/alemania.jpg': 'assets/img/cerveza.jpg',   
-  'assets/img/holanda.jpg': 'assets/img/zueco.jpg',      
-  'assets/img/francia.jpg': 'assets/img/croisan.jpg',    
-  'assets/img/portugal.jpg': 'assets/img/bacalao.jpg',   
-  'assets/img/polonia.jpg': 'assets/img/vodka.jpg',      
-};
+const paresCartas = {};
+for (const idPais in infoPartida) {
+  if (infoPartida.hasOwnProperty(idPais)) {
+    const pais = infoPartida[idPais];
+    paresCartas[`${rutaBanderas}${pais.bandera}`] = `${rutaFotos}${pais.imagen}`;
+  }
+}
 
-function iniciarJuego() {
+function iniciarJuego(infoPartida) {
   document.getElementById('startGame').style.display = 'none';
   document.getElementById('tablero').classList.remove('hidden');
 
@@ -69,7 +75,7 @@ function generarTablero() {
       carta.style.backgroundImage = ''; 
       carta.classList.remove('flipped'); 
     });
-  }, 2000); // 2 segundos
+  }, tiempoMostrarCartas*1000); // 2 segundos
 }
 
 // Mezclar las cartas aleatoriamente
@@ -132,13 +138,13 @@ function stopJuego(tiempo, puntuacion, numFallos) {
   const secretKey = "DWEC2024";
 
   // Calcular el tiempo que ha tardado en completar el juego
-  tiempo = 25 - tiempo;
+  tiempo = tiempoDefinido - tiempo;
 
   // Encriptar Datos
   const encryptedTiempo = CryptoJS.AES.encrypt(tiempo.toString(), secretKey).toString();
   const encryptedPuntuacion = CryptoJS.AES.encrypt(puntuacion.toString(), secretKey).toString();
   const encryptedNumFallos = CryptoJS.AES.encrypt(numFallos.toString(), secretKey).toString();
-  const encryptedIdCont = CryptoJS.AES.encrypt('5', secretKey).toString();
+  const encryptedIdCont = CryptoJS.AES.encrypt(localStorage.getItem('idCont'), secretKey).toString();
 
   clearInterval(temporizador);
 
@@ -158,7 +164,7 @@ function gameOver() {
     document.body.removeChild(document.getElementById('h1WinGmOv'));
     document.body.removeChild(btnReiniciar);
     document.body.removeChild(btnRanking);
-    resetearJuego();
+    inicializarJuego();
     iniciarJuego();
   });
 
@@ -179,9 +185,9 @@ function gameOver() {
   document.body.appendChild(btnRanking);
 }
 
-function resetearJuego() {
+function inicializarJuego() {
   clearInterval(temporizador);
-  tiempo = 25;
+  tiempo = tiempoDefinido;
   puntuacion = 0;
   numFallos = 0;
   cartasVolteadas = [];

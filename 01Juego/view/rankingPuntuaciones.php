@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="<?php echo IMG.'mapa.jpg'; ?>" type="image/x-icon">
-        <title>Ranking</title>
+        <title>Memory Game Ranking</title>
         
         <link rel="stylesheet" href="<?php echo CSS.'estiloCelia.css'; ?>">
     </head>
@@ -48,9 +48,9 @@
                     }
                 ?>
             </table>
-            <button type="button">Nueva Partida</button>
-            <!-- <button type="button">Valoracion</button> -->
+            <button type="button">¡Mejora Tu Marca!</button>
+            <button type="reset">Reiniciar Juego [Diferentes Cartas]</button>
         </main>
-        <script src="<?php echo JS.'02FunRankPunt.js'?>"></script>
+        <script src="<?php echo JS.'04FunRankPunt.js'?>"></script>
     </body>
 </html>

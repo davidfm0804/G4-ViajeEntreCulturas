@@ -13,3 +13,19 @@ async function insertarPuntuacion(formData) {
         return false;
     }
 }
+
+// Cargar Chinchetas
+async function obtenerInfo(formData) {
+    try {
+        console.log('formData: ' + formData.get('idCont'));
+        const response = await fetch('index.php?controller=Juego&action=obtenerInfoPartida', {
+            method: 'POST',
+            body: formData
+        });
+        const infoPartida = await response.json();
+        return infoPartida;
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
+}

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Memory</title>
+    <title>Memory Game</title>
     <link rel="stylesheet" href="<?php echo CSS.'style.css'; ?>">
 </head>
 <body>
-    <h1>Game Memory</h1>
+    <h1>Memory Game</h1>
 
     <div id="game">
         <button id="startGame">Empezar Juego</button>
@@ -21,6 +21,6 @@
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
-    <script src="<?php echo JS.'00FunTablero.js' ?>"></script>
+    <script src="<?php echo JS.'02FunTablero.js' ?>"></script>
 </body>
 </html>
