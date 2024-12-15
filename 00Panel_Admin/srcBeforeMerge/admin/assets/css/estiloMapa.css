@@ -39,8 +39,7 @@ header {
 }
 
 header img {
-    width: 4%;
-    height: 100%; 
+    width: 70px; 
 }
 
 header h1 {
@@ -102,7 +101,7 @@ main img:first-child {
 
 .chincheta{
     position: absolute;
-    width: 3%;
+    width: 1.8%;
 }
 /* Para tablet en modo vertical */
 @media (max-width: 768px) {
