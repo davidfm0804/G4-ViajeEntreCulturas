@@ -1,5 +1,5 @@
 <?php
-    require_once MODELO.'mCategoria.php';
+    require_once MODELOS.'mCategoria.php';
 
     class cCategoria {
 
