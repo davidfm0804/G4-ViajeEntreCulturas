@@ -4,22 +4,22 @@
     class cCategoria {
 
         public $tituloPagina;
-        public $view;
+        public $vista;
 
         public function __construct() {
-            $this->view = ''; 
+            $this->vista = ''; 
             $this->tituloPagina = '';
             $this->objCatg = new MCategoria();
         }
 
         public function listadoCategorias(){
-            $this->view = 'listadoCategorias';
+            $this->vista = 'listadoCategorias';
             $this->tituloPagina = 'Listado de Categorías';
             return $this->objCatg->selectCategorias();
         }
 
         public function formAltaCatg(){
-            $this->view = 'registroCategoria';
+            $this->vista = 'registroCategoria';
         }
 
         public function insertDatos(){
@@ -87,7 +87,7 @@
 
         /*-- Modificar | Vista [formModCatg] + Modelo [selectModCatg]  --*/
         public function formModCatg(){
-            $this->view = 'formModCatg';
+            $this->vista = 'formModCatg';
             return $this->objCatg->selectModCatg();   
         }
 
