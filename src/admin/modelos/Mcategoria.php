@@ -5,10 +5,6 @@ class MCategoria {
     private $tabla = 'categoria'; //Nombre de la tabla donde buscamos información
     private $conexion;
 
-    public function __construct() {
-
-    }
-
     public function conectar(){
         $objetoBD = new bbdd(); //Conectamos a la base de datos. Creamos objeto $objetoBD
         $this->conexion = $objetoBD->conexion; //Llamamos al metodo que realiza la conexion a la BBDD
@@ -33,9 +29,8 @@ class MCategoria {
         // Ejecutar
         $stmt->execute();
 
-        return $stmt->affected_rows;
+        return $stmt->affected_rows > 0;
 
-        // echo "Nuevo registro creado exitosamente";
     }
 
     public function selectModCatg(){
@@ -59,9 +54,9 @@ class MCategoria {
         $conxPrp = $this->conexion->prepare($sql);
 
         $conxPrp->bind_param("si", $nombreCat,$idCatg);
-        $result = $conxPrp->execute();
+        $conxPrp->execute();
 
-        return $result ? true : false;
+        return $conxPrp->affected_rows > 0;
     }
 
     public function eliminarCategoria($idCat){
@@ -94,6 +89,7 @@ class MCategoria {
         $this->conexion->close();
         
         return $count > 0;
+
     }
     
 }

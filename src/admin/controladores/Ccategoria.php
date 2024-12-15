@@ -1,25 +1,25 @@
 <?php
-    require_once MODELOS.'mCategoria.php';
+    require_once MODELO.'mCategoria.php';
 
     class cCategoria {
 
         public $tituloPagina;
-        public $vista;
+        public $view;
 
         public function __construct() {
-            $this->vista = ''; 
+            $this->view = ''; 
             $this->tituloPagina = '';
             $this->objCatg = new MCategoria();
         }
 
         public function listadoCategorias(){
-            $this->vista = 'listadoCategorias';
+            $this->view = 'listadoCategorias';
             $this->tituloPagina = 'Listado de Categorías';
             return $this->objCatg->selectCategorias();
         }
 
         public function formAltaCatg(){
-            $this->vista = 'registroCategoria';
+            $this->view = 'registroCategoria';
         }
 
         public function insertDatos(){
@@ -37,6 +37,30 @@
                     echo "Categoria registrada correctamente";
                 else
                     echo "Error al registrar la categoría";
+            } else {
+                echo $valid['error'];
+            }
+
+            exit;
+        }
+
+        public function modificarCategoria(){
+            if (!isset($_POST['idCat']) || !isset($_POST['categoria'])) {
+                echo "Error al modificar el registro";
+                exit;
+            }
+
+            $idCatg = $_POST['idCat'];
+            $nombreCat = $_POST['categoria'];
+
+            $valid = $this->validarCategoria($nombreCat);
+
+            if ($valid['valid']) {
+                $result = $this->objCatg->updateCategoria($idCatg, $nombreCat);
+                if ($result)
+                    echo "Registro modificado correctamente";
+                else
+                    echo "Error al modificar la categoría";
             } else {
                 echo $valid['error'];
             }
@@ -63,32 +87,8 @@
 
         /*-- Modificar | Vista [formModCatg] + Modelo [selectModCatg]  --*/
         public function formModCatg(){
-            $this->vista = 'formModCatg';
+            $this->view = 'formModCatg';
             return $this->objCatg->selectModCatg();   
-        }
-
-        public function modificarCategoria(){
-            if (!isset($_POST['idCat']) || !isset($_POST['categoria'])) {
-                echo "Error al modificar el registro";
-                exit;
-            }
-
-            $idCatg = $_POST['idCat'];
-            $nombreCat = $_POST['categoria'];
-
-            $valid = $this->validarCategoria($nombreCat);
-
-            if ($valid['valid']) {
-                $result = $this->objCatg->updateCategoria($idCatg, $nombreCat);
-                if ($result)
-                    echo "Registro modificado correctamente";
-                else
-                    echo "Error al modificar el registro";
-            } else {
-                echo $valid['error'];
-            }
-
-            exit;
         }
 
         // Verificar si la categoría ya existe en la base de datos

@@ -22,7 +22,7 @@ document.querySelector('button:nth-of-type(3)').addEventListener('click', async 
     /*-- Llamada Controlador | Modificar Categoría --*/
     const result = await modificarCategoria(formData);
 
-    if (result) {
+    if (result === "Categoria Modificada Correctamente") {
         alert("Categoría modificada correctamente");
         window.location.href = 'index.php?controlador=MenuPrincipal&accion=ListadoCategorias';
     }

@@ -18,6 +18,7 @@ document.querySelector('button:nth-of-type(3)').addEventListener('click', async 
     /*-- Llamada Controlador | Alta Categoría --*/
     const result = await altaCategoria(formData); // Esperar el resultado de la promesa
     console.log(result);
+    
     if (result === "Categoria registrada correctamente") {
         // Crear elementos
         const h2 = document.createElement('h2');

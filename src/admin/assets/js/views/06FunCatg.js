@@ -32,7 +32,7 @@ document.querySelectorAll('.borrar').forEach(button => {
         // Obtener ID Catg || closest -> Accede al 'tr' más cercano | id -> Accede al atributo id definido en el 'tr'
         const idCatg = button.closest('tr').id;
 
-        if (confirm('¿Está seguro de que desea borrar este país?')) {
+        if (confirm('¿Está seguro de que desea borrar esta categoría?')) {
             // Crear FormData | ID
             const formData = new FormData();
             formData.append('id', idCatg);
