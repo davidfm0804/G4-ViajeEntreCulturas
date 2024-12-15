@@ -406,11 +406,24 @@ main table td button img{
 @media /*screen*/ (min-height: 600px) and (max-width: 960px){
     /* Main | button [borrar] + [cancelar] | [registro*] + [selectPuntuaciones] */
     .registro > button {
-        top: 27vh;
+        top: 30vh;
     }
 
     /* Main | button [enviar] | [registro*] + [selectPuntuaciones] */
     .registro button:nth-of-type(3) {
-        top: 34vh;
+        top: 37vh;
     }
+
+    /* select {
+        width: 32%;
+        font-size: 0.6rem;
+    } */
 }
+
+/* @media screen and (max-width: 740) and (max-height: 820px){
+    /* Main | button [borrar] + [cancelar] | [registro*] + [selectPuntuaciones] */
+    .registro button {
+        top: 37vh;
+    }
+
+} */
