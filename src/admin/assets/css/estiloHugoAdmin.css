@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --oscuro: #1a202c;
+    --medio-oscuro: #2d3748;
+    --claro-oscuro: #4a5568;
+    --azul: #2c5282;
+    --azul-claro: #63b3ed;
+    --acento: #0085ae;
+    --amarillo: #ffcc00;
+    --blanco-claro: #ebf8ff;
+    --azul-oscuro: #2a4365;
+    --gris-claro: #747474;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Estilos Generales */
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    color: white;
+}
+
+header {
+    background-color: var(--azul);
+    color: white;
+    height: 8vh;
+    padding: 0 20px;
+    border-bottom: 4px solid var(--azul-claro);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header img {
+    width: 50px;
+    height: auto;
+}
+
+header h1 {
+    font-size: 1.2em;
+    color: var(--blanco-claro);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+header a {
+    font-size: 0.9em;
+    text-decoration: none;
+    color: white;
+    padding: 8px 15px;
+    background-color: var(--azul-oscuro);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+header a:hover {
+    background-color: var(--azul-claro);
+    color: var(--azul-oscuro);
+}
+
+main {
+    width: 90%;
+    margin: 20px auto;
+}
+
+h2 {
+    text-align: center;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de botones con imágenes */
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--blanco-claro);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    background: var(--medio-oscuro);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.menu-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    background-color: transparent; /* Asegura que el fondo sea transparente */
+    border: none; /* Elimina bordes adicionales */
+}
+
+.menu-item span {
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.menu-item:hover {
+    transform: scale(1.1);
+    color: var(--amarillo);
+    background-color: var(--azul);
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    header img {
+        width: 40px;
+    }
+
+    header h1 {
+        font-size: 1em;
+        text-align: center;
+    }
+
+    header a {
+        font-size: 0.8em;
+        margin-top: 10px;
+    }
+
+    .menu-item img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .menu {
+        gap: 15px;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    header img {
+        width: 30px;
+    }
+
+    header h1 {
+        font-size: 0.9em;
+        text-align: center;
+    }
+
+    header a {
+        font-size: 0.7em;
+        margin-top: 10px;
+        padding: 5px 10px;
+    }
+
+    main {
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .menu-item img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .menu-item span {
+        font-size: 0.7em;
+    }
+
+    h2 {
+        font-size: 0.9em;
+    }
+}
