@@ -66,6 +66,8 @@ document.addEventListener('click', async (e) => {
             <p>${paisInfo.descripcion}</p>
         `;
         e.target.src = './assets/img/web/chinchetaVerde.png';
+        e.target.style.width = '2.3%';
+        e.target.style.transform = 'translate(5%,-90%)';
         comprobarChinchetas();
     }
 });

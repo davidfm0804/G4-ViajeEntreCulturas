@@ -106,10 +106,12 @@ main h2 {
     color: #fff;
 }
 
-/*h2 | [registrarContinente]*/
+/* h2 | [selectContinente] + [registrarPuntuacion] */
 .registro h2 {
     margin-left: 50%;
     margin-top: 6%;
+    width: 60%;
+    text-align: center;
     transform: translateX(-50%);
 }
 
@@ -256,62 +258,62 @@ main table td button img{
     width: 50%;
 }
 
-/* MediaQuery | Ajustes */
-@media /*screen*/ (max-width: 1400px){ 
-    /* select | [selectContiente] */
+/* MediaQuery | Ajustes 
+@media /*screen (max-width: 1400px){ 
+    /* select | [selectContiente] 
     .registro select{
         font-size: 1.1rem;
     }
 }
 
-@media /*screen*/ (max-width: 1280px){ 
+@media /*screen(max-width: 1280px){ 
 
-    /* Header | h1 */
+    /* Header | h1 
     header h1 {
         transform: translate(-65%,-50%);
     }
 
-    /* Header | a */
+    /* Header | a 
     header a{
         left: 75%;
     }
 
-    /*Main | h2 [listarPuntuacion]*/
+    /*Main | h2 [listarPuntuacion]
     #listPunt > h2 {
         margin-left: 50vw;
         transform: translateX(-50%);
     }
 
-    /* Main | button [listarPuntuacion] */
+    /* Main | button [listarPuntuacion] 
     #listPunt > button{
         right: unset;
         left: unset;
     }
 
-    /* Main | button 1 [listarPuntuacion] */
+    /* Main | button 1 [listarPuntuacion] 
     #listPunt > button:nth-of-type(1) {
         top: 12vh;
         left: 34.5vw;
     }
 
-    /* Main | button 2 [listarPuntuacion] */
+    /* Main | button 2 [listarPuntuacion] 
     #listPunt > button:nth-of-type(2) {
         top: 12vh;
         left: 56vw;
     }
 
-    /* Main | table [listarPuntuacion]*/
+    /* Main | table [listarPuntuacion]
     #listPunt table{
         margin-top: 17vh;
     }
 
-    /* Main | button [listados] */
+    /* Main | button [listados]
     main:not(.registro) > button {
         right: unset;
         left: 70vw;
     }
 
-    /* Main | button [listados] */
+    /* Main | button [listados] 
     main:not(.registro) > button {
         right: unset;
         left: 70vw;
@@ -319,97 +321,97 @@ main table td button img{
 
 }
 
-/* MediaQuery | Ajustes */
-@media /*screen*/ (max-width: 965px){
+/* MediaQuery | Ajustes 
+@media /*screen (max-width: 965px){
 
-    /* Header | h1 */
+    /* Header | h1 
     header h1 {
         font-size: 1em;
     }
 
-    /* Main | h2 */
+    /* Main | h2 
     main h2 {
         font-size: 1em;
     }
 
-    /* Main | h2 [listadoContinentes] + [listadoCategorias] + [selectPuntuacion] */
+    /* Main | h2 [listadoContinentes] + [listadoCategorias] + [selectPuntuacion] 
     main:not(#listPunt):not(.registro) h2 {
         margin-left: 38vw;
     }
 
-    /* Main | button [listados] + [selectPuntuacion] */
+    /* Main | button [listados] + [selectPuntuacion] 
     main:not(.registro) > button {
         left: 74vw;
     }
 
-    /* Main | button [registro] */
+    /* Main | button [registro] 
     .registro > button {
         padding: 1% 0;
         border-radius: 6px;
     }
 
-    /* Main | button [listarPuntuacion] */
+    /* Main | button [listarPuntuacion] 
     header a {
         font-size: 0.8em;
         padding: 1%;
     }
 
-    /* Main | table th */
+    /* Main | table th 
     main table thead{
         font-size: 0.6em;
     }
 
-    /* Main | table tbody, button, input, select, option */
+    /* Main | table tbody, button, input, select, option 
     main table tbody, main button, main input, main select, option {
         font-size: 0.7em;
     }
 
-    /* Main | input [registros] */
+    /* Main | input [registros] 
     main input {
         padding: 0.1% 1%;
     }
 
-    /* Main | select [listarPuntuacion] */
+    /* Main | select [listarPuntuacion] 
     select {
         height: 2.9em;
     }
 
-    /* Main | option [selectPuntuaciones] */
+    /* Main | option [selectPuntuaciones] 
     main.registro select option {
         width: 32% !important;
     }
 
-    /* Main | button 1 [listarPuntuacion] */
+    /* Main | button 1 [listarPuntuacion] 
     #listPunt > button:nth-of-type(1) {
         left: 32vw;
     }
 
-    /* Main | button 2 [listarPuntuacion] */
+    /* Main | button 2 [listarPuntuacion] 
     #listPunt > button:nth-of-type(2) {
         left: 58.5vw;
     }
     
 }
 
-@media /*screen*/ (min-height: 760px) and (max-width: 960px){ 
-    /* Main | button [borrar] + [cancelar] | [registro*] + [selectPuntuaciones] */
+@media screen and  (min-height: 760px) and (max-width: 960px){ 
+    /* Main | button [borrar] + [cancelar] | [registro*] + [selectPuntuaciones] 
     .registro > button {
         top: 23vh;
     }
 
-    /* Main | button [enviar] | [registro*] + [selectPuntuaciones] */
+    /* Main | button [enviar] | [registro*] + [selectPuntuaciones] 
     .registro button:nth-of-type(3) {
         top: 30vh;
     }
 }
 
-@media /*screen*/ (min-height: 600px) and (max-width: 960px){
-    /* Main | button [borrar] + [cancelar] | [registro*] + [selectPuntuaciones] */
+@media /*screen (min-height: 600px) and (max-width: 960px){
+    /* Main | button [borrar] + [cancelar] | [registro*] + [selectPuntuaciones] 
     .registro > button {
         top: 30vh;
     }
 
-    /* Main | button [enviar] | [registro*] + [selectPuntuaciones] */
+    /* Main | button [enviar] | [registro*] + [selectPuntuaciones] 
     .registro button:nth-of-type(3) {
         top: 37vh;
     }
@@ -417,11 +419,11 @@ main table td button img{
     /* select {
         width: 32%;
         font-size: 0.6rem;
-    } */
+    } 
 }
 
 /* @media screen and (max-width: 740) and (max-height: 820px){
-    /* Main | button [borrar] + [cancelar] | [registro*] + [selectPuntuaciones] */
+    /* Main | button [borrar] + [cancelar] | [registro*] + [selectPuntuaciones] 
     .registro button {
         top: 37vh;
     }
