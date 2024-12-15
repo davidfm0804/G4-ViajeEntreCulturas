@@ -11,7 +11,6 @@
     <header>
         <img src="<?php echo IMG.'logo.png'; ?>" alt="Logo de Viaje entre Culturas">
         <h1>Viaje entre Culturas</h1>
-        <a href="index.php" aria-label="Ir al panel de administración">PANEL ADMIN</a>
     </header>
         <main>
             <h2>Elige una opcion</h2><br/><br/>
