@@ -3,15 +3,8 @@ class Mranking {
     private $conexion;
 
     public function __construct() {
-        require_once 'configdb.php';
-        $this->conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
-        $this->conexion->set_charset("utf8");
-
-        if ($this->conexion->connect_error) {
-            die("Conexión fallida: " . $this->conexion->connect_error);
-        }
-        // Activar modo de excepciones
-        $this->conexion->report_mode = MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT;
+        $objetoBD = new bbdd(); //Conectamos a la base de datos. Creamos objeto $objetoBD
+        $this->conexion = $objetoBD->conexion; //Llamamos al metodo que realiza la conexion a la BBDD
     }
 
     public function mMostrarContinentes() {

@@ -8,7 +8,7 @@ class mMenuPrincipal{
     public function __construct(){}
 
     public function conectar(){
-        $objetoBD = new bbdd();
+        $objetoBD = new bbdd(); //Conectamos a la base de datos. Creamos objeto $objetoBD
         $this->conexion = $objetoBD->conexion; //Llamamos al metodo que realiza la conexion a la BBDD
     }
     public function mPaisSelecContinente(){
