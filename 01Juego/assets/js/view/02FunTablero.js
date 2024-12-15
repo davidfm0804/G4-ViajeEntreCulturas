@@ -112,10 +112,11 @@ function voltearCarta() {
       document.getElementById('puntuacion').textContent = puntuacion;
   
       if (cartasEmparejadas.length === Object.keys(paresCartas).length * 2) {
+        deshabilitarTablero();
+        h1WinnerGameOver('¡Winner!');
         setTimeout(() => {
-          h1WinnerGameOver('¡Winner!');
           stopJuego(tiempo, puntuacion, numFallos);
-        }, 100);
+        }, 3500);
       }
     } else {
       setTimeout(function() {
@@ -155,6 +156,7 @@ function stopJuego(tiempo, puntuacion, numFallos) {
 function gameOver() {
   clearInterval(temporizador);
 
+  deshabilitarTablero();
   h1WinnerGameOver('¡Game Over!');
 
   const btnReiniciar = document.createElement('button');
@@ -173,12 +175,6 @@ function gameOver() {
   btnRanking.style.padding = '1%';
   btnRanking.addEventListener('click', function() {
     window.location.href = 'index.php?controller=Juego&action=verRanking&idCont=5';
-  });
-
-  // Deshabilitar el tablero
-  const todasLasCartas = document.querySelectorAll('.card');
-  todasLasCartas.forEach(carta => {
-    carta.classList.add('disabled');
   });
 
   document.body.appendChild(btnReiniciar);
@@ -211,4 +207,11 @@ function h1WinnerGameOver(title){
   h1.style.transform = 'translate(-50%, -50%)';
   h1.style.animation = 'parapadeo 1s infinite'; // Añadir animación de parpadeo
   document.body.appendChild(h1);
+}
+
+function deshabilitarTablero(){
+  const todasLasCartas = document.querySelectorAll('.card');
+  todasLasCartas.forEach(carta => {
+    carta.classList.add('disabled');
+  });
 }
