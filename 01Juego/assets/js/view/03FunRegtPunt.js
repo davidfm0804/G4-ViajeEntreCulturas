@@ -1,3 +1,9 @@
+//Poner Puntuación | Onload
+document.addEventListener('DOMContentLoaded', function () {
+    paramsURL = getParametrosURL();
+    document.querySelector('#puntuacion').textContent = paramsURL['puntos'];
+});
+
 // AddEvent | Button Borrar [Borrar Texto Input]
 document.querySelector('[type="reset"]').addEventListener('click', function () {
     document.querySelector('[name="nombreJug"]').value = '';
@@ -29,10 +35,7 @@ document.querySelector('[type="submit"]').addEventListener('click', async functi
             method: 'POST',
             body: formData,
         });
-        if (response.ok) {
-            const result = await response.text();
-            alert(result);
-        } else {
+        if (!response.ok) {
             alert('Error al registrar el puntaje');
         }
     } catch (error) {

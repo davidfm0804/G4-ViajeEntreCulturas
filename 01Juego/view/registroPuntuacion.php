@@ -13,7 +13,7 @@
         <h1>Viaje entre Culturas</h1>
     </header>
     <main class="registro">
-        <h2>Registrar Puntuación</h2>
+        <h2>Registrar Puntuación [<span id="puntuacion"></span>]</h2>
         <input type="text" name="nombreJug" placeholder="Nombre Jugador" required>
         <button type="reset">Borrar</button>
         <button type="button">Cancelar</button>
