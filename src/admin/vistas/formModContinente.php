@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificar PaÃs</title>
+    <title>Modificar País</title>
     <link rel="icon" href="<?php echo IMG.'logo.png'?>" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo CSS.'estilo.css'?>">
 </head>
@@ -16,7 +16,7 @@
 
     <form>
         <label for="nombreContinente">Nombre del Continente:</label>
-        <input type="text" name="nombreContinente">
+        <input type="text" name="nombreContinente" value="<?php echo $_GET['nombreCont']; ?>">
         <input type="hidden" id='idContinente' value='<?php echo $_GET['id']?>' >
     </form>
     <button type="button" class="cancel">Cancelar</button>

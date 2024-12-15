@@ -59,38 +59,37 @@ class mContinente {
     }
 
     public function mModificarContinente($nombreC, $idCont) {
-    try {
-        $SQL = "UPDATE continente SET nombreCont = ? WHERE idContinente = ?";
+        // Preparar la consulta para verificar si el nombre del continente ya existe
+        $SQL = "SELECT * FROM continente WHERE nombreCont = ?";
+        $stmt = $this->conexion->prepare($SQL);
         
-        if ($stmt = $this->conexion->prepare($SQL)) {
-            $stmt->bind_param("si", $nombreC, $idCont);
-
-            if ($stmt->execute()) {
+        if ($stmt === false) {
+            return false;  
+        }
+    
+        // Vincular el parámetro
+        $stmt->bind_param("s", $nombreC);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+    
+        if ($resultado->num_rows == 0) {
+            $updateSQL = "UPDATE continente SET nombreCont = ? WHERE idContinente = ?";
+            $updateStmt = $this->conexion->prepare($updateSQL);
+    
+            if ($updateStmt === false) {
+                return false;
+            }
+            $updateStmt->bind_param("si", $nombreC, $idCont);  
+            if ($updateStmt->execute()) {
                 return true;
             } else {
                 return false;
-
             }
         } else {
-            return([
-                'success' => false,
-                'message' => 'Error al preparar la consulta SQL'
-            ]);
-        }
-    } catch (mysqli_sql_exception $e) {
-        if ($e->getCode() === 1062) { 
-            return([
-                'success' => false,
-                'message' => 'El continente ya existe'
-            ]);
-        } else {
-            return([
-                'success' => false,
-                'message' => 'Error en la base de datos: ' . $e->getMessage()
-            ]);
+            return "csu";  // El continente ya existe
         }
     }
-}
+    
   
 }
 ?>

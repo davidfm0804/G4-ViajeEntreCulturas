@@ -1,6 +1,6 @@
 
 document.querySelector('.cancel').addEventListener('click', function () {
-    window.location.href = 'index.php?controlador=Continente&accion=cListadoContinentes';
+    window.location.href = 'index.php?controlador=MenuPrincipal&accion=cListadoContinentes';
 });
 
 // Evento al hacer clic en el botón de actualizar/inserción
@@ -58,11 +58,12 @@ document.querySelector('.update').addEventListener('click', async function (even
             const data = await response.text();
             alert(data);
             // Hacer algo con los datos (por ejemplo, mostrar el mensaje)
-            if (data.trim()=="Continente Modificado") {
-                console.log('Continente modificado:');
+            if (data.trim() == "Continente Modificado") {
                 window.location.href = 'index.php?controlador=MenuPrincipal&accion=cListadoContinentes';
+            } else if (data.trim() == "El nombre del continente ya existe, no se puede modificar.") {
+                alert('El nombre del continente ya existe, por favor elige otro.');
             } else {
-                console.log('Error:');
+                alert('Ocurrió un error: ' + data.trim());
             }
         } catch (error) {
             console.error('Error:', error);
