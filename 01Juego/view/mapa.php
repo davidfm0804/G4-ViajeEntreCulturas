@@ -7,7 +7,7 @@
     <link rel="icon" href="<?php echo IMG.'mapa.jpg'?>" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo CSS.'estiloMapa.css'?>">
 </head>
-<body>
+<body id='mapa'>
     <header>
         <img src="<?php echo IMG.'logo.png'?>" alt="Logo">
         <h1>Viaje entre Culturas</h1>

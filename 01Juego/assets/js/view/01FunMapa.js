@@ -87,7 +87,7 @@ function comprobarChinchetas(){
       });
       btnMemory.style.padding = "1%";
       btnMemory.style.display = "block";
-      btnMemory.style.margin = "5% auto";
+      btnMemory.style.margin = "2% auto";
       document.querySelector('main').appendChild(btnMemory);
     }
 }
