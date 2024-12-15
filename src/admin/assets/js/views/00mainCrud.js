@@ -56,13 +56,3 @@ document.querySelectorAll('.borrar').forEach(button => {
         }
     });
 });
-
-/*-- Añadir Evento | Botones Borrar [Borrado Nombre]--
-// document.querySelectorAll('.borrar').forEach(button => {
-//     button.addEventListener('click', function () {
-//         const nombrePais = button.closest('tr').querySelector('.colNombre').textContent;
-//         if (confirm('¿Está seguro de que desea borrar este país?')) {
-//             window.location.href = `../src/php/vistas/mostrarEliminarPais.php?nombrePais=${nombrePais}`;
-//         }
-//     });
-// });*/

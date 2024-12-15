@@ -20,14 +20,11 @@ $nombreCont = $_GET['nombreCont'];
 ?>
 <main>        
         <h2><?php echo $controlador->tituloPagina; ?></h2>
-        <button id="mostrarChinchetas">Mostrar chinchetas</button>
-        <button id="altaPais">Alta país</button>
         <table>
             <tr>
                 <th class="cabecera">Bandera</th>
                 <th class="cabecera">Nombre</th>
-                <th class="cabecera">Modificar</th>
-                <th class="cabecera">Borrar</th>
+                <th class="cabecera">Items</th>
             </tr>
             <?php
             if(count($dataToView["data"])>0){
@@ -37,7 +34,6 @@ $nombreCont = $_GET['nombreCont'];
                         <td><img class='flag' src='<?php echo BANDERAS.$pais["bandera"]; ?>' alt='<?php echo $pais["nombrePais"]; ?>'></td>
                         <td class='colNombre'><?php echo $pais["nombrePais"]; ?></td> 
                         <td><button><img class='png' src="<?php echo IMG.'modificar.png';?>"></button></td>
-                        <td><button><img class='png' src="<?php echo IMG.'borrar.png';?>"></button></td>
                     </tr>
                     <?php
                 } 
@@ -51,6 +47,6 @@ $nombreCont = $_GET['nombreCont'];
         <input type="hidden" id="idContinente" value="<?php echo $idContinente; ?>">
         <input type="hidden" id="nombreCont" value="<?php echo $nombreCont; ?>">
     </main>
-    <script src="<?php echo JS.'listadoPaises.js';?>"></script>
+    <script src="<?php echo JS.'itemListadoPaises.js';?>"></script>
 </body>
 </html>

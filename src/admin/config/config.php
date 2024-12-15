@@ -5,10 +5,12 @@
     define('BANDERAS','assets/img/banderas/');
     define('FOTOS','assets/img/fotos/');
     define('JS','assets/js/views/');
+    define('JS_CONTROLADOR','assets/js/controllers/');
+    define('JS_MODELO','assets/js/models/');
     define('CONFIG','config/');
     define('MODELOS','modelos/');
     define('CONTROLADORES','controladores/');
-    define('PLANTILLAVISTAS','vistas/plantillas/');
+
 
     /*-- Parámetros por defecto--*/
     define('DEFAULT_CONTROLADOR','MenuPrincipal'); //Controlador por defecto, el que llama a pais

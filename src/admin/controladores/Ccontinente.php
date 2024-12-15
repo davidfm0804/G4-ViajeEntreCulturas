@@ -24,27 +24,45 @@ class cContinente {
     }
 
     public function cFormModContinente(){
-        $this->vista = 'formModContinente';
-        
+        $this->vista = 'formModContinente';    
     }
 
     public function cMostrarContinentes() {
         return $this->objcontinente->mMostrarContinentes();
     }
     
-    public function cInsertarContinente($nombreContinente) {
-        $resultado = $this->objcontinente->mInsertarContinente($nombreContinente);
+    public function cInsertarContinente() {
+        $resultado = $this->objContinente->mInsertarContinente();
+       
+        header('Content-Type: application/json');
+    
         if ($resultado === true) {
-            return "Consulta Correcta";
+            echo json_encode(['success' => true, 'message' => 'Consulta Correcta']);
         } elseif ($resultado === "Csu") {
-            return "Continente Duplicado";
+            echo json_encode(['success' => false, 'message' => 'Continente Duplicado']);
         } else {
-            return "Error en el registro";
+            echo json_encode(['success' => false, 'message' => 'Error en el registro']);
         }
     }
 
-    public function cBorrarContinente($idCont) {
-        return $this->objcontinente->mBorrarContinente($idCont);
+    public function cBorrarContinente() {
+       
+        if (!isset($_POST['idContinente']) || empty($_POST['idContinente'])) {
+            echo "El ID del continente es obligatorio";
+            exit;
+        }
+
+        $idContinente = $_POST['idContinente'];
+
+        $resultado = $this->objContinente->mBorrarContinente($idContinente);
+        
+        if ($resultado) {
+           echo "Registro eliminado correctamente";
+        } else {
+            echo "Error al eliminar el registro";
+        }
+        exit;
+        
     }
 
     public function cModificarContinente($nombreC, $idCont) {

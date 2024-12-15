@@ -126,6 +126,27 @@ class mPais {
         }   
     }
 
+    public function mMostrarChinchetas(){
+        $this->conectar();
+        $idContinente = $_GET["idContinente"];
+        
+        $sql = "SELECT coordX, coordY FROM pais WHERE idContinente = ?";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->bind_param("i", $idContinente);
+        $consulta->execute();
+        $resultado = $consulta->get_result();
+
+        $coordenadas = [];
+        while($fila = $resultado->fetch_assoc()){
+            $coordenadas[] = $fila;
+        }
+        $consulta->close();
+
+        return $coordenadas;
+
+
+    }
+
     public function mFormModPais(){
         $this->conectar();
         $id = $_GET['idPais'];

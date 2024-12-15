@@ -37,6 +37,6 @@
                 ?>
             </table>
         </main>
-        <script src="<?php echo JS.'seleccioneContinente.js';?>"></script>
+        <script src="<?php echo JS.'itemSeleccioneContinente.js';?>"></script>
     </body>
 </html>

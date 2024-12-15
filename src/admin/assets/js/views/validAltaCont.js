@@ -20,8 +20,8 @@ document.querySelector('.update').addEventListener('click', async function(event
         valid = false;
     }
 
-    // El input Continente sólo contiene letras
-    if (/[^a-zA-ZáéíóúÁÉÍÓÚñÑ]/.test(continente.value)) {
+    // El input Continente sólo contiene letras y espacios en blanco
+    if (/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/.test(continente.value)) {
         alert("Por favor, inserte solo valores alfabéticos.");
         valid = false;
     }
@@ -39,7 +39,7 @@ document.querySelector('.update').addEventListener('click', async function(event
 
         // Realizar una solicitud fetch para comprobar si el continente ya existe en la base de datos
         try {
-            const response = await fetch('comprobarContinente.php', {
+            const response = await fetch('index.php?controlador=Continente&accion=cInsertarContinente', {
                 method: 'POST',
                 body: formData
             });

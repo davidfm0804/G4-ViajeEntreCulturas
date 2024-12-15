@@ -34,9 +34,11 @@ class mContinente {
         return $this->conexion->query($SQL);
     }
 
-    public function mInsertarContinente($nombreContinente) {
+    public function mInsertarContinente() {
+        $nombreCont = $_POST['nombreContinente'];
+
         try {
-            $SQL = "INSERT INTO continente (nombreCont) VALUES ('$nombreContinente')";
+            $SQL = "INSERT INTO ".$this->tabla." (nombreCont) VALUES ('".$nombreCont."')";
             $this->conexion->query($SQL);
         } catch (mysqli_sql_exception $e) {
             if ($e->getCode() === 1062) { 
@@ -48,14 +50,23 @@ class mContinente {
         return true;
     }
 
-    public function mBorrarContinente($idCont) {
-        $SQL = "DELETE FROM continente WHERE idContinente='$idCont'";
-        return $this->conexion->query($SQL);
-    }
+    public function mBorrarContinente($idContinente) {
+            $this->conectar();
+            $idContinente = (int)$idContinente;
+            $sql = "DELETE FROM ".$this->tabla." WHERE idContinente = ?";
+            $consulta = $this->conexion->prepare($sql);
+            $consulta->bind_param("i", $idContinente);
+            if ($consulta->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+            $consulta->close();
+        }
 
     public function mModificarContinente($nombreC, $idCont) {
         try {
-            $SQL = "UPDATE continente SET nombreCont = '$nombreC' WHERE idContinente = '$idCont'";
+            $SQL = "UPDATE continente SET nombreCont = '$nombreC' WHERE idContinente = ?";
             $this->conexion->query($SQL);
         } catch (mysqli_sql_exception $e) {
             if ($e->getCode() === 1062) { 
