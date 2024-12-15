@@ -13,7 +13,6 @@
         <h1>Viaje entre Culturas</h1>
         <div class="icons">
             <span id="open-popup">❓</span>
-            <span>➡️</span>
         </div>
     </header>
     <!-- Popup que aparece al cargar -->

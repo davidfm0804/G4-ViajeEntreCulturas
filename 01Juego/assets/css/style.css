@@ -57,6 +57,10 @@ header h1 {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
+div#game > p {
+  margin-top: 2%;
+}
+
 main {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../img/mapa.jpg);
   background-size: cover;
@@ -116,15 +120,15 @@ button:active {
 
 #tablero {
   display: grid;
-  grid-template-columns: repeat(4, 150px); /* 4 columnas */
+  grid-template-columns: repeat(4, 15vw); /* 4 columnas */
   grid-gap: 15px;
   margin-top: 3em;
   justify-content: center;
 }
 
 .card {
-  width: 150px;
-  height: 150px;
+  width: 15vw;
+  height: 15vw;
   background-color: var(--azul-oscuro);
   border-radius: 10px;
   cursor: pointer;

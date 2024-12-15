@@ -51,7 +51,7 @@ header h1 {
 }
 
 /* a */
-header a {
+header span {
     display: inline-block;
     font-size: 1.2em;
     text-align: center;
