@@ -6,7 +6,7 @@
         <link rel="icon" href="<?php echo IMG.'mapa.jpg'?>" type="image/x-icon">
         <title>Memory Game</title>
         
-        <link rel="stylesheet" href="<?php echo CSS.'estiloCelia.css'?>">
+        <link rel="stylesheet" href="<?php echo CSS.'estiloCeliaJuego.css'?>">
     </head>
     <body>
         <header>
@@ -27,6 +27,7 @@
                     }
                 ?>
             </select>
+            <button type='reset'>BORRAR</button>
             <button type='submit'>¡A JUGAR!</button>
         </main>
         <script src='<?php echo JS.'00FunBienv.js'?>'></script>

@@ -6,7 +6,7 @@
         <link rel="icon" href="<?php echo IMG.'mapa.jpg'; ?>" type="image/x-icon">
         <title>Memory Game Ranking</title>
         
-        <link rel="stylesheet" href="<?php echo CSS.'estiloCelia.css'; ?>">
+        <link rel="stylesheet" href="<?php echo CSS.'estiloCeliaJuego.css'; ?>">
     </head>
     <body>
         <header>

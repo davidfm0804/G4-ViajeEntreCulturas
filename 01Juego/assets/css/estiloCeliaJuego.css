@@ -155,7 +155,7 @@ main > button:hover {
     left: 75vw;
 }
 
-/* buttom | [registrarContinente + registrarCategoria] */
+/* buttom | [registrarPuntuacion] */
 .registro  button {
     margin: unset;
     position: absolute;

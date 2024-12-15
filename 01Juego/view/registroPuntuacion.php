@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="<?php echo IMG.'mapa.jpg'; ?>" type="image/x-icon">
     <title>Registro Puntuación</title>
-    <link rel="stylesheet" href="<?php echo CSS.'estiloCelia.css'; ?>">
+    <link rel="stylesheet" href="<?php echo CSS.'estiloCeliaJuego.css'; ?>">
 </head>
 <body>
     <header>

@@ -11,7 +11,7 @@ document.querySelector('[type="reset"]').addEventListener('click', function () {
 
 // AddEvent | Button Cancelar [Volver Inicio Sin Registrar Puntuación]
 document.querySelector('[type="button"]').addEventListener('click', function () {
-    window.location.href = './index.php?controller=Juego&action=juegoTablero';
+    window.location.href = './index.php?controller=Juego&action=juegoMemory';
 });
 
 // AddEvent | Button Enviar [Registrar Puntuación]
