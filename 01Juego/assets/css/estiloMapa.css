@@ -43,6 +43,10 @@ header {
 header img {
     width: 8vh;
     min-width: 60px;
+    position: absolute;
+    top: 50%;
+    left: 1.8%;
+    transform: translateY(-50%);
 }
 
 /* h1 */
@@ -76,9 +80,27 @@ header a {
     left: 80%;
     transform: translateY(-50%);
 }
+header p{
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 0.25% 0.5%; ;
+    border: 3px solid var(--azul-claro);
+    border-radius: 8px;
+    background: var(--azul-oscuro);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    box-shadow: 3px 3px 6px #000, -3px -3px 6px #444;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
 
 /* a:hover */
-header a:hover {
+header p:hover {
     background: #a8cfeb;
     color: var(--azul-oscuro);
     border-color: var(--azul-oscuro);

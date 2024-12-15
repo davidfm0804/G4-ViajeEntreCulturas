@@ -37,6 +37,10 @@ header {
 header img {
     width: 8vh;
     min-width: 60px;
+    position: absolute;
+    top: 50%;
+    left: 1.8%;
+    transform: translateY(-50%);
 }
 
 /* h1 */
@@ -50,7 +54,35 @@ header h1 {
     transform: translate(-50%,-50%);
 }
 
-/* a */
+header p{
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 0.25% 0.5%; ;
+    border: 3px solid var(--azul-claro);
+    border-radius: 8px;
+    background: var(--azul-oscuro);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    box-shadow: 3px 3px 6px #000, -3px -3px 6px #444;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+/* a:hover */
+header p:hover {
+    background: #a8cfeb;
+    color: var(--azul-oscuro);
+    border-color: var(--azul-oscuro);
+    box-shadow: 0px 0px 10px var(--azul-claro);
+    transform: translateY(-57%);
+}
+
+/* span 
 header span {
     display: inline-block;
     font-size: 1.2em;
@@ -69,16 +101,16 @@ header span {
     top: 50%;
     left: 80%;
     transform: translateY(-50%);
-}
+}*/
 
-/* a:hover */
+/* a:hover 
 header a:hover {
     background: #a8cfeb;
     color: var(--azul-oscuro);
     border-color: var(--azul-oscuro);
     box-shadow: 0px 0px 10px var(--azul-claro);
     transform: translateY(-57%);
-}
+}*/
 
 /*-- Body --*/
 body {
@@ -88,15 +120,28 @@ body {
     min-height: 100vh;
 }
 
+body#mapa{
+    background: linear-gradient(135deg, var(--oscuro), var(--medio-oscuro), var(--claro-oscuro));
+    background-size: 400% 400%;
+    color: #fff;
+}
+
+body#juego {
+    background-color: var(--oscuro);
+    color: var(--blanco-claro);
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+}
+
 /*-- Main --*/
 main {
-    width: 100%;
     position: relative;
 }
 
 /*-- Main | Elementos --*/
 
-/* h2 */
+/* h2 
 main h2 {
     text-transform: capitalize;
     display: inline-block;
@@ -104,15 +149,17 @@ main h2 {
     transform: translateX(-75%);
     text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
     color: #fff;
-}
+}*/
 
 /* h2 | [selectContinente] + [registrarPuntuacion] */
-.registro h2 {
+h2 {
+    color: #fff;
     margin-left: 50%;
     margin-top: 6%;
     width: 60%;
     text-align: center;
     transform: translateX(-50%);
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
 }
 
 /* buttom */
@@ -130,9 +177,6 @@ main > button {
     font-size: 1em;
     cursor: pointer;
     transition: all 0.3s ease;
-    position: absolute;
-    top: 2vh;
-    right: 10vw;
 }
 
 /* buttom:hover */
@@ -142,7 +186,44 @@ main > button:hover {
     box-shadow: 0px 4px 8px rgba(245, 242, 242, 0.5);
 }
 
-/* buttom | [listadoPuntuaciones] */
+/* select | [selectContinente]*/
+.registro select {
+    height: 3rem;
+    width: 32%;
+    font-size: 1.1rem;
+    padding: 0.5% 1%;
+    color: var(--acento);
+    font-family: 'Press Start 2P', cursive;
+    border-radius: 5px;
+    display: block;
+    margin: 2% auto;
+}
+
+/* option | [selectContinente] */
+select option[disabled][selected] {
+    display: none; /* Ocultar cuando es seleccionada otra opción*/
+}
+
+/* buttom | [selectContinente] + [registrarPuntuacion] */
+main.registro  button {
+    width: 15%;
+    margin: unset;
+    background-color: var(--azul-claro);
+}
+
+main.registro button:nth-of-type(1) {
+    margin-left: 41.8%;
+}
+
+main.registro button:nth-of-type(3) {
+    width: 32%;
+    display: block;
+    margin: 0 auto;
+    background-color: var(--azul-oscuro);
+}
+
+
+/* buttom | [listadoPuntuaciones] 
 #listPunt > button:nth-of-type(1){
     position: absolute;
     right: unset;
@@ -155,36 +236,12 @@ main > button:hover {
     right: unset;
     top: 2vh;
     left: 75vw;
-}
+}*/
 
-/* buttom | [registrarPuntuacion] */
-.registro  button {
-    margin: unset;
-    position: absolute;
-    top: 35vh;
-    width: 15%;
-    background-color: var(--azul-claro);
-}
-
-.registro  button:nth-of-type(1) {
-    left: 41.4vw;
-}
-
-.registro button:nth-of-type(2) {
-    right: 26.5vw;
-}
-
-.registro button:nth-of-type(3) {
-    width: 32%;
-    top: 45vh;
-    left: 49.95vw;
-    background-color: var(--azul-oscuro);
-}
-
-/* input, select, option */
+/* input, select, option 
 input, select, option {
     width: 30%;
-    height: 2rem;
+    /* height: 2rem; 
     margin-left: 50%;
     transform: translateX(-50%);
     margin-bottom: 15px;
@@ -195,20 +252,9 @@ input, select, option {
     margin-top: 9vh;
     font-size: 1.2rem;
     padding: 0.5% 1%;
-}
+}*/
 
-/* select | [listadoPuntuación]*/
-select {
-    height: 3rem;
-    width: 32%;
-}
-
-/* option | [listadoPuntuación] */
-select option[disabled][selected] {
-    display: none; /* Ocultar cuando es seleccionada otra opción*/
-}
-
-/* table | [listados] */
+/* table | [listados] 
 main table {
     background-color: rgba(5, 47, 77, 0.35); 
     text-align: center;
@@ -256,7 +302,7 @@ main table td button{
 
 main table td button img{
     width: 50%;
-}
+}*/
 
 /* MediaQuery | Ajustes 
 @media /*screen (max-width: 1400px){ 

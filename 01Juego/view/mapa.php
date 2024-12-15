@@ -11,9 +11,7 @@
     <header>
         <img src="<?php echo IMG.'logo.png'?>" alt="Logo">
         <h1>Viaje entre Culturas</h1>
-        <div class="icons">
-            <span id="open-popup">❓</span>
-        </div>
+        <p id="open-popup">❓</p>
     </header>
     <!-- Popup que aparece al cargar -->
     <div id="popup" class="popup">
