@@ -42,11 +42,29 @@ class cItem {
             $error = "No se pueden repetir categorías";
         } 
 
-        // Llamar a mActualizarItems, que devuelve un string con el formato "success|Mensaje" o "error|Mensaje"
-        $resultado = $this->objItem->mActualizarItems();
+        //Validar el formato de imgItems
+        $formatoValido = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+        for ($i =1; $i < 5; $i++){
+            $campo = 'imgItem'.$i;
+            if(isset($_FILES[$campo])){
+                $archivo = $_FILES[$campo];
+                //Comprobar si el tipo de archivo es válido
+                if (!in_array($archivo['type'], $formatoValido)) {
+                    $error = "Formato no válido. Solo se permiten JPEG, JPG, PNG o GIF.";
+                    $valido = false;
+                    break; 
+                }
+            }
+        }
+// Llamar a mActualizarItems, que devuelve un string con el formato "success|Mensaje" o "error|Mensaje"
+$resultado = $this->objItem->mActualizarItems();
     
-        echo $resultado;
-        exit;
-    }
-}
+echo $resultado;
+exit;
+   }
+
+
+
+        
+ }   
 ?>
