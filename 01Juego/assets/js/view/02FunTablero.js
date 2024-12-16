@@ -6,7 +6,7 @@ const infoPartida = JSON.parse(localStorage.getItem('infoPartida'));
 console.log(infoPartida);
 const rutaBanderas = 'assets/img/banderas/';
 const rutaFotos = 'assets/img/fotos/';
-const tiempoDefinido = 60;
+const tiempoDefinido = 5;
 const tiempoMostrarCartas = 4;
 
 let temporizador;
@@ -174,6 +174,9 @@ function gameOver() {
   const btnReiniciar = document.createElement('button');
   btnReiniciar.textContent = 'Nueva Partida';
   btnReiniciar.style.padding = '1%';
+  btnReiniciar.style.position = 'absolute';
+  btnReiniciar.style.top = '54%';
+  btnReiniciar.style.left = '35.2%';
   btnReiniciar.addEventListener('click', function() {
     document.body.removeChild(document.getElementById('h1WinGmOv'));
     document.body.removeChild(btnReiniciar);
@@ -185,8 +188,11 @@ function gameOver() {
   const btnRanking = document.createElement('button');
   btnRanking.textContent = 'Ver Ranking';
   btnRanking.style.padding = '1%';
+  btnRanking.style.position = 'absolute';
+  btnRanking.style.top = '54%';
+  btnRanking.style.left = '51%';
   btnRanking.addEventListener('click', function() {
-    window.location.href = 'index.php?controller=Juego&action=verRanking&idCont=5';
+    window.location.href = `index.php?controller=Juego&action=verRanking&idCont=${localStorage.getItem('idCont')}`;
   });
 
   document.body.appendChild(btnReiniciar);
@@ -211,11 +217,10 @@ function h1WinnerGameOver(title){
   const h1 = document.createElement('h1');
   h1.textContent = title;
   h1.id = 'h1WinGmOv';
-  h1.style.fontSize = '3rem';
+  h1.style.fontSize = '5rem';
   h1.style.textShadow = '2px 2px 5px red';
   h1.style.position = 'absolute';
-  // h1.style.top = '50%';
-  h1.style.top = '22%';
+  h1.style.top = '12%';
   h1.style.left = '50%';
   h1.style.transform = 'translate(-50%, -50%)';
   h1.style.animation = 'parapadeo 1s infinite'; // Añadir animación de parpadeo
