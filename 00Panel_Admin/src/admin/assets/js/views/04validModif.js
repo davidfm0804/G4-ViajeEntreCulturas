@@ -50,28 +50,28 @@ document.querySelector('.update').addEventListener('click', async function(event
     /*-- Validaciones --*/
 
     // Validación para el campo 'pais' | No puede estar vacío
-    // if (!pais) {
-    //     alert("Por favor, indique el nombre del país.");
-    //     valid = false;  // Si el campo está vacío, la validación falla
-    // }
+     if (!pais) {
+         alert("Por favor, indique el nombre del país.");
+         valid = false;  // Si el campo está vacío, la validación falla
+    }
 
     // Validación para el campo 'imgBandera' | Si se ha subido una bandera, debe tener un formato de imagen válido
-    // if (imgBanderaInput.files.length > 0 && !formatoValido.includes(imgBandera.type)) {
-    //     alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
-    //     valid = false;  // Si el formato de la imagen no es válido, la validación falla
-    // }
+    if (imgBanderaInput.files.length > 0 && !formatoValido.includes(imgBandera.type)) {
+    alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
+    valid = false;  // Si el formato de la imagen no es válido, la validación falla
+    }
 
     // Validación para el campo 'coordX' | Debe ser un valor numérico
-    // if (!coordX || isNaN(coordX)) {
-    //     alert("Por favor, indique una coordenada X válida.");
-    //     valid = false;  // Si las coordenadas X no están presentes o no son numéricas, la validación falla
-    // }
+    if (!coordX || isNaN(coordX)) {
+    alert("Por favor, indique una coordenada X válida.");
+    valid = false;  // Si las coordenadas X no están presentes o no son numéricas, la validación falla
+    }
 
     // Validación para el campo 'coordY' | Debe ser un valor numérico
-    // if (!coordY || isNaN(coordY)) {
-    //     alert("Por favor, indique una coordenada Y válida.");
-    //     valid = false;  // Si las coordenadas Y no están presentes o no son numéricas, la validación falla
-    // }
+    if (!coordY || isNaN(coordY)) {
+    alert("Por favor, indique una coordenada Y válida.");
+     valid = false;  // Si las coordenadas Y no están presentes o no son numéricas, la validación falla
+    }
 
     /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
     if (valid) {
