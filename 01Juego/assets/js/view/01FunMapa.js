@@ -1,3 +1,6 @@
+/* Ruta IMG*/
+const rutaImg = '../00Panel_Admin/src/admin/assets/img/fotos/';
+
 // Obtener el popup, los botones de abrir y cerrar
 const popup = document.getElementById('popup');
 const closeBtn = document.getElementById('close-popup');
@@ -62,7 +65,7 @@ document.addEventListener('click', async (e) => {
         console.log(paisInfo.descripcion);
         document.getElementById('popup-title').textContent = `${paisInfo.nombrePais}`;
         document.getElementById('popup-body').innerHTML = `
-            <img src="./assets/img/fotos/${paisInfo.imagen}" alt="${paisInfo.nombrePais}" style="width: 60%; height: auto; margin-top: 2%;">
+            <img src="${rutaImg}${paisInfo.imagen}" alt="${paisInfo.nombrePais}" style="width: 60%; height: auto; margin-top: 2%;">
             <p>${paisInfo.descripcion}</p>
         `;
         e.target.src = './assets/img/web/chinchetaVerde.png';
@@ -88,6 +91,7 @@ function comprobarChinchetas(){
       btnMemory.style.padding = "1%";
       btnMemory.style.display = "block";
       btnMemory.style.margin = "2% auto";
+      btnMemory.style.transform = "translateX(0)";
       document.querySelector('main').appendChild(btnMemory);
     }
 }
