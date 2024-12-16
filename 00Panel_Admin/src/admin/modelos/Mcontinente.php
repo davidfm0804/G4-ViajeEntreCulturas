@@ -59,11 +59,11 @@ class mContinente {
 
     public function mModificarContinente($nombreC, $idCont) {
         try {
-            $SQL = "UPDATE continente SET nombreCont = '$nombreC' WHERE idContinente = ?";
+            $SQL = "UPDATE continente SET nombreCont = '$nombreC' WHERE idContinente = '$idCont'";
             $this->conexion->query($SQL);
         } catch (mysqli_sql_exception $e) {
             if ($e->getCode() === 1062) { 
-                return "Csu";
+                return "csu";
             } else {
                 return false;
             }

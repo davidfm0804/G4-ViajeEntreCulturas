@@ -23,7 +23,7 @@ document.querySelectorAll('.modificar').forEach(button => {
         // Obtener Nombre Pais || closest -> Accede al 'tr' más cercano
         const nombreCont = button.closest('tr').querySelector('.colNombre').textContent;
         const idContinente = button.closest('tr').id;
-        window.location.href = `index.php?controlador=Continente&accion=cFormModContinente&id=${idContinente}`;
+        window.location.href = `index.php?controlador=Continente&accion=cFormModContinente&id=${idContinente}&nombreCont=${nombreCont}`;
     });
 });
 
@@ -33,7 +33,7 @@ document.querySelectorAll('.borrar').forEach(button => {
         const idContinente = button.closest('tr').id;
         const formData = new FormData();
         formData.append('idContinente', idContinente);
-        if (confirm('¿Está seguro de que desea borrar este continente??')) {
+        if (confirm('¿Está seguro de que desea borrar este continente?')) {
             // Promesa | Fetch + FormData -> Borrar Continente
             try {
                 const response = await fetch (`index.php?controlador=Continente&accion=cBorrarContinente`,{

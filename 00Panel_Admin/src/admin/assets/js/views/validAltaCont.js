@@ -74,10 +74,16 @@ document.querySelector('.update').addEventListener('click', async function(event
                 const p = document.createElement('p');
                 p.textContent = `Continente insertado: ${nombreContinente}`;
                 p.style.margin = '4%';
+                const boton = document.createElement('button');
+                boton.textContent = 'Volver';
 
+                boton.addEventListener('click', function(){
+                    window.location.href = 'index.php?controlador=Continente&accion=cListadoContinentes';
+                });
                 const main = document.querySelector('main');
                 main.appendChild(h2);
                 main.appendChild(p);
+                main.appendChild(boton);
 
         } catch (error){
             console.error('Error:', error);

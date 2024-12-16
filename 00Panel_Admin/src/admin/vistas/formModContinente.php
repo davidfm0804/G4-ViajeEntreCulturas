@@ -16,12 +16,13 @@
 
 <form>
         <label for="nombreContinente">Nombre del Continente:</label>
-        <input type="text" name="nombreContinente"> 
+        <input type="text" name="nombreContinente" value="<?php echo $_GET['nombreCont']; ?>">
+        <input type="hidden" id='idContinente' value='<?php echo $_GET['id'];?>' >
     </form>
     <button type="button" class="cancel">Cancelar</button>
-    <button type="button" class="update">Dar Alta</button>
+    <button type="button" class="update">Modificar</button>
 
     </main>
 </body>
-<script src="<?php echo JS.'validAltaCont.js';?>"></script>
+<script src="<?php echo JS.'validModCont.js';?>"></script>
 </html>

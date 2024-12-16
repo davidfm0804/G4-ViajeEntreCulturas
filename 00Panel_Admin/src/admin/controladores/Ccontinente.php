@@ -65,14 +65,19 @@ class cContinente {
         
     }
 
-    public function cModificarContinente($nombreC, $idCont) {
-        $resultado = $this->objcontinente->mModificarContinente($nombreC, $idCont);
+    public function cModificarContinente() {
+        // Recoger los datos enviados a través del formulario o petición (por ejemplo, FormData)
+        $nombreC = $_POST['nombreCont'];  // 'nombreCont' es el campo enviado
+        $idCont = $_POST['idContinente']; // 'idContinente' es el campo enviado
+        // Llamar al método del modelo para modificar el continente
+        $resultado = $this->objContinente->mModificarContinente($nombreC, $idCont);
+
         if ($resultado === true) {
-            return "Modificación correcta";
-        } elseif ($resultado === "Csu") {
-            return "Nombre del continente ya existe";
-        } else {
-            return "Error al modificar";
+            echo "Continente Modificado";
+        } elseif ($resultado === "csu") {
+            echo "El nombre del continente ya existe, no se puede modificar.";
+        } else {    
+            echo "Error Modificando el continente";
         }
     }
 }
