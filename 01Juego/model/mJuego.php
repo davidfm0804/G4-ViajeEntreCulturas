@@ -14,8 +14,8 @@ class MJuego {
     public function seleccionarContinentes() {
         $this->conectar();
 
-        $sql = 'SELECT DISTINCT nombreCont FROM continente
-                INNER JOIN pais ON pais.idContinente = continente.idContinente;';
+        $sql = 'SELECT DISTINCT continente.idContinente, nombreCont FROM continente
+                    INNER JOIN pais ON pais.idContinente = continente.idContinente;';
         $resultado = $this->conexion->query($sql);
 
         return $resultado->fetch_all(MYSQLI_ASSOC);
