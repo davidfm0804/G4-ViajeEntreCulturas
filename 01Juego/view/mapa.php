@@ -16,7 +16,7 @@
     <!-- Popup que aparece al cargar -->
     <div id="popup">
         <div class="popup-content">
-            <span id="close-popup" class="close-btn">❌</span>
+            <span id="close-popup">❌</span>
             <h2 id="popup-title">Ayuda</h2>
             <div id="popup-body">
                 <p>¡Bienvenido a la sección del Mapa!</p>
