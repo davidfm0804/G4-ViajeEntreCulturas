@@ -8,12 +8,12 @@ class cItem {
     public $vista;
 
     public function __construct() {
-        $this->vista = ''; //Hay que cambiarle el nombre. Es la vista por defecto que mostraremos de la pagina index.php
+        $this->vista = ''; 
         $this->tituloPagina = '';
-        $this->objItem = new mItem(); //objPais es el nombre del objeto instanciado de la clase modelo Pais (mPais). Creamos objeto
+        $this->objItem = new mItem(); 
     }
 
-    public function cListadoPaises(){ //Este método devuelve el listado de países
+    public function cListadoPaises(){
         $this->tituloPagina = 'Listado de países de '.$_GET['nombreCont'];
         $this->vista = 'itemListadoPaises';
         return $this->objItem->mListadoPaises();
@@ -86,12 +86,6 @@ class cItem {
             echo $error;
             exit;
         }
-
-
-   }
-
-
-
-        
+   }       
  }   
 ?>

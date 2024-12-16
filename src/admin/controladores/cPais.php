@@ -8,29 +8,29 @@ class cPais {
     public $vista;
 
     public function __construct() {
-        $this->vista = ''; //Hay que cambiarle el nombre. Es la vista por defecto que mostraremos de la pagina index.php
+        $this->vista = ''; 
         $this->tituloPagina = '';
-        $this->objPais = new mPais(); //objPais es el nombre del objeto instanciado de la clase modelo Pais (mPais). Creamos objeto
+        $this->objPais = new mPais(); 
     }
 
-    public function cListadoPaises(){ //Este método devuelve el listado de países
+    public function cListadoPaises(){ 
         $this->tituloPagina = 'Listado de países de '.$_GET['nombreCont'];
         $this->vista = 'listadoPaises';
         return $this->objPais->mListadoPaises();
     }
 
-    public function cMapaChincheta(){ //Este método devuelve la vista del mapa para colocar la chincheta
+    public function cMapaChincheta(){ 
         $this->vista = 'mapaChincheta'; 
     }
 
     public function cFormAltaPais(){
         $this->vista = 'formAltaPais';
-        return $this->objPais->mFormAltaPais(); //Este método devuelve la vista del formulario para dar de alta un nuevo país
+        return $this->objPais->mFormAltaPais(); 
     }
 
     public function cAltaPais() {
-$valido = true;
-$error = '';
+        $valido = true;
+        $error = '';
 
         //Validar nombrePais vacio
         if(empty($_POST['pais'])){
@@ -43,7 +43,6 @@ $error = '';
         //Funcion buscar nombrePais repetido
         if(isset($_POST['pais'])){
             $nombreRepetido = $this->objPais->mNombrePaisRepetido($_POST['pais']);
-
             if($nombreRepetido == false){
                 $valido = false;
                 $error = 'Este nombre ya está inscrito';
@@ -52,7 +51,6 @@ $error = '';
             } 
         }
        
-
         //Validar caracteres permitidos nombrePais
         if(!preg_match('/^[A-Za-záéíóúÁÉÍÓÚüÜ\s]+$/', trim($_POST['pais']))){
             $valido = false;
@@ -77,9 +75,7 @@ $error = '';
             return;
             }
         }
-
-       
-        
+  
         //Validar campo categoría no esté vacío
         for($i = 1; $i < 5; $i++){
             $campo = 'categoria'.$i;
@@ -107,9 +103,9 @@ $error = '';
                 $valido = false;
                 $error= "Foto de Item no subida";
                 echo $error;
-            return;
+                return;
             } else {
-                //Validar el formato de fotos
+        //Validar el formato de fotos
                 $formatoValido = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
                 if (!in_array($_FILES[$campo]['type'], $formatoValido)) {
                     $valido = false;
@@ -127,7 +123,7 @@ $error = '';
                 $valido = false;
                 $error= "Campo descripción vacío";
                 echo $error;
-            return;
+                return;
             }
         }
 
@@ -142,6 +138,7 @@ $error = '';
             }
         }
 
+        //Superadas las validaciones
         if($valido){
             $resultado = $this->objPais->mAltaPais(); 
             echo $resultado;
@@ -150,8 +147,7 @@ $error = '';
             echo $error;
             exit;
         }
-
-        }
+    }
 
     public function cFormModPais(){
         $this->vista = 'formModPais';
@@ -161,34 +157,33 @@ $error = '';
     public function cCambiarChincheta(){
         $this->vista = 'cambiarChincheta';
     }
-public function cMapaChinchetas(){
-    $this->vista = 'mapaChinchetas';
-}
+
+    public function cMapaChinchetas(){
+        $this->vista = 'mapaChinchetas';
+    }
+
     public function cMostrarChinchetas(){
-       
         $coordenadas = $this->objPais->mMostrarChinchetas();
         header('Content-Type: application/json');
         echo json_encode($coordenadas);
     }
-    public function cUpdatePais(){
-        $result = $this->objPais->mUpdatePais();
 
-        if ($result) {
+    public function cUpdatePais(){
+        $resultado = $this->objPais->mUpdatePais();
+        if ($resultado) {
             echo "Registro modificado correctamente";
          } else {
-             // Si hubo un error, establecemos otro mensaje en la sesión
              echo "Error al modificar el registro";
          }
          exit;
     }
 
     public function cBorrarPais(){
-        $result = $this->objPais->mBorrarPais();
+        $resultado = $this->objPais->mBorrarPais();
         
-        if ($result) {
+        if ($resultado) {
            echo "Registro eliminado correctamente";
         } else {
-            // Si hubo un error, establecemos otro mensaje en la sesión
             echo "Error al eliminar el registro";
         }
         exit;

@@ -11,50 +11,41 @@ class mPais {
         if ($this->conexion->connect_error) {
             die("Conexión fallida: " . $this->conexion->connect_error);
         }
-        // Activar modo de excepciones
         $this->conexion->report_mode = MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT;
     }
 
     public function conectar(){
-        $objetoBD = new bbdd(); //Conectamos a la base de datos. Creamos objeto $objetoBD
-        $this->conexion = $objetoBD->conexion; //Llamamos al metodo que realiza la conexion a la BBDD
+        $objetoBD = new bbdd();
+        $this->conexion = $objetoBD->conexion; 
     }
 
     public function mListadoPaises(){
         $this->conectar();
         $idContinente = $_GET['id'];
-
         if(!isset($idContinente)||empty($idContinente)){
             //Si no tenemos idContinente no podemos mostrar paises. Devolvemos false y salimos de la consulta
             return false; //
             exit;
         }
-
         $sql = 'SELECT idPais, nombrePais, bandera FROM '.$this->tabla.' WHERE idContinente = '.$idContinente;
-        $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
+        $resultado = $this->conexion->query($sql);
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
     public function mFormAltaPais(){
         $this->conectar();
         $idContinente = $_GET['id'];
-
         if(!isset($idContinente)||empty($idContinente)){
-            //Si no tenemos idContinente no podemos mostrar paises. Devolvemos false y salimos de la consulta
             return false; //
             exit;
         }
-
         $nombreCont = $_GET['nombreCont'];
         if(!isset($nombreCont)||empty($nombreCont)){
-            //Si no tenemos idContinente no podemos mostrar paises. Devolvemos false y salimos de la consulta
             return false; 
             exit;
         }
-
-
         $sql = 'SELECT * FROM categoria';
-        $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
+        $resultado = $this->conexion->query($sql); 
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -71,23 +62,23 @@ class mPais {
         $idCategoria3 = $_POST['categoria3']; $descripcion3 = $_POST['descripcion3'];
         $idCategoria4 = $_POST['categoria4']; $descripcion4 = $_POST['descripcion4'];
 
-        $imgBandera = $_FILES['imgBandera']['name']; //Ejemplo: india.png
+        $imgBandera = $_FILES['imgBandera']['name']; 
         $imgBanderaTmp = $_FILES['imgBandera']['tmp_name'];
         $imgBanderaPath = BANDERAS.basename($imgBandera);
         
-        $imgItem1 = $_FILES['imgItem1']['name']; //Ejemplo: india.png
+        $imgItem1 = $_FILES['imgItem1']['name']; 
         $imgItemTmp1 = $_FILES['imgItem1']['tmp_name'];
         $imgItemPath1 = FOTOS.basename($imgItem1);
 
-        $imgItem2 = $_FILES['imgItem2']['name']; //Ejemplo: india.png
+        $imgItem2 = $_FILES['imgItem2']['name']; 
         $imgItemTmp2 = $_FILES['imgItem2']['tmp_name'];
         $imgItemPath2 = FOTOS.basename($imgItem2);
         
-        $imgItem3 = $_FILES['imgItem3']['name']; //Ejemplo: india.png
+        $imgItem3 = $_FILES['imgItem3']['name']; 
         $imgItemTmp3 = $_FILES['imgItem3']['tmp_name'];
         $imgItemPath3 = FOTOS.basename($imgItem3);
         
-        $imgItem4 = $_FILES['imgItem4']['name']; //Ejemplo: india.png
+        $imgItem4 = $_FILES['imgItem4']['name'];
         $imgItemTmp4 = $_FILES['imgItem4']['tmp_name'];
         $imgItemPath4 = FOTOS.basename($imgItem4);
         
@@ -95,19 +86,19 @@ class mPais {
 
         try {
             // INSERT PAIS
-            $stmt = $this->conexion->prepare("INSERT INTO ".$this->tabla." (nombrePais, bandera, coordX, coordY, idContinente) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssddi", $nombrePais, $imgBandera, $coordX, $coordY, $idContinente);
-            if (!$stmt->execute()) {
-                throw new Exception("Error al insertar el país: " . $stmt->error);
+            $consulta = $this->conexion->prepare("INSERT INTO ".$this->tabla." (nombrePais, bandera, coordX, coordY, idContinente) VALUES (?, ?, ?, ?, ?)");
+            $consulta->bind_param("ssddi", $nombrePais, $imgBandera, $coordX, $coordY, $idContinente);
+            if (!$consulta->execute()) {
+                throw new Exception("Error al insertar el país: " . $consulta->error);
             }
 
             // Obtener el idPais del país recién insertado
-            $stmt = $this->conexion->prepare("SELECT idPais FROM ".$this->tabla." WHERE nombrePais = ?");
-            $stmt->bind_param("s", $nombrePais);
-            $stmt->execute();
-            $stmt->bind_result($idPais);
-            $stmt->fetch();
-            $stmt->close();
+            $consulta = $this->conexion->prepare("SELECT idPais FROM ".$this->tabla." WHERE nombrePais = ?");
+            $consulta->bind_param("s", $nombrePais);
+            $consulta->execute();
+            $consulta->bind_result($idPais);
+            $consulta->fetch();
+            $consulta->close();
             // Verificamos si se obtuvo el idPais correctamente
             if (!$idPais) {
                 throw new Exception("No se pudo obtener el idPais del país recién insertado.");
@@ -120,13 +111,13 @@ class mPais {
             $idCategoria4 = (int)$idCategoria4;
 
             // Inserción en la tabla item usando el idPais
-            $stmt = $this->conexion->prepare("INSERT INTO item (descripcion, imagen, idPais, idCategoria) VALUES (?, ?, ?, ?), (?, ?, ?, ?), (?, ?, ?, ?), (?, ?, ?, ?)");
-            $stmt->bind_param("ssiissiissiissii", $descripcion1, $imgItem1, $idPais, $idCategoria1, $descripcion2, $imgItem2, $idPais, $idCategoria2, $descripcion3, $imgItem3, $idPais, $idCategoria3, $descripcion4, $imgItem4, $idPais, $idCategoria4);
-            if ($stmt === false) {
+            $consulta = $this->conexion->prepare("INSERT INTO item (descripcion, imagen, idPais, idCategoria) VALUES (?, ?, ?, ?), (?, ?, ?, ?), (?, ?, ?, ?), (?, ?, ?, ?)");
+            $consulta->bind_param("ssiissiissiissii", $descripcion1, $imgItem1, $idPais, $idCategoria1, $descripcion2, $imgItem2, $idPais, $idCategoria2, $descripcion3, $imgItem3, $idPais, $idCategoria3, $descripcion4, $imgItem4, $idPais, $idCategoria4);
+            if ($consulta === false) {
                 throw new Exception("Error al preparar la consulta SQL: " . $this->conexion->error);
             }
-            if (!$stmt->execute()) {
-                throw new Exception("Error al insertar el item: " . $stmt->error);
+            if (!$consulta->execute()) {
+                throw new Exception("Error al insertar el item: " . $consulta->error);
             }
             // Si todo fue exitoso, hacer commit de la transacción
             $this->conexion->commit();
@@ -154,27 +145,17 @@ class mPais {
         $this->conectar();
         $consulta = $this->conexion->prepare("SELECT * FROM pais WHERE nombrePais = ?"); // Preparar la consulta
         $consulta->bind_param("s", $nombre);
-      
-            // Ejecutar la consulta
-            $consulta->execute();
-            $consulta->store_result();
-
+        $consulta->execute();
+        $consulta->store_result();
         if ($consulta) {
-    
-            // Vincular el parámetro (el tipo 's' indica que es una cadena)
-            
             // Comprobar el número de filas
             if ($consulta->num_rows > 0) {
                 return false; 
             } else {
                 return true;
             }
-    
-            // Cerrar la declaración
             $consulta->close();
-    
         } else {
-            // Si hubo un error en la preparación de la consulta
             die("Error en la preparación de la consulta: " . $this->conexion->error);
         }
     }
@@ -194,17 +175,14 @@ class mPais {
             $coordenadas[] = $fila;
         }
         $consulta->close();
-
         return $coordenadas;
-
-
     }
 
     public function mFormModPais(){
         $this->conectar();
         $id = $_GET['idPais'];
         $sql = "SELECT nombrePais, bandera, coordX, coordY FROM ".$this->tabla." WHERE idPais = ".$id;
-        $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
+        $resultado = $this->conexion->query($sql); 
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -222,7 +200,7 @@ class mPais {
             $imgBandera = $_FILES['imgBandera']['name']; //Nombre del archivo
             $imgBanderaTmp = $_FILES['imgBandera']['tmp_name'];
             $rutaBandera = BANDERAS.basename($imgBandera);
-            // Mover IMG a Directorio
+
             if (!move_uploaded_file($imgBanderaTmp, $rutaBandera)){die("Error al subir la imagen");}
             $archivo = $imgBandera;
         }
@@ -252,7 +230,6 @@ class mPais {
         return $this->conexion->query($SQL);
     }
     
-
     public function mBorrarPais() {
         $this->conectar();
         $id = $_POST['id'];

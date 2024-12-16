@@ -11,13 +11,12 @@ class mItem {
         if ($this->conexion->connect_error) {
             die("Conexión fallida: " . $this->conexion->connect_error);
         }
-        // Activar modo de excepciones
         $this->conexion->report_mode = MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT;
     }
 
     public function conectar(){
-        $objetoBD = new bbdd(); //Conectamos a la base de datos. Creamos objeto $objetoBD
-        $this->conexion = $objetoBD->conexion; //Llamamos al metodo que realiza la conexion a la BBDD
+        $objetoBD = new bbdd(); 
+        $this->conexion = $objetoBD->conexion; 
     }
 
     public function mListadoPaises(){
@@ -28,7 +27,7 @@ class mItem {
         }
         $this->tabla = 'pais';
         $sql = 'SELECT idPais, nombrePais, bandera FROM '.$this->tabla.' WHERE idContinente = '.$idContinente;
-        $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
+        $resultado = $this->conexion->query($sql);
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -55,18 +54,14 @@ class mItem {
         $consulta->bind_param("i", $idCategoria);
         $consulta->execute();
         $resultado = $consulta->get_result();
-
         $categorias = [];
-
         while($fila = $resultado->fetch_assoc()) {
             $categorias[] = [
                 'idCategoria' => $fila['idCategoria'],
                 'nombreCategoria' => $fila['nombreCat']
             ];
         }
-
         $consulta->close();
-
         return $categorias;
     }
 
@@ -75,7 +70,6 @@ class mItem {
         $this->conectar();
         $idPais = $_POST['idPais'];
     
-        // Recoger todos los datos
         $idCategoriaItem1 = (int)$_POST['categoriaItem1']; 
         $descripcionItem1 = $_POST['descripcionItem1'];
         $idCategoriaItem2 = (int)$_POST['categoriaItem2']; 
@@ -91,7 +85,6 @@ class mItem {
         $imgItem3 = !empty($_FILES['imgItem3']['name']) ? $_FILES['imgItem3']['name'] : $_POST['imgItem3'];
         $imgItem4 = !empty($_FILES['imgItem4']['name']) ? $_FILES['imgItem4']['name'] : $_POST['imgItem4'];
     
-        // Definir las rutas donde se guardarán las imágenes
         $imgItemPath1 = FOTOS.basename($imgItem1);
         $imgItemPath2 = FOTOS.basename($imgItem2);
         $imgItemPath3 = FOTOS.basename($imgItem3);
@@ -142,22 +135,17 @@ class mItem {
                 throw new Exception("Error al mover la foto 4.");
             }
     
-            // Hacer commit de la transacción si todo es exitoso
             $this->conexion->commit();
     
-            // Devolver un array simple con los resultados (sin json_encode)
             return "Registro modificado correctamente";
             exit;
     
         } catch (Exception $e) {
             // Si ocurre algún error, hacer rollback
             $this->conexion->rollback();
-    
             return "Error al modificar el registro: " . $e->getMessage();
             exit;
         }
-    
-        // Cerrar la conexión
         $this->conexion->close();
     }
 }
