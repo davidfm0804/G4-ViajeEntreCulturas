@@ -44,6 +44,11 @@ class cContinente {
         exit;
 
     }
+    public function cListadoContinentes(){
+        $this->vista = 'listadoContinentes';
+        $this->tituloPagina = 'Listado de Continentes';
+        return $this->objContinente->mListadoContinentes();
+    }
 
     public function cModificarContinente() {
         // Recoger los datos enviados a través del formulario o petición (por ejemplo, FormData)
