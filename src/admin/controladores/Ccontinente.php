@@ -39,7 +39,6 @@ class cContinente {
         if ($result) {
            echo "Registro eliminado correctamente";
         } else {
-            // Si hubo un error, establecemos otro mensaje en la sesión
             echo "Error al eliminar el registro";
         }
         exit;
