@@ -19,5 +19,5 @@ document.getElementById('ranking').addEventListener('click', function(){
 });
 
 document.getElementById('valoraciones').addEventListener('click', function(){
-    window.location.href = 'index.php?controlador=MenuPrincipal&accion=cListadoCorreos';
+    window.location.href = 'index.php?controlador=Valoracion&accion=cListadoCorreos';
 });
