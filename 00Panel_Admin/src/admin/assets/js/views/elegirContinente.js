@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectContinente = document.getElementById("EligeContinente");
 
     form.addEventListener("submit", function (event) {
-        if (selectContinente.value.trim()=="") {
+        if (selectContinente.value.trim()=="Selecciona un continente") {
             event.preventDefault(); 
             alert("Elige un Continente");
         }
