@@ -4,8 +4,8 @@ document.getElementById('startGame').addEventListener('click', function() {
 
 const infoPartida = JSON.parse(localStorage.getItem('infoPartida'));
 console.log(infoPartida);
-const rutaBanderas = '../../../../00Panel_Admin/src/admin/assets/img/banderas/'; /*assets/img/banderas/*/
-const rutaFotos = '../../../../00Panel_Admin/src/admin/assets/img/fotos/';
+const rutaBanderas = 'assets/img/banderas/';
+const rutaFotos = 'assets/img/fotos/';
 const tiempoDefinido = 60;
 const tiempoMostrarCartas = 4;
 
@@ -26,18 +26,6 @@ for (const idPais in infoPartida) {
 
 function iniciarJuego(infoPartida) {
   document.getElementById('startGame').style.display = 'none';
-  document.querySelector('h1').style.display = 'none';
-  document.querySelectorAll('p').forEach(p => { 
-    p.style.position = 'absolute'; 
-    p.style.left = '2.5%';
-    /*p.style.fontSize = '1.2rem';*/
-  });
-
-  document.querySelector('h1').style.top = '5vh';
-  document.querySelector('p:nth-of-type(1)').style.top = '38vh';
-  document.querySelector('p:nth-of-type(2)').style.top = '48vh';
-  document.querySelector('p:nth-of-type(3)').style.top = '58vh';
-
   document.getElementById('tablero').classList.remove('hidden');
 
   // Inicializar el tablero de cartas
@@ -174,9 +162,6 @@ function gameOver() {
   const btnReiniciar = document.createElement('button');
   btnReiniciar.textContent = 'Nueva Partida';
   btnReiniciar.style.padding = '1%';
-  btnReiniciar.style.position = 'absolute';
-  btnReiniciar.style.top = '54%';
-  btnReiniciar.style.left = '35.2%';
   btnReiniciar.addEventListener('click', function() {
     document.body.removeChild(document.getElementById('h1WinGmOv'));
     document.body.removeChild(btnReiniciar);
@@ -188,11 +173,8 @@ function gameOver() {
   const btnRanking = document.createElement('button');
   btnRanking.textContent = 'Ver Ranking';
   btnRanking.style.padding = '1%';
-  btnRanking.style.position = 'absolute';
-  btnRanking.style.top = '54%';
-  btnRanking.style.left = '51%';
   btnRanking.addEventListener('click', function() {
-    window.location.href = `index.php?controller=Juego&action=verRanking&idCont=${localStorage.getItem('idCont')}`;
+    window.location.href = 'index.php?controller=Juego&action=verRanking&idCont=5';
   });
 
   document.body.appendChild(btnReiniciar);
@@ -217,10 +199,10 @@ function h1WinnerGameOver(title){
   const h1 = document.createElement('h1');
   h1.textContent = title;
   h1.id = 'h1WinGmOv';
-  h1.style.fontSize = '5rem';
+  h1.style.fontSize = '3rem';
   h1.style.textShadow = '2px 2px 5px red';
   h1.style.position = 'absolute';
-  h1.style.top = '12%';
+  h1.style.top = '50%';
   h1.style.left = '50%';
   h1.style.transform = 'translate(-50%, -50%)';
   h1.style.animation = 'parapadeo 1s infinite'; // Añadir animación de parpadeo
