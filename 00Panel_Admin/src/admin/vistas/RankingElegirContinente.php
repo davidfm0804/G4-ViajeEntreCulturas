@@ -12,7 +12,7 @@
     <header>
         <img src="<?php echo IMG."logo.png";?>" alt="Logo">
         <h1>Viaje entre Culturas</h1>
-            <a href="#">PANEL ADMIN</a>
+            <a href="index.php">PANEL ADMIN</a>
     </header>
     <form>
         <label for="EligeContinente">Elige Continente: </label>
