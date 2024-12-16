@@ -88,6 +88,7 @@ function comprobarChinchetas(){
       btnMemory.style.padding = "1%";
       btnMemory.style.display = "block";
       btnMemory.style.margin = "2% auto";
+      btnMemory.style.transform = "translateX(0)";
       document.querySelector('main').appendChild(btnMemory);
     }
 }

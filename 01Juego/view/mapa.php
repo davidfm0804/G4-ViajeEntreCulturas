@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viaje entre culturas</title>
     <link rel="icon" href="<?php echo IMG.'mapa.jpg'?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?php echo CSS.'estiloMapa.css'?>">
+    <link rel="stylesheet" href="<?php echo CSS.'estiloCeliaJuego.css'?>">
 </head>
 <body id='mapa'>
     <header>
@@ -14,7 +14,7 @@
         <p id="open-popup">❓</p>
     </header>
     <!-- Popup que aparece al cargar -->
-    <div id="popup" class="popup">
+    <div id="popup">
         <div class="popup-content">
             <span id="close-popup" class="close-btn">❌</span>
             <h2 id="popup-title">Ayuda</h2>

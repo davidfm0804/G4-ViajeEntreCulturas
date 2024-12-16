@@ -17,6 +17,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Press Start 2P', cursive;
 }
 
@@ -71,7 +72,7 @@ header p{
     box-shadow: 3px 3px 6px #000, -3px -3px 6px #444;
     cursor: pointer;
     transition: all 0.3s ease;
-  }
+}
 
 /* a:hover */
 header p:hover {
@@ -212,10 +213,8 @@ body#mapa main img:first-child {
     width: 3%;
 }
 
-/* Class | Mapa */
-
 /* Popup */
-.popup {
+#popup {
     position: fixed;
     top: 0;
     left: 0;
@@ -229,27 +228,28 @@ body#mapa main img:first-child {
     backdrop-filter: blur(5px); 
 }
 
-.popup-content {
+#popup > div {
     background: var(--acento);
     border: 4px solid #ffffff;
     border-radius: 10px;
     padding: 2%;
     text-align: center;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-    max-width: 400px;
-    width: 80%;
+    /* max-width: 500px; */
+    width: 30%;
     color: white;
     position: relative;
     font-size: 1.2em;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6); 
 }
 
-.popup-content p {
+#popup > div p {
     margin: 5% 0;
+    /* text-align: justify; */
 }
 
 /* Botón de cerrar (emoji) */
-.close-btn {
+#popup > div > span {
     position: absolute;
     top: -15px;
     right: -15px;
@@ -265,13 +265,12 @@ body#mapa main img:first-child {
 }
 
 /* Hover del botón */
-.close-btn:hover {
+#popup > div > span:hover {
     background: #ff5555; /* Rojo para el hover */
     transform: scale(1.1);
 }
-
 /* MediaQuery | Mapa */
-/* Para tablet en modo vertical 
+/* Para tablet en modo vertical */
 @media (max-width: 768px) {
     header{
         min-height: 12vh;
@@ -282,9 +281,9 @@ body#mapa main img:first-child {
     header img{
         width: 10%;
     }
-}*/
+}
 
-/* Para tablet en modo horizontal 
+/* Para tablet en modo horizontal */
 @media (max-width: 1024px) and (min-width: 769px) {
     header{
         min-height: 12vh;
@@ -293,7 +292,7 @@ body#mapa main img:first-child {
         width: 8%;
     }
 
-}*/
+}
 
 /*------------*/
 
