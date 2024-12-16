@@ -26,6 +26,18 @@ for (const idPais in infoPartida) {
 
 function iniciarJuego(infoPartida) {
   document.getElementById('startGame').style.display = 'none';
+  document.querySelector('h1').style.display = 'none';
+  document.querySelectorAll('p').forEach(p => { 
+    p.style.position = 'absolute'; 
+    p.style.left = '2.5%';
+    /*p.style.fontSize = '1.2rem';*/
+  });
+
+  document.querySelector('h1').style.top = '5vh';
+  document.querySelector('p:nth-of-type(1)').style.top = '38vh';
+  document.querySelector('p:nth-of-type(2)').style.top = '48vh';
+  document.querySelector('p:nth-of-type(3)').style.top = '58vh';
+
   document.getElementById('tablero').classList.remove('hidden');
 
   // Inicializar el tablero de cartas
@@ -202,7 +214,8 @@ function h1WinnerGameOver(title){
   h1.style.fontSize = '3rem';
   h1.style.textShadow = '2px 2px 5px red';
   h1.style.position = 'absolute';
-  h1.style.top = '50%';
+  // h1.style.top = '50%';
+  h1.style.top = '22%';
   h1.style.left = '50%';
   h1.style.transform = 'translate(-50%, -50%)';
   h1.style.animation = 'parapadeo 1s infinite'; // Añadir animación de parpadeo

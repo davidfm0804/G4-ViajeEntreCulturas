@@ -22,74 +22,22 @@
 body {
   background-color: var(--oscuro);
   color: var(--blanco-claro);
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   height: 100vh;
   text-align: center;
   overflow: hidden;
 }
 
-header {
-  background-color: var(--azul);
-  color: white;
-  height: 8vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 20px;
-  border-bottom: 4px solid var(--azul-claro);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-  position: relative;
-  width: 100%;
-}
-
-header img {
-  width: 70px;
-}
-
-header h1 {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5em;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+body#juego h1{
+  margin-top: 30vh;
 }
 
 div#game > p {
+  font-size: 1.5em;
   margin-top: 2%;
-}
-
-main {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../img/mapa.jpg);
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  padding: 20px;
-  text-align: center;
-}
-
-h2 {
-  padding-top: 2em;
-  color: white;
-}
-
-#startGame {
-  position: relative;
-  height: 4em;
-  padding: 1em;
-  background-color: var(--acento);
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2em;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-  margin-top: 1.5em;
-}
-
-#startGame:hover {
-  background-color: var(--azul-claro);
 }
 
 button {
@@ -113,22 +61,39 @@ button:hover {
   box-shadow: 0px 4px 12px var(--azul-claro);
 }
 
-button:active {
-  box-shadow: none;
-  transform: translateY(2px);
+#startGame {
+  position: relative;
+  height: 4em;
+  padding: 1em;
+  background-color: var(--acento);
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  margin-top: 1.5em;
+}
+
+#startGame:hover {
+  background-color: var(--azul-claro);
 }
 
 #tablero {
+  margin-left: auto;
+  width: 85%;
+  margin-top: 2.4vh;
   display: grid;
-  grid-template-columns: repeat(4, 15vw); /* 4 columnas */
-  grid-gap: 15px;
-  margin-top: 3em;
-  justify-content: center;
+  grid-template-columns: repeat(4, 22vh); /* 4 columnas de 22vh */
+  /*grid-gap: 1%;  Espacio entre las cartas */
+  justify-content: space-evenly; /* Centra las columnas */
+  align-content: center; /* Centra las filas */
+  align-items: center; /* Centra las cartas como si fueran filas */
+  justify-items: center; /* Centra las cartas horizontalmente */
 }
 
 .card {
-  width: 15vw;
-  height: 15vw;
+  width: 22vh;
+  height: 22vh;
   background-color: var(--azul-oscuro);
   border-radius: 10px;
   cursor: pointer;
@@ -163,10 +128,21 @@ button:active {
   visibility: hidden;
 }
 
-#pantallaFin {
+.disabled {
+  pointer-events: none;
+  opacity: 0.5; 
+}
+
+/* Animación de parpadeo */
+@keyframes parapadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* #pantallaFin {
   margin-top: 3em;
   color: white;
-}
+} 
 
 input {
   padding: 10px;
@@ -229,15 +205,5 @@ tr, td, th {
 
 #ranking {
   margin-bottom: 30px;
-}
+} */
 
-.disabled {
-  pointer-events: none;
-  opacity: 0.5; 
-}
-
-/* Animación de parpadeo */
-@keyframes parapadeo {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}

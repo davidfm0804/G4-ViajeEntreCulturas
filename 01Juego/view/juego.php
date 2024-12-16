@@ -6,14 +6,14 @@
     <title>Memory Game</title>
     <link rel="stylesheet" href="<?php echo CSS.'style.css'; ?>">
 </head>
-<body>
+<body id="juego">
     <h1>Memory Game</h1>
 
     <div id="game">
         <button id="startGame">Empezar Juego</button>
         <p>Tiempo: <span id="contador">0</span>s</p>
         <p>Puntuación: <span id="puntuacion">0</span></p>
-        <p>Intentos: <span id="intentos">0</span></p>
+        <p>Fallos: <span id="intentos">0</span></p>
 
         <div id="tablero" class="hidden">
             <!--Tablero de cartas -->
