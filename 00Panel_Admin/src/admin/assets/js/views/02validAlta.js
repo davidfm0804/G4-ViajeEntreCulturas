@@ -39,128 +39,64 @@ document.querySelector('.update').addEventListener('click', async function(event
     let valid = true;
     const formatoValido = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
 
-       /*-- Validaciones --*/
+    /*-- Validaciones --*/
 
     // Select Pais | NOT NULL
     if (!pais.value) {
         alert("Por favor, indique el nombre del país.");
         valid = false;
     }
-     // Input File [imgBandera] | NOT NULL && Formato IMG
-    if (imgBandera.files.length === 0) {
-        alert("Por favor, sube una imagen de la bandera.");
-        valid = false;
-    } else {
-        console.log(imgBandera.files[0].type);  // Verifica el tipo MIME del archivo
-        if (!formatoValido.includes(imgBandera.files[0].type)) {
-            alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
-            valid = false;
-        }
-    }
-    // Coordenadas (Aunque siempre deberian estar)
-    if (!coordX.value || !coordY.value) {
-        alert("Por favor, localiza la cultura en el mapa.");
-        valid = false;
-    }
-    // Item1
 
-    if (!categoria1.value.trim()) {
-        alert("Por favor, introduce un valor para la categoría 1.");
-        valid = false;
-    }
+    // Input File [imgItem1] | NOT NULL && Formato IMG
     if (imgItem1.files.length === 0) {
-        alert("Por favor, sube una imagen de la foto en el item1.");
+        alert("Por favor, sube una imagen de la foto.");
         valid = false;
     } else if (!formatoValido.includes(imgItem1.files[0].type)) {
         alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
         valid = false;
     }
-      
-    if (descripcion1.value.length > 500) {
-        alert("No puedes introducir 500 caracteres en la descripcion del item 1");
-        valid = false;
-    }else if(descripcion1.value.length <= 0){
-        alert("No puedes dejar vacia la descripcion del item 1");
-    }
 
-     // Item2
-
-    if (!categoria2.value.trim()) {
-        alert("Por favor, introduce un valor para la categoría 2.");
-        valid = false;
-    }
+    // Input File [imgItem2] | NOT NULL && Formato IMG
     if (imgItem2.files.length === 0) {
-        alert("Por favor, sube una imagen de la foto en el item2.");
+        alert("Por favor, sube una imagen de la foto.");
         valid = false;
     } else if (!formatoValido.includes(imgItem2.files[0].type)) {
         alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
         valid = false;
     }
-    if (descripcion2.value.length > 500) {
-        alert("No puedes introducir 500 caracteres en la descripcion del item 2");
-        valid = false;
-    }else if(descripcion2.value.length <= 0){
-        alert("No puedes dejar vacia la descripcion del item 2");
-    }
 
-     // Item3
-
-    if (!categoria3.value.trim()) {
-        alert("Por favor, introduce un valor para la categoría 3.");
-        valid = false;
-    }
+    // Input File [imgItem3] | NOT NULL && Formato IMG
     if (imgItem3.files.length === 0) {
-        alert("Por favor, sube una imagen de la foto en el item3.");
+        alert("Por favor, sube una imagen de la foto.");
         valid = false;
     } else if (!formatoValido.includes(imgItem3.files[0].type)) {
         alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
         valid = false;
     }
-    if (descripcion3.value.length > 500) {
-        alert("No puedes introducir 500 caracteres en la descripcion del item 3");
-        valid = false;
-    }else if(descripcion3.value.length <= 0){
-        alert("No puedes dejar vacia la descripcion del item 3");
-    }
-      // Item4
-    if (!categoria4.value.trim()) {
-        alert("Por favor, introduce un valor para la categoría 4.");
-        valid = false;
-    }
+
+    // Input File [imgItem4] | NOT NULL && Formato IMG
     if (imgItem4.files.length === 0) {
-        alert("Por favor, sube una imagen de la foto en el item4.");
+        alert("Por favor, sube una imagen de la foto.");
         valid = false;
     } else if (!formatoValido.includes(imgItem4.files[0].type)) {
         alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
         valid = false;
     }
- 
-    if (descripcion4.value.length > 500) {
-        alert("No puedes introducir 500 caracteres en la descripcion del item 4");
+
+    // Input File [imgBandera] | NOT NULL && Formato IMG
+    if (imgBandera.files.length === 0) {
+        alert("Por favor, sube una imagen de la bandera.");
         valid = false;
-    }else if(descripcion4.value.length <= 0){
-        alert("No puedes dejar vacia la descripcion del item 4");
-    }
-    
-    function validarCategorias() {
-        const categoriasSeleccionadas = [];
-        for (let i = 1; i <= 4; i++) {
-            const categoriaSelect = document.querySelector(`[name="categoria${i}"]`);
-            const categoriaId = categoriaSelect.value; // Obtenemos el id de la categoría seleccionada
-            if (categoriasSeleccionadas.includes(categoriaId)) {
-                alert(`La categoría ${categoriaSelect.options[categoriaSelect.selectedIndex].text} ya ha sido seleccionada. Por favor, elige una categoría diferente.`);
-                return false; // Si hay categorías repetidas, devolvemos false
-            }
-            categoriasSeleccionadas.push(categoriaId);
-        }
-        return true; // Si no hay categorías repetidas, devolvemos true
-    }
-    
-    // Validación de categorías repetidas dentro del evento .update
-    if (!validarCategorias()) {
+    } else if (!formatoValido.includes(imgBandera.files[0].type)) {
+        alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
         valid = false;
     }
 
+    // Input Text [Coordenadas] | NOT NULL
+    if (!coordX.value || !coordY.value) {
+        alert("Por favor, localiza la cultura en el mapa.");
+        valid = false;
+    }
 
     /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
     if (valid) {

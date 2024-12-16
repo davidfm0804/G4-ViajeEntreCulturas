@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Continente</title>
     <link rel="icon" href="<?php echo IMG.'logo.png'?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?php echo CSS.'estiloHugo.css'?>">
+    <link rel="stylesheet" href="<?php echo CSS.'estilo.css'?>">
 </head>
 <body>
     <header>
