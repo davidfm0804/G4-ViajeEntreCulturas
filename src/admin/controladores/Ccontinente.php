@@ -52,10 +52,13 @@ class cContinente {
         $idCont = $_POST['idContinente']; // 'idContinente' es el campo enviado
         // Llamar al método del modelo para modificar el continente
         $resultado = $this->objContinente->mModificarContinente($nombreC, $idCont);
-        if(!$resultado){
-            echo "Error Modificando el continente";
-        }else{
+
+        if ($resultado === true) {
             echo "Continente Modificado";
+        } elseif ($resultado === "csu") {
+            echo "El nombre del continente ya existe, no se puede modificar.";
+        } else {    
+            echo "Error Modificando el continente";
         }
     }
 }

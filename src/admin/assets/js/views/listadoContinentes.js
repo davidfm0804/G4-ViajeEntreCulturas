@@ -22,7 +22,7 @@ document.querySelectorAll('.modificar').forEach(button => {
         // Obtener Nombre Pais || closest -> Accede al 'tr' más cercano
         const nombreCont = button.closest('tr').querySelector('.colNombre').textContent;
         const idContinente = button.closest('tr').id;
-        window.location.href = `index.php?controlador=Continente&accion=cFormModContinente&id=${idContinente}`;
+        window.location.href = `index.php?controlador=Continente&accion=cFormModContinente&id=${idContinente}&nombreCont=${nombreCont}`;
     });
 });
 

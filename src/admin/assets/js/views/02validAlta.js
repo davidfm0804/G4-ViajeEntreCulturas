@@ -1,5 +1,6 @@
 const idContinente = document.querySelector('[name="idContinente"]').value;
 const nombreCont = document.querySelector('[name="nombreCont"]').value;
+
 /*-- Ajustes DOM --*/
 document.querySelector('main').style.position = "relative";
 document.querySelector('.cancel').addEventListener('click', function(){
@@ -24,7 +25,7 @@ document.querySelector('.update').addEventListener('click', async function(event
 
     /*-- Declaración Variables --*/
     let valid = true;
-    const formatoValido = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
+    const formatoValido = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/pjpeg', 'image/x-png'];
 
     /*-- Validaciones --*/
 
@@ -47,9 +48,12 @@ document.querySelector('.update').addEventListener('click', async function(event
     if (imgBandera.files.length === 0) {
         alert("Por favor, sube una imagen de la bandera.");
         valid = false;
-    } else if (!formatoValido.includes(imgBandera.files[0].type)) {
-        alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
-        valid = false;
+    } else {
+        console.log(imgBandera.files[0].type);  // Verifica el tipo MIME del archivo
+        if (!formatoValido.includes(imgBandera.files[0].type)) {
+            alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
+            valid = false;
+        }
     }
 
     // Input Text [Coordenadas] | NOT NULL

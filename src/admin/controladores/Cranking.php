@@ -1,9 +1,9 @@
 <?php
-class Cranking {
+class cRanking {
     private $objranking;
 
     public function __construct() {
-        require_once '../../modelos/Mranking.php';
+        require_once MODELOS.'mRanking.php';
         $this->objranking = new Mranking();
     }
 
@@ -14,8 +14,18 @@ class Cranking {
     public function cMostrarPuntuacion($idContinente) {
         return $this->objranking->mMostrarPuntuacion($idContinente);
     }
-    public function cBorrarPuntuacion($idContinente){
-        return $this->objranking->mBorrarPuntuacion($idContinente);
+    public function cBorrarPuntuacion(){
+        $result= $this->objranking->mBorrarPuntuacion();
+        if($result){
+            echo "Borrado Correctamente";
+        }else{
+            echo "Error en el Borrado";
+        }
+    }
+    public function cListadoRanking(){
+        $this->vista='rankingContinente';
+        $this->tituloPagina = 'RankingContinente';
+        return $this->objranking->mListadoRanking();
     }
 }
 ?>

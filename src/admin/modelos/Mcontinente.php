@@ -1,10 +1,11 @@
 <?php
 
 class mContinente {
-    private $conexion;
     private $tabla = 'continente';
+    private $conexion;
+
     public function __construct() {
-        require_once 'configDb.php';
+        require_once CONFIG.'configDbProd.php';
         $this->conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
         $this->conexion->set_charset("utf8");
 
@@ -14,9 +15,18 @@ class mContinente {
         // Activar modo de excepciones
         $this->conexion->report_mode = MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT;
     }
+
     public function conectar(){
         $objetoBD = new bbdd(); //Conectamos a la base de datos. Creamos objeto $objetoBD
         $this->conexion = $objetoBD->conexion; //Llamamos al metodo que realiza la conexion a la BBDD
+    }
+
+    public function mListadoContinentes(){
+        $this->tabla = 'continente';
+        $this->conectar();
+        $sql = 'SELECT * FROM '.$this->tabla;
+        $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
+        return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
     public function mMostrarContinentes() {
@@ -25,72 +35,49 @@ class mContinente {
     }
 
     public function mInsertarContinente() {
-        $nombreContinente = trim($_POST['nombreContinente']); // Sanitización básica
-        
+        $nombreCont = $_POST['nombreContinente'];
+
         try {
-            $SQL = "INSERT INTO continente (nombreCont) VALUES (?)";
-            $consulta = $this->conexion->prepare($SQL);
-            $consulta->bind_param('s', $nombreContinente);
-            
-            $consulta->execute(); // Ejecuta la consulta
-            return ['success' => true]; // Inserción exitosa
+            $SQL = "INSERT INTO ".$this->tabla." (nombreCont) VALUES ('".$nombreCont."')";
+            $this->conexion->query($SQL);
         } catch (mysqli_sql_exception $e) {
             if ($e->getCode() === 1062) { 
-                return ['success' => false, 'error' => 'duplicado'];
+                return "Csu";
             } else {
-                return ['success' => false, 'error' => $e->getMessage()];
+                return false;
             }
         }
+        return true;
     }
-    
 
     public function mBorrarContinente($idContinente) {
-        $this->conectar();
-        $idContinente = (int)$idContinente;
-        $sql = "DELETE FROM ".$this->tabla." WHERE idContinente = ?";
-        $consulta = $this->conexion->prepare($sql);
-        $consulta->bind_param("i", $idContinente);
-        if ($consulta->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-        $consulta->close();
-    }
-
-    public function mModificarContinente($nombreC, $idCont) {
-    try {
-        $SQL = "UPDATE continente SET nombreCont = ? WHERE idContinente = ?";
-        
-        if ($stmt = $this->conexion->prepare($SQL)) {
-            $stmt->bind_param("si", $nombreC, $idCont);
-
-            if ($stmt->execute()) {
+            $this->conectar();
+            $idContinente = (int)$idContinente;
+            $sql = "DELETE FROM ".$this->tabla." WHERE idContinente = ?";
+            $consulta = $this->conexion->prepare($sql);
+            $consulta->bind_param("i", $idContinente);
+            if ($consulta->execute()) {
                 return true;
             } else {
                 return false;
-
             }
-        } else {
-            return([
-                'success' => false,
-                'message' => 'Error al preparar la consulta SQL'
-            ]);
+            $consulta->close();
         }
-    } catch (mysqli_sql_exception $e) {
-        if ($e->getCode() === 1062) { 
-            return([
-                'success' => false,
-                'message' => 'El continente ya existe'
-            ]);
-        } else {
-            return([
-                'success' => false,
-                'message' => 'Error en la base de datos: ' . $e->getMessage()
-            ]);
+
+    public function mModificarContinente($nombreC, $idCont) {
+        try {
+            $SQL = "UPDATE continente SET nombreCont = '$nombreC' WHERE idContinente = ?";
+            $this->conexion->query($SQL);
+        } catch (mysqli_sql_exception $e) {
+            if ($e->getCode() === 1062) { 
+                return "Csu";
+            } else {
+                return false;
+            }
         }
+        return true; 
     }
-}
-  
+
+    
 }
 ?>
