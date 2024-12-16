@@ -192,7 +192,6 @@ class mPais {
         return $this->conexion->query($SQL);
     }
     
-
     public function mBorrarPais() {
         $this->conectar();
         $id = $_POST['id'];
@@ -206,5 +205,8 @@ class mPais {
         }
         $stmt->close();
     }
+    
+    
+    
 }
 ?>

@@ -11,7 +11,7 @@
         <img src="<?php echo IMG.'logo.png';?>" alt="Logo">
         <h1>Viaje entre Culturas</h1>
     </header>
-<main>
+    <main>
         <div>
             <form>
                 <div>
