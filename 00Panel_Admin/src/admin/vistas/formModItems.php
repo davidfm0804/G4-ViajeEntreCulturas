@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Items</title>
     <link rel="icon" href="<?php echo IMG.'mapa.jpg';?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?php echo CSS.'estiloSilva.css'; ?>">
+    <link rel="stylesheet" href="<?php echo CSS.'estiloHugoPaisItems.css'; ?>">
 </head>
 <body>
     <header>
@@ -32,7 +32,7 @@
                     <input type="file" id="subirfoto<?php echo $indice + 1; ?>" name="foto<?php echo $indice + 1; ?>" style="display: none;" onchange="cambiarImagen(this)">
                     <br/><br/>
                     <img width="150px" src="<?php echo FOTOS . $item['imagen']; ?>" alt="Foto de <?php echo $item["nombreCat"]; ?>" id="fotoActualIMG<?php echo $indice + 1; ?>"><br/>
-                    <label for="subirfoto<?php echo $indice + 1; ?>" id="subirBtn<?php echo $indice + 1; ?>">Subir foto</label>
+                    <label for="subirfoto<?php echo $indice + 1; ?>" id="subirBandera"<?php echo $indice + 1; ?>>Subir foto</label>
 
                     <br/>
 

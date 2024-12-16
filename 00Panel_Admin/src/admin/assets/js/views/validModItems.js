@@ -1,30 +1,80 @@
 const idContinente = document.querySelector('[name="idContinente"]').value;
 const nombreCont = document.querySelector('[name="nombreCont"]').value;
-/*-- Ajustes DOM --*/
+
 document.querySelector('main').style.position = "relative";
-document.querySelector('.cancel').addEventListener('click', function(){
+document.querySelector('.cancel').addEventListener('click', function() {
     window.location.href = `index.php?controlador=Item&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`;
 });
 
-function cambiarImagen(inputFile) {
-    // Obtener el índice de la imagen (basado en el ID del input)
-    const index = inputFile.id.replace('subirfoto', ''); // Por ejemplo, para "subirfoto1", index será 1
+const formatoValido = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
+const maxDescripcionLength = 500; // Longitud máxima permitida para la descripción
 
-    // Crear un objeto FileReader
-    const reader = new FileReader();
-
-    // Leer el archivo cuando se selecciona
-    reader.onload = function(e) {
-        // Cambiar la imagen en el HTML al archivo seleccionado
-        const imgElement = document.querySelector(`#fotoActualIMG${index}`);
-        imgElement.src = e.target.result; // Actualizamos la imagen con el nuevo archivo
-    };
-
-    // Leer el archivo como URL de datos (base64)
-    reader.readAsDataURL(inputFile.files[0]);
+function validarArchivo(inputFile) {
+    const archivo = inputFile.files[0];
+    if (archivo && !formatoValido.includes(archivo.type)) {
+        alert('El archivo seleccionado no es una imagen válida. Solo se permiten archivos JPEG, PNG, GIF o JPG.');
+        inputFile.value = '';
+    }
 }
 
-// Definir las constantes para cada uno de los selects
+function validarDescripcion(textarea) {
+    if (textarea.value.length > maxDescripcionLength) {
+        alert(`La descripción no puede tener más de ${maxDescripcionLength} caracteres.`);
+        textarea.value = textarea.value.substring(0, maxDescripcionLength);
+    }
+
+    if (textarea.value.trim() === "") {
+        alert("La descripción no puede estar en blanco.");
+        textarea.focus();
+        return false; 
+    }
+
+    return true; 
+}
+
+function validarCategorias() {
+    const categoriasSeleccionadas = [];
+    for (let i = 1; i <= 4; i++) {
+        const categoriaSelect = document.querySelector(`[name="categoria${i}"]`);
+        const categoriaId = categoriaSelect.value; // Obtenemos el id de la categoría seleccionada
+        if (categoriasSeleccionadas.includes(categoriaId)) {
+            alert(`La categoría ${categoriaSelect.options[categoriaSelect.selectedIndex].text} ya ha sido seleccionada. Por favor, elige una categoría diferente.`);
+            return false; // Si hay categorías repetidas, devolvemos false
+        }
+        categoriasSeleccionadas.push(categoriaId);
+    }
+    return true; // Si no hay categorías repetidas, devolvemos true
+}
+
+for (let i = 1; i <= 4; i++) {
+    const imgInput = document.querySelector(`#subirfoto${i}`);
+    imgInput.addEventListener('change', function () {
+        validarArchivo(imgInput);
+    });
+
+    const descripcionInput = document.querySelector(`[name="descripcion${i}"]`);
+    descripcionInput.addEventListener('input', function () {
+        validarDescripcion(descripcionInput);
+    });
+}
+
+function cambiarImagen(inputFile) {
+    const archivo = inputFile.files[0];
+    if (!archivo || !formatoValido.includes(archivo.type)) {
+        return;
+    }
+
+    const index = inputFile.id.replace('subirfoto', '');
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+        const imgElement = document.querySelector(`#fotoActualIMG${index}`);
+        imgElement.src = e.target.result;
+    };
+
+    reader.readAsDataURL(archivo);
+}
+
 const selectCategoria1 = document.getElementById('categoria1');
 const selectCategoria2 = document.getElementById('categoria2');
 const selectCategoria3 = document.getElementById('categoria3');
@@ -33,41 +83,32 @@ const selectCategoria4 = document.getElementById('categoria4');
 const urlCargarCategorias = `index.php?controlador=Item&accion=cCargarCategorias`;
 async function actualizarSelect(selectElement, url) {
     try {
-        // Obtener el id del option seleccionado debajo del select
-        const optionSelected = selectElement.querySelector('option:checked'); // Seleccionamos el option marcado
-        const idCategoria = optionSelected ? optionSelected.id : null; // Extraemos el id del option seleccionado, si existe
+        const optionSelected = selectElement.querySelector('option:checked');
+        const idCategoria = optionSelected ? optionSelected.id : null;
 
-        // Crear un FormData para enviar al servidor
         const formData = new FormData();
-        formData.append('idCategoria', idCategoria);  // Añadimos el id de la categoría seleccionada
+        formData.append('idCategoria', idCategoria);
 
-        // Realizar la solicitud fetch con método POST
         const respuesta = await fetch(url, {
-            method: 'POST', // Usamos POST para enviar el FormData
-            body: formData // Enviamos el FormData con los datos
+            method: 'POST',
+            body: formData
         });
 
-        // Verificamos si la respuesta es exitosa
         if (!respuesta.ok) {
             throw new Error('Error en la respuesta del servidor');
         }
 
-        // Parseamos la respuesta JSON
-        const categorias = await respuesta.json(); 
+        const categorias = await respuesta.json();
 
-        // Creamos las nuevas opciones para el select, sin eliminar las anteriores
         categorias.forEach(categoria => {
-            // Creamos un nuevo option
             const option = document.createElement('option');
-            option.id = categoria.idCategoria; // Establecemos el id del option
-            option.textContent = categoria.nombreCategoria; // Establecemos el nombre de la categoría
-
-            // Añadimos el option al select (debajo del option ya existente)
+            option.id = categoria.idCategoria;
+            option.textContent = categoria.nombreCategoria;
             selectElement.appendChild(option);
         });
 
     } catch (error) {
-        console.error('Error:', error); // Imprimir el error en caso de que haya un fallo
+        console.error('Error:', error);
     }
 }
 
@@ -76,88 +117,90 @@ actualizarSelect(selectCategoria2, urlCargarCategorias);
 actualizarSelect(selectCategoria3, urlCargarCategorias);
 actualizarSelect(selectCategoria4, urlCargarCategorias);
 
-/*-- Añadir Evento -> Form --*/
-document.querySelector('.update').addEventListener('click', async function(event){
 
-        /*-- Declaración Variables --*/
+document.querySelector('.update').addEventListener('click', async function(event) {
+    event.preventDefault();
     let valid = true;
-    const formatoValido = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
 
-    /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
-    if (valid) {
-            /*-- Recoger Elementos --*/
-        const idPais = document.querySelector('[name="idPais"]').value;
-        // Crear un objeto para almacenar los datos
-        let formData = new FormData();
-        formData.append('idPais', idPais);
-
-        for (let i = 1; i <= 4; i++) {
-            // Recoger categoría
-            const categoriaItem = document.querySelector(`[name="categoria${i}"]`).selectedOptions[0].id;
-            formData.append(`categoriaItem${i}`, categoriaItem);
-
-            // Recoger descripción
-            const descripcionItem = document.querySelector(`[name="descripcion${i}"]`).value;
-            formData.append(`descripcionItem${i}`, descripcionItem);
-
-            // Obtener las imágenes (si se cambian) o mantener las imágenes actuales
-            const imgItemInput = document.querySelector(`#subirfoto${i}`);
-            const imgItem = imgItemInput.files.length > 0 
-                ? imgItemInput.files[0]  // Nueva imagen
-                : document.querySelector(`[name="imagenActual${i}"]`).value;  // Imagen actual
-
-            // Si la imagen ha cambiado, agregar el archivo, de lo contrario, agregar la imagen actual
-            if (imgItem instanceof File) {
-                formData.append(`imgItem${i}`, imgItem);
-            } else if (imgItem !== ""){
-                formData.append(`imgItem${i}`, imgItem);  // Si no cambia, agregamos la imagen actual
+    // Validar archivos e imágenes antes de enviar el formulario
+    for (let i = 1; i <= 4; i++) {
+        const imgInput = document.querySelector(`#subirfoto${i}`);
+        if (imgInput.files.length > 0) {
+            const archivo = imgInput.files[0];
+            if (!formatoValido.includes(archivo.type)) {
+                alert(`El archivo seleccionado en la categoría ${i} no es una imagen válida.`);
+                valid = false;
+                break;
             }
         }
 
+        const descripcionInput = document.querySelector(`[name="descripcion${i}"]`);
+        if (descripcionInput.value.length > maxDescripcionLength) {
+            alert(`La descripción de la categoría ${i} no puede tener más de ${maxDescripcionLength} caracteres.`);
+            valid = false;
+            break;
+        }
 
-        // Promesa | Fetch + FormData -> Borrar Pais
-        try {
-            const response = await fetch ('index.php?controlador=Item&accion=cActualizarItems',{
-                method: 'POST',
-                body: formData,
-            });
-
-            if (!response.ok) {
-                throw new Error('Error en la respuesta del servidor');
-            }
-
-            // Leer la respuesta del servidor
-            const result = await response.text();
-            console.log("Respuesta del servidor:", result);
-
-            // Mostrar mensaje dependiendo del estado
-            if (result.includes('modificado correctamente')) {
-                alert('Registro modificado correctamente');
-                window.location.href = `index.php?controlador=Item&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`;
-            } else {
-                alert('Hubo un error: ' + result);
-            }
-        
-        } catch (error) {
-            console.error('Error al hacer la solicitud:', error);
-            alert('Hubo un error al realizar la solicitud al servidor. Intenta de nuevo.');
+        if (descripcionInput.value.trim() === "") {
+            alert(`La descripción de la categoría ${i} no puede estar en blanco.`);
+            valid = false;
+            break;
         }
     }
-});
 
-//             //Verificamos si la respuesta del server es correcta
-//             if(response.ok){
-//                 const result = await response.text();
-//                 console.log(result);
-//                 // alert(result);
-//                 window.location.href = `index.php?controlador=Item&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`; 
-//             }else{
-//                 alert('Hubo un problema al modificar los ítems.');
-//             }
-//         } catch (error) {
-//             console.error('Error:', error);
-//             alert('Error en la conexión con el servidor');
-//         }
-        
-//     }
-// });
+    // Validación de categorías repetidas
+    if (!validarCategorias()) {
+        valid = false;
+    }
+
+    if (!valid) {
+        return; // Detener la ejecución si hay errores
+    }
+
+    const idPais = document.querySelector('[name="idPais"]').value;
+    let formData = new FormData();
+    formData.append('idPais', idPais);
+
+    for (let i = 1; i <= 4; i++) {
+        const categoriaItem = document.querySelector(`[name="categoria${i}"]`).selectedOptions[0].id;
+        formData.append(`categoriaItem${i}`, categoriaItem);
+
+        const descripcionItem = document.querySelector(`[name="descripcion${i}"]`).value;
+        formData.append(`descripcionItem${i}`, descripcionItem);
+
+        const imgItemInput = document.querySelector(`#subirfoto${i}`);
+        const imgItem = imgItemInput.files.length > 0 
+            ? imgItemInput.files[0]
+            : document.querySelector(`[name="imagenActual${i}"]`).value;
+
+        if (imgItem instanceof File) {
+            formData.append(`imgItem${i}`, imgItem);
+        } else if (imgItem !== "") {
+            formData.append(`imgItem${i}`, imgItem);
+        }
+    }
+
+    try {
+        const response = await fetch('index.php?controlador=Item&accion=cActualizarItems', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (!response.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+
+        const result = await response.text();
+        console.log("Respuesta del servidor:", result);
+
+        if (result.includes('modificado correctamente')) {
+            alert('Registro modificado correctamente');
+            window.location.href = `index.php?controlador=Item&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`;
+        } else {
+            alert('Hubo un error: ' + result);
+        }
+    } catch (error) {
+        console.error('Error al hacer la solicitud:', error);
+        alert('Hubo un error al realizar la solicitud al servidor. Intenta de nuevo.');
+    }
+});
