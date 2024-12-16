@@ -1,5 +1,5 @@
 <?php
-    require_once CONFIG.'configDbLocal.php'; //Archivo de configuraciÃ³n
+    require_once CONFIG.'configDbProd.php'; //Archivo de configuraciÃ³n
 
     class bbdd {
 
