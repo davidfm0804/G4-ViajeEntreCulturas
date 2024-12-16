@@ -26,10 +26,10 @@ function validarDescripcion(textarea) {
     if (textarea.value.trim() === "") {
         alert("La descripción no puede estar en blanco.");
         textarea.focus();
-        return false; // Si está en blanco, devolvemos false
+        return false; 
     }
 
-    return true; // Si la descripción tiene contenido, devolvemos true
+    return true; 
 }
 
 function validarCategorias() {
@@ -117,7 +117,6 @@ actualizarSelect(selectCategoria2, urlCargarCategorias);
 actualizarSelect(selectCategoria3, urlCargarCategorias);
 actualizarSelect(selectCategoria4, urlCargarCategorias);
 
-// -------- INICIO DE LAS VALIDACIONES --------
 
 document.querySelector('.update').addEventListener('click', async function(event) {
     event.preventDefault();
@@ -205,5 +204,3 @@ document.querySelector('.update').addEventListener('click', async function(event
         alert('Hubo un error al realizar la solicitud al servidor. Intenta de nuevo.');
     }
 });
-
-// -------- FIN DE LAS VALIDACIONES --------

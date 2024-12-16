@@ -16,12 +16,28 @@ document.querySelector('.update').addEventListener('click', async function(event
 
     /*-- Recoger Elementos --*/
     const pais = document.querySelector('[name="pais"]');
-    const imgBandera = document.querySelector('[name="bandera"]');
+    const imgBandera = document.querySelector('[name="imagen"]');
     const coordX = document.querySelector('[name="coordenada_x"]');
     const coordY = document.querySelector('[name="coordenada_y"]');
-    const categoria = document.querySelector('[name="categoria"]');
-    const imgItem = document.querySelector('[name="foto1"]');
-    const descripcion = document.querySelector('[name="descripcion"]');
+
+    const categoria1 = document.querySelector('[name="categoria1"]');
+    const categoria2 = document.querySelector('[name="categoria2"]');
+    const categoria3 = document.querySelector('[name="categoria3"]');
+    const categoria4 = document.querySelector('[name="categoria4"]');
+
+
+    const imgItem1 = document.querySelector('[name="foto1"]');
+    const imgItem2 = document.querySelector('[name="foto2"]');
+    const imgItem3 = document.querySelector('[name="foto3"]');
+    const imgItem4 = document.querySelector('[name="foto4"]');
+
+    const descripcion1 = document.querySelector('[name="descripcion1"]');
+    const descripcion2 = document.querySelector('[name="descripcion2"]');
+    const descripcion3 = document.querySelector('[name="descripcion3"]');
+    const descripcion4= document.querySelector('[name="descripcion4"]');
+    
+ 
+
 
     /*-- Declaración Variables --*/
     let valid = true;
@@ -34,17 +50,7 @@ document.querySelector('.update').addEventListener('click', async function(event
         alert("Por favor, indique el nombre del país.");
         valid = false;
     }
-
-    // Input File [imgItem] | NOT NULL && Formato IMG
-    if (imgItem.files.length === 0) {
-        alert("Por favor, sube una imagen de la foto.");
-        valid = false;
-    } else if (!formatoValido.includes(imgItem.files[0].type)) {
-        alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
-        valid = false;
-    }
-
-    // Input File [imgBandera] | NOT NULL && Formato IMG
+     // Input File [imgBandera] | NOT NULL && Formato IMG
     if (imgBandera.files.length === 0) {
         alert("Por favor, sube una imagen de la bandera.");
         valid = false;
@@ -55,11 +61,89 @@ document.querySelector('.update').addEventListener('click', async function(event
             valid = false;
         }
     }
-
-    // Input Text [Coordenadas] | NOT NULL
+    // Coordenadas (Aunque siempre deberian estar)
     if (!coordX.value || !coordY.value) {
         alert("Por favor, localiza la cultura en el mapa.");
         valid = false;
+    }
+    // Item1
+
+    if (!categoria1.value.trim()) {
+        alert("Por favor, introduce un valor para la categoría 1.");
+        valid = false;
+    }
+    if (imgItem1.files.length === 0) {
+        alert("Por favor, sube una imagen de la foto en el item1.");
+        valid = false;
+    } else if (!formatoValido.includes(imgItem1.files[0].type)) {
+        alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
+        valid = false;
+    }
+      
+    if (descripcion1.value.length > 500) {
+        alert("No puedes introducir 500 caracteres en la descripcion del item 1");
+        valid = false;
+    }else if(descripcion1.value.length <= 0){
+        alert("No puedes dejar vacia la descripcion del item 1");
+    }
+
+     // Item2
+
+    if (!categoria2.value.trim()) {
+        alert("Por favor, introduce un valor para la categoría 2.");
+        valid = false;
+    }
+    if (imgItem2.files.length === 0) {
+        alert("Por favor, sube una imagen de la foto en el item2.");
+        valid = false;
+    } else if (!formatoValido.includes(imgItem2.files[0].type)) {
+        alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
+        valid = false;
+    }
+    if (descripcion2.value.length > 500) {
+        alert("No puedes introducir 500 caracteres en la descripcion del item 2");
+        valid = false;
+    }else if(descripcion2.value.length <= 0){
+        alert("No puedes dejar vacia la descripcion del item 2");
+    }
+
+     // Item3
+
+    if (!categoria3.value.trim()) {
+        alert("Por favor, introduce un valor para la categoría 3.");
+        valid = false;
+    }
+    if (imgItem3.files.length === 0) {
+        alert("Por favor, sube una imagen de la foto en el item3.");
+        valid = false;
+    } else if (!formatoValido.includes(imgItem3.files[0].type)) {
+        alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
+        valid = false;
+    }
+    if (descripcion3.value.length > 500) {
+        alert("No puedes introducir 500 caracteres en la descripcion del item 3");
+        valid = false;
+    }else if(descripcion3.value.length <= 0){
+        alert("No puedes dejar vacia la descripcion del item 3");
+    }
+      // Item4
+    if (!categoria4.value.trim()) {
+        alert("Por favor, introduce un valor para la categoría 4.");
+        valid = false;
+    }
+    if (imgItem4.files.length === 0) {
+        alert("Por favor, sube una imagen de la foto en el item4.");
+        valid = false;
+    } else if (!formatoValido.includes(imgItem4.files[0].type)) {
+        alert("Por favor, sube un archivo de imagen válido (JPEG, PNG, GIF, JPG).");
+        valid = false;
+    }
+ 
+    if (descripcion4.value.length > 500) {
+        alert("No puedes introducir 500 caracteres en la descripcion del item 4");
+        valid = false;
+    }else if(descripcion4.value.length <= 0){
+        alert("No puedes dejar vacia la descripcion del item 4");
     }
 
     /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
