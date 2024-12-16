@@ -41,7 +41,7 @@
     } else {
         echo "No hay puntuaciones para este continente.";
     }
-    echo "<div class='center-buttons'><a href='elegirContinente.php'><button>Volver</button></a></div>";
+    echo "<div class='center-buttons'><a href='index.php?controlador=MenuPrincipal&accion=cRankingSelecContinente'><button>Volver</button></a></div>";
     ?>
  <script src="<?php echo JS."verRanking.js";?>"></script>
 </body>
