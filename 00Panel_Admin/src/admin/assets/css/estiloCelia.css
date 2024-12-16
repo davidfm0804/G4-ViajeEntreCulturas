@@ -82,7 +82,7 @@ header a:hover {
 
 /*-- Body --*/
 body {
-    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa2.jpg');
+    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -417,30 +417,4 @@ main table td button img{
     .registro button:nth-of-type(3) {
         top: 34vh;
     }
-}
-
-main > button {
-    background-color: var(--azul-oscuro);
-    color: #fff;
-    width: auto;
-    text-transform: capitalize;
-    border: 2px solid var(--azul-claro);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    padding: 1%;
-    font-size: 1em;
-    cursor: pointer;
-    position: absolute;
-    top: 2vh;
-}
-
-/* Botón de Mostrar chinchetas */
-#mostrarChinchetas {
-    right: 15vw; 
-}
-
-/* Botón de Alta país */
-#altaPais {
-    right: 5vw; 
 }

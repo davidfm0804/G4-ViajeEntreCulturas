@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alta de Países</title>
     <link rel="icon" href="<?php echo IMG.'mapa.jpg';?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?php echo CSS.'estiloAltaconItems.css'; ?>">
+    <link rel="stylesheet" href="<?php echo CSS.'estilo.css'; ?>">
 </head>
 <body>
     <header>
@@ -57,7 +57,7 @@
                         ?>
                     </select><br/><br/>
 
-                    <label for="subirfoto<?php echo $i; ?>" id="subirBandera"<?php echo $i; ?>>Subir foto</label><br>
+                    <label for="subirfoto<?php echo $i; ?>" id="subirBtn<?php echo $i; ?>">Subir foto</label>
                     <input type="file" id="subirfoto<?php echo $i; ?>" name="foto<?php echo $i; ?>">
                      
                     <br/>
