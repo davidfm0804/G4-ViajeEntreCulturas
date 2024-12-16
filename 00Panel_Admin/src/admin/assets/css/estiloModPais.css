@@ -39,23 +39,26 @@ header {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Mantener logo a la izquierda */
+    justify-content: center; 
+    position: relative; 
 }
 
 header img {
     width: 50px;
     height: auto;
+    position: absolute;
+    left: 20px; 
 }
 
 .titulo-container {
-    flex-grow: 1; /* Hace que el contenedor de título ocupe el espacio restante */
-    text-align: center; /* Centra el texto dentro del contenedor */
+    text-align: center;
 }
 
 header h1 {
-    font-size: 1.2em;
+    font-size: 1.5em; 
     color: var(--blanco-claro);
 }
+
 
 
 main {
