@@ -36,9 +36,9 @@ class cMenuPrincipal {
     }
 
     public function cRankingSelecContinente(){
-        $this->vista = '';
-        $this->tituloPagina = 'Listado de categorías';
-        return $this->objMenuPrincipal->mListadoCategorias();
+        $this->vista = 'RankingElegirContinente';
+        $this->tituloPagina = 'Selecciona Continente';
+        return $this->objMenuPrincipal->mRankingSelecContinente();
     }
 
 }
