@@ -195,6 +195,10 @@ input, select, option {
     padding: 0.5% 1%;
 }
 
+img.flag{
+    width: 3rem;
+}
+
 /* select | [listadoPuntuación]*/
 select {
     height: 3rem;
