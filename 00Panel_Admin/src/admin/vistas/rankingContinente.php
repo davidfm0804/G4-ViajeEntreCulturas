@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ranking</title>
-    <link rel="icon" href="../../assets/img/mapa.jpg" type="image/x-icon">
+    <link rel="icon" href="<?php echo IMG.'mapa.jpg'?>" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo CSS."estiloRanking.css";?>">
 </head>
 <body>
     <header>
-        <img src="../../assets/img/logo.png" alt="Logo">
+        <img src="<?php echo IMG.'logo.png'?>" alt="Logo">
         <h1>Viaje entre Culturas</h1>
             <a href="#">PANEL ADMIN</a>
     </header>
