@@ -128,15 +128,8 @@ document.querySelector('.update').addEventListener('click', async function(event
 
             // Leer la respuesta del servidor
             const result = await response.text();
-            console.log("Respuesta del servidor:", result);
 
-            // Mostrar mensaje dependiendo del estado
-            if (result.includes('modificado correctamente')) {
-                alert('Registro modificado correctamente');
-                window.location.href = `index.php?controlador=Item&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`;
-            } else {
-                alert('Hubo un error: ' + result);
-            }
+            alert(result);
         
         } catch (error) {
             console.error('Error al hacer la solicitud:', error);
