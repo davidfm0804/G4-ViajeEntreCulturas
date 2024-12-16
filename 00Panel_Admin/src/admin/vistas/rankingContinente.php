@@ -11,7 +11,7 @@
     <header>
         <img src="<?php echo IMG.'logo.png'?>" alt="Logo">
         <h1>Viaje entre Culturas</h1>
-            <a href="#">PANEL ADMIN</a>
+            <a href="./index.php">PANEL ADMIN</a>
     </header>
      <input id="idContinente" type="hidden" value="<?php echo $_GET['idContinente'];?>">
     <?php
