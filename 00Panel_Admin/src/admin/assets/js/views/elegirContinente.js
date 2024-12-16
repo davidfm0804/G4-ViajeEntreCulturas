@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
     const selectContinente = document.getElementById("EligeContinente");
 
-    form.addEventListener("submit", function (event) {
+    document.querySelector('.ver').addEventListener('click', async function(event){
         if (selectContinente.value.trim()=="") {
-            event.preventDefault(); 
             alert("Elige un Continente");
+            window.location.href = `index.php?controlador=MenuPrincipal&accion=cRankingSelecContinente`;
         }
     });
 });

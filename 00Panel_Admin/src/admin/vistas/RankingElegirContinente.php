@@ -27,7 +27,7 @@
                 }}
             ?>
         </select>
-        <button id="verRanking">Ver Ranking</button>
+        <button id="verRanking" class="ver">Ver Ranking</button>
     </form>
     <script src="<?php echo JS."elegirContinente.js";?>"></script>
 </body>
