@@ -145,6 +145,25 @@ document.querySelector('.update').addEventListener('click', async function(event
     }else if(descripcion4.value.length <= 0){
         alert("No puedes dejar vacia la descripcion del item 4");
     }
+    
+    function validarCategorias() {
+        const categoriasSeleccionadas = [];
+        for (let i = 1; i <= 4; i++) {
+            const categoriaSelect = document.querySelector(`[name="categoria${i}"]`);
+            const categoriaId = categoriaSelect.value; // Obtenemos el id de la categoría seleccionada
+            if (categoriasSeleccionadas.includes(categoriaId)) {
+                alert(`La categoría ${categoriaSelect.options[categoriaSelect.selectedIndex].text} ya ha sido seleccionada. Por favor, elige una categoría diferente.`);
+                return false; // Si hay categorías repetidas, devolvemos false
+            }
+            categoriasSeleccionadas.push(categoriaId);
+        }
+        return true; // Si no hay categorías repetidas, devolvemos true
+    }
+    
+    // Validación de categorías repetidas dentro del evento .update
+    if (!validarCategorias()) {
+        valid = false;
+    }
 
     /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
     if (valid) {
