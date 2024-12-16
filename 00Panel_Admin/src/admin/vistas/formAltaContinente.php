@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alta de Países</title>
     <link rel="icon" href="<?php echo IMG.'mapa.jpg';?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?php echo CSS.'estilo.css'; ?>">
+    <link rel="stylesheet" href="<?php echo CSS.'estiloHugo.css'; ?>">
 </head>
 <body>
     <header>
