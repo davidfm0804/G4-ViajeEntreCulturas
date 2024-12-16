@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Game</title>
-    <link rel="stylesheet" href="<?php echo CSS.'style.css'; ?>">
+    <link rel="stylesheet" href="<?php echo CSS.'estiloCeliaJuego.css'; ?>">
 </head>
 <body id="juego">
     <h1>Memory Game</h1>

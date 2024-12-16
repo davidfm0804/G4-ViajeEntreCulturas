@@ -98,6 +98,7 @@ body#mapa{
 }
 
 body#juego {
+    background-image: none;
     background-color: var(--oscuro);
     color: var(--blanco-claro);
     height: 100vh;
@@ -105,7 +106,117 @@ body#juego {
     overflow: hidden;
 }
 
-/*-- Main --*/
+/*-- Juego --*/
+body#juego h1{
+    margin-top: 35vh;
+}
+
+div#game > p {
+    font-size: 1.5em;
+    margin-top: 2%;
+}
+
+#startGame {
+    position: relative;
+    height: 4em;
+    padding: 1em;
+    background-color: var(--acento);
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    margin-top: 1.5em;
+}
+
+#startGame:hover {
+    background-color: var(--azul-claro);
+}
+
+#tablero {
+    margin-left: auto;
+    width: 85%;
+    margin-top: 2.4vh;
+    display: grid;
+    grid-template-columns: repeat(4, 22vh); /* 4 columnas de 22vh */
+    /* grid-gap: 1%;  Espacio entre las cartas */
+    justify-content: space-evenly; /* Centra las columnas */
+    align-content: center; /* Centra las filas */
+    align-items: center; /* Centra las cartas como si fueran filas */
+    justify-items: center; /* Centra las cartas horizontalmente */
+}
+
+body#juego button {
+    background-color: var(--azul-oscuro);
+    color: white;
+    cursor: pointer;
+    border: 2px solid var(--azul-oscuro);
+    outline: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 1em;
+    margin: 0.5em;
+}
+
+body#juego button:hover {
+    transform: translateY(-2px);
+    background-color: var(--azul);
+    color: var(--blanco-claro);
+    border-color: var(--azul-claro);
+    box-shadow: 0px 4px 12px var(--azul-claro);
+}
+
+.card {
+    width: 22vh;
+    height: 22vh;
+    margin-bottom: 10%;
+    background-color: var(--azul-oscuro);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card.flipped {
+    background-color: var(--azul-claro);
+}
+
+.card.matched {
+    background-color: var(--acento);
+    box-shadow: 0 0 10px var(--amarillo);
+}
+
+#contador {
+    font-size: 1.5em;
+    color: white;
+    margin-top: 2em;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5; 
+}
+
+/* Animación de parpadeo */
+@keyframes parapadeo {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+*-- Main --*/
 main {
     position: relative;
 }
@@ -164,7 +275,7 @@ main > button:hover {
 }
 
 /* select | [selectContinente]*/
-.registro select {
+.registro select, .registro input {
     height: 3rem;
     width: 32%;
     font-size: 1.1rem;
@@ -182,21 +293,22 @@ select option[disabled][selected] {
 }
 
 /* buttom | [selectContinente] + [registrarPuntuacion] */
-main.registro  button {
+main.registro button {
     width: 15%;
     margin: unset;
     background-color: var(--azul-claro);
 }
 
 main.registro button:nth-of-type(1) {
-    margin-left: 41.8%;
+    margin-left: 42%;
 }
 
 main.registro button:nth-of-type(3) {
-    width: 32%;
+    width: 30.8%;
     display: block;
-    margin: 0 auto;
+    margin: 1% auto;
     background-color: var(--azul-oscuro);
+    transform: translateX(0);
 }
 
 /* img | [mapa] */
@@ -296,38 +408,7 @@ body#mapa main img:first-child {
 
 /*------------*/
 
-/* buttom | [listadoPuntuaciones] 
-#listPunt > button:nth-of-type(1){
-    position: absolute;
-    right: unset;
-    top: 2vh;
-    left: 58vw;
-}
-
-#listPunt > button:nth-of-type(2) {
-    position: absolute;
-    right: unset;
-    top: 2vh;
-    left: 75vw;
-}*/
-
-/* input, select, option 
-input, select, option {
-    width: 30%;
-    /* height: 2rem; 
-    margin-left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: none;
-    color: var(--acento);
-    font-family: 'Press Start 2P', cursive;
-    margin-top: 9vh;
-    font-size: 1.2rem;
-    padding: 0.5% 1%;
-}*/
-
-/* table | [listados] 
+/* table | [listados] */
 main table {
     background-color: rgba(5, 47, 77, 0.35); 
     text-align: center;

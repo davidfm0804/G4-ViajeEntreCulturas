@@ -6,7 +6,7 @@ const infoPartida = JSON.parse(localStorage.getItem('infoPartida'));
 console.log(infoPartida);
 const rutaBanderas = 'assets/img/banderas/';
 const rutaFotos = 'assets/img/fotos/';
-const tiempoDefinido = 5;
+const tiempoDefinido = 60;
 const tiempoMostrarCartas = 4;
 
 let temporizador;
