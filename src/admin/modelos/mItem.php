@@ -23,6 +23,9 @@ class mItem {
     public function mListadoPaises(){
         $this->conectar();
         $idContinente = $_GET['id'];
+        if(!isset($idContinente) || empty($idContinente)){
+            
+        }
         $this->tabla = 'pais';
         $sql = 'SELECT idPais, nombrePais, bandera FROM '.$this->tabla.' WHERE idContinente = '.$idContinente;
         $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
@@ -41,32 +44,6 @@ class mItem {
         $consulta->execute();
         $resultado = $consulta->get_result();
         return $resultado->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function mUpdateItem(){
-        $this->conectar();
-        $pais = $_POST['pais'];
-        $coordX = $_POST['coordX'];
-        $coordY = $_POST['coordY'];
-        $idPais = $_POST['idPais'];
-        $archivo = isset($_POST['imgBandera']) ? $_POST['imgBandera'] : '';
-
-        // Comprobar | IMG = FILE ? SRC
-        //Si hemos subido archivo nuevo, creo un update donde modifico el nombre del archivo en el campo bandera
-        if(isset($_FILES['imgBandera']) && is_uploaded_file($_FILES['imgBandera']['tmp_name'])){
-            $imgBandera = $_FILES['imgBandera']['name']; //Nombre del archivo
-            $imgBanderaTmp = $_FILES['imgBandera']['tmp_name'];
-            $rutaBandera = BANDERAS.basename($imgBandera);
-            // Mover IMG a Directorio
-            if (!move_uploaded_file($imgBanderaTmp, $rutaBandera)){die("Error al subir la imagen");}
-            $archivo = $imgBandera;
-        }
-
-        $sql = "UPDATE ".$this->tabla." SET nombrePais = ?, coordX = ?, coordY = ?, bandera = ? WHERE idPais = ?";
-        $conxPrp = $this->conexion->prepare($sql);
-        $conxPrp->bind_param("sddss", $pais, $coordX, $coordY, $archivo, $idPais);
-        $result = $conxPrp->execute();
-        return $result;
     }
 
     public function mCargarCategorias(){
@@ -108,7 +85,7 @@ class mItem {
         $idCategoriaItem4 = (int)$_POST['categoriaItem4']; 
         $descripcionItem4 = $_POST['descripcionItem4'];
     
-        // Revisar si las imágenes son nuevas o se mantienen las actuales
+        // Si se ha obtenido nueva foto, usamos $_FILES. Si no hay nueva foto, $_POST
         $imgItem1 = !empty($_FILES['imgItem1']['name']) ? $_FILES['imgItem1']['name'] : $_POST['imgItem1'];
         $imgItem2 = !empty($_FILES['imgItem2']['name']) ? $_FILES['imgItem2']['name'] : $_POST['imgItem2'];
         $imgItem3 = !empty($_FILES['imgItem3']['name']) ? $_FILES['imgItem3']['name'] : $_POST['imgItem3'];

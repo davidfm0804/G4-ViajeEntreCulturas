@@ -25,18 +25,6 @@ class cItem {
         return $this->objItem->mFormModItems();
     }
 
-    public function cUpdateItem(){
-        $result = $this->objItem->mUpdateItem();
-
-        if ($result) {
-            echo "Registro modificado correctamente";
-         } else {
-             // Si hubo un error, establecemos otro mensaje en la sesión
-             echo "Error al modificar el registro";
-         }
-         exit;
-    }
-
     public function cCargarCategorias(){
         $categorias = $this->objItem->mCargarCategorias();
         header('Content-Type: application/json');
@@ -44,23 +32,21 @@ class cItem {
     }
 
     public function cActualizarItems(){
+        $valido = true;
+        $error = '';
+
+        //Validar que los item de un país no repiten categoría
+        $categorias = array($_POST['categoriaItem1'], $_POST['categoriaItem2'], $_POST['categoriaItem3'], $_POST['categoriaItem4']);
+        if (count($categorias) !== count(array_unique($categorias))) {
+            $valido = false; //array_unique(array) devuelve un array que no repite valores. Si no coincide la longitud del array es porque se repite un valor
+            $error = "No se pueden repetir categorías";
+        } 
+
         // Llamar a mActualizarItems, que devuelve un string con el formato "success|Mensaje" o "error|Mensaje"
         $resultado = $this->objItem->mActualizarItems();
     
         echo $resultado;
         exit;
     }
-
-    // public function cActualizarItems(){
-    //     $resultado = $this->objItem->mActualizarItems();
-    //     if ($resultado) {
-    //         echo "Registro modificado correctamente";
-    //      } else {
-    //          // Si hubo un error, establecemos otro mensaje en la sesión
-    //          echo "Error al modificar el registro";
-    //      }
-    //      exit;
-
-    // }
 }
 ?>

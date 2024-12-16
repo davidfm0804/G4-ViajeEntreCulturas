@@ -23,6 +23,13 @@ class mPais {
     public function mListadoPaises(){
         $this->conectar();
         $idContinente = $_GET['id'];
+
+        if(!isset($idContinente)||empty($idContinente)){
+            //Si no tenemos idContinente no podemos mostrar paises. Devolvemos false y salimos de la consulta
+            return false; //
+            exit;
+        }
+
         $sql = 'SELECT idPais, nombrePais, bandera FROM '.$this->tabla.' WHERE idContinente = '.$idContinente;
         $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
         return $resultado->fetch_all(MYSQLI_ASSOC);
@@ -31,7 +38,21 @@ class mPais {
     public function mFormAltaPais(){
         $this->conectar();
         $idContinente = $_GET['id'];
+
+        if(!isset($idContinente)||empty($idContinente)){
+            //Si no tenemos idContinente no podemos mostrar paises. Devolvemos false y salimos de la consulta
+            return false; //
+            exit;
+        }
+
         $nombreCont = $_GET['nombreCont'];
+        if(!isset($nombreCont)||empty($nombreCont)){
+            //Si no tenemos idContinente no podemos mostrar paises. Devolvemos false y salimos de la consulta
+            return false; 
+            exit;
+        }
+
+
         $sql = 'SELECT * FROM categoria';
         $resultado = $this->conexion->query($sql); //La mandamos a la BBDD y recibimos el resultado
         return $resultado->fetch_all(MYSQLI_ASSOC);

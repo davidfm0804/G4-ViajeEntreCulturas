@@ -144,20 +144,3 @@ document.querySelector('.update').addEventListener('click', async function(event
         }
     }
 });
-
-//             //Verificamos si la respuesta del server es correcta
-//             if(response.ok){
-//                 const result = await response.text();
-//                 console.log(result);
-//                 // alert(result);
-//                 window.location.href = `index.php?controlador=Item&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`; 
-//             }else{
-//                 alert('Hubo un problema al modificar los ítems.');
-//             }
-//         } catch (error) {
-//             console.error('Error:', error);
-//             alert('Error en la conexión con el servidor');
-//         }
-        
-//     }
-// });

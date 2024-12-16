@@ -1,4 +1,4 @@
-const idContinente = document.getElementById('idContinente').value;
+    const idContinente = document.getElementById('idContinente').value;
     const nombreCont = document.getElementById('nombreCont').value;
 
 document.getElementById('altaPais').addEventListener('click', function () {
