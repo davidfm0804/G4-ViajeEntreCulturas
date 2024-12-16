@@ -137,14 +137,46 @@ class mPais {
             if (!move_uploaded_file($imgItemTmp3, $imgItemPath3)) {echo "Error al subir la foto.";}
             if (!move_uploaded_file($imgItemTmp4, $imgItemPath4)) {echo "Error al subir la foto.";}
 
-           return true;
+            return "Registro dado de alta correctamente";
+            exit;
 
         } catch (Exception $e) {
             // Si ocurre algún error, hacer rollback
             $this->conexion->rollback();
-            echo "Se produjo un error: " . $e->getMessage();
-            return false;
+            return "Error al dar de alta: " . $e->getMessage();
+            exit;
         }   
+
+        $this->conexion->close();
+    }
+
+    public function mNombrePaisRepetido($nombre){
+        $this->conectar();
+        $consulta = $this->conexion->prepare("SELECT * FROM pais WHERE nombrePais = ?"); // Preparar la consulta
+        $consulta->bind_param("s", $nombre);
+      
+            // Ejecutar la consulta
+            $consulta->execute();
+            $consulta->store_result();
+
+        if ($consulta) {
+    
+            // Vincular el parámetro (el tipo 's' indica que es una cadena)
+            
+            // Comprobar el número de filas
+            if ($consulta->num_rows > 0) {
+                return false; 
+            } else {
+                return true;
+            }
+    
+            // Cerrar la declaración
+            $consulta->close();
+    
+        } else {
+            // Si hubo un error en la preparación de la consulta
+            die("Error en la preparación de la consulta: " . $this->conexion->error);
+        }
     }
 
     public function mMostrarChinchetas(){

@@ -101,7 +101,7 @@ document.querySelector('.update').addEventListener('click', async function(event
     /*-- Valid === TRUE | Create FormData + Add Datos + Mostrar Datos By Promesa --*/
     if (valid) {
         const formData = new FormData();
-        formData.append('pais', pais.value);
+        formData.append('pais', pais.value); //nombrePais
         formData.append('imgBandera', imgBandera.files[0]);
         formData.append('coordX', coordX.value);
         formData.append('coordY', coordY.value);
@@ -124,14 +124,20 @@ document.querySelector('.update').addEventListener('click', async function(event
                 body: formData
             });
             
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor');
+            }
             
+            const result = await response.text();
+            alert(result);
+
             // Crear elementos
             const h2 = document.createElement('h2');
             h2.textContent = 'Datos enviados:';
             h2.style.margin = '4%';
 
             const pre = document.createElement('pre');
-            pre.textContent = "Nuevo registro creado exitosamente";
+            pre.textContent = result;
             pre.style.margin = '1% 0 4% 6%';
 
             const buttonMostrarMapa = document.createElement('button');
@@ -176,9 +182,10 @@ document.querySelector('.update').addEventListener('click', async function(event
             document.getElementById('volver').addEventListener('click', function() {
                 window.location.href = `index.php?controlador=Pais&accion=cListadoPaises&id=${idContinente}&nombreCont=${nombreCont}`;
             });
-        } catch (error) {
-            console.error('Error:', error);
-        }
+    } catch (error) {
+        console.error('Error al hacer la solicitud:', error);
+        alert('Hubo un error al realizar la solicitud al servidor. Intenta de nuevo.');
+    }
 
         // Borrar Coordenadas localStorage
         localStorage.removeItem('coordX');

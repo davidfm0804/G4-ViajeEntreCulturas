@@ -29,8 +29,129 @@ class cPais {
     }
 
     public function cAltaPais() {
-        return $this->objPais->mAltaPais();
-    }
+$valido = true;
+$error = '';
+
+        //Validar nombrePais vacio
+        if(empty($_POST['pais'])){
+            $valido = false;
+            $error = 'El nombre del país no puede estar vacío';
+            echo $error;
+            return;
+        }
+
+        //Funcion buscar nombrePais repetido
+        if(isset($_POST['pais'])){
+            $nombreRepetido = $this->objPais->mNombrePaisRepetido($_POST['pais']);
+
+            if($nombreRepetido == false){
+                $valido = false;
+                $error = 'Este nombre ya está inscrito';
+                echo $error;
+                return;
+            } 
+        }
+       
+
+        //Validar caracteres permitidos nombrePais
+        if(!preg_match('/^[A-Za-záéíóúÁÉÍÓÚüÜ\s]+$/', trim($_POST['pais']))){
+            $valido = false;
+            $error = "El nombre de país no puede contener números ni símbolos";
+            echo $error;
+            return;
+        }
+
+        //Validar imgBandera no está vacío
+        if(!isset($_FILES['imgBandera'])){
+            $valido = false;
+            $error = "No se ha subido la bandera del país";
+            echo $error;
+            return;
+        } else {
+             //Validar el formato de imgBandera
+            $formatoValido = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+            if (!in_array($_FILES['imgBandera']['type'], $formatoValido)) {
+                $valido = false;
+            $error = "Formato no válido. Solo se permiten JPEG, JPG, PNG o GIF.";
+            echo $error;
+            return;
+            }
+        }
+
+       
+        
+        //Validar campo categoría no esté vacío
+        for($i = 1; $i < 5; $i++){
+            $campo = 'categoria'.$i;
+            if(empty($_POST[$campo])){
+                $valido=false;
+                $error= "Campo categoría vacío";
+                echo $error;
+                return;
+            }
+        }
+
+        //Validar que los item de un país no repiten categoría. 
+        $categorias = array($_POST['categoria1'], $_POST['categoria2'], $_POST['categoria3'], $_POST['categoria4']);
+        if (count($categorias) !== count(array_unique($categorias))) {  
+            $valido=false;
+            $error =  "No se pueden repetir categorías";  
+            echo $error;
+            return;      
+        } 
+
+        //Validar que las fotos de los item no estén vacías
+        for($i = 1; $i < 5; $i++){
+            $campo = 'imgItem'.$i;
+            if(empty($_FILES[$campo])){
+                $valido = false;
+                $error= "Foto de Item no subida";
+                echo $error;
+            return;
+            } else {
+                //Validar el formato de fotos
+                $formatoValido = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+                if (!in_array($_FILES[$campo]['type'], $formatoValido)) {
+                    $valido = false;
+                    $error= "Formato no válido. Solo se permiten JPEG, JPG, PNG o GIF.";
+                    echo $error;
+                    return;
+                }
+            }
+        }
+
+        //Validar campo descripcion no esté vacío
+        for($i = 1; $i < 5; $i++){
+            $campo = 'descripcion'.$i;
+            if(empty($_POST[$campo])){
+                $valido = false;
+                $error= "Campo descripción vacío";
+                echo $error;
+            return;
+            }
+        }
+
+        //Validar campo descripcion >500 caracteres
+        for($i = 1; $i < 5; $i++){
+            $campo = 'descripcion'.$i;
+            if(strlen($_POST[$campo]) > 500){
+                $valido = false;
+                $error = "Campo descripción supera 500 caracteres";
+                echo $error;
+                return;
+            }
+        }
+
+        if($valido){
+            $resultado = $this->objPais->mAltaPais(); 
+            echo $resultado;
+            exit;
+        } else {
+            echo $error;
+            exit;
+        }
+
+        }
 
     public function cFormModPais(){
         $this->vista = 'formModPais';
