@@ -418,3 +418,89 @@ main table th {
 main table td {
     font-size: 1.2em;
 }
+
+/*-- Ajustes | MQuery --*/
+@media screen and (max-width: 1245px) {
+    .registro option, 
+    .registro select, 
+    .registro input {
+        font-size: 1.05em; 
+    }
+}
+
+@media screen and (max-width: 1205px) {
+    .registro option, 
+    .registro select, 
+    .registro input {
+        font-size: 1em; 
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    main.registro option,
+    main.registro select,
+    main.registro input {
+        font-size: 1.1em;
+        width: 40%;
+    }
+
+    main.registro button:nth-of-type(1) {
+        margin-left: 40%;
+    }
+    main.registro button {
+        width: 18%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    main.registro option,
+    main.registro select,
+    main.registro input {
+        width: 50%;
+    }
+
+    main.registro button:nth-of-type(1) {
+        margin-left: 37.8%;
+    }
+    main.registro button {
+        width: 23%;
+    }
+}
+
+@media screen and (max-width: 785px) {
+    main.registro option,
+    main.registro select,
+    main.registro input {
+        margin-top: 5%;
+        width: 60%;
+    }
+
+    main.registro button {
+        margin-top: 2%;
+        padding: 1.5% 3%;
+        width: 27%;
+    } 
+    
+    main.registro button:nth-of-type(1) {
+        margin-left: 35.7%;
+    }
+}
+
+@media screen and (max-width: 785px) {
+    main.registro option,
+    main.registro select,
+    main.registro input {
+        margin-top: 5%;
+        width: 60%;
+    }
+
+    main.registro button {
+        margin-top: 2%;
+        padding: 1.5% 3%;
+        width: 27%;
+    } 
+    
+    main.registro button:nth-of-type(1) {
+        margin-left: 35.7%;
+    }
+}
