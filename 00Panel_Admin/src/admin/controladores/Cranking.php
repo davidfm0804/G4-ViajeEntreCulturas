@@ -1,9 +1,11 @@
 <?php
+
+require_once MODELOS.'Mranking.php';
+
 class Cranking {
     private $objranking;
 
     public function __construct() {
-        require_once '../modelos/Mranking.php';
         $this->objranking = new Mranking();
     }
 

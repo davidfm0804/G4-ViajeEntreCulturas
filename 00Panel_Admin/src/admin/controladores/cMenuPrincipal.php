@@ -35,5 +35,11 @@ class cMenuPrincipal {
         return $this->objMenuPrincipal->mListadoCategorias();
     }
 
+    public function cRankingSelecContinente(){
+        $this->vista = '';
+        $this->tituloPagina = 'Listado de categorías';
+        return $this->objMenuPrincipal->mListadoCategorias();
+    }
+
 }
 ?>
