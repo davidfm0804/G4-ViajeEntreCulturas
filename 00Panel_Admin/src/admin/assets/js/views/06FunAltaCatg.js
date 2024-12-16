@@ -23,22 +23,27 @@ document.querySelector('button:nth-of-type(3)').addEventListener('click', async 
         // Crear elementos
         const h2 = document.createElement('h2');
         h2.textContent = 'Datos enviados:';
+        h2.style.color = '#fff';
         h2.style.margin = '4%';
 
         const pre = document.createElement('pre');
         pre.textContent = result;
         pre.style.margin = '1% 0 4% 6%';
+        pre.style.color = '#fff';
 
         const buttonAddCategoria = document.createElement('button');
         buttonAddCategoria.id = 'addCatg';
-        buttonAddCategoria.style.margin = '2%';
+        buttonAddCategoria.style.margin = '1% 1.2% 2% 6%';
+        buttonAddCategoria.style.borderRadius = '8px';
+        buttonAddCategoria.style.padding = '1% 2%';
         buttonAddCategoria.className = 'update';
         buttonAddCategoria.textContent = 'Añadir Categoría';
 
         const buttonVolver = document.createElement('button');
         buttonVolver.id = 'volver';
-        buttonVolver.style.display = 'block';
-        buttonVolver.style.margin = '2% auto';
+        buttonVolver.style.margin = '1% 1.2% 2% 0%';
+        buttonVolver.style.borderRadius = '8px';
+        buttonVolver.style.padding = '1% 2%';
         buttonVolver.className = 'cancel';
         buttonVolver.textContent = 'Volver';
 
