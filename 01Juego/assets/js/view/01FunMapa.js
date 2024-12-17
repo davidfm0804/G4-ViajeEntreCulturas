@@ -1,5 +1,5 @@
 /* Ruta IMG*/
-const rutaImg = '../00Panel_Admin/src/admin/assets/img/fotos/';
+const rutaImg = '../00Panel_Admin/panel/assets/img/fotos/';
 
 // Obtener el popup, los botones de abrir y cerrar
 const popup = document.getElementById('popup');
