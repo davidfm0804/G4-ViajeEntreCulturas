@@ -487,6 +487,10 @@ main table td {
 }
 
 @media screen and (max-width: 785px) {
+    header h1 {
+        font-size: 1em;
+    }
+
     main.registro option,
     main.registro select,
     main.registro input {
@@ -503,4 +507,84 @@ main table td {
     main.registro button:nth-of-type(1) {
         margin-left: 35.7%;
     }
+}
+
+@media screen and (max-width: 720px) {
+    main.registro h2{
+        font-size: 1.3em;
+        width: 88%;
+    }
+
+    main.registro button {
+        margin-top: 2%;
+        padding: 1.5% 3%;
+        width: 27%;
+    } 
+    
+    main.registro button:nth-of-type(1) {
+        margin-left: 35.7%;
+    }
+}
+
+@media screen and (max-width: 705px) {
+    header h1 {
+        font-size: 0.8em;
+    }
+
+    main.registro option,
+    main.registro select,
+    main.registro input {
+        width: 75%;
+    }
+
+    main.registro button:nth-of-type(1),
+    main.registro button:nth-of-type(2) {
+        width: 75%;
+        padding: 2% 4%;
+        margin: 2% 0 2% 50%;
+        transform: translateX(-50%);
+    } 
+
+}
+
+@media screen and (max-width: 510px) {
+    header h1 {
+        font-size: 0.7em;
+    }
+
+    main.registro h2{
+        font-size: 1.3em;
+    }
+
+    main.registro option,
+    main.registro select,
+    main.registro input {
+        width: 85%;
+    }
+
+    main.registro button:nth-of-type(1),
+    main.registro button:nth-of-type(2) {
+        width: 85%;
+        padding: 3% 6%;
+    } 
+
+}
+
+@media screen and (max-width: 455px) {
+    header h1{
+        font-size: 0.6em;
+    }
+
+    main.registro h2{
+        font-size: 1em;
+    }
+
+    main.registro option,
+    main.registro select,
+    main.registro input {
+        font-size: 0.8em;
+        margin-top: 10%;
+        margin-bottom: 8%;
+    }
+
 }
