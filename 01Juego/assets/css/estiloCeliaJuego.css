@@ -753,3 +753,37 @@ main table td {
     }
 
 }
+
+@media screen and (max-width: 425px) {
+    /* Memory | Tablero */
+    div#tablero {
+        margin: 5% auto;
+        grid-template-columns: repeat(4, 22vw); /* Ajusta el número de columnas y su tamaño */
+    }
+
+    /* Memory | Tablero | .card*/
+    div#tablero .card {
+        width: 22vw;
+        height: 22vw;
+    }
+
+    /* Memory | Tiempo Puntuacion Fallos */
+    div#game > p{
+        bottom: unset;
+        font-size: 1em;
+    }
+
+    div#game > p:nth-of-type(1) {
+        top: 75%;
+    }
+
+    div#game > p:nth-of-type(2) {
+        top: 80%;
+        right: 22vw;
+    }
+
+    div#game > p:nth-of-type(3) {
+        top: 84%;
+        right: 35vw;
+    }
+}
