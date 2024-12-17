@@ -27,16 +27,8 @@ for (const idPais in infoPartida) {
 function iniciarJuego(infoPartida) {
   document.getElementById('startGame').style.display = 'none';
   document.querySelector('h1').style.display = 'none';
-  document.querySelectorAll('p').forEach(p => { 
-    p.style.position = 'absolute'; 
-    p.style.left = '2.5%';
-    /*p.style.fontSize = '1.2rem';*/
-  });
 
   document.querySelector('h1').style.top = '5vh';
-  document.querySelector('p:nth-of-type(1)').style.top = '38vh';
-  document.querySelector('p:nth-of-type(2)').style.top = '48vh';
-  document.querySelector('p:nth-of-type(3)').style.top = '58vh';
 
   document.getElementById('tablero').classList.remove('hidden');
 
