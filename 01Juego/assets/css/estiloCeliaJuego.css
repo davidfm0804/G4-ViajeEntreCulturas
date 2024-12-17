@@ -420,6 +420,13 @@ main table td {
 }
 
 /*-- Ajustes | MQuery --*/
+@media screen and (max-width: 1287px) {
+    #popup > div {
+        width: 35%;
+    }
+    
+}
+
 @media screen and (max-width: 1245px) {
     .registro option, 
     .registro select, 
@@ -437,6 +444,7 @@ main table td {
 }
 
 @media screen and (max-width: 1150px) {
+    /* Bienvenida | option select input */
     main.registro option,
     main.registro select,
     main.registro input {
@@ -444,11 +452,18 @@ main table td {
         width: 40%;
     }
 
+    /* Bienvenida | button */
     main.registro button:nth-of-type(1) {
         margin-left: 40%;
     }
+
     main.registro button {
         width: 18%;
+    }
+
+    /* Mapa | Popup*/
+    #popup > div {
+        width: 40%;
     }
 }
 
@@ -465,24 +480,10 @@ main table td {
     main.registro button {
         width: 23%;
     }
-}
 
-@media screen and (max-width: 785px) {
-    main.registro option,
-    main.registro select,
-    main.registro input {
-        margin-top: 5%;
-        width: 60%;
-    }
-
-    main.registro button {
-        margin-top: 2%;
-        padding: 1.5% 3%;
-        width: 27%;
-    } 
-    
-    main.registro button:nth-of-type(1) {
-        margin-left: 35.7%;
+    /* Mapa | Popup*/
+    #popup > div {
+        width: 45%;
     }
 }
 
@@ -506,6 +507,11 @@ main table td {
     
     main.registro button:nth-of-type(1) {
         margin-left: 35.7%;
+    }
+
+    /* Mapa | Popup*/
+    #popup > div {
+        width: 55%;
     }
 }
 
@@ -545,6 +551,11 @@ main table td {
         transform: translateX(-50%);
     } 
 
+    /* Mapa | Popup*/
+    #popup > div {
+        width: 60%;
+    }
+
 }
 
 @media screen and (max-width: 510px) {
@@ -568,6 +579,11 @@ main table td {
         padding: 3% 6%;
     } 
 
+    /* Mapa | Popup*/
+    #popup > div {
+        width: 70%;
+    }
+
 }
 
 @media screen and (max-width: 455px) {
@@ -585,6 +601,12 @@ main table td {
         font-size: 0.8em;
         margin-top: 10%;
         margin-bottom: 8%;
+    }
+
+    /* Mapa | Popup*/
+    #popup > div {
+        width: 85%;
+        font-size: 1em;
     }
 
 }
