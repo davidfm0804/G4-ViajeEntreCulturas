@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --oscuro: #1a202c;
+    --medio-oscuro: #2d3748;
+    --claro-oscuro: #4a5568;
+    --azul: #2c5282;
+    --azul-claro: #63b3ed;
+    --acento: #0085ae;
+    --amarillo: #ffcc00;
+    --blanco-claro: #ebf8ff;
+    --azul-oscuro: #2a4365;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Estilos del body */
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa2.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+}
+
+/* Estilos Header */
+header {
+    background-color: var(--azul);
+    color: white;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 4px solid var(--azul-claro);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+header img {
+    display: inline;
+    width: 70px;
+    margin-right: 10px;
+}
+
+header h1 {
+    position: absolute;
+    left: 35%; 
+    font-size: 1.2em;
+    color: var(--blanco-claro);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+header a {
+    margin-left: auto;
+    background-color: var(--acento);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+header a:hover {
+    background-color: var(--azul-claro);
+}
+
+/* Contenedor principal */
+main {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+main div {
+    padding: 20px;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgba(5, 47, 77, 0.35); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+/* Fieldset */
+fieldset {
+    border: 2px solid var(--azul);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+legend {
+    padding: 5px 10px;
+    background-color: var(--azul-claro);
+    color: var(--oscuro);
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+/* Input y labels */
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: var(--blanco-claro);
+}
+
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--claro-oscuro);
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9em;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    background-color: var(--medio-oscuro);
+    color: var(--blanco-claro);
+}
+
+form select {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--claro-oscuro);
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#subirBandera {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--azul-claro);
+    color: white;
+    font-size: 0.9em;
+    border-radius: 5px;
+    border: 2px solid var(--azul-oscuro);
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+/* Botones personalizados */
+#subirBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--azul-claro);
+    color: white;
+    font-size: 0.9em;
+    border-radius: 5px;
+    border: 2px solid var(--azul-oscuro);
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+#subirBtn:hover {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco-claro);
+    border-color: var(--azul-claro);
+    box-shadow: 0px 4px 12px var(--azul-claro);
+    transform: translateY(-2px);
+}
+
+/* Oculta el botón predeterminado de archivo */
+form input[type="file"] {
+    display: none;
+}
+
+/* Imagen */
+form img {
+    display: block;
+    margin: 10px auto;
+    border: 3px solid var(--azul);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Botones de acción */
+button {
+    width: 45%;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.cancel {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco-claro);
+}
+
+.cancel:hover {
+    background-color: var(--azul);
+}
+
+.update {
+    background-color: var(--acento);
+    color: white;
+}
+
+.update:hover {
+    background-color: var(--azul-claro);
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    header h1 {
+        left: 25%;
+        font-size: 1em;
+    }
+
+    form {
+        gap: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

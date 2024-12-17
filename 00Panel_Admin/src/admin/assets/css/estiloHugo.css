@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --oscuro: #1a202c;
+    --medio-oscuro: #2d3748;
+    --claro-oscuro: #4a5568;
+    --azul: #2c5282;
+    --azul-claro: #63b3ed;
+    --azul-oscuro: #2a4365;
+    --blanco-claro: #ebf8ff;
+    --acento: #0085ae;
+    --amarillo: #ffcc00;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa2.jpg') no-repeat center center / cover;
+    min-height: 100vh;
+    color: white;
+}
+
+header {
+    background-color: var(--azul);
+    color: white;
+    height: 8vh;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra horizontalmente todo el contenido */
+    border-bottom: 4px solid var(--azul-claro);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative; /* Permite posicionar elementos secundarios */
+}
+
+header img {
+    width: 50px;
+    position: absolute; /* Saca el logo del flujo normal */
+    left: 20px; /* Ajusta la posición a la izquierda */
+}
+
+header h1 {
+    font-size: 1.5em;
+    color: var(--blanco-claro);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+main {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    background-color: var(--azul-oscuro);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: var(--blanco-claro);
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid var(--azul-claro);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+button {
+    font-size: 1em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    margin: 10px 5px;
+}
+
+button.cancel {
+    background-color: var(--medio-oscuro);
+    color: var(--blanco-claro);
+}
+
+button.cancel:hover {
+    background-color: var(--claro-oscuro);
+}
+
+button.update {
+    background-color: var(--azul-claro);
+    color: var(--azul-oscuro);
+}
+
+button.update:hover {
+    background-color: var(--amarillo);
+    color: var(--oscuro);
+}
+
+/* Centrando botones */
+main > button {
+    display: block;
+    margin: 10px auto;
+}
+
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    button {
+        width: 100%;
+    }
+}
