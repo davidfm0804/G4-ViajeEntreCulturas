@@ -29,22 +29,70 @@ document.querySelector('[type="submit"]').addEventListener('click', async functi
         formData.append(nameParam, paramsURL[nameParam]);
         console.log(formData.get(nameParam));
     }
-    
-    try {
-        const response = await fetch('index.php?controller=Juego&action=insertarPuntuacion', {
-            method: 'POST',
-            body: formData,
-        });
-        if (!response.ok) {
-            alert('Error al registrar el puntaje');
+
+    const validation = validarNombre(formData);
+
+    if (!validation.valid) {
+        alert(validation.error);
+    }else{
+        try {
+            const response = await fetch('index.php?controller=Juego&action=insertarPuntuacion', {
+                method: 'POST',
+                body: formData,
+            });
+            if (!response.ok) {
+                alert('Error al registrar el puntaje');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error en la conexión con el servidor');
         }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Error en la conexión con el servidor');
+    
+        window.location.href = `./index.php?controller=Juego&action=verRanking&idCont=${formData.get('idCont')}`;
+    }
+    
+});
+
+function validarCategoria(formData) {
+    let valid = true;
+    let error = '';
+
+    // 1. Validar que el campo no esté vacío
+    if (!formData.get('nombre').trim()) {
+        error = "Por favor, indique su nombre.";
+        valid = false;
+    }
+    
+    // 2. Validar que solo contenga letras y espacios
+    else {
+        const regex = /^[A-Za-záéíóúÁÉÍÓÚüÜ1234567890\s]+$/;
+        if (!regex.test(formData.get('nombre').trim())) {
+            error = "El nombre solo puede contener letras y espacios.";
+            valid = false;
+        }
     }
 
-    window.location.href = `./index.php?controller=Juego&action=verRanking&idCont=${formData.get('idCont')}`;
-});
+    // 3. Validar la longitud mínima y máxima
+    if (valid && (formData.get('nombre').trim().length < 3 || formData.get('nombre').trim().length > 50)) {
+        error = "El nombre debe tener entre 3 y 50 caracteres.";
+        valid = false;
+    }
+
+    // 4. Validar que no sea solo espacios
+    if (valid && (formData.get('nombre').trim().replace(/\s/g, '').length === 0)) {
+        error = "El nombre no puede estar compuesto solo por espacios.";
+        valid = false;
+    }
+
+    // 5. Validar palabras prohibidas (opcional)
+    const palabrasProhibidas = ["imbecil", "tonto"];
+    if (valid && (palabrasProhibidas.some((palabra) => formData.get('nombre').trim().toLowerCase().includes(palabra)))) {
+        error = "El nombre contiene palabras no permitidas.";
+        valid = false;
+    }
+
+    return { valid, error };
+}
 
 // Recoger Parametros URL
 function getParametrosURL() {
