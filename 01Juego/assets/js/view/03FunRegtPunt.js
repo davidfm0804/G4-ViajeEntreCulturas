@@ -29,8 +29,8 @@ document.querySelector('[type="submit"]').addEventListener('click', async functi
         formData.append(nameParam, paramsURL[nameParam]);
         console.log(formData.get(nameParam));
     }
-    
-    const validation = validarJugador(formData);
+
+    const validation = validarNombre(formData);
 
     if (!validation.valid) {
         alert(validation.error);
@@ -47,14 +47,13 @@ document.querySelector('[type="submit"]').addEventListener('click', async functi
             console.error('Error:', error);
             alert('Error en la conexión con el servidor');
         }
-
-        window.location.href = `./index.php?controller=Juego&action=verRanking&idCont=${formData.get('idCont')}`; 
+    
+        window.location.href = `./index.php?controller=Juego&action=verRanking&idCont=${formData.get('idCont')}`;
     }
-
     
 });
 
-function validarJugador(formData) {
+function validarNombre(formData) {
     let valid = true;
     let error = '';
 
@@ -68,7 +67,7 @@ function validarJugador(formData) {
     else {
         const regex = /^[A-Za-záéíóúÁÉÍÓÚüÜ1234567890\s]+$/;
         if (!regex.test(formData.get('nombre').trim())) {
-            error = "El nombre solo puede contener letras, espacios y números.";
+            error = "El nombre solo puede contener letras y espacios.";
             valid = false;
         }
     }
