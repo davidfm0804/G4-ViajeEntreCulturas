@@ -4,7 +4,7 @@
     borrarButton.addEventListener("click", function (event) {
         const confirmation = confirm("¿Estás seguro de que deseas borrar las puntuaciones de este continente?");
         if (!confirmation) {
-            event.preventDefault(); // Evita que se haga la acción de borrar si el usuario cancela
+            aevent.preventDefault(); // Evita que se haga la acción de borrar si el usuario cancela
         }
     });
 });*/
