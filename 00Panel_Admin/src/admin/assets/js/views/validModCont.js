@@ -8,7 +8,7 @@ document.querySelector('.update').addEventListener('click', async function (even
     event.preventDefault(); // Evitar que se recargue la página
 
     // Variable que apunta al elemento cuyo name es continente (input text)
-    const continente = document.querySelector('[name="nombreContinente"]');
+    const continente = document.querySelector('[name="nombreContinente"]').value;
     const idContinente=document.getElementById('idContinente').value;
     let valid = true;
 
