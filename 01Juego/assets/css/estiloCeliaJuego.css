@@ -421,6 +421,7 @@ main table td {
 
 /*-- Ajustes | MQuery --*/
 @media screen and (max-width: 1287px) {
+    /*Mapa | Popup*/
     #popup > div {
         width: 35%;
     }
@@ -428,6 +429,7 @@ main table td {
 }
 
 @media screen and (max-width: 1245px) {
+    /* Bienvenida | option select input */
     .registro option, 
     .registro select, 
     .registro input {
@@ -436,6 +438,7 @@ main table td {
 }
 
 @media screen and (max-width: 1205px) {
+    /* Bienvenida | option select input */
     .registro option, 
     .registro select, 
     .registro input {
@@ -468,12 +471,14 @@ main table td {
 }
 
 @media screen and (max-width: 1000px) {
+    /* Bienvenida | option select input */
     main.registro option,
     main.registro select,
     main.registro input {
         width: 50%;
     }
 
+    /* Bienvenida | button */
     main.registro button:nth-of-type(1) {
         margin-left: 37.8%;
     }
@@ -488,10 +493,12 @@ main table td {
 }
 
 @media screen and (max-width: 785px) {
+    /* Header | h1 */
     header h1 {
         font-size: 1em;
     }
 
+    /* Bienvenida | option select input */
     main.registro option,
     main.registro select,
     main.registro input {
@@ -499,6 +506,7 @@ main table td {
         width: 60%;
     }
 
+    /* Bienvenida | button */
     main.registro button {
         margin-top: 2%;
         padding: 1.5% 3%;
@@ -516,11 +524,13 @@ main table td {
 }
 
 @media screen and (max-width: 720px) {
+    /* Bienvenida | h2 */
     main.registro h2{
         font-size: 1.3em;
         width: 88%;
     }
 
+    /* Bienvenida | button */
     main.registro button {
         margin-top: 2%;
         padding: 1.5% 3%;
@@ -533,16 +543,19 @@ main table td {
 }
 
 @media screen and (max-width: 705px) {
+    /* Header | h1 */
     header h1 {
         font-size: 0.8em;
     }
 
+    /* Bienvenida | option select input */
     main.registro option,
     main.registro select,
     main.registro input {
         width: 75%;
     }
 
+    /* Bienvenida | button */
     main.registro button:nth-of-type(1),
     main.registro button:nth-of-type(2) {
         width: 75%;
@@ -559,20 +572,24 @@ main table td {
 }
 
 @media screen and (max-width: 510px) {
+    /* Header | h1 */
     header h1 {
         font-size: 0.7em;
     }
 
+    /* Bienvenida | h2 */
     main.registro h2{
         font-size: 1.3em;
     }
-
+    
+    /* Bienvenida | option select input */
     main.registro option,
     main.registro select,
     main.registro input {
         width: 85%;
     }
 
+    /* Bienvenida | button */
     main.registro button:nth-of-type(1),
     main.registro button:nth-of-type(2) {
         width: 85%;
@@ -587,14 +604,17 @@ main table td {
 }
 
 @media screen and (max-width: 455px) {
+    /* Header | h1 */
     header h1{
         font-size: 0.6em;
     }
 
+    /* Bienvenida | h2 */
     main.registro h2{
         font-size: 1em;
     }
 
+    /* Bienvenida | option select input */
     main.registro option,
     main.registro select,
     main.registro input {
