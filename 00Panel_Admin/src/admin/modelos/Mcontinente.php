@@ -5,8 +5,15 @@ class mContinente {
     private $conexion;
 
     public function __construct() {
-        $objetoBD = new bbdd(); //Conectamos a la base de datos. Creamos objeto $objetoBD
-        $this->conexion = $objetoBD->conexion; //Llamamos al metodo que realiza la conexion a la BBDD
+        require_once CONFIG.'configDbProd.php';
+        $this->conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
+        $this->conexion->set_charset("utf8");
+
+        if ($this->conexion->connect_error) {
+            die("Conexión fallida: " . $this->conexion->connect_error);
+        }
+        // Activar modo de excepciones
+        $this->conexion->report_mode = MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT;
     }
 
     public function conectar(){
@@ -59,11 +66,11 @@ class mContinente {
 
     public function mModificarContinente($nombreC, $idCont) {
         try {
-            $SQL = "UPDATE continente SET nombreCont = '$nombreC' WHERE idContinente = ?";
+            $SQL = "UPDATE continente SET nombreCont = '$nombreC' WHERE idContinente = '$idCont'";
             $this->conexion->query($SQL);
         } catch (mysqli_sql_exception $e) {
             if ($e->getCode() === 1062) { 
-                return "Csu";
+                return "csu";
             } else {
                 return false;
             }

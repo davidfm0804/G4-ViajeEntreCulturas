@@ -35,10 +35,6 @@
                 <img src="<?php echo IMG.'ranking.png'; ?>" alt="Ranking">
                 <span>Ranking</span>
             </button>
-            <button id="valoraciones" class="menu-item">
-                <img src="<?php echo IMG.'valoracion.png'; ?>" alt="Valoración">
-                <span>Valoración</span>
-            </button>
         </div>
     </main>
     <script src="<?php echo JS.'menuPrincipal.js'; ?>"></script>

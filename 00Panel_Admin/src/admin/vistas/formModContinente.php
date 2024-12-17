@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Continente</title>
     <link rel="icon" href="<?php echo IMG.'logo.png'?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?php echo CSS.'estiloHugo.css'?>">
+    <link rel="stylesheet" href="<?php echo CSS.'estilo.css'?>">
 </head>
 <body>
     <header>
@@ -16,12 +16,13 @@
 
 <form>
         <label for="nombreContinente">Nombre del Continente:</label>
-        <input type="text" name="nombreContinente"> 
+        <input type="text" name="nombreContinente" value="<?php echo $_GET['nombreCont']; ?>">
+        <input type="hidden" id='idContinente' value='<?php echo $_GET['id'];?>' >
     </form>
     <button type="button" class="cancel">Cancelar</button>
-    <button type="button" class="update">Dar Alta</button>
+    <button type="button" class="update">Modificar</button>
 
     </main>
 </body>
-<script src="<?php echo JS.'validAltaCont.js';?>"></script>
+<script src="<?php echo JS.'validModCont.js';?>"></script>
 </html>
