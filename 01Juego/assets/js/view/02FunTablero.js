@@ -4,8 +4,8 @@ document.getElementById('startGame').addEventListener('click', function() {
 
 const infoPartida = JSON.parse(localStorage.getItem('infoPartida'));
 console.log(infoPartida);
-const rutaBanderas = '../00Panel_Admin/src/admin/assets/img/banderas/'; /*assets/img/banderas/*/
-const rutaFotos = '../00Panel_Admin/src/admin/assets/img/fotos/';
+const rutaBanderas = '../00Panel_Admin/panel/assets/img/banderas/'; /*assets/img/banderas/*/
+const rutaFotos = '../00Panel_Admin/panel/assets/img/fotos/';
 const tiempoDefinido = 60;
 const tiempoMostrarCartas = 4;
 
