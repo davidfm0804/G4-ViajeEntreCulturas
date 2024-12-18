@@ -26,17 +26,30 @@ body {
     color: white;
 }
 
-/* Estilos Header */
+/* Header */
 header {
     background-color: var(--azul);
     color: white;
-    height: 8vh;
     display: flex;
     align-items: center;
-    padding: 0 20px;
-    border-bottom: 4px solid var(--azul-claro);
+    justify-content: space-between;
+    padding: 10px 20px;
+    height: auto; /* Altura dinámica */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    position: relative;
+}
+
+header img {
+    width: 70px;
+    height: auto;
+}
+
+header h1 {
+    font-size: 1.2em;
+    color: var(--blanco-claro);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    margin: 0;
+    position: static;
+    text-align: center;
 }
 
 header a {
@@ -55,125 +68,25 @@ header a:hover {
     color: var(--azul-oscuro);
 }
 
-header img {
-    display: inline;
-    width: 70px;
-}
-
-header h1 {
-    position: absolute;
-    left: 35%; 
-    font-size: 1.2em;
-    color: var(--blanco-claro);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-/* Estilos del contenedor principal de los items */
+/* Main y Contenedor */
 main div {
     padding: 20px;
-    background-color: rgba(5, 47, 77, 0.2); 
+    background-color: rgba(5, 47, 77, 0.2);
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
-
-/* Estilo de los fieldset para los ítems */
-fieldset {
-    border: 2px solid var(--claro-oscuro);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 15px;
-    background-color: rgba(0, 0, 0, 0.3); 
-}
-
-/* Título de los ítems */
-legend {
-    font-size: 1.2em;
-    color: var(--amarillo);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* Estilo de los labels dentro de los ítems */
-fieldset label {
-    font-size: 0.9em;
-    color: var(--blanco-claro);
-    margin-bottom: 5px;
-    display: block;
-}
-
-/* Estilo de los inputs y selects dentro de los ítems */
-fieldset input[type="text"],
-fieldset input[type="file"],
-fieldset select,
-fieldset textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 2px solid var(--claro-oscuro);
-    background-color: var(--claro-oscuro);
-    color: white;
-    font-family: 'Press Start 2P', cursive;
-}
-
-/* Estilo del botón para subir fotos */
-fieldset #subirBtn {
-    padding: 10px 20px;
-    background-color: var(--azul-claro);
-    color: white;
-    font-size: 0.9em;
-    border-radius: 5px;
-    border: 2px solid var(--azul-oscuro);
-    cursor: pointer;
-    text-align: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-}
-
-/* Estilo para el hover del botón de subir fotos */
-fieldset #subirBtn:hover {
-    background-color: var(--azul-oscuro);
-    color: var(--blanco-claro);
-    border-color: var(--azul-claro);
-    box-shadow: 0px 4px 12px var(--azul-claro);
-    transform: translateY(-2px);
-}
-
-/* Estilo para el área de descripción */
-fieldset textarea {
-    height: 100px;
-}
-
-/* Ajuste del formulario en dispositivos pequeños */
-@media (max-width: 768px) {
-    main div {
-        padding: 10px;
-    }
-
-    fieldset {
-        padding: 15px;
-    }
-
-    fieldset label, 
-    fieldset input[type="text"], 
-    fieldset select,
-    fieldset textarea {
-        font-size: 0.8em;
-    }
-}
-
 
 /* Formulario */
 form {
     justify-content: space-between;
     width: 100%;
-    background-color: rgba(5, 47, 77, 0.35); 
+    background-color: rgba(5, 47, 77, 0.35);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
     color: white;
 }
 
-/* Input y labels */
 form label {
     display: block;
     margin-bottom: 5px;
@@ -192,6 +105,8 @@ form input[type="file"] {
     color: white;
     font-family: 'Press Start 2P', cursive;
 }
+
+/* Botones de acción */
 #subirBandera {
     display: inline-block;
     padding: 10px 20px;
@@ -206,7 +121,7 @@ form input[type="file"] {
     transition: all 0.3s ease;
 }
 
-#subirBtn:hover {
+#subirBandera:hover {
     background-color: var(--azul-oscuro);
     color: var(--blanco-claro);
     border-color: var(--azul-claro);
@@ -214,20 +129,8 @@ form input[type="file"] {
     transform: translateY(-2px);
 }
 
-/* Oculta el botón predeterminado de archivo */
 form input[type="file"] {
-    display: none;
-}
-
-/* Estilo para los botones cancelar y actualizar */
-input {
-    width: 45%;
-    padding: 10px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
+    display: none; /* Oculta el input de tipo file */
 }
 
 .cancel {
@@ -248,4 +151,62 @@ input {
     background-color: var(--azul-claro);
 }
 
+/* Fieldset */
+fieldset {
+    border: 2px solid var(--claro-oscuro);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
 
+legend {
+    font-size: 1.2em;
+    color: var(--amarillo);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+fieldset textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 2px solid var(--claro-oscuro);
+    background-color: var(--claro-oscuro);
+    color: white;
+    padding: 10px;
+}
+
+
+
+
+/* Media Queries para Tablet */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+
+    header img {
+        width: 60px;
+        margin-bottom: 10px;
+    }
+
+    header h1 {
+        font-size: 1.1em;
+        margin: 5px 0;
+    }
+
+    header a {
+        font-size: 0.8em;
+        padding: 6px 10px;
+        margin-top: 10px;
+    }
+
+    main div {
+        padding: 10px;
+    }
+
+}
