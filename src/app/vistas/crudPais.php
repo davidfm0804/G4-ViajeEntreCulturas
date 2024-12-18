@@ -40,7 +40,8 @@ if (isset($_POST['paisConsulta']) && !empty($_POST['paisConsulta'])) {
                         </tr>";
 
                 // Carpeta base donde se almacenan las imágenes
-                $carpetaBase = '../../';
+                $carpetaBase = '../../img/banderas/';
+
 
                 while ($fila = $resultados->fetch_assoc()) {
                     $rutaImagen = $carpetaBase . $fila['bandera']; // Concatenamos la ruta relativa con la carpeta base

@@ -15,7 +15,9 @@
         </header>
         <main>
             <h2>Listado categorías</h2>      
-            <button>alta categoría</button>
+            <a href="altaCategoria.php">
+                <button>alta categoría</button>
+            </a>
             <table>
                 <thead>
                     <tr>

@@ -29,7 +29,6 @@
                 }
             ?>
         </main>
-
         <script src="../../js/06validCategoria.js"></script>
     </body>
 </html>

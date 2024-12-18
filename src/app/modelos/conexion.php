@@ -1,5 +1,5 @@
 <?php
-    require_once 'configDb.php'; //Archivo de configuración
+    require_once 'configDbLocal.php'; //Archivo de configuración
 
     $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD); //Conecta con la base de datos
     $conexion->set_charset("utf8"); //Usa juego caracteres UTF8

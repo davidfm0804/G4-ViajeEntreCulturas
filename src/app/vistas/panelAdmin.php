@@ -36,10 +36,6 @@
                 <img src="../../img/ranking.png" >
                 <span>Ranking</span>
             </a>
-            <a href="valoraciones.html" class="menu-item">
-                <img src="../../img/valoracion.png" >
-                <span>Valoraciones</span>
-            </a>
         </div>
     </main>
 </body>

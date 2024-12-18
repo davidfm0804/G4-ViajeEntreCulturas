@@ -21,7 +21,7 @@
 
 /* Estilos del body */
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa2.jpg');
     background-size: cover;
     color: white;
 }
@@ -39,6 +39,22 @@ header {
     position: relative;
 }
 
+header a {
+    font-size: 0.9em;
+    text-decoration: none;
+    color: white;
+    padding: 8px 15px;
+    background-color: var(--azul-oscuro);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+header a:hover {
+    background-color: var(--azul-claro);
+    color: var(--azul-oscuro);
+}
+
 header img {
     display: inline;
     width: 70px;
@@ -52,10 +68,99 @@ header h1 {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Contenedor principal */
+/* Estilos del contenedor principal de los items */
 main div {
     padding: 20px;
+    background-color: rgba(5, 47, 77, 0.2); 
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+/* Estilo de los fieldset para los ítems */
+fieldset {
+    border: 2px solid var(--claro-oscuro);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: rgba(0, 0, 0, 0.3); 
+}
+
+/* Título de los ítems */
+legend {
+    font-size: 1.2em;
+    color: var(--amarillo);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo de los labels dentro de los ítems */
+fieldset label {
+    font-size: 0.9em;
+    color: var(--blanco-claro);
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Estilo de los inputs y selects dentro de los ítems */
+fieldset input[type="text"],
+fieldset input[type="file"],
+fieldset select,
+fieldset textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 2px solid var(--claro-oscuro);
+    background-color: var(--claro-oscuro);
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Estilo del botón para subir fotos */
+fieldset #subirBtn {
+    padding: 10px 20px;
+    background-color: var(--azul-claro);
+    color: white;
+    font-size: 0.9em;
+    border-radius: 5px;
+    border: 2px solid var(--azul-oscuro);
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+/* Estilo para el hover del botón de subir fotos */
+fieldset #subirBtn:hover {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco-claro);
+    border-color: var(--azul-claro);
+    box-shadow: 0px 4px 12px var(--azul-claro);
+    transform: translateY(-2px);
+}
+
+/* Estilo para el área de descripción */
+fieldset textarea {
+    height: 100px;
+}
+
+/* Ajuste del formulario en dispositivos pequeños */
+@media (max-width: 768px) {
+    main div {
+        padding: 10px;
+    }
+
+    fieldset {
+        padding: 15px;
+    }
+
+    fieldset label, 
+    fieldset input[type="text"], 
+    fieldset select,
+    fieldset textarea {
+        font-size: 0.8em;
+    }
+}
+
 
 /* Formulario */
 form {
@@ -87,7 +192,7 @@ form input[type="file"] {
     color: white;
     font-family: 'Press Start 2P', cursive;
 }
-#subirBtn {
+#subirBandera {
     display: inline-block;
     padding: 10px 20px;
     background-color: var(--azul-claro);
@@ -115,7 +220,7 @@ form input[type="file"] {
 }
 
 /* Estilo para los botones cancelar y actualizar */
-button {
+input {
     width: 45%;
     padding: 10px;
     font-size: 1em;
@@ -143,9 +248,4 @@ button {
     background-color: var(--azul-claro);
 }
 
-@media (max-width: 768px) {
-    header h1 {
-        left: 30%;
-    }
-}
 

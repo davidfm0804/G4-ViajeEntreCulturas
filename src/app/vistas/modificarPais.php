@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar País</title>
+    <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/estilo.css">
     <link rel="icon" href="../../img/mapa.jpg" type="image/x-icon">
 </head>
@@ -31,7 +32,7 @@
             <input type="text" name="coordY" ><br><br>
 
             <input type="submit" value="Modificar">
-            <a href="crudPais.php" class="volver-btn">Volver atrás</a><br><br><br>
+            <a href="crudPais.php" class="volver-btn">Volver atrás</a><br><br>
 
             <?php
             if (isset($_GET['msj'])) {
@@ -42,20 +43,5 @@
 
         </div>
    </main>
-   <script>
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const scriptToLoad = getQueryParam('script');
-            const script = document.createElement('script');
-            script.src = scriptToLoad === '04validModifv2.js' ? '<?php echo JS.'04validModifv2.js'?>' : '<?php echo JS.'04validModif.js'?>';
-            script.defer = true; // Asegura que el script se ejecute después de que el documento esté completamente cargado
-            document.body.appendChild(script);
-        });
-
-    </script>
 </body>
 </html>

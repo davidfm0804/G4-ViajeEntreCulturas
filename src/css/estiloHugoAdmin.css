@@ -22,7 +22,7 @@
 
 /* Estilos Generales */
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/mapa2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -117,110 +117,26 @@ h2 {
     color: var(--amarillo);
 }
 
-/* Media Query para tablet */
-@media (max-width: 1024px) and (min-width: 769px) {
-    /* Header */
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
     header {
-        padding: 10px 20px;
-    }
-
-    header h1 {
-        font-size: 1.5em;
-        text-align: center;
-    }
-
-    header img {
-        width: 60px;
-        height: auto;
-    }
-
-    header a {
-        font-size: 1em;
-        padding: 10px 20px;
-    }
-
-    /* Main section */
-    main {
-        width: 85%;
-        margin: 20px auto;
-    }
-
-    h2 {
-        font-size: 1.6em;
-        margin-bottom: 20px;
-    }
-
-    /* Menu */
-    .menu {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
-
-    .menu-item {
-        font-size: 1em;
-    }
-
-    .menu-item img {
-        width: 120px;
-        height: 120px;
-    }
-
-    .menu-item span {
-        font-size: 1em;
-    }
-}
-
-
-/* Media Query para móvil (hasta 768px) */
-@media (max-width: 768px) {
-    /* Header */
-    header {
-        padding: 15px;
-        text-align: center;
-    }
-
-    header img {
-        width: 50px;
-        height: auto;
-        margin-bottom: 10px;
-    }
-
-    header h1 {
-        font-size: 1.3em;
-        text-align: center;
-    }
-
-    header a {
-        font-size: 1em;
-        padding: 10px 15px;
-        display: inline-block;
-        margin-top: 10px;
-    }
-
-    /* Main section */
-    main {
-        width: 90%;
-        margin: 20px auto;
-    }
-
-    h2 {
-        font-size: 1.4em;
-        margin-bottom: 15px;
-        text-align: center;
-    }
-
-    /* Menu */
-    .menu {
-        display: flex;
         flex-direction: column;
-        gap: 20px;
-        justify-content: center;
+        height: auto;
+        padding: 10px;
     }
 
-    .menu-item {
+    header img {
+        width: 40px;
+    }
+
+    header h1 {
         font-size: 1em;
         text-align: center;
+    }
+
+    header a {
+        font-size: 0.8em;
+        margin-top: 10px;
     }
 
     .menu-item img {
@@ -228,7 +144,11 @@ h2 {
         height: 80px;
     }
 
-    .menu-item span {
+    .menu {
+        gap: 15px;
+    }
+
+    h2 {
         font-size: 1em;
     }
 }

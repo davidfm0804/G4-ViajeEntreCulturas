@@ -39,7 +39,7 @@
                 <a href="crudPais.php" class="volver-btn">Volver atrás</a>
                
 
-                <br><br><br>
+                <br><br>
 
                 <?php
                     if (isset($_GET['msj'])){
@@ -50,7 +50,6 @@
             </form>
         </div>
     </main>
-    <script src="<?php echo JS.'02validAlta.js';?>"></script>
 </body>
 </html>
 

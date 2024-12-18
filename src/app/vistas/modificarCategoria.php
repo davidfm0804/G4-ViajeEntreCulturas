@@ -16,8 +16,7 @@
     <main class="registro">
         <h2>Registrar categoría</h2>
         <form>
-            <input type="text" name="nombreCat" placeholder="Nombre Categoría a Modificar">
-            <input type="text" name="nuevaCat" placeholder="Nombre Nueva Categoría">
+            <input type="text" name="nombreCat" placeholder="Nombre Nueva Categoría">
             <div>
                 <button type="reset" class="reset">Borrar</button>
                 <button type="button" class="cancel">Cancelar</button>
